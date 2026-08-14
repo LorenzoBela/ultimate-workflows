@@ -1,0 +1,35 @@
+{
+  "name": "ultimate-workflows",
+  "version": "1.0.0",
+  "description": "34 Master AI Agent Workflows for Cursor, Claude Code, Windsurf, Cline, Copilot, and Antigravity.",
+  "main": "scripts/install.js",
+  "bin": {
+    "ultimate-workflows": "./scripts/install.js"
+  },
+  "scripts": {
+    "install:all": "node scripts/install.js all",
+    "install:cursor": "node scripts/install.js cursor",
+    "install:claude": "node scripts/install.js claude",
+    "install:agy": "node scripts/install.js agy",
+    "install:windsurf": "node scripts/install.js windsurf",
+    "install:cline": "node scripts/install.js cline",
+    "install:copilot": "node scripts/install.js copilot"
+  },
+  "keywords": [
+    "ai-agents",
+    "cursor-rules",
+    "claude-code",
+    "windsurf",
+    "cline",
+    "copilot",
+    "antigravity",
+    "workflows",
+    "anti-slop"
+  ],
+  "author": "Lorenzo Bela",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LorenzoBela/ultimate-workflows.git"
+  }
+}

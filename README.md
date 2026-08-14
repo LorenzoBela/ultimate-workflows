@@ -2,11 +2,106 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
 [![Workflows: 34](https://img.shields.io/badge/Workflows-34%20Total-brightgreen.svg)](./universal/)
-[![Compatibility](https://img.shields.io/badge/Compatible%20With-Cursor%20%7C%20Claude%20Code%20%7C%20Windsurf%20%7C%20Cline%20%7C%20Copilot-orange.svg)](#-how-to-use-by-platform)
+[![Compatibility](https://img.shields.io/badge/Supports-Cursor%20%7C%20Claude%20Code%20(CC)%20%7C%20Antigravity%20(AGY)%20%7C%20Windsurf%20%7C%20Cline%20%7C%20VS%20Code-orange.svg)](#-one-line-installers)
 
-A battle-tested suite of **34 master engineering workflows** crafted for autonomous AI agents, coding assistants, and pair-programming environments. 
+A battle-tested suite of **34 master engineering workflows** crafted for autonomous AI agents, coding assistants, and pair-programming environments.
 
-Eliminate generic "AI slop", vague pseudocode, and brittle architectures. Every workflow enforces mathematical precision, system tokens, strict anti-slop rulesheets, step-by-step phased execution pipelines, and deterministic verification gates.
+Eliminate generic "AI slop", vague pseudocode, and brittle architectures. Every workflow enforces mathematical precision, design tokens, anti-slop rulesheets, step-by-step phased execution pipelines, and deterministic verification gates.
+
+---
+
+## ⚡ One-Line Installers (Instant Setup)
+
+Install into **any current project repository** in seconds:
+
+### 🎯 Cursor IDE (`.cursor/rules/*.mdc`)
+```bash
+# Node / npx
+npx github:LorenzoBela/ultimate-workflows cursor
+
+# Bash (macOS / Linux)
+curl -fsSL https://raw.githubusercontent.com/LorenzoBela/ultimate-workflows/main/scripts/install.sh | bash -s cursor
+
+# PowerShell (Windows)
+irm https://raw.githubusercontent.com/LorenzoBela/ultimate-workflows/main/scripts/install.ps1 | iex; Install-Cursor
+```
+
+---
+
+### 🟣 Claude Code (`.claude/skills/`)
+```bash
+# Node / npx
+npx github:LorenzoBela/ultimate-workflows claude
+
+# Bash (macOS / Linux)
+curl -fsSL https://raw.githubusercontent.com/LorenzoBela/ultimate-workflows/main/scripts/install.sh | bash -s claude
+
+# PowerShell (Windows)
+irm https://raw.githubusercontent.com/LorenzoBela/ultimate-workflows/main/scripts/install.ps1 | iex; Install-Claude
+```
+
+---
+
+### 🚀 Google Antigravity / AGY (`.agent/workflows/`)
+```bash
+# Node / npx
+npx github:LorenzoBela/ultimate-workflows agy
+
+# Bash (macOS / Linux)
+curl -fsSL https://raw.githubusercontent.com/LorenzoBela/ultimate-workflows/main/scripts/install.sh | bash -s agy
+
+# PowerShell (Windows)
+irm https://raw.githubusercontent.com/LorenzoBela/ultimate-workflows/main/scripts/install.ps1 | iex; Install-AGY
+```
+
+---
+
+### 🌊 Windsurf / Cascade (`.windsurfrules`)
+```bash
+# Node / npx
+npx github:LorenzoBela/ultimate-workflows windsurf
+
+# Bash (macOS / Linux)
+curl -fsSL https://raw.githubusercontent.com/LorenzoBela/ultimate-workflows/main/scripts/install.sh | bash -s windsurf
+
+# PowerShell (Windows)
+irm https://raw.githubusercontent.com/LorenzoBela/ultimate-workflows/main/scripts/install.ps1 | iex; Install-Windsurf
+```
+
+---
+
+### 🤖 Cline / Roo-Code (`.clinerules`)
+```bash
+# Node / npx
+npx github:LorenzoBela/ultimate-workflows cline
+
+# Bash (macOS / Linux)
+curl -fsSL https://raw.githubusercontent.com/LorenzoBela/ultimate-workflows/main/scripts/install.sh | bash -s cline
+
+# PowerShell (Windows)
+irm https://raw.githubusercontent.com/LorenzoBela/ultimate-workflows/main/scripts/install.ps1 | iex; Install-Cline
+```
+
+---
+
+### 💻 VS Code / GitHub Copilot (`.github/copilot-instructions.md`)
+```bash
+# Node / npx
+npx github:LorenzoBela/ultimate-workflows copilot
+
+# Bash (macOS / Linux)
+curl -fsSL https://raw.githubusercontent.com/LorenzoBela/ultimate-workflows/main/scripts/install.sh | bash -s copilot
+
+# PowerShell (Windows)
+irm https://raw.githubusercontent.com/LorenzoBela/ultimate-workflows/main/scripts/install.ps1 | iex; Install-Copilot
+```
+
+---
+
+### 📦 Install All Targets at Once
+```bash
+npx github:LorenzoBela/ultimate-workflows all
+```
 
 ---
 
@@ -14,13 +109,6 @@ Eliminate generic "AI slop", vague pseudocode, and brittle architectures. Every 
 
 - [What Are Ultimate Workflows?](#-what-are-ultimate-workflows)
 - [Two Editions: Universal vs. Original](#-two-editions-universal-vs-original)
-- [How to Use by Platform](#-how-to-use-by-platform)
-  - [Cursor IDE](#1-cursor-ide)
-  - [Claude Code](#2-claude-code)
-  - [Windsurf & Cascade](#3-windsurf--cascade)
-  - [Cline & Roo-Code](#4-cline--roo-code)
-  - [GitHub Copilot](#5-github-copilot)
-  - [Any Web LLM (ChatGPT, Claude.ai, Gemini)](#6-any-web-llm-chatgpt-claude-gemini)
 - [Complete 34-Workflow Catalog](#-complete-34-workflow-catalog)
   - [1. AI & Autonomous Agent Engineering](#1-ai--autonomous-agent-engineering)
   - [2. System Architecture & Technical Planning](#2-system-architecture--technical-planning)
@@ -54,6 +142,7 @@ Standard AI code generation often suffers from "vibecoding": generic UI defaults
 ultimate-workflows/
 ├── universal/    # 🌟 Recommended: Standalone, 100% portable for any agent/IDE
 ├── original/     # Advanced: Includes custom sub-skill links and MCP server hooks
+├── scripts/      # Automated multi-IDE installer scripts (Node, Bash, PowerShell)
 └── README.md     # Documentation & quickstart index
 ```
 
@@ -63,72 +152,6 @@ ultimate-workflows/
 | **Tool Execution** | Standard CLI (`grep`, `npm`, `vitest`, `git`) | MCP Tools (`memory`, `playwright`, `tavily`) |
 | **Sub-Skill References** | Embedded self-contained instructions | Linked to custom `.gemini`/`.agent` skills |
 | **IDE / Agent Portability** | **Works everywhere out-of-the-box** | Best for custom Antigravity/MCP agents |
-
----
-
-## 🛠️ How to Use by Platform
-
-### 1. Cursor IDE
-
-#### Method A: Project-level Rules (Recommended)
-Copy individual workflows into your repository's `.cursor/rules/`:
-```bash
-mkdir -p .cursor/rules
-# Example: Add frontend and database workflows to Cursor
-cp universal/ultimate-frontend-workflow.md .cursor/rules/frontend.mdc
-cp universal/ultimate-database-workflow.md .cursor/rules/database.mdc
-```
-
-#### Method B: Global `.cursorrules`
-Copy the contents of any workflow directly into your project root `.cursorrules`.
-
----
-
-### 2. Claude Code
-
-Place the workflows in your project root or Claude skill directory:
-```bash
-mkdir -p .claude/skills
-cp universal/*.md .claude/skills/
-```
-In Claude Code, invoke with:
-```bash
-claude "Run ultimate-frontend-workflow on our dashboard page"
-```
-
----
-
-### 3. Windsurf & Cascade
-
-Add workflows to `.windsurfrules` in the root of your project:
-```bash
-cat universal/ultimate-fullstack-workflow.md >> .windsurfrules
-```
-
----
-
-### 4. Cline & Roo-Code
-
-Copy desired workflows into `.clinerules` or your custom prompt templates:
-```bash
-cat universal/ultimate-planning-workflow.md >> .clinerules
-```
-
----
-
-### 5. GitHub Copilot
-
-Append the workflow instructions to `.github/copilot-instructions.md`:
-```bash
-mkdir -p .github
-cat universal/ultimate-best-practices-workflow.md >> .github/copilot-instructions.md
-```
-
----
-
-### 6. Any Web LLM (ChatGPT, Claude.ai, Gemini)
-
-Simply open any file in [`universal/`](./universal/), copy the text, and paste it as a system prompt or prefix to your coding prompt.
 
 ---
 
