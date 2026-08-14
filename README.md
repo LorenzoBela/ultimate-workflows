@@ -1,163 +1,270 @@
-# Ultimate Workflows (34 Master AI Agent Workflows)
+# ⚡ Ultimate Workflows: 34 Production-Grade AI Agent Workflows
 
-A production-grade collection of **34 master engineering workflows** designed for autonomous AI agents and pair-programming assistants. Built with battle-tested standards, mathematical precision, anti-slop rules, and rigorous checklists.
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
+[![Workflows: 34](https://img.shields.io/badge/Workflows-34%20Total-brightgreen.svg)](./universal/)
+[![Compatibility](https://img.shields.io/badge/Compatible%20With-Cursor%20%7C%20Claude%20Code%20%7C%20Windsurf%20%7C%20Cline%20%7C%20Copilot-orange.svg)](#-how-to-use-by-platform)
 
-Compatible with **Claude Code**, **Cursor**, **Windsurf**, **Cline**, **GitHub Copilot**, **Antigravity**, and any LLM agent environment.
+A battle-tested suite of **34 master engineering workflows** crafted for autonomous AI agents, coding assistants, and pair-programming environments. 
+
+Eliminate generic "AI slop", vague pseudocode, and brittle architectures. Every workflow enforces mathematical precision, system tokens, strict anti-slop rulesheets, step-by-step phased execution pipelines, and deterministic verification gates.
 
 ---
 
-## 📦 Repository Structure
+## 📑 Table of Contents
 
-This repository provides two complete editions of all 34 workflows:
+- [What Are Ultimate Workflows?](#-what-are-ultimate-workflows)
+- [Two Editions: Universal vs. Original](#-two-editions-universal-vs-original)
+- [How to Use by Platform](#-how-to-use-by-platform)
+  - [Cursor IDE](#1-cursor-ide)
+  - [Claude Code](#2-claude-code)
+  - [Windsurf & Cascade](#3-windsurf--cascade)
+  - [Cline & Roo-Code](#4-cline--roo-code)
+  - [GitHub Copilot](#5-github-copilot)
+  - [Any Web LLM (ChatGPT, Claude.ai, Gemini)](#6-any-web-llm-chatgpt-claude-gemini)
+- [Complete 34-Workflow Catalog](#-complete-34-workflow-catalog)
+  - [1. AI & Autonomous Agent Engineering](#1-ai--autonomous-agent-engineering)
+  - [2. System Architecture & Technical Planning](#2-system-architecture--technical-planning)
+  - [3. Fullstack & Application Engineering](#3-fullstack--application-engineering)
+  - [4. Data Systems, Database & Caching](#4-data-systems-database--caching)
+  - [5. Hardware, Embedded & IoT Engineering](#5-hardware-embedded--iot-engineering)
+  - [6. Quality Assurance, Security, Operations & Debugging](#6-quality-assurance-security-operations--debugging)
+  - [7. UX, Automation & Document Intelligence](#7-ux-automation--document-intelligence)
+- [Workflow Chaining & Pipelines](#-workflow-chaining--pipelines)
+- [Anti-Slop Engineering Rules](#-anti-slop-engineering-rules)
+- [License](#-license)
+
+---
+
+## 🧠 What Are Ultimate Workflows?
+
+Standard AI code generation often suffers from "vibecoding": generic UI defaults (such as indigo gradients, uniform `rounded-2xl`, wash-out grey text), unhandled loading/error states, missing accessibility, brittle database queries, and missing edge-case handling.
+
+**Ultimate Workflows solve this by embedding production-grade senior engineering constraints directly into the agent's context window:**
+
+1. **Phased Execution Pipelines:** Every workflow guides the agent through structured phases (Research → Architecture → Implementation → Validation → Review).
+2. **Iron Laws & Non-Negotiables:** Hard constraints (e.g., WCAG 2.2 AA accessibility, Core Web Vitals $p75$, zero Cumulative Layout Shift, zero hardcoded colors).
+3. **Anti-Slop Rulesheets:** Explicit blacklists of common AI code tells and boilerplate antipatterns.
+4. **Actionable Checklists:** Concrete pre-flight verification items before declaring code done.
+
+---
+
+## 📦 Two Editions: Universal vs. Original
 
 ```text
 ultimate-workflows/
-├── original/     # Full-ecosystem editions (integrated with custom sub-skills, tool bindings, & MCP hooks)
-└── universal/    # Standalone editions (zero external skill dependencies, 100% portable for any agent)
+├── universal/    # 🌟 Recommended: Standalone, 100% portable for any agent/IDE
+├── original/     # Advanced: Includes custom sub-skill links and MCP server hooks
+└── README.md     # Documentation & quickstart index
 ```
 
-- **[`universal/`](./universal/)** *(Recommended for general use)*: Self-contained workflows with standard CLI commands, native tool instructions, and zero vendor lock-in.
-- **[`original/`](./original/)**: Advanced workflows containing references to specialized sub-skills, brand design manuals, and MCP server bridges.
+| Feature | `universal/` (Standalone) | `original/` (Ecosystem) |
+| :--- | :---: | :---: |
+| **External Dependencies** | **None (Zero dependencies)** | Requires specific sub-skills & MCPs |
+| **Tool Execution** | Standard CLI (`grep`, `npm`, `vitest`, `git`) | MCP Tools (`memory`, `playwright`, `tavily`) |
+| **Sub-Skill References** | Embedded self-contained instructions | Linked to custom `.gemini`/`.agent` skills |
+| **IDE / Agent Portability** | **Works everywhere out-of-the-box** | Best for custom Antigravity/MCP agents |
 
 ---
 
-## 🚀 Quick Setup & Installation
+## 🛠️ How to Use by Platform
 
-### Option A: Cursor IDE (`.cursor/rules`)
-Copy desired workflows into your project's `.cursor/rules/` directory or paste into `.cursorrules`:
+### 1. Cursor IDE
+
+#### Method A: Project-level Rules (Recommended)
+Copy individual workflows into your repository's `.cursor/rules/`:
 ```bash
 mkdir -p .cursor/rules
-cp universal/ultimate-frontend-workflow.md .cursor/rules/
+# Example: Add frontend and database workflows to Cursor
+cp universal/ultimate-frontend-workflow.md .cursor/rules/frontend.mdc
+cp universal/ultimate-database-workflow.md .cursor/rules/database.mdc
 ```
 
-### Option B: Claude Code (`.claude/skills/` or project root)
-Copy the universal workflows into your project's skill directory:
+#### Method B: Global `.cursorrules`
+Copy the contents of any workflow directly into your project root `.cursorrules`.
+
+---
+
+### 2. Claude Code
+
+Place the workflows in your project root or Claude skill directory:
 ```bash
 mkdir -p .claude/skills
-cp -r universal/* .claude/skills/
+cp universal/*.md .claude/skills/
 ```
-
-### Option C: Antigravity / OpenHands / Cline
-Point your workspace workflows or custom skills directory to `universal/`:
+In Claude Code, invoke with:
 ```bash
-mkdir -p .agent/workflows
-cp universal/*.md .agent/workflows/
+claude "Run ultimate-frontend-workflow on our dashboard page"
 ```
 
 ---
 
-## 📚 Workflow Catalog (34 Workflows)
+### 3. Windsurf & Cascade
 
-### AI & Autonomous Agent Engineering
-
-| Workflow | Universal Link | Original Link | Summary |
-| :--- | :---: | :---: | :--- |
-| **`ultimate-agent-dev-workflow`** | [Universal](./universal/ultimate-agent-dev-workflow.md) | [Original](./original/ultimate-agent-dev-workflow.md) | Master workflow for designing, configuring, implementing, and orchestrating autonomous AI agents and multi-agent systems using the Google Antigravity (AGY) SDK. Triggers on "ultimate agent dev workflow", "/ultimate-agent-dev-workflow", or when building custom AGY agents, hooking API runtimes, or delegating tasks to subagents.
-argument-hint: "[agent-config | custom-tool | multi-agent]" |
-| **`ultimate-agent-workflow`** | [Universal](./universal/ultimate-agent-workflow.md) | [Original](./original/ultimate-agent-workflow.md) | Master workflow for prompt engineering, token caching, memory organization, and subagent delegation. Coordinates task decomposition, spawning cavecrew subagents, and compressing tool outputs to extend context limits. Triggers on "ultimate agent workflow", "/ultimate-agent-workflow", or when spawning subagents, managing agent context, or organizing memory graphs.
-argument-hint: "[delegate-task | memory-sync | context-save]" |
-| **`ultimate-notebooklm-workflow`** | [Universal](./universal/ultimate-notebooklm-workflow.md) | [Original](./original/ultimate-notebooklm-workflow.md) | Master workflow for managing notebooks, ingesting sources, running AI research, and generating studio audio overviews using Google NotebookLM and its MCP server. Triggers on "ultimate notebooklm workflow", "/ultimate-notebooklm-workflow", or when using NotebookLM tools to research or summarize source documents.
-argument-hint: "[notebook-name | action-type]" |
-
-### System Architecture & Planning
-
-| Workflow | Universal Link | Original Link | Summary |
-| :--- | :---: | :---: | :--- |
-| **`ultimate-architecture-workflow`** | [Universal](./universal/ultimate-architecture-workflow.md) | [Original](./original/ultimate-architecture-workflow.md) | Master workflow for systems architecture design, domain modeling, and technical specification. Guides the creation of Mermaid diagrams, database schemas, microservice boundaries, and Architecture Decision Records (ADRs). Triggers on "ultimate architecture workflow", "/ultimate-architecture-workflow", or when designing systems, mapping out data models, or drafting ADRs.
-argument-hint: "[architecture-diagram | database-model | adr-draft]" |
-| **`ultimate-brainstorm-workflow`** | [Universal](./universal/ultimate-brainstorm-workflow.md) | [Original](./original/ultimate-brainstorm-workflow.md) | Master workflow for structured brainstorming, architectural design spikes, alternative evaluation, and risk mitigation. Coordinates goal definition, constraint mapping, option matrices, recommendations, and acceptance criteria. Triggers on "ultimate brainstorm workflow", "/ultimate-brainstorm-workflow", or when initiating complex feature designs, architectural spikes, or design sprints.
-argument-hint: "[design-spike | feature-brainstorm | risk-assessment]" |
-| **`ultimate-planning-workflow`** | [Universal](./universal/ultimate-planning-workflow.md) | [Original](./original/ultimate-planning-workflow.md) | Master workflow for technical planning, design brainstorming, architecture specification, and task sequence generation. Combines structured brainstorming, step-by-step logic exploration, risk mapping, and verification design. Triggers on "ultimate planning workflow", "/ultimate-planning-workflow", or when initiating complex or multi-file code changes.
-argument-hint: "[feature-description | refactor-target]" |
-| **`ultimate-project-workflow`** | [Universal](./universal/ultimate-project-workflow.md) | [Original](./original/ultimate-project-workflow.md) | Master workflow for agile project management, scope definition, sprint tracking, and walkthrough reporting. Coordinates task.md checklists, milestone prioritization, blocker resolution, and walkthrough.md generation. Triggers on "ultimate project workflow", "/ultimate-project-workflow", or when scoping requirements, creating task lists, or documenting final deliverables.
-argument-hint: "[task-scoping | sprint-tracking | walkthrough-report]" |
-
-### Fullstack & Application Engineering
-
-| Workflow | Universal Link | Original Link | Summary |
-| :--- | :---: | :---: | :--- |
-| **`ultimate-api-workflow`** | [Universal](./universal/ultimate-api-workflow.md) | [Original](./original/ultimate-api-workflow.md) | Master workflow for API design, gateway management, GraphQL, gRPC, and reverse proxies. Coordinates Nginx/Traefik configurations, GraphQL resolvers, Protobuf specs, and API versioning. Triggers on "ultimate api workflow", "/ultimate-api-workflow", or when designing gRPC, GraphQL, Nginx routes, or planning API gateway policies.
-argument-hint: "[graphql-schema | grpc-proto | gateway-config]" |
-| **`ultimate-frontend-workflow`** | [Universal](./universal/ultimate-frontend-workflow.md) | [Original](./original/ultimate-frontend-workflow.md) | Unified master workflow for building premium, production-grade frontend interfaces. Synthesizes brand alignment, token systems, copywriting, local assets, utility-first styling, fluid motion, and strict UX/accessibility quality checks. Triggers on "ultimate frontend workflow", "/ultimate-frontend-workflow", or when coordinating high-fidelity UI/UX projects.
-argument-hint: "[page | component | dashboard]" |
-| **`ultimate-fullstack-workflow`** | [Universal](./universal/ultimate-fullstack-workflow.md) | [Original](./original/ultimate-fullstack-workflow.md) | Master workflow for building full-stack applications and backend services. Coordinates database schemas, REST/GraphQL APIs, auth middleware, CORS, real-time sync, and API client integrations. Triggers on "ultimate fullstack workflow", "/ultimate-fullstack-workflow", or when initiating backend, full-stack, or API integration tasks.
-argument-hint: "[api-spec | database-schema | fullstack-feature]" |
-| **`ultimate-serverless-workflow`** | [Universal](./universal/ultimate-serverless-workflow.md) | [Original](./original/ultimate-serverless-workflow.md) | Master workflow for configuring, deploying, and managing serverless backend platforms (Supabase/Firebase) and ORM systems (Prisma) using Model Context Protocol (MCP) integrations. Triggers on "ultimate serverless workflow", "/ultimate-serverless-workflow", or when configuring database schemas, deploying Edge/Cloud functions, or writing RLS security rules.
-argument-hint: "[supabase-deploy | firebase-rules | prisma-migrate]" |
-| **`ultimate-monorepo-workflow`** | [Universal](./universal/ultimate-monorepo-workflow.md) | [Original](./original/ultimate-monorepo-workflow.md) | Master workflow for monorepos, multi-package workspaces, shared dependency links, and package release pipelines. Coordinates Turborepo/Nx settings, pnpm workspaces, semantic versioning, and monorepo builds. Triggers on "ultimate monorepo workflow", "/ultimate-monorepo-workflow", or when configuring workspaces, link dependencies, or designing monorepo pipeline builds.
-argument-hint: "[workspace-setup | package-link | changeset-version]" |
-
-### Data Engineering, Database & Caching
-
-| Workflow | Universal Link | Original Link | Summary |
-| :--- | :---: | :---: | :--- |
-| **`ultimate-caching-workflow`** | [Universal](./universal/ultimate-caching-workflow.md) | [Original](./original/ultimate-caching-workflow.md) | Master workflow for caching architectures and runtime performance tuning. Coordinates cache strategies (Redis, memory, HTTP), TTL design, list virtualization, and bundle size optimization. Triggers on "ultimate caching workflow", "/ultimate-caching-workflow", or when designing application caching or resolving latency bottlenecks.
-argument-hint: "[cache-strategy | latency-issue]" |
-| **`ultimate-data-workflow`** | [Universal](./universal/ultimate-data-workflow.md) | [Original](./original/ultimate-data-workflow.md) | Master workflow for data pipeline engineering, ETL scripting, and data analysis. Coordinates data extraction, cleansing, structured transformation, and loading. Triggers on "ultimate data workflow", "/ultimate-data-workflow", or when designing batch pipelines, parser scripts, database aggregations, or data transformations.
-argument-hint: "[etl-pipeline | parser-script | database-aggregation]" |
-| **`ultimate-database-workflow`** | [Universal](./universal/ultimate-database-workflow.md) | [Original](./original/ultimate-database-workflow.md) | Master workflow for database schema design, query optimization, indexing strategies, and transaction planning. Integrates Postgres/Supabase best practices, query plan analysis (EXPLAIN), and connection management. Triggers on "ultimate database workflow", "/ultimate-database-workflow", or when designing SQL schemas or optimizing slow queries.
-argument-hint: "[table-schema | slow-query]" |
-
-### Hardware, Firmware & IoT Engineering
-
-| Workflow | Universal Link | Original Link | Summary |
-| :--- | :---: | :---: | :--- |
-| **`ultimate-embedded-programming-workflow`** | [Universal](./universal/ultimate-embedded-programming-workflow.md) | [Original](./original/ultimate-embedded-programming-workflow.md) | Master workflow for bare-metal registers, RTOS scheduling, interrupt handling, and exception fault diagnostics. |
-| **`ultimate-hardware-design-workflow`** | [Universal](./universal/ultimate-hardware-design-workflow.md) | [Original](./original/ultimate-hardware-design-workflow.md) | Master workflow for schematic entry, high-speed PCB routing, signal integrity, and manufacturing assembly. |
-| **`ultimate-iot-hardware-workflow`** | [Universal](./universal/ultimate-iot-hardware-workflow.md) | [Original](./original/ultimate-iot-hardware-workflow.md) | Master workflow for schematic design, C++ firmware architectures, memory safety, and OTA updates. |
-| **`ultimate-iot-software-workflow`** | [Universal](./universal/ultimate-iot-software-workflow.md) | [Original](./original/ultimate-iot-software-workflow.md) | Master workflow for MQTT design, mTLS auth, high-speed telemetry ingestion, device twins, and OTA rollouts. |
-
-### Quality, Security, Operations & Debugging
-
-| Workflow | Universal Link | Original Link | Summary |
-| :--- | :---: | :---: | :--- |
-| **`ultimate-best-practices-workflow`** | [Universal](./universal/ultimate-best-practices-workflow.md) | [Original](./original/ultimate-best-practices-workflow.md) | Master workflow for engineering best practices across React, Next.js, Expo, Android Native, and general clean code. Coordinates compound composition, RSC boundaries, Hermes engine optimizations, Jetpack Compose, and senior-level software craftsmanship. Triggers on "ultimate best practices", "/ultimate-best-practices-workflow", or when initiating component refactoring or multi-platform native development.
-argument-hint: "[react | nextjs | expo | android-native | clean-code]" |
-| **`ultimate-debugging-workflow`** | [Universal](./universal/ultimate-debugging-workflow.md) | [Original](./original/ultimate-debugging-workflow.md) | Master workflow for troubleshooting, isolating, and resolving technical issues. Integrates root-cause tracing, sequential hypothesis testing, border instrumentation, and TDD regression protection. Triggers on "ultimate debugging workflow", "/ultimate-debugging-workflow", or when debugging runtime/compile errors.
-argument-hint: "[error-message | bug-description]" |
-| **`ultimate-deployment-workflow`** | [Universal](./universal/ultimate-deployment-workflow.md) | [Original](./original/ultimate-deployment-workflow.md) | Master workflow for CI/CD, environments setup, builds, deployment pipelines, monitoring, and rollback engineering. Coordinates GitHub Actions, Docker packaging, staging/production boundaries, health check diagnostics, and serverless/edge functions deployments. Triggers on "ultimate deployment workflow", "/ultimate-deployment-workflow", or when handling releases, Dockerfiles, CI configurations, or service deployments.
-argument-hint: "[ci-config | dockerfile | deploy-target]" |
-| **`ultimate-git-workflow`** | [Universal](./universal/ultimate-git-workflow.md) | [Original](./original/ultimate-git-workflow.md) | Master workflow for version control, branch management, clean staging, conventional commits, and pre-release validation. Triggers on "ultimate git workflow", "/ultimate-git-workflow", or when staging, committing, or pushing changes.
-argument-hint: "[commit-message | branch-name]" |
-| **`ultimate-refactoring-workflow`** | [Universal](./universal/ultimate-refactoring-workflow.md) | [Original](./original/ultimate-refactoring-workflow.md) | Master workflow for refactoring and code cleanup. Guides the systematic simplification of codebases, dependency reduction, YAGNI enforcement, and design token synchronization. Triggers on "ultimate refactoring workflow", "/ultimate-refactoring-workflow", or when refactoring or restructuring code.
-argument-hint: "[target-component | refactor-goal]" |
-| **`ultimate-review-workflow`** | [Universal](./universal/ultimate-review-workflow.md) | [Original](./original/ultimate-review-workflow.md) | Master workflow for CodeRabbit-style AI code reviews and PR audits. Combines executive summaries, Mermaid sequence/flowchart diagrams, 1-click suggestion diff blocks, multi-pass security/correctness/performance audits, automated test generation, code smell signatures, typescript safety, and ponytail complexity pruning. Triggers on "ultimate review workflow", "/ultimate-review-workflow", "review pr", "code review", or when asked to act like CodeRabbit.
-argument-hint: "[diff-file | branch-name | --incremental | --summarize | --generate-tests]" |
-| **`ultimate-security-audit-workflow`** | [Universal](./universal/ultimate-security-audit-workflow.md) | [Original](./original/ultimate-security-audit-workflow.md) | Master workflow for security vulnerability audits, static code analysis (SAST), dependency CVE scans, and regulatory compliance. Triggers on "ultimate security audit workflow", "/ultimate-security-audit-workflow", or when auditing dependencies, setting up SAST, checking compliance, or verifying OWASP.
-argument-hint: "[cve-scan | compliance-check | sast-audit]" |
-| **`ultimate-security-workflow`** | [Universal](./universal/ultimate-security-workflow.md) | [Original](./original/ultimate-security-workflow.md) | Master workflow for securing and hardening applications. Coordinates input sanitization, authentication architectures, secure HTTP headers, CORS controls, rate limiting, and database Row-Level Security (RLS). Triggers on "ultimate security workflow", "/ultimate-security-workflow", or when handling authentication, user data, cryptographic functions, or production hardening.
-argument-hint: "[security-audit | auth-flow | rls-policy]" |
-| **`ultimate-testing-workflow`** | [Universal](./universal/ultimate-testing-workflow.md) | [Original](./original/ultimate-testing-workflow.md) | Master workflow for testing, verification, and QA automation. Coordinates unit, integration, end-to-end (E2E) browser testing, API mocking, and coverage monitoring. Triggers on "ultimate testing workflow", "/ultimate-testing-workflow", or when authoring test suites, debugging test failures, or validating release quality.
-argument-hint: "[test-suite | mock-payload | e2e-plan]" |
-
-### UX, Automation & Document Intelligence
-
-| Workflow | Universal Link | Original Link | Summary |
-| :--- | :---: | :---: | :--- |
-| **`ultimate-automation-workflow`** | [Universal](./universal/ultimate-automation-workflow.md) | [Original](./original/ultimate-automation-workflow.md) | Master workflow for scripting, cron tasks, task runners, build automations, and developer CLI utilities. Triggers on "ultimate automation workflow", "/ultimate-automation-workflow", or when writing local automation scripts, build flows, or CLI utilities.
-argument-hint: "[cli-script | build-automation | task-runner]" |
-| **`ultimate-document-intelligence-workflow`** | [Universal](./universal/ultimate-document-intelligence-workflow.md) | [Original](./original/ultimate-document-intelligence-workflow.md) | Master workflow for parsing, OCR scraping, semantic mapping, and data extraction from PDF, DOCX, PPTX, XLSX, and images. |
-| **`ultimate-document-workflow`** | [Universal](./universal/ultimate-document-workflow.md) | [Original](./original/ultimate-document-workflow.md) | Master workflow for creating, parsing, editing, and converting Word documents (.docx files). Coordinates JS docx-builder setups, XML unpacking/repacking, tracked changes auditing, comment injections, and PDF conversions. Triggers on "ultimate document workflow", "/ultimate-document-workflow", or when manipulating Word docs, templates, tracked changes, or exporting docx to PDF.
-argument-hint: "[docx-generate | xml-edit | pdf-export]" |
-| **`ultimate-documentation-workflow`** | [Universal](./universal/ultimate-documentation-workflow.md) | [Original](./original/ultimate-documentation-workflow.md) | Master workflow for project documentation, API specifications, and developer onboarding. Coordinates project READMEs, API Swagger/OpenAPI mappings, Architecture Decision Records (ADRs), and setup guides. Triggers on "ultimate documentation workflow", "/ultimate-documentation-workflow", or when generating documentation, writing READMEs, or documenting API interfaces.
-argument-hint: "[readme-template | api-spec | onboarding-guide]" |
-| **`ultimate-research-workflow`** | [Universal](./universal/ultimate-research-workflow.md) | [Original](./original/ultimate-research-workflow.md) | Master workflow for technical research, document mining, API checks, and dependency validation. Combines dual-engine search (Tavily + Exa executed simultaneously), sequential query decomposition, and memory graph persistence. Triggers on "ultimate research workflow", "/ultimate-research-workflow", or when researching libraries, APIs, or system designs.
-argument-hint: "[research-topic | search-query]" |
-| **`ultimate-ux-workflow`** | [Universal](./universal/ultimate-ux-workflow.md) | [Original](./original/ultimate-ux-workflow.md) | Master workflow for User Experience (UX) audits, usability engineering, accessibility verification, and platform design compliance. Triggers on "ultimate ux workflow", "/ultimate-ux-workflow", or when conducting usability audits, reviewing interactive flows, or validating accessibility.
-argument-hint: "[ux-audit | accessibility-check | component-flow]" |
+Add workflows to `.windsurfrules` in the root of your project:
+```bash
+cat universal/ultimate-fullstack-workflow.md >> .windsurfrules
+```
 
 ---
 
-## 🛡️ Core Tenets & Anti-Slop Discipline
+### 4. Cline & Roo-Code
 
-Every workflow enforces:
-1. **Mathematical Precision & System Tokens:** No hardcoded arbitrary numbers or colors.
-2. **Zero-Fluff / Anti-Slop Rules:** Elimination of generic AI clichés, unstyled defaults, and filler prose.
-3. **Iron Laws & Quality Gates:** Strict validation (WCAG 2.2 AA, Core Web Vitals $p75$, strict type safety, zero layout shifts).
-4. **Deterministic Protocols:** Every workflow features step-by-step phased execution pipelines with verification gates.
+Copy desired workflows into `.clinerules` or your custom prompt templates:
+```bash
+cat universal/ultimate-planning-workflow.md >> .clinerules
+```
+
+---
+
+### 5. GitHub Copilot
+
+Append the workflow instructions to `.github/copilot-instructions.md`:
+```bash
+mkdir -p .github
+cat universal/ultimate-best-practices-workflow.md >> .github/copilot-instructions.md
+```
+
+---
+
+### 6. Any Web LLM (ChatGPT, Claude.ai, Gemini)
+
+Simply open any file in [`universal/`](./universal/), copy the text, and paste it as a system prompt or prefix to your coding prompt.
+
+---
+
+## 📚 Complete 34-Workflow Catalog
+
+### 1. AI & Autonomous Agent Engineering
+
+| Workflow | Universal File | Summary |
+| :--- | :---: | :--- |
+| **Agent Development** | [`ultimate-agent-dev-workflow.md`](./universal/ultimate-agent-dev-workflow.md) | Architecting custom autonomous agents, runtime API hooks, MCP integrations, and memory lifecycles. |
+| **Agent Orchestration** | [`ultimate-agent-workflow.md`](./universal/ultimate-agent-workflow.md) | Subagent spawning, prompt caching optimization, context pruning, and multi-agent coordination. |
+| **NotebookLM Research** | [`ultimate-notebooklm-workflow.md`](./universal/ultimate-notebooklm-workflow.md) | Document ingestion, synthesis, deep source research, and structured audio/briefing preparation. |
+
+---
+
+### 2. System Architecture & Technical Planning
+
+| Workflow | Universal File | Summary |
+| :--- | :---: | :--- |
+| **System Architecture** | [`ultimate-architecture-workflow.md`](./universal/ultimate-architecture-workflow.md) | Domain-Driven Design (DDD), Mermaid architecture diagrams, ADR creation, and boundary specs. |
+| **Brainstorming & Scoping** | [`ultimate-brainstorm-workflow.md`](./universal/ultimate-brainstorm-workflow.md) | Structured technical brainstorming, trade-off matrix evaluation, constraint mapping, and scope bounding. |
+| **Implementation Planning** | [`ultimate-planning-workflow.md`](./universal/ultimate-planning-workflow.md) | Atomic step-by-step task breakdown, dependency sequencing, rollback plans, and verification plans. |
+| **Project & Sprint Tracking** | [`ultimate-project-workflow.md`](./universal/ultimate-project-workflow.md) | Milestone delivery, task checklist tracking, blockers resolution, and stakeholder walkthroughs. |
+
+---
+
+### 3. Fullstack & Application Engineering
+
+| Workflow | Universal File | Summary |
+| :--- | :---: | :--- |
+| **API Engineering** | [`ultimate-api-workflow.md`](./universal/ultimate-api-workflow.md) | REST, GraphQL, gRPC design, Protobuf contracts, API gateways, rate limiting, and versioning. |
+| **Frontend Engineering** | [`ultimate-frontend-workflow.md`](./universal/ultimate-frontend-workflow.md) | High-fidelity UI systems, CSS tokens, 60fps animations, RSC boundaries, and 50 anti-slop rules. |
+| **Fullstack Development** | [`ultimate-fullstack-workflow.md`](./universal/ultimate-fullstack-workflow.md) | End-to-end stack architecture, type-safe RPC/REST boundaries, auth middleware, and state sync. |
+| **Serverless Platforms** | [`ultimate-serverless-workflow.md`](./universal/ultimate-serverless-workflow.md) | Edge Functions, serverless databases (Supabase/Firebase/Prisma), and Row-Level Security (RLS). |
+| **Monorepo Architecture** | [`ultimate-monorepo-workflow.md`](./universal/ultimate-monorepo-workflow.md) | Turborepo/Nx workspaces, shared package linking, build caching, and semantic release pipelines. |
+
+---
+
+### 4. Data Systems, Database & Caching
+
+| Workflow | Universal File | Summary |
+| :--- | :---: | :--- |
+| **Caching Architectures** | [`ultimate-caching-workflow.md`](./universal/ultimate-caching-workflow.md) | Multi-tier cache invalidation (Redis, HTTP, in-memory), TTL strategies, stale-while-revalidate. |
+| **Data Pipelines & ETL** | [`ultimate-data-workflow.md`](./universal/ultimate-data-workflow.md) | Batch/stream ETL pipelines, data extraction, cleansing, schema transformations, and validation. |
+| **Database Engineering** | [`ultimate-database-workflow.md`](./universal/ultimate-database-workflow.md) | Schema normalization, index design (B-tree, GIN, BRIN), EXPLAIN ANALYZE query optimization, and migrations. |
+
+---
+
+### 5. Hardware, Embedded & IoT Engineering
+
+| Workflow | Universal File | Summary |
+| :--- | :---: | :--- |
+| **Embedded Programming** | [`ultimate-embedded-programming-workflow.md`](./universal/ultimate-embedded-programming-workflow.md) | Bare-metal registers, RTOS multi-threading, ISR prioritization, and low-power sleep modes. |
+| **Hardware PCB Design** | [`ultimate-hardware-design-workflow.md`](./universal/ultimate-hardware-design-workflow.md) | Schematic capture, high-speed differential routing, impedance matching, EMC compliance, and DFM. |
+| **IoT Hardware & Firmware** | [`ultimate-iot-hardware-workflow.md`](./universal/ultimate-iot-hardware-workflow.md) | Secure boot, flash encryption, OTA dual-partition rollback, memory safety, and hardware watchdogs. |
+| **IoT Software & Cloud** | [`ultimate-iot-software-workflow.md`](./universal/ultimate-iot-software-workflow.md) | MQTT topic namespaces, mTLS device authentication, high-throughput telemetry ingestion, and device twins. |
+
+---
+
+### 6. Quality Assurance, Security, Operations & Debugging
+
+| Workflow | Universal File | Summary |
+| :--- | :---: | :--- |
+| **Engineering Best Practices** | [`ultimate-best-practices-workflow.md`](./universal/ultimate-best-practices-workflow.md) | Universal code standards, DRY/KISS enforcement, error contracts, and 130 core architectural rules. |
+| **Systematic Debugging** | [`ultimate-debugging-workflow.md`](./universal/ultimate-debugging-workflow.md) | Hypothesis-driven root-cause isolation, border instrumentation, minimal reproduction, and fix verification. |
+| **Production Deployment** | [`ultimate-deployment-workflow.md`](./universal/ultimate-deployment-workflow.md) | CI/CD pipelines, containerization (Docker), zero-downtime blue/green rollouts, and health check gates. |
+| **Git & Release Operations** | [`ultimate-git-workflow.md`](./universal/ultimate-git-workflow.md) | Atomic conventional commits, clean branching strategies, pre-commit validation, and release tags. |
+| **Code Refactoring** | [`ultimate-refactoring-workflow.md`](./universal/ultimate-refactoring-workflow.md) | Systematic technical debt elimination, dead-code removal, modular decomposition, and safety regressions. |
+| **Code Review Standards** | [`ultimate-review-workflow.md`](./universal/ultimate-review-workflow.md) | Severity-tiered code audits (Blocker, Major, Minor, Nit) with concrete actionable diff recommendations. |
+| **Security Auditing (SAST)** | [`ultimate-security-audit-workflow.md`](./universal/ultimate-security-audit-workflow.md) | Static vulnerability scans, OWASP Top 10 auditing, dependency CVE scans, and compliance checking. |
+| **Application Security** | [`ultimate-security-workflow.md`](./universal/ultimate-security-workflow.md) | Input sanitization, auth/authz separation, CORS hardening, CSRF defense, rate-limiting, and secrets hygiene. |
+| **Automated Testing & QA** | [`ultimate-testing-workflow.md`](./universal/ultimate-testing-workflow.md) | Test-Driven Development (TDD), unit, integration, and E2E browser test automation with high coverage. |
+
+---
+
+### 7. UX, Automation & Document Intelligence
+
+| Workflow | Universal File | Summary |
+| :--- | :---: | :--- |
+| **Scripting & Automation** | [`ultimate-automation-workflow.md`](./universal/ultimate-automation-workflow.md) | Developer CLI utilities, cron runners, build task automations, and cross-platform shell scripts. |
+| **Document Intelligence** | [`ultimate-document-intelligence-workflow.md`](./universal/ultimate-document-intelligence-workflow.md) | Parsing, OCR scraping, semantic table extraction from PDF, DOCX, XLSX, and scanned documents. |
+| **Document Engineering** | [`ultimate-document-workflow.md`](./universal/ultimate-document-workflow.md) | Programmatic DOCX generation, XML styling, tracked changes auditing, and PDF conversions. |
+| **Technical Documentation** | [`ultimate-documentation-workflow.md`](./universal/ultimate-documentation-workflow.md) | Developer READMEs, OpenAPI/Swagger specifications, Architecture Decision Records (ADRs), and user guides. |
+| **Deep Research Strategy** | [`ultimate-research-workflow.md`](./universal/ultimate-research-workflow.md) | Multi-source technical research, dependency benchmarking, library comparisons, and API discovery. |
+| **User Experience (UX) Audit** | [`ultimate-ux-workflow.md`](./universal/ultimate-ux-workflow.md) | Usability heuristics, micro-interaction reviews, WCAG 2.2 accessibility verification, and UX polish. |
+
+---
+
+## 🔄 Workflow Chaining & Pipelines
+
+Workflows can be chained seamlessly to execute end-to-end engineering lifecycles:
+
+### Example A: Building a New Feature
+```text
+ultimate-planning-workflow
+       ↓
+ultimate-architecture-workflow
+       ↓
+ultimate-frontend-workflow  +  ultimate-api-workflow
+       ↓
+ultimate-testing-workflow
+       ↓
+ultimate-review-workflow
+       ↓
+ultimate-git-workflow
+```
+
+### Example B: Resolving a Production Bug
+```text
+ultimate-debugging-workflow (Root Cause Isolation)
+       ↓
+ultimate-testing-workflow (Red: Add failing regression test)
+       ↓
+[Apply minimal fix]
+       ↓
+ultimate-testing-workflow (Green: Verify test passes)
+       ↓
+ultimate-refactoring-workflow (Clean up surrounding debt)
+       ↓
+ultimate-git-workflow (Conventional commit)
+```
+
+---
+
+## 🛡️ Anti-Slop Engineering Rules
+
+All 34 workflows enforce strict quality gates against generic AI-generated code:
+
+- **No AI Default Palettes:** Forbids unstyled indigo-blue gradients, washed-out grey body text, and generic purple accents.
+- **No Untracked Typographic Scales:** Mandates optical letter-spacing, `text-wrap: balance` on headlines, and explicit line-heights.
+- **Explicit Component State Matrices:** Requires 7 states for every interactive component: `Default`, `Hover`, `Focus-Visible`, `Active`, `Loading (Skeleton)`, `Disabled`, and `Error`.
+- **Zero CLS & Pre-Allocated Layouts:** Prohibits layout-shifting spinners in favor of pixel-matched skeleton loaders.
+- **Security-First Defaults:** Input validation at boundaries, least-privilege defaults, and zero hardcoded secrets.
 
 ---
 
 ## 📄 License
 
-[MIT License](./LICENSE) - Free for personal and commercial open-source use.
+Distributed under the [MIT License](./LICENSE). Free for personal, commercial, and enterprise open-source use.
