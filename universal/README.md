@@ -1,6 +1,6 @@
 # 🌟 Universal Editions (Standalone & Zero-Dependency)
 
-This folder contains **34 standalone, self-contained engineering workflows**.
+This folder contains **35 standalone, self-contained engineering workflows**.
 
 ### Key Characteristics:
 - **Zero External Skill Dependencies**: All guidelines, checklists, anti-slop rulesheets, and execution phases are embedded directly into each Markdown file.
@@ -10,6 +10,7 @@ This folder contains **34 standalone, self-contained engineering workflows**.
 ### Quick Links to Workflows:
 
 #### AI & Autonomous Agents
+- [`ultimate-multi-agent-invoker.md`](./ultimate-multi-agent-invoker.md)
 - [`ultimate-agent-dev-workflow.md`](./ultimate-agent-dev-workflow.md)
 - [`ultimate-agent-workflow.md`](./ultimate-agent-workflow.md)
 - [`ultimate-notebooklm-workflow.md`](./ultimate-notebooklm-workflow.md)

@@ -1,6 +1,6 @@
 # 🧬 Original Ecosystem Editions (Full Multi-Agent & MCP Integration)
 
-This folder contains the **original 34 master workflows** with deep links to specialized sub-skills, design analysis manuals, and MCP server bridges.
+This folder contains the **original 35 master workflows** with deep links to specialized sub-skills, design analysis manuals, and MCP server bridges.
 
 ### Key Characteristics:
 - **Sub-Skill Integration**: Configured to delegate specific sub-tasks to specialized sub-skills (e.g. `ckm:brand`, `ckm:design-system`, `theme-factory`, `superpowers-*`, `ponytail-*`, `caveman-*`).

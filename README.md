@@ -1,10 +1,10 @@
-# ⚡ Ultimate Workflows: 34 Production-Grade AI Agent Workflows
+# ⚡ Ultimate Workflows: 35 Production-Grade AI Agent Workflows
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
-[![Workflows: 34](https://img.shields.io/badge/Workflows-34%20Total-brightgreen.svg)](./universal/)
+[![Workflows: 35](https://img.shields.io/badge/Workflows-35%20Total-brightgreen.svg)](./universal/)
 [![Compatibility](https://img.shields.io/badge/Supports-Cursor%20%7C%20Claude%20Code%20(CC)%20%7C%20Antigravity%20(AGY)%20%7C%20Windsurf%20%7C%20Cline%20%7C%20VS%20Code-orange.svg)](#-one-line-installers)
 
-A battle-tested suite of **34 master engineering workflows** crafted for autonomous AI agents, coding assistants, and pair-programming environments.
+A battle-tested suite of **35 master engineering workflows** crafted for autonomous AI agents, coding assistants, and pair-programming environments.
 
 Eliminate generic "AI slop", vague pseudocode, and brittle architectures. Every workflow enforces mathematical precision, design tokens, anti-slop rulesheets, step-by-step phased execution pipelines, and deterministic verification gates.
 
@@ -155,12 +155,13 @@ ultimate-workflows/
 
 ---
 
-## 📚 Complete 34-Workflow Catalog
+## 📚 Complete 35-Workflow Catalog
 
 ### 1. AI & Autonomous Agent Engineering
 
 | Workflow | Universal File | Summary |
 | :--- | :---: | :--- |
+| **Multi-Agent Invoker** | [`ultimate-multi-agent-invoker.md`](./universal/ultimate-multi-agent-invoker.md) | Master swarm orchestrator: dynamic DAG fan-out, ponytail-caveman compression, and DRAMA trust-chain recovery. |
 | **Agent Development** | [`ultimate-agent-dev-workflow.md`](./universal/ultimate-agent-dev-workflow.md) | Architecting custom autonomous agents, runtime API hooks, MCP integrations, and memory lifecycles. |
 | **Agent Orchestration** | [`ultimate-agent-workflow.md`](./universal/ultimate-agent-workflow.md) | Subagent spawning, prompt caching optimization, context pruning, and multi-agent coordination. |
 | **NotebookLM Research** | [`ultimate-notebooklm-workflow.md`](./universal/ultimate-notebooklm-workflow.md) | Document ingestion, synthesis, deep source research, and structured audio/briefing preparation. |
