@@ -19,7 +19,7 @@ This workflow guides prompt configuration, memory graphs persistence, token comp
 ## Iron Laws of Agent Delegation
 
 1. **Never Delegate Blindly.** A subagent is only as good as its instructions. Every delegation must have: (1) clear context, (2) strict boundary files, (3) exact task descriptions, and (4) run-ready verification commands.
-2. **Context is Gold, but Bloat is Death.** Protect the token budget. Compress raw tool outputs, exclude vendor directories, and use `/Prompt & Context Optimization` on long memory files.
+2. **Context is Gold, but Bloat is Death.** Protect the token budget. Compress raw tool outputs, exclude vendor directories, and use `/caveman-compress` on long memory files.
 3. **Idempotence by Default.** All modifications made by subagents must be safe to run repeatedly. If a subagent crashes midway, it must be able to resume without creating duplicate records, migrations, or broken syntax.
 4. **Verification is the Final Gate.** No subagent task is complete until its specific validation tests run and report a 100% success rate. Never merge unverified subagent code.
 5. **No Speculative Abstractions.** Keep code simple and direct. Do not let subagents create hypothetical classes, interfaces, or libraries that are not strictly requested by the task. Apply `ponytail` rules to keep implementations lean.
@@ -32,7 +32,7 @@ This workflow guides prompt configuration, memory graphs persistence, token comp
 | Parameter / Skill | Investigator (`cavecrew-investigator`) | Builder (`cavecrew-builder`) | Reviewer (`cavecrew-reviewer`) |
 | :--- | :--- | :--- | :--- |
 | **Primary Scope** | Codebase search, finding definitions, tracing paths | surgical edits to $\le$ 2 files, bug fixes | inspecting diffs, validating logic, running tests |
-| **Available Tools** | `grep_search`, `list_dir`, `view_file`, `context7` | `replace_file_content`, `write_to_file` | `playwright`, `run_command`, Strict Linting & Type Validation |
+| **Available Tools** | `grep_search`, `list_dir`, `view_file`, `context7` | `replace_file_content`, `write_to_file` | `playwright`, `run_command`, `lint-and-validate` |
 | **Context Strategy** | Open files read-only, do not modify workspace | Focus on specific target lines, run unit tests | Verify E2E behavior, audit contrast & accessibility |
 | **Token Budget** | Medium (20k–50k input tokens) | Small (10k–30k input tokens) | Medium (20k–40k input tokens) |
 | **Failure Recovery** | Expand search queries, check synonyms | Rollback file edits, analyze logs | Run systematic debugging, log issue |
@@ -42,19 +42,21 @@ This workflow guides prompt configuration, memory graphs persistence, token comp
 ## The 4-Phase Agent Execution Pipeline
 
 ### Phase 1: Task Decomposition & Scope Assessment
+*   **Sub-skills:** `sequential-thinking/sequentialthinking`, `concise-planning`, `superpowers-brainstorm`
 *   **Action:**
     1. **Decompose the Request:** Break down the user's high-level task into atomic, logical steps. Use `sequential-thinking` to evaluate different execution paths.
     2. **Determine Delegation Model:** Use the delegation rules of thumb:
        *   *Main Thread:* Cross-cutting changes, architecture plans, multi-file structural edits, and final integration reviews.
        *   *Subagent:* Codebase investigations, isolated single-file changes, writing minor test cases, or running accessibility audits.
     3. **Define File Boundaries:** Identify the exact file paths that need reading or editing. Ensure subagents are restricted to these paths.
-    4. **Agile Sprint Scoping:** Use `Structured Brainstorming & Architecture Scoping` to define constraints, identify risks (e.g. library version incompatibilities), and map out milestones.
+    4. **Agile Sprint Scoping:** Use `superpowers-brainstorm` to define constraints, identify risks (e.g. library version incompatibilities), and map out milestones.
     5. **Atomic Checklist Generation:** Run `concise-planning` to create a checklist containing target files, line ranges, and validation tests.
     6. **Check for Stale Files:** Verify that no active editor conflicts or unsaved files exist before spawning subagents.
     7. **Pre-flight Resource Verification:** Audit the current CPU, memory load, and network connectivity states. If workspace services are unstable, resolve connections before starting.
     8. **Identify Cache Reuse Paths:** Look for previous prompts in conversation logs that can be structurally re-aligned to maximize Gemini's context prompt caching.
 
 ### Phase 2: Subagent Spawning & Task Delegation
+*   **Sub-skills:** `cavecrew`, `upstash-box-js`, `ultimate-agent-dev-workflow`
 *   **Action:**
     1. **Select the Specialized Agent:** Choose the correct `cavecrew` subagent based on the task type (Investigator for research, Builder for edits, Reviewer for verification).
     2. **Compose the Prompt:** Write a highly structured, one-shot prompt containing context, tasks, verification rules, and constraints.
@@ -66,17 +68,19 @@ This workflow guides prompt configuration, memory graphs persistence, token comp
     8. **Graceful Timeouts:** Wrap subagent execution hooks in rigid timeouts (e.g., 90 seconds). If a subagent times out, capture the current filesystem state, terminate the process, and log the diagnostic stack.
 
 ### Phase 3: Token Compression & Context Management
+*   **Sub-skills:** `caveman`, `caveman-compress`, `caveman-stats`, `ponytail-caveman`
 *   **Action:**
     1. **Apply Caveman Rules:** Keep all responses and prompts terse. Remove conversational filler, redundant logs, and long explanations.
-    2. **Compress Memory Files:** Run `/Prompt & Context Optimization` on local developer journals, README files, or scratch logs to keep input token counts low.
-    3. **Monitor Token Consumption:** Use `Token Usage Metrics` regularly to calculate token savings, checking input, output, and cache hit metrics.
-    4. **Enforce YAGNI Code Quality:** Apply `Terse & Minimalist Implementation Style` combined rules to prevent subagents from adding boilerplate code or useless helper functions.
+    2. **Compress Memory Files:** Run `/caveman-compress` on local developer journals, README files, or scratch logs to keep input token counts low.
+    3. **Monitor Token Consumption:** Use `caveman-stats` regularly to calculate token savings, checking input, output, and cache hit metrics.
+    4. **Enforce YAGNI Code Quality:** Apply `ponytail-caveman` combined rules to prevent subagents from adding boilerplate code or useless helper functions.
     5. **Garbage Collection:** Delete temporary logs and scratch files from the `artifacts/` folder once subagent tasks are verified and completed.
     6. **Optimistic Caching:** Structure prompts so that headers and instructions match previous turns, leveraging Google's prompt caching system.
     7. **Clean Stacking:** Consolidate subagent outputs by extracting the delta diff instead of copying complete files back into the main discussion thread.
     8. **Prune History Redundancies:** In long execution sessions, summarize the intermediate status steps and truncate stack traces to preserve top-level reasoning tokens.
 
 ### Phase 4: Memory Mapping & State Synchronization
+*   **MCP Tools:** `memory`, `upstash-redis-js`, `upstash-redis-start`
 *   **Action:**
     1. **Read Active Graph:** Retrieve the current knowledge graph using `memory/read_graph` to align the subagent with established patterns.
     2. **Extract Discoveries:** On subagent completion, parse the output logs to extract key findings (e.g. database schemas, API overrides, port mapping configs).
@@ -281,7 +285,7 @@ export async function reconcileAgentMemory(payload: MemorySyncPayload) {
     });
     ```
 
-### 3. Task Planning Trade-offs (`Structured Brainstorming & Architecture Scoping` & `concise-planning`)
+### 3. Task Planning Trade-offs (`superpowers-brainstorm` & `concise-planning`)
 *   **Risk Scoping Matrix:** Before allocating tasks to subagents, run a risk check:
     *   *High Risk (Do not delegate):* Modifying core database schemas, changing authentication flows, or editing shared global configurations.
     *   *Low Risk (Safe to delegate):* Implementing standalone utility functions, writing test files, or updating style definitions.
@@ -290,7 +294,7 @@ export async function reconcileAgentMemory(payload: MemorySyncPayload) {
 
 ## Cross-Cutting Concerns
 *   **Development:** Link with `ultimate-agent-dev-workflow` to implement custom agents, hooks, and tool bindings.
-*   **Research:** Utilize `Web Search & Intelligence Strategy`, official library documentation, and `perplexity-ask` for retrieving documentation and technical guides.
-*   **Validation:** Always run Strict Linting & Type Validation after any subagent modifies files.
-*   **Review:** Apply Severity-Tiered Code Review (Blocker/Major/Minor/Nit) and Concise 1-Line Actionable Review to inspect subagent outputs.
+*   **Research:** Utilize `tavily-best-practices`, `context7/get-library-docs`, and `perplexity-ask` for retrieving documentation and technical guides.
+*   **Validation:** Always run `lint-and-validate` after any subagent modifies files.
+*   **Review:** Apply `superpowers-review` and `caveman-review` to inspect subagent outputs.
 *   **Git:** Coordinate commits and repository pushing using `ultimate-git-workflow` and `git-pushing`.

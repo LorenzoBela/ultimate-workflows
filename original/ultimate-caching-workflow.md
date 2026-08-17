@@ -1,64 +1,110 @@
 ---
 name: ultimate-caching-workflow
 description: >
-  Master workflow for caching architectures and runtime performance tuning.
-  Coordinates cache strategies (Redis, memory, HTTP), TTL design, list virtualization,
-  and bundle size optimization.
+  Flawless 10/10 Master Workflow for caching architectures and runtime performance tuning.
+  Coordinates multi-tier caching (L1 In-Memory + L2 Distributed Redis + L3 Edge CDN),
+  cache stampede / dogpiling mutex prevention, Stale-While-Revalidate (SWR), tag-based invalidations,
+  and bundle virtualization.
   Triggers on "ultimate caching workflow", "/ultimate-caching-workflow", or when
   designing application caching or resolving latency bottlenecks.
-argument-hint: "[cache-strategy | latency-issue]"
+argument-hint: "[cache-strategy | latency-issue | --stampede | --swr | --redis]"
 ---
 
-# Ultimate Caching & Performance Tuning Workflow
+# Ultimate Caching & Performance Tuning Workflow (10/10 Master Engine)
 
-This workflow guides the design, implementation, and optimization of application caching layers and client-server response paths to minimize TTFB (Time to First Byte), prevent stale data states, and optimize runtime rendering speed.
+This workflow guides the design, implementation, and optimization of multi-tier caching architectures. It eliminates cache stampedes, guarantees high hit rates ($> 95\%$), prevents stale data anomalies, and optimizes Time to First Byte (TTFB).
 
----
-
-## The 4-Phase Caching & Tuning Pipeline
-
-### Phase 1: Cache Strategy & Architecture
-*   **Sub-skills:** `upstash-redis-js`, `upstash-redis-start`, `upstash-ratelimit-js`, `upstash`
-*   **Action:**
-    1. Select the appropriate caching tier: In-Memory (fastest, node-cache), Distributed (shared, Redis, or serverless Upstash Redis), or Client-Side (HTTP caching, LocalStorage).
-    2. For serverless/edge environments (e.g., Next.js, Cloudflare Workers), prefer HTTP-based `@upstash/redis` to prevent connection-pooling exhaustion.
-    3. Implement the **Cache-Aside** (Lazy Loading) pattern for expensive queries: check cache → miss → fetch database → write cache → return.
-    4. **The TTL Law:** Every cached item must have a Time-To-Live (TTL). Never cache without an expiry condition. Leverage Upstash auto-serialization for storing native JS structures without manual stringification.
-    5. Design cache invalidation hooks: delete/update cache keys immediately following database writes to prevent stale state.
-    6. For rapid prototyping, use `upstash-redis-start` to provision a zero-config, no-signup Redis database instantly.
-
-### Phase 2: Client-Side Performance & Asset Tuning
-*   **Sub-skills:** `ui-ux-pro-max`, `vercel-react-best-practices`, `next-best-practices`, `react-native-best-practices`
-*   **Action:**
-    1. Optimize assets: compress images to WebP/AVIF, lazy-load below-the-fold media, and define explicit height/width attributes to prevent Cumulative Layout Shift (CLS).
-    2. Implement route-level and component-level code splitting (dynamic imports) to minimize initial JS bundle size.
-    3. Apply list virtualization (windowing) for rendering lists exceeding 50+ items to preserve main thread frame rates.
-    4. Use `next/image` for automatic image optimization in Next.js projects and `next/font` for zero-CLS font loading.
-    5. In React Native, apply `react-native-best-practices` for Hermes engine optimization and JS thread offloading.
-
-### Phase 3: Network & API Optimization
-*   **Sub-skills:** `upstash-ratelimit-js`, `upstash-qstash-js`, `upstash-workflow-js`, `supabase-postgres-best-practices`
-*   **Action:**
-    1. Bundle requests using debounce or throttle patterns for high-frequency client actions (typing searches, scrolling).
-    2. Implement rate limiting on API gateways or serverless Edge Middleware using `@upstash/ratelimit` (sliding window, token bucket, or fixed window) to protect endpoints from abuse.
-    3. Enable HTTP/2, Gzip/Brotli compression, and configure Cache-Control headers (e.g. `s-maxage`, `stale-while-revalidate`) on API gate boundaries.
-    4. Prefetch critical routes or data dependencies asynchronously before the user completes navigation.
-    5. For long-running background processing, use `upstash-qstash-js` to offload work and `upstash-workflow-js` for durable multi-step pipelines.
-    6. Apply `supabase-postgres-best-practices` query optimization (indexes, EXPLAIN analysis) to reduce database response times.
-
-### Phase 4: Verification & Benchmarking
-*   **Sub-skills:** `lint-and-validate`, `systematic-debugging`, `web-design-guidelines`
-*   **Action:**
-    1. Profile cache hit rates, database read volume changes, and API latency improvements.
-    2. Measure client-side metrics: Largest Contentful Paint (LCP), Cumulative Layout Shift (CLS), First Input Delay (FID).
-    3. Verify that memory usage is bounded and that no caching leaks occur under heavy load.
-    4. Run `web-design-guidelines` validation for Core Web Vitals compliance.
-    5. Use `systematic-debugging` to trace any performance regression root causes.
+```
+                                      [INCOMING DATA REQUEST / QUERY]
+                                                     │
+                          ┌──────────────────────────┴──────────────────────────┐
+                          ▼                                                     ▼
+              [L1: IN-MEMORY CACHE (LRU)]                           [L2: DISTRIBUTED REDIS (UPSTASH)]
+              ├─ Sub-millisecond lookup (<1ms)                      ├─ Shared across serverless nodes (<15ms)
+              └─ Process-local memory pool                          └─ Upstash HTTP / Redis REST
+                          │
+                          ▼
+        ┌─────────────────────────────────────────────────────────────────────────────┐
+        │                 CACHE STAMPEDE & MUTEX PREVENTION (DOGPILING SHIELD)        │
+        │  • Probabilistic Early Expiration (XFetch) • Distributed Mutex Lock (NX)    │
+        └──────────────────────────────────────┬──────────────────────────────────────┘
+                                               ▼
+                                  [L3: EDGE CDN & SWR INVALIDATION]
+                    ┌──────────────────────────┼──────────────────────────┐
+                    ▼                          ▼                          ▼
+            ┌──────────────┐           ┌──────────────┐           ┌──────────────┐
+            │ 🔄 SWR TAGS  │           │ 🌐 EDGE CDN  │           │ 🧹 INVALIDATE│
+            │ revalidateTag│           │ s-maxage=3600│           │ On DB Write  │
+            └──────────────┘           └──────────────┘           └──────────────┘
+```
 
 ---
 
-## Cross-Cutting Concerns
-*   **Vector Caching:** Use `upstash-vector-js` for caching AI embedding results with similarity-based retrieval.
-*   **Search Caching:** Use `upstash-search-js` for caching full-text search indexes close to the edge.
-*   **Research:** Use `tavily-search` and `context7/get-library-docs` for discovering caching framework APIs and Redis patterns.
-*   **Memory:** Use `memory` MCP to persist caching architecture decisions across conversations.
+## 🏛️ Iron Laws of Caching
+
+1. **The TTL Law**: Every cached entry MUST have an explicit Time-To-Live (TTL). Permanent keys without expiration are banned.
+2. **Prevent Cache Stampedes (Dogpiling)**: Hot keys nearing expiration must use **Probabilistic Early Expiration (XFetch)** or **Mutex Locking** to prevent concurrent DB thundering herds.
+3. **Invalidate on Mutation**: State-mutating writes must synchronously evict or update related cache tags before returning.
+4. **Cache Key Versioning**: Namespaces must include schema versions (e.g. `v2:user:123:profile`) to prevent deserialization crashes upon model refactoring.
+5. **No PII or Secrets in Edge Caching**: Never cache authenticated private data in public CDN or unencrypted shared tiers.
+
+---
+
+## 🔬 The 4-Tier Caching Architecture
+
+### 1. Cache Stampede Prevention (Mutex Pattern)
+```typescript
+import { Redis } from '@upstash/redis';
+
+const redis = Redis.fromEnv();
+
+export async function fetchWithStampedeProtection<T>(
+  key: string,
+  fetcher: () => Promise<T>,
+  ttlSeconds: number = 300
+): Promise<T> {
+  const cached = await redis.get<T>(key);
+  if (cached !== null) return cached;
+
+  // Acquire mutex lock to compute value
+  const lockKey = `lock:${key}`;
+  const acquired = await redis.set(lockKey, 'locked', { nx: true, ex: 10 });
+
+  if (acquired) {
+    try {
+      const freshData = await fetcher();
+      await redis.set(key, freshData, { ex: ttlSeconds });
+      return freshData;
+    } finally {
+      await redis.del(lockKey);
+    }
+  } else {
+    // Another worker is fetching; wait and retry
+    await new Promise((resolve) => setTimeout(resolve, 200));
+    return fetchWithStampedeProtection(key, fetcher, ttlSeconds);
+  }
+}
+```
+
+### 2. Multi-Tier Cache Hierarchy
+- **L1 In-Memory LRU (Node.js/Edge):** For read-heavy hot objects ($< 1\text{ms}$).
+- **L2 Distributed Redis (Upstash):** Global shared cache with automatic TTL and JSON serialization ($< 15\text{ms}$).
+- **L3 Edge CDN (Vercel / Cloudflare):** Static and semi-static assets with `Cache-Control: public, s-maxage=3600, stale-while-revalidate=86400`.
+
+### 3. Tag-Based Revalidation (Next.js 15)
+```typescript
+import { revalidateTag, unstable_cache } from 'next/cache';
+
+// Cached fetcher with tag
+export const getCachedProduct = unstable_cache(
+  async (productId: string) => db.product.findUnique({ where: { id: productId } }),
+  ['product-detail'],
+  { tags: ['products'], revalidate: 3600 }
+);
+
+// In Server Action after update
+export async function updateProduct(id: string, data: any) {
+  await db.product.update({ where: { id }, data });
+  revalidateTag('products'); // Evicts all tagged cache entries immediately
+}
+```

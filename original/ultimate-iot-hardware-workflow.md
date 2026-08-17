@@ -1,35 +1,77 @@
 ---
 name: ultimate-iot-hardware-workflow
-description: Master workflow for schematic design, C++ firmware architectures, memory safety, and OTA updates.
+description: >
+  Flawless 10/10 Master Workflow for IoT hardware schematic design, PCB layout routing,
+  non-blocking C++ firmware, hardware watchdog integration, flash encryption, and dual-bank OTA updates.
+  Triggers on "ultimate iot hardware workflow", "/ultimate-iot-hardware-workflow", or when
+  designing IoT devices, routing high-frequency traces, or authoring embedded firmware.
+argument-hint: "[schematic | pcb-layout | firmware-arch | --ota | --watchdog]"
 ---
 
-# Ultimate IoT Hardware & Firmware Workflow
+# Ultimate IoT Hardware & Firmware Workflow (10/10 Master Engine)
 
-This workflow guides the end-to-end development of IoT physical components—covering schematic drafting, PCB trace layouts, cooperative C++ architectures, memory protections, watchdog integrations, and secure over-the-air (OTA) updates.
+This workflow guides the end-to-end development of IoT physical devices and low-level firmware—covering schematic drafting, PCB trace layouts, cooperative non-blocking C++ architectures, memory protections, hardware watchdog integrations, and secure dual-bank over-the-air (OTA) updates.
+
+```
+                                      [IOT DEVICE HARDWARE / FIRMWARE SPEC]
+                                                        │
+                          ┌─────────────────────────────┴─────────────────────────────┐
+                          ▼                                                           ▼
+              [PHASE 1: SCHEMATIC ENTRY & RF LAYOUT]                        [PHASE 2: NON-BLOCKING FIRMWARE]
+              ├─ Decoupling Capacitors on Every VDD                         ├─ Cooperative millis() Scheduling (No delay)
+              ├─ 50-Ohm Controlled RF Antenna Trace                         ├─ Peripheral Drivers with Timeout Guards
+              └─ High-Side PMOS Power Gating                                └─ Zero Dynamic Heap Allocations
+                          │
+                          ▼
+        ┌─────────────────────────────────────────────────────────────────────────────┐
+        │                 PHASE 3: HARDWARE WATCHDOGS & THERMAL SAFETY                │
+        │  • Task Watchdog Timer Feeds • NTC Temperature Cutoffs • Safe Low-Power Sleep │
+        └──────────────────────────────────────┬──────────────────────────────────────┘
+                                               ▼
+                                  [PHASE 4: DUAL-BANK OTA & SECURE BOOT]
+                    ┌──────────────────────────┼──────────────────────────┐
+                    ▼                          ▼                          ▼
+            ┌──────────────┐           ┌──────────────┐           ┌──────────────┐
+            │ 🔄 DUAL-BANK │           │ 🔐 FLASH ENC │           │ 🧪 HIL TEST  │
+            │ A/B Rollback │           │ Secure Boot  │           │ JTAG & GDB   │
+            └──────────────┘           └──────────────┘           └──────────────┘
+```
 
 ---
 
-## 1. Schematic and PCB Layout Design
-- **Sub-skills:** [iot-hw-schematic-design](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/iot-hw-schematic-design/SKILL.md), [iot-hw-pcb-routing](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/iot-hw-pcb-routing/SKILL.md), [iot-hw-bom-optimization](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/iot-hw-bom-optimization/SKILL.md)
-- Ensure all board entries are checked for decoupling capacitor allocations and boot strap pins.
-- Route 50-ohm RF antenna traces and calculate trace widths for power domains.
+## 🏛️ Iron Laws of IoT Hardware & Firmware
 
-## 2. Firmware Architecture & Cooperative Multi-Tasking
-- **Sub-skills:** [iot-fw-no-block-loop](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/iot-fw-no-block-loop/SKILL.md), [iot-fw-peripheral-drivers](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/iot-fw-peripheral-drivers/SKILL.md), [iot-fw-led-signaling](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/iot-fw-led-signaling/SKILL.md)
-- Write non-blocking loop architectures; reject any use of `delay()`.
-- Place peripheral operations (SPI, I2C, UART) behind abstract drivers with built-in timeouts.
+1. **Zero Heap Allocation After Boot**: No `malloc`, `free`, `new`, or `delete` in runtime loops. All buffers are statically allocated.
+2. **Never Block the Event Loop**: Calling `delay()` in the main thread is forbidden. All operations must use non-blocking monotonic clock comparisons (`millis()`).
+3. **Hardware Watchdog Protection**: Every critical RTOS task must participate in watchdog pet routines (`esp_task_wdt_reset()`).
+4. **Dual-Bank A/B Partitioning for OTA**: Firmware updates must download to an inactive partition, verify cryptographic hash/signatures, and fall back to the golden image if boot validation fails.
+5. **High-Side Power Gating for Battery Life**: Power to sensors and radio modems must be gated via hardware PMOS switches to enable true zero-current sleep states.
 
-## 3. Reliability, Watchdogs, & Safety
-- **Sub-skills:** [iot-fw-watchdog-timers](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/iot-fw-watchdog-timers/SKILL.md), [iot-fw-thermal-protection](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/iot-fw-thermal-protection/SKILL.md), [iot-fw-memory-safety](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/iot-fw-memory-safety/SKILL.md), [iot-fw-power-management](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/iot-fw-power-management/SKILL.md)
-- Configure HW and Task watchdogs to reboot on freezes.
-- Establish thermal protection cutoffs and prohibit run-time dynamic memory allocation.
+---
 
-## 4. Connectivity, Over-the-Air (OTA) Updates, & Hardening
-- **Sub-skills:** [iot-fw-connection-resilience](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/iot-fw-connection-resilience/SKILL.md), [iot-fw-ota-updates](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/iot-fw-ota-updates/SKILL.md), [iot-fw-flash-encryption](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/iot-fw-flash-encryption/SKILL.md)
-- Implement connection reconnect loops using exponential backoff.
-- Use secure boot, flash encryption, and partitioning for firmware updates.
+## 🔬 The 4-Phase IoT Pipeline
 
-## 5. HIL Emulation & Physical Diagnostics
-- **Sub-skills:** [iot-fw-hil-simulation](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/iot-fw-hil-simulation/SKILL.md), [iot-fw-debugging-jtag](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/iot-fw-debugging-jtag/SKILL.md)
-- Verify code logic on developer desktops using synthetic sensor drivers.
-- Debug physical hardware using logic analyzers, JTAG boundaries, and GDB.
+### Phase 1: Schematic Design & RF Routing
+- Route 50-ohm RF traces on Layer 1 over an unbroken Ground Plane on Layer 2.
+- Place decoupling capacitors within 2mm of MCU power pins.
+
+### Phase 2: Non-Blocking Firmware State Machine
+```cpp
+void loop() {
+  uint32_t currentMillis = millis();
+  
+  if (currentMillis - lastTelemetryMillis >= TELEMETRY_INTERVAL_MS) {
+    lastTelemetryMillis = currentMillis;
+    transmitTelemetryData();
+  }
+  
+  // Service network loop and watchdog
+  serviceNetworkState();
+  esp_task_wdt_reset();
+}
+```
+
+### Phase 3: Secure Dual-Bank OTA Update
+- Download update to `ota_1` partition.
+- Verify SHA-256 signature against hardware public key.
+- Set boot partition and trigger software restart. If crash loop occurs, bootloader reverts to `ota_0`.

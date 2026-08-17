@@ -1,58 +1,102 @@
 ---
 name: ultimate-monorepo-workflow
 description: >
-  Master workflow for monorepos, multi-package workspaces, shared dependency links,
-  and package release pipelines.
-  Coordinates Turborepo/Nx settings, pnpm workspaces, semantic versioning, and monorepo builds.
+  Flawless 10/10 Master Workflow for monorepos, multi-package workspaces, dependency boundary enforcement,
+  Turborepo/Nx caching pipelines, Syncpack version alignment, and Changesets multi-package releases.
   Triggers on "ultimate monorepo workflow", "/ultimate-monorepo-workflow", or when
   configuring workspaces, link dependencies, or designing monorepo pipeline builds.
-argument-hint: "[workspace-setup | package-link | changeset-version]"
+argument-hint: "[workspace-setup | package-link | changeset-version | --turbo | --syncpack]"
 ---
 
-# Ultimate Monorepo & Multi-Package Workflow
+# Ultimate Monorepo & Multi-Package Architecture Workflow (10/10 Master Engine)
 
-This workflow guides the design, dependency linking, pipeline orchestration, and package publishing rules for multi-package monorepos.
+This workflow guides the structure, dependency boundary isolation, computational cache reuse (Turborepo/Nx), dependency version unification (Syncpack), and atomic versioned publishing (Changesets) across multi-package workspaces.
 
----
-
-## The 4-Phase Monorepo Pipeline
-
-### Phase 1: Workspace Architecture & Package Scoping
-*   **Action:**
-    1. Organize folders by workspaces (e.g. `apps/` for deployable interfaces, `packages/` for shared libraries, configs, and types).
-    2. Configure workspace engines: define package linkages using `package.json` workspaces or `pnpm-workspace.yaml`.
-    3. Link shared TypeScript configs (`tsconfig.json`) and linter settings to preserve code quality across sub-packages.
-    4. Use `concise-planning` for atomic workspace setup checklists.
-    5. Apply `ultimate-architecture-workflow` for domain modeling and bounded context boundaries across packages.
-
-### Phase 2: Pipeline Orchestration (Turborepo / Nx)
-*   **Action:**
-    1. Define task pipelines in workspace configuration files (e.g. `turbo.json`).
-    2. Establish execution dependencies: specify that building an app requires building its linked shared packages first (`"^build"` syntax).
-    3. Configure build caches to reuse compile, lint, and test results, minimizing CI build times.
-    4. Run Strict Linting & Type Validation across all workspace packages to ensure cross-package type consistency.
-    5. Use `Test-Driven Development (Red-Green-Refactor)` for shared package unit testing with isolated test configurations.
-
-### Phase 3: Shared Dependency Management
-*   **Action:**
-    1. Maintain clean dependency bounds: ensure shared packages declare global utilities and peer dependencies accurately.
-    2. Enforce lock-file consistency (using single lock files like `pnpm-lock.yaml` or `yarn.lock` at the root).
-    3. Prevent dependency drift: use tools (like `syncpack`) to align package version coordinates across workspaces.
-    4. Apply `kaizen` continuous improvement to regularly audit and prune unused cross-package dependencies.
-    5. Apply `ponytail` YAGNI principles to prevent speculative shared abstractions.
-
-### Phase 4: Release & Versioning (Changesets / SemVer)
-*   **Action:**
-    1. Enforce Semantic Versioning (SemVer) rules across all packages.
-    2. Manage publishing workflows using Changeset configurations (`.changeset/`). Require changesets for all PR modifications.
-    3. Automate npm publishes or Docker image builds triggered by version updates.
-    4. Use `Conventional Semantic Git Commits` for terse, conventional commit messages across packages.
-    5. Use `git-pushing` for safe remote pushes and `ultimate-deployment-workflow` for CI/CD pipeline integration.
+```
+                                      [MONOREPO ROOT WORKSPACE]
+                                                  │
+                       ┌──────────────────────────┴──────────────────────────┐
+                       ▼                                                     ▼
+           [PHASE 1: WORKSPACE ARCHITECTURE]                     [PHASE 2: PIPELINE ORCHESTRATION]
+           ├─ apps/ (Deployable Services)                        ├─ Turborepo / Nx Task Graphs
+           ├─ packages/ (Shared Types, UI, Config)               ├─ Remote Computation Caching
+           └─ Strict pnpm-workspace.yaml Isolation               └─ Topological Task Ordering (^build)
+                       │
+                       ▼
+     ┌─────────────────────────────────────────────────────────────────────────────┐
+     │                 PHASE 3: DEPENDENCY UNIFICATION & BOUNDARY ENFORCEMENT       │
+     │  • Syncpack Version Alignment • Zero Phantom Dependencies • Shared TSConfigs │
+     └──────────────────────────────────────┬──────────────────────────────────────┘
+                                            ▼
+                               [PHASE 4: MULTI-PACKAGE RELEASES & CHANGESETS]
+                 ┌──────────────────────────┼──────────────────────────┐
+                 ▼                          ▼                          ▼
+         ┌──────────────┐           ┌──────────────┐           ┌──────────────┐
+         │ 📦 CHANGESET │           │ 🏷️ SEMVER    │           │ 🚀 ATOMIC    │
+         │ PR Markdown  │           │ Major/Min/Pat│           │ Publish Gate │
+         └──────────────┘           └──────────────┘           └──────────────┘
+```
 
 ---
 
-## Cross-Cutting Concerns
-*   **Research:** Use Web Search and official library documentation for Turborepo/Nx/pnpm workspace documentation.
-*   **Memory:** Use Persistent Project Memory / Scratchpad to persist workspace architecture decisions and package relationships.
-*   **Documentation:** Use `ultimate-documentation-workflow` for README templates and package API documentation.
-*   **Security:** Use `ultimate-security-audit-workflow` for cross-package dependency CVE scanning.
+## 🏛️ Iron Laws of Monorepo Architecture
+
+1. **Explicit Package Boundaries**: No package may import from another package without declaring it in its `package.json` `dependencies` or `devDependencies`.
+2. **Zero Phantom Dependencies**: All builds must run with strict package managers (pnpm or Yarn Berry) that isolate unhoisted dependencies.
+3. **Deterministic Task Graphs**: Tasks defined in `turbo.json` or `nx.json` must declare explicit dependencies (`"^build"`, `"$TURBO_DEFAULT$"`).
+4. **Unified Dependency Coordinates**: All packages in the monorepo must share identical major/minor versions of third-party libraries (`syncpack`).
+5. **Atomic Changeset Publishing**: Every pull request that modifies code in a publishable package must include a corresponding Changeset file (`.changeset/*.md`).
+
+---
+
+## 🔬 The 4-Phase Monorepo Pipeline
+
+### Phase 1: Workspace Architecture & Directory Layout
+```text
+monorepo-root/
+├── apps/
+│   ├── web/               # Next.js 15 App Router
+│   ├── mobile/            # React Native / Expo
+│   └── api/               # Express / Fastify / Node
+├── packages/
+│   ├── ui/                # Shared React Design Tokens & Components
+│   ├── database/          # Prisma schema, migrations, and Supabase client
+│   ├── tsconfig/          # Base TypeScript configurations
+│   └── eslint-config/     # Shared ESLint & Prettier rules
+├── pnpm-workspace.yaml
+├── turbo.json
+└── package.json
+```
+
+### Phase 2: Pipeline Orchestration (`turbo.json`)
+```json
+{
+  "$schema": "https://turbo.build/schema.json",
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
+    },
+    "lint": {
+      "dependsOn": ["^build"]
+    },
+    "test": {
+      "dependsOn": ["^build"],
+      "outputs": ["coverage/**"]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    }
+  }
+}
+```
+
+### Phase 3: Dependency Unification with Syncpack
+- Run `npx syncpack list-mismatches` to detect conflicting dependency versions across workspace packages.
+- Fix mismatches using `npx syncpack fix-mismatches` to ensure uniform dependency versions.
+
+### Phase 4: Atomic Multi-Package Release with Changesets
+- Add a changeset: `npx changeset` (prompts for patch/minor/major and description).
+- Version packages: `npx changeset version` (updates package.jsons and changelogs).
+- Publish packages: `npx changeset publish` (publishes packages in topological dependency order).

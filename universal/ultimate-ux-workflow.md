@@ -45,15 +45,17 @@ This workflow drives comprehensive User Experience auditing, implementation, and
 ## The 6-Phase UX Pipeline
 
 ### Phase 1: Information Architecture & Content Strategy
+*   **Sub-skills:** `ui-ux-pro-max` (99 UX guidelines, 161 product types), `concise-planning`, `superpowers-brainstorm`
 *   **Action:**
     1. Map the content hierarchy: define primary, secondary, and tertiary content zones for each page.
     2. Apply the **F-Pattern** (text-heavy pages) or **Z-Pattern** (landing pages) scanning model to place critical elements in natural eye-tracking positions.
     3. Define the information scent: every navigation label, button text, and link text must clearly communicate what the user will get when they interact.
     4. Establish a consistent vocabulary: use the same terms across the entire application (e.g., never mix "Settings" and "Preferences" for the same concept).
     5. Use `concise-planning` for atomic UX audit checklists.
-    6. Use `Structured Brainstorming & Architecture Scoping` for evaluating alternative IA structures.
+    6. Use `superpowers-brainstorm` for evaluating alternative IA structures.
 
 ### Phase 2: Touch, Gesture & Interaction Design
+*   **Sub-skills:** `ui-ux-pro-max`, `react-native-skills`, `react-native-best-practices`, `react-native-best-practices-callstack`, `android-native-dev`
 *   **Action:**
     1. **Touch Targets:** Minimum dimensions enforced:
 
@@ -82,6 +84,7 @@ This workflow drives comprehensive User Experience auditing, implementation, and
     5. Apply platform-specific skills for native gesture handling.
 
 ### Phase 3: Navigation & Flow Architecture
+*   **Sub-skills:** `ui-ux-pro-max`, `next-best-practices`, `react-best-practices`, `composition-patterns`
 *   **Action:**
     1. **Navigation Hierarchy Rules:**
        *   Top-level: Tabs (≤5 items), sidebar, or top nav. Always visible/accessible.
@@ -101,9 +104,11 @@ This workflow drives comprehensive User Experience auditing, implementation, and
        *   Navigation always interactive — never blocked by content loading.
        *   Content areas load independently with per-section skeletons.
        *   **FORBIDDEN:** Blank screens, full-screen spinners for partial data, blocking navigation during loads.
-    5. Apply Next.js App Router Best Practices for route-level code splitting, prefetching, and scroll restoration.
+    5. Apply `next-best-practices` for route-level code splitting, prefetching, and scroll restoration.
 
 ### Phase 4: Accessibility (a11y) — The Non-Negotiable Gate
+*   **Sub-skills:** `ui-ux-pro-max`, `web-design-guidelines`, `ckm:ui-styling`
+*   **MCP Tools:** `playwright` (browser_snapshot, browser_evaluate)
 *   **Action:**
     1. **Color & Contrast:**
 
@@ -130,10 +135,11 @@ This workflow drives comprehensive User Experience auditing, implementation, and
        *   ALL animations wrapped in `@media (prefers-reduced-motion: reduce)`.
        *   Provide instant state changes as fallback.
        *   No flashing content (>3 flashes per second — WCAG 2.3.1).
-    5. Use Playwright evaluate tool for programmatic axe-core accessibility audits.
-    6. Apply Modern Component Styling for shadcn/ui Radix primitives with built-in ARIA support.
+    5. Use `playwright/browser_evaluate` for programmatic axe-core accessibility audits.
+    6. Apply `ckm:ui-styling` for shadcn/ui Radix primitives with built-in ARIA support.
 
 ### Phase 5: Perceived Performance & Loading States
+*   **Sub-skills:** `ckm:design-system`, `react-best-practices`, `next-best-practices`
 *   **Action:**
     1. **The Skeleton Law:** If content takes >300ms to load, show a skeleton screen — not a spinner. Skeletons MUST:
        *   Match the exact dimensions of the final rendered content.
@@ -156,13 +162,14 @@ This workflow drives comprehensive User Experience auditing, implementation, and
        *   Fonts use `font-display: swap` with `size-adjust` for metric compatibility.
 
 ### Phase 6: Error, Empty & Edge States
+*   **Sub-skills:** `ui-ux-pro-max`, `systematic-debugging`, `ckm:banner-design`
 *   **Action:**
     1. **Error State Design (Every error must answer 3 questions):**
        *   **What happened?** — Clear, human-readable title (not "Error 500" or "Something went wrong").
        *   **Why?** — Brief explanation ("Your session expired" / "The server is temporarily unavailable").
        *   **What to do?** — Actionable CTA ("Sign in again" / "Retry" / "Go back").
     2. **Empty State Design:**
-       *   Provide an illustration or icon (use local asset generation or custom SVG or Hero Graphic & Banner Design).
+       *   Provide an illustration or icon (use `generate_image` or `ckm:banner-design`).
        *   Include a primary action button ("Create your first project" / "Add an item").
        *   Never show a blank white screen with no guidance.
     3. **Edge Cases Checklist:**
@@ -352,26 +359,26 @@ When styling small interactive items (e.g., close buttons, small toggles, arrow 
 
 ---
 
-## Universal Checklists & Reference Architecture
+## Sub-Skill Checklists & Reference Templates
 
 ### 1. Touch & Layout Stability on Mobile (`react-native-skills`)
 *   **Virtualization Priority:** Enforce `FlashList` for any list handling more than 50 entries to stabilize frame rates.
 *   **Gestures:** Use Reanimated worklets and the `GestureDetector` harness instead of JS thread responders.
 *   **Measure Traps:** Avoid manual `measure()` calls in layouts. Use `onLayout` listener callbacks to prevent thread blocks.
 
-### 2. React UI Performance (`React Architecture Best Practices` & `composition-patterns`)
+### 2. React UI Performance (`react-best-practices` & `composition-patterns`)
 *   **Derived UI State:** Never use `useEffect` to synchronise local UI state changes. Derive UI boolean values directly during execution to avoid layout-flickers.
 *   **Compound UI Contexts:** Avoid building complex configuration properties for UI components; separate them into semantic subcomponents (e.g. `<Modal.Header>`, `<Modal.Body>`).
 
-### 3. Accessibility Audit Checklist (Web Interface & Accessibility Standards (WCAG 2.2))
+### 3. Accessibility Audit Checklist (`web-design-guidelines`)
 *   Validate visual contrast ratios across high-priority elements.
 *   Verify that interactive components trap keyboard focus correctly when modals/dropdowns are open.
 
-### 4. TTI & Startup Optimization on Mobile (`React Native Performance Best Practices`)
+### 4. TTI & Startup Optimization on Mobile (`react-native-best-practices`)
 *   **Defer Non-Essential SDKs:** Do not initialize heavy analytics, logging, or third-party tracking scripts during the initial render loop. Defer them using task schedulers (`InteractionManager.runAfterInteractions` or `setTimeout`) to optimize Time-To-Interactive (TTI).
 *   **State Hydration:** Display skeletal fallbacks or cached state on first render to prevent blank layouts.
 
-### 5. Navigation Pre-Fetching & State Retention (Next.js App Router Best Practices)
+### 5. Navigation Pre-Fetching & State Retention (`next-best-practices`)
 *   **Route Prefetching:** Always prefetch pages likely to be visited using `<Link prefetch={true}>` or programmatic prefetching on hover to minimize route transition delays.
 *   **Scroll & View State:** Ensure route changes preserve focus states and scroll positions. Return views to their top-most coordinate unless returning to a list, in which case coordinate positions must be cached and restored.
 
@@ -404,7 +411,7 @@ When styling small interactive items (e.g., close buttons, small toggles, arrow 
     }
     ```
 
-### 7. WCAG Keyboard Focus Trap (Web Interface & Accessibility Standards (WCAG 2.2))
+### 7. WCAG Keyboard Focus Trap (`web-design-guidelines`)
 *   **Focus Trap Hook:** Prevent keyboard focus from leaking outside modal boundaries:
     ```typescript
     import { useEffect, useRef } from 'react';
@@ -447,10 +454,10 @@ When styling small interactive items (e.g., close buttons, small toggles, arrow 
 
 ## Cross-Cutting Concerns
 *   **Frontend:** Chain with `ultimate-frontend-workflow` for full implementation after UX specification.
-*   **Research:** Use Web Search, `perplexity-ask`, and official library documentation for WCAG 2.2 standards, platform HIG guidelines, and UX pattern libraries.
-*   **Testing:** Use Playwright / Headless Browser Automation for E2E usability testing, screenshot capture, and visual regression across breakpoints.
-*   **Memory:** Use Persistent Project Memory / Scratchpad to persist UX audit findings, accessibility issues, and interaction patterns across conversations.
+*   **Research:** Use `tavily-search`, `perplexity-ask`, and `context7/get-library-docs` for WCAG 2.2 standards, platform HIG guidelines, and UX pattern libraries.
+*   **Testing:** Use `playwright` MCP for E2E usability testing, screenshot capture, and visual regression across breakpoints.
+*   **Memory:** Use `memory` MCP to persist UX audit findings, accessibility issues, and interaction patterns across conversations.
 *   **Documentation:** Use `ultimate-documentation-workflow` and `docx` for formal UX audit reports.
-*   **Presentation:** Use Data Presentation & Deck Layouts for stakeholder-facing UX review presentations.
-*   **Brand:** Reference `Awesome-Design-MD` (all 61 brands) and `Brand Voice & Identity System` for brand-aligned UX patterns.
-*   **Design Tokens:** Use `Three-Tier Design Token Architecture` and Design Theme Presets for systematic visual quality across components.
+*   **Presentation:** Use `ckm:slides` for stakeholder-facing UX review presentations.
+*   **Brand:** Reference `Awesome-Design-MD` (all 61 brands) and `ckm:brand` for brand-aligned UX patterns.
+*   **Design Tokens:** Use `ckm:design-system` and `theme-factory` for systematic visual quality across components.

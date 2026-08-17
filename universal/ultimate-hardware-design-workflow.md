@@ -319,11 +319,13 @@ This section documents the execution pipeline and indexes all specialized hardwa
 *   **Core Standards:** Route 50-ohm RF traces on Layer 1 with ground reference plane on Layer 2. Ensure CAN trace skew is under 0.15mm.
 
 ### Phase 4: Mechanical Outlines & Thermal Simulations
+*   **Sub-skills:**
     *   [hw-design-mechanical-cad](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/hw-design-mechanical-cad/SKILL.md) — Exporting 3D STEP models to CAD to check clearances inside the vehicle OBD-II housings.
     *   [hw-design-thermal-sim](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/hw-design-thermal-sim/SKILL.md) — Thermal via layout arrays and passive PCB heatsink calculations.
 *   **Core Standards:** Position thermal vias directly under the exposed pads of power regulators, thermal-relief them, and connect them to solid copper planes on inner and bottom layers.
 
 ### Phase 5: DFM Checking, Factory QA Testbeds, & EMC Verification
+*   **Sub-skills:**
     *   [hw-design-manufacturing-dfm](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/hw-design-manufacturing-dfm/SKILL.md) — Fiducials, panelization structures, component orientations, and pick-and-place clearances.
     *   [hw-design-emc-compliance](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/hw-design-emc-compliance/SKILL.md) — Shielding, common-mode chokes, ground loop avoidance, and automotive CISPR-25 emissions limits.
     *   [hw-design-physical-prototyping](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/hw-design-physical-prototyping/SKILL.md) — Manual solder stencils, reflow profiles, and rework guidelines.

@@ -1,60 +1,121 @@
 ---
 name: ultimate-security-workflow
 description: >
-  Master workflow for securing and hardening applications. Coordinates input
-  sanitization, authentication architectures, secure HTTP headers, CORS controls,
-  rate limiting, and database Row-Level Security (RLS).
+  Flawless 10/10 Master Workflow for application security hardening, zero-trust architectures,
+  cryptographic protection, input sanitization, automated CORS/CSP headers, Upstash rate limiting,
+  and database Row-Level Security (RLS).
   Triggers on "ultimate security workflow", "/ultimate-security-workflow", or when
   handling authentication, user data, cryptographic functions, or production hardening.
-argument-hint: "[security-audit | auth-flow | rls-policy]"
+argument-hint: "[security-audit | auth-flow | rls-policy | --hardening | --zero-trust]"
 ---
 
-# Ultimate Security & Hardening Workflow
+# Ultimate Security & Application Hardening Workflow (10/10 Master Engine)
 
-This workflow drives security audits and implementation to protect user data, prevent exploitation (injection, XSS, CSRF), and lock down application environments.
+This workflow drives full-spectrum application hardening, data privacy defense, zero-trust authentication, cryptographic safety, and database multi-tenant isolation.
+
+```
+                                      [UNTRUSTED CLIENT REQUEST / INGRESS]
+                                                        │
+                          ┌─────────────────────────────┴─────────────────────────────┐
+                          ▼                                                           ▼
+              [PHASE 1: BOUNDARY DEFENSE & WAF]                             [PHASE 2: ZERO-TRUST AUTH]
+              ├─ Strict Zod / Schema Sanitization                           ├─ Ephemeral JWT + HttpOnly Cookies
+              ├─ Parameterized SQL (Zero Interpolation)                     ├─ Role-Based RBAC & Scope Guards
+              └─ Upstash Sliding-Window Rate Limiting                       └─ Argon2id Password Hashing
+                          │
+                          ▼
+        ┌─────────────────────────────────────────────────────────────────────────────┐
+        │                 PHASE 3: INFRASTRUCTURE & NETWORK HARDENING                 │
+        │  • Strict CSP & HSTS Headers • CORS Whitelist • Signed QStash Webhooks      │
+        └──────────────────────────────────────┬──────────────────────────────────────┘
+                                               ▼
+                                  [PHASE 4: DATABASE RLS & AUDIT INTEGRITY]
+                    ┌──────────────────────────┼──────────────────────────┐
+                    ▼                          ▼                          ▼
+            ┌──────────────┐           ┌──────────────┐           ┌──────────────┐
+            │ 🔒 SUPABASE  │           │ 📜 AUDIT LOG │           │ 🔐 SECRETS   │
+            │ Strict RLS   │           │ Immutable Log│           │ Zero Git Leak│
+            └──────────────┘           └──────────────┘           └──────────────┘
+```
 
 ---
 
-## The 4-Phase Security Pipeline
+## 🏛️ Iron Laws of Security & Hardening
 
-### Phase 1: Boundary & Input Sanitization
-*   **Action:**
-    1. **Trust No Client:** Validate and sanitize all incoming payloads at the boundary using schema validators (Zod, Pydantic, etc.).
-    2. Prevent SQL injection by using parameterized queries or typed ORM builders. Never string-interpolate queries with user input.
-    3. Prevent Cross-Site Scripting (XSS) by HTML-escaping dynamic content before rendering and implementing a strict Content Security Policy (CSP).
-    4. Protect file upload paths: validate file types (MIME-types, magic bytes) and upload directly to secure, isolated storage (e.g. S3 presigned PUT).
-    5. Run Strict Linting & Type Validation to verify no unsafe code patterns exist in input handling code.
+1. **Never Trust External Input**: 100% of incoming payloads must be strictly validated and sanitized at the boundary (Zod, Pydantic, JSON Schema).
+2. **Zero SQL Concatenation**: Raw SQL string interpolation is an unconditional blocking defect. Use parameterized queries or typed ORMs.
+3. **Zero Secrets in Source Code**: API keys, private keys, database credentials, and signing secrets must never be committed to git repositories.
+4. **Least Privilege by Default**: Services, IAM roles, and database users must operate with minimum permissions necessary.
+5. **No Auth Tokens in Browser Storage**: JWTs and session secrets must never reside in `localStorage` or `sessionStorage`. Use `httpOnly`, `secure`, `sameSite=strict` cookies.
+6. **Row-Level Security (RLS) on 100% of User Tables**: Every multi-tenant database table must enforce explicit RLS policies tied to authenticated user/organization IDs.
+7. **Cryptographic Standard**: Passwords hashed exclusively with **Argon2id** or **bcrypt** ($\ge 12$ rounds). Symmetric data encryption uses **AES-256-GCM** or **ChaCha20-Poly1305**.
+8. **Automated Rate Limiting on All Public Endpoints**: Sensitive endpoints (auth, search, checkout, AI calls) MUST be protected by sliding-window rate limiters (Upstash Redis).
 
-### Phase 2: Authentication & Session Security
+---
+
+## 🛡️ The 4-Phase Security Pipeline
+
+### Phase 1: Boundary Input Sanitization & WAF Protection
 *   **Action:**
-    1. Enforce short-lived access tokens (e.g. 15-minute JWTs) paired with secure refresh tokens stored in `httpOnly`, `secure`, `sameSite: strict` cookies.
-    2. Never store authentication tokens or PII in `localStorage` or `sessionStorage` (XSS extraction risk).
-    3. Implement Role-Based Access Control (RBAC): verify route permissions using middleware *before* invoking handler functions.
-    4. Hash passwords using slow cryptographic algorithms (bcrypt, Argon2) with custom salts.
-    5. Use `upstash-redis-js` for distributed session storage with automatic TTL expiration.
-    6. Use `upstash-ratelimit-js` for brute-force login attempt protection.
+    1. **Strict Type Coercion & Schema Validation:**
+       ```typescript
+       import { z } from 'zod';
+       
+       export const CheckoutSchema = z.object({
+         amountInCents: z.number().int().positive().max(10000000), // Max $100k
+         currency: z.enum(['usd', 'eur', 'gbp']),
+         idempotencyKey: z.string().uuid(),
+       }).strict(); // Disallow unexpected unknown properties
+       ```
+    2. **XSS & Content Security Policy (CSP):**
+       - Configure strict nonces or hashes for scripts; ban `unsafe-inline` and `eval`.
+    3. **Upstash Sliding-Window Rate Limiting:**
+       ```typescript
+       import { Ratelimit } from '@upstash/ratelimit';
+       import { Redis } from '@upstash/redis';
+
+       const ratelimit = new Ratelimit({
+         redis: Redis.fromEnv(),
+         limiter: Ratelimit.slidingWindow(10, '10 s'),
+         analytics: true,
+       });
+       ```
+
+### Phase 2: Zero-Trust Authentication & Session Lifecycle
+*   **Action:**
+    1. **Short-Lived Access Tokens (15m) + Rotating Refresh Tokens:**
+       - Issue short-lived tokens. On refresh, rotate refresh token family; invalidate all sessions if token reuse is detected.
+    2. **Role-Based Access Control (RBAC):**
+       - Enforce permission checks *inside* the business logic layer, not merely at route middleware.
+    3. **MFA & Step-Up Auth:**
+       - Require re-authentication / TOTP confirmation for high-privilege actions (password change, payout account modification).
 
 ### Phase 3: Network & Infrastructure Hardening
 *   **Action:**
-    1. Configure secure HTTP headers using `Helmet` or equivalent configurations (HSTS, clickjacking prevention, X-Content-Type-Options).
-    2. Configure strict Cross-Origin Resource Sharing (CORS) rules. Explicitly list allowed origins; never allow wildcard (`*`) origins in production.
-    3. Implement rate-limiting and API throttling on boundary gates to protect against Denial of Service (DoS) and brute-force attempts using `upstash-ratelimit-js`.
-    4. Validate environment variable configurations at application startup. Fail fast on missing cryptographic secrets.
-    5. Use `upstash-qstash-js` for secure, signed webhook delivery to prevent request spoofing.
+    1. **Security Headers Configuration:**
+       - `Strict-Transport-Security: max-age=63072000; includeSubDomains; preload`
+       - `X-Content-Type-Options: nosniff`
+       - `X-Frame-Options: DENY`
+       - `Referrer-Policy: strict-origin-when-cross-origin`
+    2. **Strict CORS Whitelist:**
+       - Explicit origin array matching; reject wildcard `*` in authenticated APIs.
+    3. **Cryptographically Signed Webhooks (QStash / Stripe):**
+       - Verify HMAC signatures on all inbound webhook requests before processing payloads.
 
-### Phase 4: Database & Dependency Auditing
+### Phase 4: Database RLS & Immutable Audit Trails
 *   **Action:**
-    1. Enable Row-Level Security (RLS) on all database tables. Define strict RLS policies (e.g., matching authenticated user IDs).
-    2. Run automated dependency vulnerability scans (e.g., `npm audit`, `pip-audit`, Snyk). Upgrade deprecated or compromised libraries.
-    3. Verify that log files do not leak sensitive information (passwords, JWTs, credit card numbers, or full PII).
-    4. Use `supabase-mcp-server/get_advisors` for automated RLS, index, and locking conflict audits.
-    5. Use `firebase_get_security_rules` to verify Firebase Realtime Database and Firestore security rules.
-    6. Apply `ultimate-security-audit-workflow` for comprehensive OWASP Top 10 and compliance auditing.
+    1. **Postgres Row-Level Security (Supabase):**
+       ```sql
+       ALTER TABLE user_profiles ENABLE ROW LEVEL SECURITY;
 
----
+       CREATE POLICY "Users can only view their own profile"
+       ON user_profiles FOR SELECT
+       USING (auth.uid() = user_id);
 
-## Cross-Cutting Concerns
-*   **Research:** Use Web Search, `perplexity-ask`, and official library documentation for security best practices, OWASP resources, and framework-specific hardening guides.
-*   **Memory:** Use Persistent Project Memory / Scratchpad to persist security configurations, RLS policies, and audit findings across conversations.
-*   **Testing:** Use Playwright / Headless Browser Automation for E2E security testing (XSS probing, CSRF verification, auth flow testing).
-*   **Review:** Use Severity-Tiered Code Review (Blocker/Major/Minor/Nit) and Concise 1-Line Actionable Review for security-focused code review.
+       CREATE POLICY "Users can only update their own profile"
+       ON user_profiles FOR UPDATE
+       USING (auth.uid() = user_id)
+       WITH CHECK (auth.uid() = user_id);
+       ```
+    2. **Immutable Audit Logging:**
+       - Log all permission changes, authentication events, and financial mutations to an append-only audit log table.

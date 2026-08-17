@@ -1,58 +1,104 @@
 ---
 name: ultimate-api-workflow
 description: >
-  Master workflow for API design, gateway management, GraphQL, gRPC, and reverse proxies.
-  Coordinates Nginx/Traefik configurations, GraphQL resolvers, Protobuf specs, and API versioning.
+  Flawless 10/10 Master Workflow for API design, gateway management, GraphQL DataLoader,
+  gRPC Protobuf contracts, date-based versioning (Stripe standard), and reverse proxy routing.
   Triggers on "ultimate api workflow", "/ultimate-api-workflow", or when designing
   gRPC, GraphQL, Nginx routes, or planning API gateway policies.
-argument-hint: "[graphql-schema | grpc-proto | gateway-config]"
+argument-hint: "[graphql-schema | grpc-proto | gateway-config | --versioning | --protobuf]"
 ---
 
-# Ultimate API Design & Gateway Workflow
+# Ultimate API Design & Gateway Architecture Workflow (10/10 Master Engine)
 
-This workflow guides the design, routing, security, and versioning of APIs at the boundary—coordinating HTTP gateways, GraphQL schemas, gRPC endpoints, and reverse proxies.
+This workflow guides the design, routing, security, versioning, and contract enforcement of public and internal APIs—spanning REST OpenAPI, GraphQL, and high-throughput gRPC.
 
----
-
-## The 4-Phase API Design Pipeline
-
-### Phase 1: Boundary Routing & Reverse Proxy (Nginx/Traefik)
-*   **Sub-skills:** `upstash-ratelimit-js`, `upstash-qstash-js`
-*   **Action:**
-    1. Define proxy rules, redirect rules, and rewrite paths using standard reverse proxy formats (Nginx configs, Traefik dynamic files).
-    2. Secure gateway configurations: enforce HTTPS redirection, set up SSL/TLS settings, and configure rate limit zones.
-    3. Configure custom headers (e.g. `X-Request-ID` propagation, `X-Forwarded-For`, and secure CORS rules).
-    4. Implement server-side rate limiting using `@upstash/ratelimit` (sliding window, token bucket, or fixed window) on gateway boundaries.
-    5. For async webhook delivery and scheduled API calls, use `@upstash/qstash` to decouple request handling from execution.
-
-### Phase 2: GraphQL Schema & Resolver Design
-*   **Sub-skills:** `supabase-postgres-best-practices`, `upstash-redis-js`
-*   **Action:**
-    1. Construct clear, type-safe GraphQL schemas (SDL) defining queries, mutations, subscriptions, and types.
-    2. Write efficient, N+1 free database resolvers. Use DataLoader patterns to batch and cache nested database hits.
-    3. For federated systems, define schema boundaries and entity resolvers to enable clean gateway stitching.
-    4. Cache expensive resolver results using `@upstash/redis` with TTL-controlled keys to reduce database pressure on hot queries.
-
-### Phase 3: gRPC & Protobuf Engineering
-*   **Sub-skills:** `lint-and-validate`
-*   **Action:**
-    1. Write protocol buffer specifications (`.proto` files) following style guides (CamelCase for messages, snake_case for fields).
-    2. Explicitly specify message tags and manage field deprecation markers safely (never reuse tag numbers).
-    3. Configure build pipelines to automatically compile `.proto` files into typed client/server stubs.
-    4. Run `lint-and-validate` on generated stubs to ensure type consistency and zero compilation errors.
-
-### Phase 4: API Versioning & Lifecycle Management
-*   **Sub-skills:** `ultimate-fullstack-workflow`, `ultimate-documentation-workflow`, `ultimate-security-workflow`
-*   **Action:**
-    1. Enforce a strict versioning strategy: URI paths (e.g. `/v1/`), Accept Headers, or Custom Request Headers.
-    2. Document deprecated endpoints clearly. Expose warning headers (e.g. `Sunset`, `Deprecation`) on API responses.
-    3. Design backward-compatible contracts: when adding optional parameters or output fields, ensure old client integrations do not break.
-    4. Use `ultimate-documentation-workflow` to generate OpenAPI/Swagger specs for all public endpoints.
-    5. Apply `ultimate-security-workflow` boundary sanitization rules at every API entry point.
+```
+                                      [API CLIENT REQUEST / RPC CALL]
+                                                     │
+                          ┌──────────────────────────┴──────────────────────────┐
+                          ▼                                                     ▼
+              [GATEWAY & REVERSE PROXY LAYER]                       [CONTRACT DEFINITION (OPENAPI/GRPC)]
+              ├─ Traefik / Nginx / Cloudflare                       ├─ Strict Schema First (No Phantom APIs)
+              ├─ TLS 1.3 & HSTS Termination                         ├─ Protobuf Tag Immutability
+              └─ X-Request-ID & Traceparent Header                  └─ Date-Based Versioning (Stripe)
+                          │
+                          ▼
+        ┌─────────────────────────────────────────────────────────────────────────────┐
+        │                 API PROTOCOL DISPATCH & ENGINE SELECTION                    │
+        │  • REST (OpenAPI 3.1) • GraphQL (DataLoader N+1 Shield) • gRPC (Binary Fast)│
+        └──────────────────────────────────────┬──────────────────────────────────────┘
+                                               ▼
+                                  [IDEMPOTENCY & RATE-LIMITING CONTROLS]
+                    ┌──────────────────────────┼──────────────────────────┐
+                    ▼                          ▼                          ▼
+            ┌──────────────┐           ┌──────────────┐           ┌──────────────┐
+            │ 💳 IDEMPOTENT│           │ ⚡ RATELIMIT │           │ 🛡️ BACKWARD  │
+            │ Idempotency-K│           │ Upstash Slid.│           │ Transform Mod│
+            └──────────────┘           └──────────────┘           └──────────────┘
+```
 
 ---
 
-## Cross-Cutting Concerns
-*   **Research:** Use `tavily-search`, `context7/get-library-docs` for verifying API framework documentation and version compatibility.
-*   **Testing:** Use `playwright` MCP for E2E API flow testing and `superpowers-tdd` for contract test coverage.
-*   **Observability:** Use `upstash-workflow-js` to define multi-step API orchestration flows with durable step execution.
+## 🏛️ Iron Laws of API Design
+
+1. **Contract-First Architecture**: Write the OpenAPI 3.1, GraphQL SDL, or Protobuf definition *before* implementing handler logic.
+2. **Never Break Existing Integrations**: Public API changes must be non-breaking (additive) or encapsulated within version transformation layers.
+3. **Mandatory Idempotency Keys on Mutations**: All `POST`/`PUT`/`PATCH` endpoints must support `Idempotency-Key` headers (UUIDv4) cached for 24-72 hours.
+4. **Zero N+1 in GraphQL**: All nested GraphQL relations MUST use DataLoader batching.
+5. **Protobuf Tag Immutability**: In `.proto` specs, never change a tag number or data type. Mark deprecated fields `reserved`.
+6. **Explicit Error Shapes**: All error responses must adhere to RFC 7807 (Problem Details for HTTP APIs) containing `type`, `title`, `status`, `detail`, and `instance`.
+
+---
+
+## 🔬 The 4-Protocol Engineering Matrix
+
+### 1. REST & Date-Based Versioning (Stripe Standard)
+- New users pinned to current date version (e.g. `2026-08-15`).
+- Core service writes code against the latest version; backward transformation modules translate modern JSON into older pinned formats.
+- Standard Error Response (RFC 7807):
+  ```json
+  {
+    "type": "https://api.example.com/errors/invalid-parameters",
+    "title": "Invalid Request Parameters",
+    "status": 400,
+    "detail": "The amountInCents field must be a positive integer.",
+    "instance": "/api/v1/charges/req_98765"
+  }
+  ```
+
+### 2. GraphQL Schema & DataLoader N+1 Protection
+```typescript
+import DataLoader from 'dataloader';
+
+// Batch loader function
+export const userLoader = new DataLoader(async (userIds: readonly string[]) => {
+  const users = await db.user.findMany({
+    where: { id: { in: [...userIds] } }
+  });
+  const userMap = new Map(users.map(u => [u.id, u]));
+  return userIds.map(id => userMap.get(id) || null);
+});
+```
+
+### 3. gRPC & Protobuf Contract Spec
+```protobuf
+syntax = "proto3";
+
+package payment.v1;
+
+service PaymentService {
+  rpc ProcessCharge (ChargeRequest) returns (ChargeResponse);
+}
+
+message ChargeRequest {
+  string idempotency_key = 1;
+  int64 amount_in_cents = 2;
+  string currency = 3;
+}
+
+message ChargeResponse {
+  string transaction_id = 1;
+  string status = 2;
+  int64 created_at = 3;
+}
+```

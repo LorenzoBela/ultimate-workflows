@@ -1,70 +1,146 @@
 ---
 name: ultimate-testing-workflow
 description: >
-  Master workflow for testing, verification, and QA automation.
-  Coordinates unit, integration, end-to-end (E2E) browser testing, API mocking, and
-  coverage monitoring.
+  Flawless 10/10 Master Workflow for testing, verification, and QA automation.
+  Coordinates Test-Driven Development (TDD), Stryker mutation testing (MSI >= 90%),
+  property-based testing (fast-check), Playwright E2E browser automation, visual regression diffing,
+  API contract testing, Chaos fault injection, and CI coverage gates.
   Triggers on "ultimate testing workflow", "/ultimate-testing-workflow", or when
   authoring test suites, debugging test failures, or validating release quality.
-argument-hint: "[test-suite | mock-payload | e2e-plan]"
+argument-hint: "[test-suite | mock-payload | e2e-plan | --mutation | --fuzz | --e2e]"
 ---
 
-# Ultimate Testing & QA Workflow
+# Ultimate Testing & QA Automation Workflow (10/10 Master Engine)
 
-This workflow drives comprehensive testing strategy to verify functional correctness, prevent regression bugs, test network failure recovery, and ensure high test coverage.
+This workflow is the definitive 10/10 testing and quality assurance system. It unites the test-first discipline of **TDD (Red/Green/Refactor)**, the mutation verification of **Stryker (MSI $\ge 90\%$)**, the mathematical robustness of **Property-Based Testing (`fast-check`)**, the browser automation of **Playwright**, the fault tolerance of **Chaos Engineering**, and zero-flakiness **CI coverage gates**.
+
+```
+                                      [CODE UNDER TEST / NEW FEATURE]
+                                                     │
+                          ┌──────────────────────────┴──────────────────────────┐
+                          ▼                                                     ▼
+              [PHASE 1: TEST STRATEGY & TDD]                        [PHASE 2: CONTRACT & INTEGRATION]
+              ├─ Equivalence Partitioning & Boundaries              ├─ DB Transactions & RLS Isolation
+              ├─ Property-Based Fuzzing (`fast-check`)              ├─ MSW Mocking & WireMock
+              └─ Red -> Green -> Refactor Loop                      └─ OpenAPI / gRPC Contract Tests
+                          │
+                          ▼
+        ┌─────────────────────────────────────────────────────────────────────────────┐
+        │                 PHASE 3: E2E BROWSER AUTOMATION & VISUAL QA                 │
+        │  • Playwright Browser Automation • Visual Snapshot Diffing • AXE A11y Tests │
+        └──────────────────────────────────────┬──────────────────────────────────────┘
+                                               ▼
+                                  [PHASE 4: MUTATION & CHAOS RESILIENCE]
+                    ┌──────────────────────────┼──────────────────────────┐
+                    ▼                          ▼                          ▼
+            ┌──────────────┐           ┌──────────────┐           ┌──────────────┐
+            │ 🧬 STRYKER   │           │ 💥 CHAOS MONK│           │ 🎯 CI GATE   │
+            │ MSI >= 90%   │           │ Latency/Drop │           │ 0 Flaky & 80%│
+            └──────────────┘           └──────────────┘           └──────────────┘
+```
 
 ---
 
-## The 4-Phase Testing Pipeline
+## 🏛️ Iron Laws of Testing & QA
 
-### Phase 1: Test Strategy & Vector Identification
+1. **Tests Are First-Class Code**: Test code must adhere to the exact same clean code, typing, and readability standards as production code.
+2. **Deterministic Tests Only**: Flaky tests are bugs in the test suite. Any test that passes intermittently must be quarantined and resolved immediately.
+3. **Test Behavior, Not Implementation Details**: Avoid asserting internal private state or mock interaction order unless sequencing is a business requirement.
+4. **Red-Green-Refactor Discipline (TDD)**: Always write a failing test first, make it pass with the minimal `ponytail` code, then refactor.
+5. **Mutation Score Indicator (MSI $\ge 90\%$)**: Unit tests must kill boundary mutants (`>` to `>=`, `&&` to `||`, statement removals). Tests that pass when code is mutated are incomplete.
+6. **Property-Based Fuzzing for Critical Logic**: Financial calculations, serialization algorithms, and state machines MUST be validated using generative property testing (`fast-check` / `Hypothesis`).
+7. **Transactional Isolation**: Database integration tests MUST run within transactions rolled back at teardown or within isolated ephemeral database containers.
+8. **No Unhandled Async / Race Conditions**: Never use arbitrary `sleep(1000)` in tests. Use explicit event/condition polling (`await waitFor(...)`, Playwright auto-wait).
+
+---
+
+## 🔬 The 4-Phase Testing Pipeline
+
+### Phase 1: Test Strategy, Vector Identification & TDD
+*   **Sub-skills:** `superpowers-tdd`, `concise-planning`, `superpowers-brainstorm`
 *   **Action:**
-    1. Define the testing target (unit, integration, or E2E).
-    2. Identify equivalence classes and boundary conditions. Map out expected behaviors under bad inputs, edge cases (e.g. empty lists, leap years), and concurrency.
-    3. Determine the mocking boundary: what external components (third-party APIs, mail services, databases) must be stubbed or mocked?
-    4. Use `sequentialthinking` to trace test-critical execution paths.
-    5. Use `concise-planning` for atomic test case checklists and `Structured Brainstorming & Architecture Scoping` for identifying edge-case vectors.
+    1. **Equivalence Partitioning & Boundary Value Analysis (BVA):**
+       - Test exact boundary limits: $0, 1, \text{MAX\_INT}, \text{MIN\_INT}, \text{null}, \text{undefined}, \text{""}, \text{special characters}$.
+    2. **Property-Based Generative Testing (`fast-check`):**
+       ```typescript
+       import fc from 'fast-check';
+       import { calculateDiscount } from './pricing';
+
+       test('discount calculation preserves invariant: 0 <= finalPrice <= originalPrice', () => {
+         fc.assert(
+           fc.property(fc.nat(100000), fc.integer({ min: 0, max: 100 }), (priceInCents, discountPercent) => {
+             const finalPrice = calculateDiscount(priceInCents, discountPercent);
+             return finalPrice >= 0 && finalPrice <= priceInCents;
+           })
+         );
+       });
+       ```
+    3. **Mocking Boundaries:**
+       - Mock ONLY at external system boundaries (network calls, Stripe API, third-party webhooks) using MSW (Mock Service Worker).
+       - Never mock internal domain services.
 
 ### Phase 2: Unit & Integration Testing
+*   **MCP Tools:** `supabase-mcp-server/execute_sql`, `prisma-mcp-server/Prisma-Studio`
 *   **Action:**
-    1. Apply Test-Driven Development (TDD): write the failing test first, build code to pass, and refactor.
-    2. Write unit tests with no external network/database dependencies. Mock repository layers or database connections cleanly.
-    3. Write integration tests to verify database migrations, transactions, and API controllers. Use transactional rollbacks to keep test databases clean between runs.
-    4. Use `supabase-mcp-server/execute_sql` for verifying SQL query correctness in integration tests.
-    5. Use `prisma-mcp-server/Prisma-Studio` for visual data inspection during test debugging.
-    6. Apply `PostgreSQL & Database Optimization Patterns` for testing RLS policies, constraint enforcement, and query performance.
-    7. Use `systematic-debugging` for diagnosing test failures with the Iron Law (root-cause before fix).
+    1. **Integration Test DB Rollback Pattern:**
+       ```typescript
+       beforeEach(async () => {
+         await prisma.$executeRawUnsafe('BEGIN');
+       });
+       afterEach(async () => {
+         await prisma.$executeRawUnsafe('ROLLBACK');
+       });
+       ```
+    2. **Postgres RLS Policy Testing:**
+       - Verify Tenant A cannot read Tenant B's records under authenticated Supabase context.
+    3. **Idempotency & Concurrent Conflict Testing:**
+       - Dispatch two parallel mutating requests with identical `Idempotency-Key` headers; assert exact single-execution semantics.
 
-### Phase 3: E2E Browser Testing (Playwright)
+### Phase 3: E2E Browser Testing & Visual Regression (Playwright)
+*   **MCP Tools:** `playwright` (all tools)
 *   **Action:**
-    1. Write end-to-end browser tests to verify complete user flows (login → dashboard → checkout).
-    2. Use Playwright MCP tools to capture selectors, input form data, trigger clicks, and verify DOM states:
-       *   `browser_navigate` for page navigation.
-       *   `browser_fill_form` and `browser_type` for input interactions.
-       *   `browser_click` for button and link interactions.
-       *   `browser_snapshot` and `browser_take_screenshot` for DOM state capture.
-       *   `browser_console_messages` for JavaScript error detection.
-       *   `browser_network_requests` for API call verification.
-       *   `browser_wait_for` for async content loading assertions.
-       *   `browser_handle_dialog` for alert/confirm dialog handling.
-       *   `browser_file_upload` for file upload flow testing.
-    3. Test edge-case UI behaviors: handle loading skeletons, check alert banners, and verify layout reflows.
-    4. Assert accessibility compliance programmatically (e.g. axe-playwright contrast checks).
-    5. Apply Web Interface & Accessibility Standards (WCAG 2.2) and `UI/UX Design Intelligence & Micro-Interactions` for visual regression and accessibility validation.
+    1. **Automated User Journeys:**
+       - Test critical funnel: Unauthenticated $\rightarrow$ Sign In $\rightarrow$ Dashboard $\rightarrow$ Action $\rightarrow$ Verify State.
+    2. **Playwright Resilient Selector Strategy:**
+       - Use user-facing accessible locators: `page.getByRole('button', { name: 'Submit' })`, `page.getByLabel('Email')`, `page.getByTestId('checkout-card')`.
+       - Ban fragile XPath and DOM hierarchy paths (`div > div:nth-child(2)`).
+    3. **Visual Snapshot Testing:**
+       - Capture screenshot baselines and perform pixel-differential checks across 375px, 768px, and 1280px viewports.
+    4. **Automated Accessibility Testing (axe-playwright):**
+       - Run axe accessibility scan on all rendered pages; fail build on WCAG AA violations.
 
-### Phase 4: CI Validation & Coverage Target
+### Phase 4: Mutation Hardening (Stryker) & CI Quality Gates
 *   **Action:**
-    1. Configure pre-commit or CI pipeline tests. Ensure no builds compile with failing tests.
-    2. Target high code coverage on core domain services (80%+). Use coverage reports to find untested branch options.
-    3. Test resilience: simulate network dropouts, API timeouts, and database failures to ensure the client recovers gracefully.
-    4. Run Strict Linting & Type Validation for final compilation and linting verification alongside test execution.
-    5. Integrate with `ultimate-git-workflow` for pre-commit test hooks and `ultimate-deployment-workflow` for CI pipeline test gates.
+    1. **Mutation Testing Execution (Stryker):**
+       - Run Stryker against test suites to verify mutants are killed.
+       - Target Mutation Score Indicator: $\text{MSI} \ge 90\%$.
+    2. **Simulated Fault Injection (Chaos Engineering):**
+       - Intercept network calls via Playwright or MSW: inject 500ms latency, simulate 503 Service Unavailable, assert graceful client UI fallback.
+    3. **CI Coverage Gates:**
+       - Minimum 80% line coverage and 85% branch coverage on core domain logic.
 
 ---
 
-## Cross-Cutting Concerns
-*   **Research:** Use Web Search and official library documentation for testing framework documentation (Jest, Vitest, Playwright, Cypress).
-*   **Memory:** Use Persistent Project Memory / Scratchpad to persist test architecture decisions, coverage targets, and recurring failure patterns.
-*   **Review:** Use Severity-Tiered Code Review (Blocker/Major/Minor/Nit) and Concise 1-Line Actionable Review for reviewing test quality and coverage gaps.
-*   **React Native Testing:** Apply `React Native Performance Best Practices` and `React Native Thread Optimization` for mobile-specific testing patterns.
-*   **Mocking:** Use `upstash-redis-start` for spinning up ephemeral Redis instances for integration test mocking.
+## 📋 Comprehensive Test Fixture & Assertion Catalog
+
+```typescript
+// Vitest / Jest Standard Assertion Suite
+import { describe, it, expect, vi, beforeEach } from 'vitest';
+
+describe('PaymentService (10/10 Invariants)', () => {
+  it('deduplicates parallel requests with matching idempotency keys', async () => {
+    const key = 'uuid-v4-sample-key';
+    const [res1, res2] = await Promise.all([
+      paymentService.process({ key, amountInCents: 5000 }),
+      paymentService.process({ key, amountInCents: 5000 })
+    ]);
+    expect(res1.transactionId).toBe(res2.transactionId);
+    expect(res1.status).toBe('SUCCESS');
+  });
+
+  it('fails fast on negative amounts with typed DomainError', async () => {
+    await expect(paymentService.process({ key: 'k2', amountInCents: -50 }))
+      .rejects.toThrowError(InvalidAmountError);
+  });
+});
+```

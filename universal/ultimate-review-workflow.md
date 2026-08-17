@@ -1,663 +1,459 @@
 ---
 name: ultimate-review-workflow
 description: >
-  Master workflow for CodeRabbit-style AI code reviews and PR audits. Combines executive summaries,
-  Mermaid sequence/flowchart diagrams, 1-click suggestion diff blocks, multi-pass security/correctness/performance
-  audits, automated test generation, code smell signatures, typescript safety, and ponytail complexity pruning.
-  Triggers on "ultimate review workflow", "/ultimate-review-workflow", "review pr", "code review", or when asked to act like CodeRabbit.
-argument-hint: "[diff-file | branch-name | --incremental | --summarize | --generate-tests]"
+  Flawless 10/10 Big Tech & NASA JPL Master Code Review & PR Audit Engine. Features adaptive depth scaling
+  (Lightning/Standard/Mission-Critical), NASA Power of 10 safety invariants, Apple 0-hang/0-hitch concurrency,
+  Google directional code health, Meta test/revert plans, Amazon blast-radius containment, Stripe idempotency & ledger integrity,
+  Netflix chaos resilience, multi-language AST anti-pattern catalog, mutation testing (MSI >= 90%), and CodeRabbit agentic pre-merge gates.
+  Triggers on "ultimate review workflow", "/ultimate-review-workflow", "review pr", "code review", or when asked for the ultimate 10/10 code review.
+argument-hint: "[diff-file | branch-name | --fast | --incremental | --nasa | --apple | --stripe | --generate-tests]"
 ---
 
-# Ultimate Code Review & Audit Workflow (CodeRabbit-Style AI PR Reviewer)
-
-This workflow drives comprehensive, systematic code quality audits and pull request reviews matching the capabilities of an enterprise AI PR reviewer like CodeRabbit. It generates executive summaries, visual sequence/flowchart diagrams (Mermaid), 1-click copy-paste GitHub diff suggestions (` ```suggestion `), automated unit test suites for modified logic, deep code-smell & security vulnerability checks, and multi-pass audits while strictly pruning over-engineering or speculative complexity (`ponytail` YAGNI).
-
----
-
-## CodeRabbit Review Traits & Emulation Directives
-
-This workflow enables the AI assistant to natively emulate all core review traits and methodologies of CodeRabbit AI without requiring any external CodeRabbit installation, service, or integration:
-
-### Core Review Traits to Emulate
-
-1. **Contextual Subsystem Intelligence**: The reviewer analyzes full workspace context, imported type definitions, database schemas, and API contracts—not just isolated diff lines—to ensure changes do not break downstream dependents.
-2. **High Signal-to-Noise Ratio**: Prioritizes actual bugs, security vulnerabilities, memory leaks, performance bottlenecks, and architectural flaws over trivial nitpicks. Categorizes all feedback strictly into Blocker, Major, Minor, and Nit severity buckets.
-3. **1-Click Copy-Paste Fixes**: Every reported issue must provide a drop-in replacement code block formatted in standard GitHub ` ```suggestion ` syntax so developers can apply fixes with one click.
-4. **Visual Architecture Diagrams**: Automatically generates visual Mermaid sequence or flowchart diagrams for PRs introducing multi-step execution flows, API changes, or state transitions.
-5. **Proactive Unit Test Generation**: Automatically generates runnable unit/integration test suites (Jest/Vitest/TDD) covering untested changed code paths.
-6. **Incremental Review Awareness**: Supports incremental diff auditing (`/incremental`) to review changes made since the previous review pass.
-7. **Relentless YAGNI & Security Auditing**: Combines OWASP Top 10 security scanning (SQLi, XSS, RLS, Secret Leaks) with `ponytail` YAGNI complexity pruning (eliminating single-use abstractions and over-engineering).
-
----
-
-## Iron Laws of Code Review
-
-1. **Safety First.** Any code touching security, authentication, authorization (Postgres RLS policies), data mutations, financial logic, or hardware controls must undergo rigorous double-check verification. A security vulnerability or risk of data corruption is an immediate blocking review failure.
-2. **Prune Speculative Complexity.** If the code implements an abstraction, class, helper, or generic interface for a "future feature" not requested in current requirements, reject it. Apply `ponytail` YAGNI relentlessly.
-3. **Zero Unhandled Errors.** Empty catch blocks or silent failures are immediate blockers. Every exception must be handled, logged with structured context, or propagated intentionally.
-4. **Demand & Generate Test Coverage.** Logic changes and bug fixes must include unit or integration tests verifying the behavior. If tests are missing, identify uncovered code paths and generate tests automatically.
-5. **Constructive & 1-Click Actionable Feedback.** Review comments must state: (1) line location & severity, (2) root problem, (3) rationale/impact, and (4) a concrete ` ```suggestion ` code block to fix it.
-6. **Zero Lint and Type Errors.** Code must compile cleanly and pass type checks before review completion. Never approve code with active TS errors or compiler warnings.
-7. **No Hardcoded Configurations or Credentials.** Environment variables must be validated at startup. Fail fast on misconfigured runtime settings or exposed secrets.
-8. **Directional Code Health Improvement (Google Standard).** Approve changes that clearly improve overall code health. Do not block PRs over subjective preferences or perfectionism if the code is safe, tested, and an net improvement.
-9. **Strict Line Budget & Size Bounds (Microsoft Standard).** Ideal PR size is $\le 200$ lines of code. PRs between 200–400 lines are acceptable; PRs $> 400$ lines trigger an automatic splitting recommendation; PRs $> 800$ lines MUST be rejected and broken into smaller logical PRs to preserve review quality.
-10. **Observable & Enforceable Quality Gates (CodeRabbit Standard).** Review instructions and checks MUST be specific, measurable, and path-scoped (reading workspace `AGENTS.md`, `.cursorrules`, `CLAUDE.md`, `GEMINI.md`). Vague feedback like "make it cleaner" is banned.
-
----
-
-## Industry Code Review & Quality Assurance Standards (Google, Meta, Microsoft, CodeRabbit)
-
-### 1. Google Engineering Review Core Principles
-- **Code Health Over Perfection:** The goal of code review is NOT to reach perfection before merging; it is to ensure the codebase improves directionally over time.
-- **Velocity First:** Reviews MUST be completed promptly (< 4 hours median turnaround). High-velocity, small PRs prevent developer blocking and context degradation.
-- **Single-Reviewer Efficiency:** 75% of changes at Google require only 1 reviewer to eliminate "responsibility diffusion" (where multiple reviewers assume others checked the details).
-
-### 2. Microsoft Research PR Size & Reviewer Matrix
-- **Line Count vs. Defect Rate:**
-  - **< 200 lines:** Peak review quality and highest bug detection rate.
-  - **200–400 lines:** Acceptable range for feature changes.
-  - **400–800 lines:** Review effectiveness drops by 50%.
-  - **> 800 lines:** Defect detection drops sharply; mandatory split required.
-- **Nudgebot Automated Reminders:** Automated ping/follow-ups reduce review latency by ~7% with 73% positive developer satisfaction.
-
-### 3. CodeRabbit Pre-Merge Quality Gate Architecture
-- **Measurable Rule Enforcer:**
-  - Vague instructions (*"write clean code"*) fail.
-  - Measurable constraints (*"functions MUST NOT exceed 40 lines", "all async calls MUST wrap in try/catch"*) succeed.
-- **Path-Scoped Custom Checks (`.coderabbit.yaml`):**
-  - Path-specific rules for controllers, DB migrations, and API contracts.
-  - Graduated enforcement: **Warning Mode** for new rules $\rightarrow$ **Error Mode** for strict merge blocking.
-- **Guideline Auto-Detection:**
-  - Automatically loads and enforces `AGENTS.md`, `.cursorrules`, `CLAUDE.md`, `GEMINI.md` across directory trees.
-- **Multi-Repository Cross-Boundary Analysis:**
-  - Automatically analyzes cross-repo dependencies, API breaking changes, type mismatches, and contract drift across linked repositories (`owner/repo#123` or `@branch-name`).
-- **Continuous Repository-Wide SAST & SCA Integration:**
-  - Ingests check annotations from top SAST and SCA tools (Semgrep, SonarCloud, Codacy, Snyk) directly into PR review threads, enforcing daily CVE database rescans.
-
-### 4. Uber uReview Multi-Stage AI Assistant & Confidence Filtering Engine
-- **Pluggable Multi-Assistant Review Pipeline:**
-  1. **Standard Assistant:** Detects functional logic bugs, off-by-one bounds, unhandled nulls, and race conditions.
-  2. **Best Practices Assistant:** Enforces semantic conventions checkable only via LLM (e.g. semantic `Time` objects over raw integer primitives, explicit locale parameters).
-  3. **AppSec Assistant:** Targets application-level vulnerabilities, OWASP Top 10 vectors, and dataflow leaks.
-- **Post-Processing & High-Precision Filter:**
-  - Secondary grading prompt computes a **Confidence Score (0.0–1.0)** for every review comment.
-  - Semantic similarity deduplication merges overlapping suggestions.
-  - Categories with historically high false-positive rates are automatically suppressed to preserve developer trust (> 75% usefulness rate invariant).
-
-### 5. AST-Based Structural Pattern Analysis (Uber NEAL & Semgrep Standard)
-- **Syntax-Tree Pattern Matching Over Fragile Regex:**
-  - Evaluate code structures via Abstract Syntax Tree (AST) node matching instead of line regex.
-  - **Forbidden Patterns:**
-    - Forced unwrapping / unsafe casts (`as any`, `!`).
-    - Synchronous I/O or expensive calls executed inside constructors or initializers.
-    - `String.toLowerCase()` or `String.toUpperCase()` invoked without an explicit `Locale` parameter (`Locale.US`).
-    - Raw string formatting used for SQL execution or shell commands.
-
-### 6. Mutation Testing & Test Reliability Audit (Stryker & Infection Standard)
-- **Mutation Score Indicator (MSI):**
-  $$\text{MSI} = \frac{\text{Killed Mutants}}{\text{Total Mutants}} \times 100\%$$
-- **Mutation Verification Rules:**
-  - Code coverage shows which lines executed; mutation testing verifies whether test assertions actually check logic.
-  - Test suites MUST kill mutants introduced by:
-    - Relational boundary swaps (`>` mutated to `>=`, `<` mutated to `<=`).
-    - Logical operator flips (`&&` mutated to `||`).
-    - Conditional removals (`if (condition)` mutated to `if (true)` or `if (false)`).
-    - Return value mutations (`return val` mutated to `return null` or `return void`).
-
-### 7. Code Provenance & Chain of Custody Audit (Stripe & Uber Standard)
-- **Immutable Code Lineage Checks:**
-  - Verify every landed commit carries cryptographic identity attestations (signed commits).
-  - Enforce multi-party code review on sensitive paths (`auth/`, `payments/`, `security/`, `db/migrations/`).
-  - Run Software Composition Analysis (SCA) on all new 3rd-party dependencies before merge.
-
-### 8. OWASP Source-to-Sink Dataflow Security Engine
-- **Inter-Functional Dataflow Tracing:**
-  - Track user-controlled inputs (**Sources**: `req.body`, `req.params`, `searchParams`, `headers`) through execution paths down to sensitive operations (**Sinks**: `db.query`, `eval`, `exec`, `dangerouslySetInnerHTML`, `res.redirect`).
-  - Flag any path where a **Source** reaches a **Sink** without an explicit boundary sanitizer or parameterized statement.
-
----
-
-## Code Review Rubric & Severity Matrix
-
-### Severity Levels
-
-| Severity | Definition | Examples | Required Action |
-|---|---|---|---|
-| 🚨 **Blocker** | Critical defect, security flaw, data loss risk, memory leak, or crash condition. | Unparameterized SQL; missing RLS policy; infinite render loop; hardcoded API keys; blocking main thread loop. | **Must be fixed before merging.** |
-| ⚠️ **Major** | Missing tests, architectural violation, poor API contract design, high complexity. | Large UI component without breakdown; missing tests for core logic; custom date formatter replacing standard API. | **Strong recommendation to fix before merge.** |
-| 💡 **Minor** | Inefficient implementation, readability improvements, minor styling issues. | Unnecessary helper wrapper; minor layout shift; missing type safety on non-critical return types. | **Highly recommended cleanup.** |
-| 🔍 **Nit** | Micro-stylistic tweaks, typos in comments, or trivial formatting preferences. | Typos in comments; variable rename for clarity; minor spacing preference. | **Informational; does not block merge.** |
-
----
-
-### Evaluation Rubric
-
-| Category | High Quality | Low Quality (Flag These) |
-|---|---|---|
-| **Correctness** | Validates boundaries; handles empty/null/undefined; checks types strictly. | Silently ignores failures; off-by-one errors; implicit casting; unhandled promises. |
-| **Complexity** | Short functions; shallow nesting; composition patterns; minimal abstractions. | Deeply nested conditionals; giant "god" files; redundant layers of abstractions. |
-| **Security** | Sanitizes user inputs; parameterizes SQL queries; checks RLS; hides secrets in env. | Raw SQL interpolation; client-side security checks; hardcoded API keys; raw eval/shell. |
-| **Performance** | Batch fetches data; lazy-loads large assets; indexes join columns; avoids re-renders. | N+1 queries; blocking main-thread operations; duplicate state in React; unindexed lookups. |
-| **Testing** | Focuses on behavior; covers edge cases and failure paths; deterministic runs. | Happy-path only; brittle implementation assertions; zero tests for logic modifications. |
-| **UX & Design** | Fluid motion; layout stability; WCAG contrast; safe touch targets; clean skeletons. | Full-screen spinners; layout shifts; unstyled elements; custom scroll hijacking. |
-
----
-
-## The 8-Pass Deep Audit Pipeline
-
-### Pass 1: Context Triage & Executive Summary
-*   **Action:**
-    1. Understand the PR's purpose: read the ticket/PR description and match it against acceptance criteria.
-    2. Identify the modified boundaries: does it touch database schemas, API contracts, public endpoints, or auth logic?
-    3. Run a quick count of changed files and lines to assess review complexity.
-    4. Run `sequentialthinking` to map out how changes in one subsystem ripple into dependent subsystems.
-
-### Pass 2: Visual Architecture & Data Flow Diagramming (Mermaid)
-*   **Action:**
-    1. Identify complex logic pathways, state machines, API interactions, or multi-service request flows modified in the PR.
-    2. Render a clean **Mermaid Sequence Diagram** or **Flowchart** visualizing the updated lifecycle, data transformation, or execution flow.
-    3. Ensure diagram labels are concise and use valid Mermaid syntax.
-
-### Pass 3: Security, Privacy & Auth Compliance Audit
-*   **Action:**
-    1. **SQL Injection Check:** Ensure no string concats, template literals, or dynamic strings are executed as queries.
-    2. **Authorization Enforcement:** Confirm role-based permissions are enforced at the backend/database layer (e.g. Postgres RLS), not just hidden in the frontend UI.
-    3. **Input Sanitization:** Check for XSS vectors. All client input must be sanitized before storing or rendering raw HTML.
-    4. **Secrets Leaks:** Scan files for hardcoded API keys, private tokens, passwords, or credentials. Everything must load from environment variables.
-
-### Pass 4: Correctness, Logic Integrity & Boundary Safety Audit
-*   **Action:**
-    1. Scan modified functions for logical flaws. Verify:
-       *   **Boundary conditions:** Empty inputs, max limits, arrays of size 0 or 1.
-       *   **Null / Undefined:** Safe navigation (`?.`) or explicit guard clauses (`??`).
-       *   **Error Handling:** Ensure catch blocks don't swallow errors; trace if exceptions propagate safely.
-       *   **Async Operations:** Unhandled promise rejections, missing `await` keywords, or concurrent operations causing race conditions.
-    2. Review React component trees using `React Performance Best Practices` and Next.js App Router Best Practices (e.g., RSC/Client split, correct hooks dependencies, zero layout shifts).
-
-### Pass 5: Complexity Pruning & YAGNI Hunt (`ponytail` Review)
-*   **Action:**
-    1. Apply Anti-Overengineering & Bloat Audit to hunt down over-engineering:
-       *   Identify generic interfaces implemented by only a single class.
-       *   Flag wrapper components or utility layers that only delegate calls without adding value.
-       *   Scan for configuration objects prepared for "future use-cases."
-    2. **Platform Replacement Check:** Find custom logic that can be replaced with standard library features or native APIs:
-       *   *Example:* Custom date math replaced with native `Intl` or simple JS date operations.
-       *   *Example:* Custom state management replaced with React Context or compound components using `Component Composition Patterns`.
-    3. **Line Reduction Metric:** Calculate and propose simplification metrics:
-       `Pruning Opportunity: Net -<N> lines by removing [abstraction] and inlining logic.`
-
-### Pass 6: Performance, Memory & Resource Safety
-*   **Action:**
-    1. **Database performance:** Ensure foreign keys and columns in `WHERE` / `ORDER BY` / `JOIN` statements are indexed.
-    2. **Avoid N+1 queries:** Propose joins or DataLoader-style batch fetching instead of querying inside loops.
-    3. **React Performance:** Verify heavy computations are memoized using `useMemo`. Check that state isn't unnecessarily duplicated, triggering render storms.
-    4. **Mobile Performance:** Check that react-native animations execute on the UI thread using Reanimated. Avoid blocking the JS thread with heavy sync calculations.
-    5. **Rate Limiting:** Ensure heavy resource endpoints are rate-limited using `upstash-ratelimit-js`.
-
-### Pass 7: Automated Test Assessment & Unit Test Generation
-*   **Action:**
-    1. Review the accompanying test files:
-       *   Are there tests for the new/modified logic?
-       *   Do tests check both happy paths and failure conditions?
-       *   Are mock boundaries placed correctly (e.g., mocking external APIs, not database internals)?
-       *   Are tests deterministic, or do they rely on system time/random values?
-    2. **Auto-Generate Unit Tests:** Produce complete, runnable test snippets (using Jest, Vitest, or framework equivalent) covering happy paths, edge cases, and failure modes for any untested functions modified in the diff.
-
-### Pass 8: Tech-Stack Checklists & CodeRabbit Formatting
-*   **Action:**
-    1. Run technology-specific checklist audits.
-    2. Format findings using CodeRabbit 1-click ` ```suggestion ` blocks.
-    3. Keep natural language feedback structured, executive, and direct.
-    4. Run Strict Linting & Type Validation to ensure there are zero type or lint errors before outputting review.
-
----
-
-## Detailed Technology Checklists
-
-### 1. Web, React & Next.js
-*   [ ] **Server vs. Client Components:** Are React Server Components (RSC) utilized by default? Are Client Components (`"use client"`) only introduced at interactive leaves?
-*   [ ] **Hydration Warnings:** Are dynamic values (e.g., dates, locales, local storage) wrapped in client-only checks or dynamic imports to avoid hydration mismatches?
-*   [ ] **Metadata:** Does the page use `generateMetadata` correctly?
-*   [ ] **Image Optimization:** Are images utilizing the next-gen `<Image>` tag with explicit sizes to prevent CLS?
-*   [ ] **Effect Cleanup:** Do all effects return cleanup functions (e.g., `clearInterval`, event listener removals, subscription cancellations)?
-
-### 2. Mobile (React Native & Android)
-*   [ ] **UI Thread Animation:** Are all animations delegated to the native UI thread (e.g., using `useNativeDriver: true` or Reanimated)?
-*   [ ] **List Rendering:** Are large lists rendered via virtualized wrappers (e.g. `FlashList` or `FlatList`)?
-*   [ ] **Memory Management:** Are event handlers properly cleaned up in native modules?
-*   [ ] **Safe Areas:** Does the UI wrap content in safe area providers to prevent notch overlap?
-*   [ ] **Ref Marker Animation:** Are live GPS coordinates updated via component `ref` methods rather than triggering 60 FPS React state re-renders?
-
-### 3. Database (Postgres & Supabase)
-*   [ ] **RLS Security:** Is Row Level Security (RLS) enabled on all new tables containing user data?
-*   [ ] **Index Coverage:** Are foreign keys, join keys, and filter fields fully indexed?
-*   [ ] **Explicit Columns:** Does the code avoid `SELECT *` in favor of defined fields?
-*   [ ] **Constraint-driven logic:** Are data boundaries secured via `CHECK` or `FOREIGN KEY` constraints?
-
-### 4. Security & Authentication
-*   [ ] **Input Escaping:** Are inputs fully escaped to prevent XSS?
-*   [ ] **CSRF Protection:** Are API routes secured against Cross-Site Request Forgery?
-*   [ ] **Secure Cookies:** Are cookies containing JWTs or session tokens marked `HttpOnly`, `Secure`, and `SameSite`?
-*   [ ] **Secrets Isolation:** No private credentials hardcoded or exposed to the frontend browser context.
-
-### 5. Embedded / Hardware Firmware (ESP32 / C++)
-*   [ ] **No-Block Loop:** Is the main `loop()` strictly free of `delay()` calls? Are state machines driven by `millis()` checks?
-*   [ ] **Heap Safety:** Is standard `String` dynamic allocation avoided in continuous loops in favor of fixed `char[]` stack buffers and `snprintf`?
-*   [ ] **Actuator Protection:** Do solenoids and motors have hard-coded timer cutoffs (e.g. 5000ms max activation) to prevent thermal overload?
-*   [ ] **Photo-First Invariant:** Is photo capture completed before solenoid unlock triggers?
-
----
-
-## Code Smells & Refactoring Patterns
-
-### 1. Boolean Flag Proliferation
-*   **The Smell:** A function or component accepting multiple boolean flags, leading to exponential combination complexities.
-*   **Bad Code:**
-    ```typescript
-    interface ButtonProps {
-      isPrimary?: boolean;
-      isSecondary?: boolean;
-      isDanger?: boolean;
-      isWarning?: boolean;
-      isSuccess?: boolean;
-    }
-    ```
-*   **Good Code:**
-    ```typescript
-    interface ButtonProps {
-      variant?: 'primary' | 'secondary' | 'danger' | 'warning' | 'success';
-    }
-    ```
-
-### 2. Nesting Depth (Arrow Anti-Pattern)
-*   **The Smell:** Nested loops and conditionals that drift horizontally, making the logic difficult to trace.
-*   **Bad Code:**
-    ```typescript
-    function processUser(user) {
-      if (user) {
-        if (user.isActive) {
-          if (user.permissions) {
-            if (user.permissions.includes('admin')) {
-              // logic here
-            }
-          }
-        }
-      }
-    }
-    ```
-*   **Good Code:**
-    ```typescript
-    function processUser(user) {
-      if (!user || !user.isActive) return;
-      if (!user.permissions?.includes('admin')) return;
-      
-      // logic here
-    }
-    ```
-
-### 3. Missing Dependency Array Items
-*   **The Smell:** React hooks (`useEffect`, `useCallback`, `useMemo`) that list empty dependencies when utilizing outer-scope mutable variables.
-*   **Bad Code:**
-    ```typescript
-    const fetchData = useCallback(() => {
-      console.log(userId);
-    }, []); // userId is missing
-    ```
-*   **Good Code:**
-    ```typescript
-    const fetchData = useCallback(() => {
-      console.log(userId);
-    }, [userId]);
-    ```
-
----
-
-## Security Vulnerability Signatures
-
-### 1. SQL Injection (SQLi)
-*   **Vulnerable:**
-    ```typescript
-    const query = `SELECT * FROM users WHERE id = '${userId}'`;
-    await db.execute(query);
-    ```
-*   **Secure:**
-    ```typescript
-    const query = `SELECT * FROM users WHERE id = $1`;
-    await db.execute(query, [userId]);
-    ```
-
-### 2. Cross-Site Scripting (XSS)
-*   **Vulnerable:**
-    ```jsx
-    <div dangerouslySetInnerHTML={{ __html: userInput }} />
-    ```
-*   **Secure:**
-    ```jsx
-    <div>{userInput}</div> // Auto-escaped by React
-    // Or if HTML is required:
-    <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(userInput) }} />
-    ```
-
-### 3. Missing Authorization Check (BOPA/IDOR)
-*   **Vulnerable:**
-    ```typescript
-    // Endpoint deletes items strictly by ID without verifying the caller owns it
-    app.delete('/api/items/:id', async (req, res) => {
-      await db.items.delete(req.params.id);
-      res.sendStatus(200);
-    });
-    ```
-*   **Secure:**
-    ```typescript
-    app.delete('/api/items/:id', async (req, res) => {
-      const item = await db.items.find(req.params.id);
-      if (item.ownerId !== req.user.id) return res.sendStatus(403);
-      await db.items.delete(req.params.id);
-      res.sendStatus(200);
-    });
-    ```
-
----
-
-## TypeScript Safety & Static Checking
-
-### 1. The `any` Escape Hatch
-*   **The Smell:** Using `any` bypasses static analysis and leads to silent runtime crashes when API structures change.
-*   **Bad Code:**
-    ```typescript
-    function handleResult(data: any) {
-      return data.result.user.name;
-    }
-    ```
-*   **Good Code:**
-    ```typescript
-    interface UserResult {
-      result: {
-        user: {
-          name: string;
-        }
-      }
-    }
-    function handleResult(data: UserResult) {
-      return data.result.user.name;
-    }
-    ```
-
-### 2. Non-Null Assertions
-*   **The Smell:** Using the `!` assertion operator tells the compiler to ignore potential null/undefined checks, which results in `TypeError: Cannot read properties of null` at runtime.
-*   **Bad Code:**
-    ```typescript
-    const name = user!.profile!.firstName;
-    ```
-*   **Good Code:**
-    ```typescript
-    const name = user?.profile?.firstName ?? 'Guest';
-    ```
-
----
-
-## Git & PR Cleanliness Guidelines
-
-### 1. Atomic Commits
-*   Ensure changes are broken into small, logical increments. Prohibit single commits containing multiple unrelated feature updates (e.g. "fixes map and updates auth dependencies").
-*   Enforce Conventional Commits styling:
-    *   `feat(scope): add real-time GPS tracking`
-    *   `fix(scope): resolve null coordinate error in map layout`
-    *   `docs(scope): update ADR for caching strategy`
-
-### 2. Dependency Changes
-*   Check that any changes to `package.json` are accompanied by lockfile updates (`package-lock.json` or `pnpm-lock.yaml`).
-*   Audit newly introduced packages: check bundle impact, active maintainer health, and license type. Prohibit non-MIT/non-Apache licenses in production libraries.
-
----
-
-## Universal Checklists & Reference Architecture
-
-### 1. Complexity Pruning Check (`ponytail`)
-*   **YAGNI Enforcements:**
-    *   No empty interfaces or single-use abstractions.
-    *   No helper/wrapper methods that add zero transformation or logging value.
-    *   Ensure configuration properties are used immediately in active code paths.
-*   **Code Base Minimization:** Identify custom utility code that replicates native JS operations (such as array maps, date formatting, and string padding) and recommend native standard API replacements.
-
-### 2. Code Review Checklist Categories (Severity-Tiered Code Review (Blocker/Major/Minor/Nit))
-*   **Correctness:** Check edge/empty inputs, null/undefined navigation checks, catch-block recovery validation.
-*   **Security:** Verify parameters are not vulnerable to SQL injection, check for hardcoded secrets, and confirm auth checks occur on the server side.
-*   **Tests:** Verify regression coverage exists for any bugfix.
-
-### 3. Next.js Routing & Action Boundaries (Next.js App Router Best Practices)
-*   **Server Actions Authorization:** Confirm Server Actions validate authentication status *inside* the function block. Never trust client context implicitly:
-    ```typescript
-    // Server action check inside use server function
-    "use server";
-    export async function updateRecord(id: string, payload: unknown) {
-      const session = await getSession();
-      if (!session || session.role !== 'admin') throw new Error('Unauthorized');
-      await db.update(id, payload);
-    }
-    ```
-*   **Async Params Checklist:** Verify dynamic layouts/pages await `params` and `searchParams` properties.
-
-### 4. Terse Feedback Delivery (Concise 1-Line Actionable Review)
-*   Keep comments concise and direct: state the line, point out the exact code smell, and suggest the fix directly without conversational filler.
-
-### 5. Automated Review Scripting Check (Strict Linting & Type Validation)
-*   **Static Analysis Harness:** Run custom linters or shell checkers locally to parse modifications before human review:
-    ```javascript
-    // Script: scripts/lint-diff.js
-    const { execSync } = require('child_process');
-    
-    // Extract modified TS files from active git branch
-    const files = execSync('git diff --name-only origin/main')
-      .toString()
-      .split('\n')
-      .filter(f => f.endsWith('.ts') || f.endsWith('.tsx'));
-      
-    if (files.length > 0) {
-      console.log(`Running strict verification on ${files.length} modified files...`);
-      execSync(`npx eslint ${files.join(' ')} --max-warnings=0`, { stdio: 'inherit' });
-      execSync(`npx tsc --noEmit`, { stdio: 'inherit' });
-    } else {
-      console.log('No modified TypeScript files found to lint.');
-    }
-    ```
-
----
-
-## Actionable Review Output Template (CodeRabbit Format)
-
-When providing review feedback, format the output strictly using this structure:
-
-````markdown
-# 🐰 PR Review & Audit Report: [PR / Branch Name]
-
-## 📝 Executive Summary
-- **Primary Intent**: [1-2 sentences summarizing what this PR accomplishes]
-- **Key Changes**:
-  - [Component/Module 1]: [Brief summary of modification]
-  - [Component/Module 2]: [Brief summary of modification]
-- **Architectural Impact**: [Low / Medium / High] - [Brief explanation of subsystem impact]
-
----
-
-## 📐 Visual Architecture & Data Flow
-```mermaid
-sequenceDiagram
-    autonumber
-    actor User
-    participant Frontend as Frontend / App
-    participant API as Backend API
-    participant DB as Postgres (Supabase)
-
-    User->>Frontend: Trigger Action
-    Frontend->>API: Request with Auth Header
-    API->>DB: Query with RLS Context
-    DB-->>API: Filtered Data
-    API-->>Frontend: 200 OK (Sanitized DTO)
-    Frontend-->>User: Render Updated UI
+# Ultimate Code Review & Audit Workflow (10/10 Big Tech & Safety-Critical Master Engine)
+
+This workflow is the definitive 10/10 automated code review and pull request audit system. It unifies the aerospace rigor of **NASA JPL**, the concurrency and UI fluidity of **Apple**, the velocity and health principles of **Google**, the testing/revert discipline of **Meta**, the blast-radius containment of **Amazon**, the chaos resilience of **Netflix**, the financial precision of **Stripe**, the empirical sizing dynamics of **Microsoft**, and the agentic pre-merge quality gating of **CodeRabbit AI**.
+
+```
+                                      [PULL REQUEST / CODE DIFF]
+                                                   │
+                        ┌──────────────────────────┴──────────────────────────┐
+                        ▼                                                     ▼
+           [ADAPTIVE DEPTH ROUTER]                               [INCIDENT IMMUNE SYSTEM]
+           ├─ ⚡ LIGHTNING (<=50 LOC, Docs/Nits)                 └─ Cross-checks historical CVEs,
+           ├─ 🛡️ STANDARD (50-400 LOC, Features)                    rollback triggers & regressions
+           └─ 🚀 MISSION-CRITICAL (Auth/Money/Safety)
+                        │
+                        ▼
+     ┌──────────────────┬──────────────────┬──────────────────┬──────────────────┬──────────────────┐
+     ▼                  ▼                  ▼                  ▼                  ▼                  ▼
+┌──────────┐       ┌──────────┐       ┌──────────┐       ┌──────────┐       ┌──────────┐       ┌──────────┐
+│ NASA JPL │       │  APPLE   │       │  GOOGLE  │       │   META   │       │  AMAZON  │       │  STRIPE  │
+│ Safety   │       │ 0-Hang & │       │ Health & │       │ Test &   │       │ Blast    │       │ Idempo-  │
+│ Power 10 │       │ Concurr. │       │ Velocity │       │ Revert   │       │ Radius   │       │ tency    │
+└────┬─────┘       └────┬─────┘       └────┬─────┘       └────┬─────┘       └────┬─────┘       └────┬─────┘
+     │                  │                  │                  │                  │                  │
+     └──────────────────┴──────────────────┼──────────────────┴──────────────────┴──────────────────┘
+                                           ▼
+                             [10-PASS DEEP AUDIT PIPELINE]
+                                           ▼
+                     ┌───────────────────────────────────────────┐
+                     │ • Executive Summary & Change Stack        │
+                     │ • Meta-Style Test Plan & Revert Plan      │
+                     │ • Mermaid Architecture & Flow Diagrams    │
+                     │ • Amazon Blast Radius & FMEA Risk Matrix  │
+                     │ • Stripe Idempotency & Money Invariants   │
+                     │ • Multi-Language AST Pattern Detections   │
+                     │ • 1-Click Drop-In Suggestions (```diff)   │
+                     │ • 🤖 "Fix All with AI" Agent Prompts      │
+                     │ • Mutation-Hardened Test Suite (MSI>=90%) │
+                     │ • Pre-Merge Gate: Request Changes / Pass  │
+                     └───────────────────────────────────────────┘
 ```
 
 ---
 
-## 📊 PR Quality Scorecard
+## ⚡ Adaptive Depth Scaling (Zero-Latency Dynamic Router)
 
-| Domain | Status | Rating | Notes |
+To eliminate review fatigue and guarantee sub-second feedback for small changes while providing deep formal verification for critical paths, the review engine scales its depth dynamically:
+
+| Mode | Trigger Conditions | Audit Passes Executed | Target Turnaround |
 |---|---|---|---|
-| **Security & Auth** | 🟢 Pass / 🔴 Action Req | 9/10 | [Brief summary] |
-| **Logic & Correctness** | 🟢 Pass / 🔴 Action Req | 8/10 | [Brief summary] |
-| **Performance & Memory** | 🟢 Pass / 🔴 Action Req | 9/10 | [Brief summary] |
-| **YAGNI & Complexity** | 🟢 Pass / 🔴 Action Req | 10/10 | [Brief summary] |
-| **Test Coverage** | 🟡 Needs Tests | 6/10 | [Test generation provided below] |
-| **UX & Accessibility** | 🟢 Pass / 🔴 Action Req | 9/10 | [Brief summary] |
+| ⚡ **Lightning Mode** (`--fast`) | PRs $\le 50$ lines, pure docs, UI styling nits, non-functional refactors. | Passes 1, 3 (Secrets scan), 7 (YAGNI), 10 (Fast Suggestion). | $< 5\text{ minutes}$ |
+| 🛡️ **Standard Mode** | PRs $50 - 400$ lines, standard feature additions, API modifications. | All 10 Passes with comprehensive scorecard and test synthesis. | $< 30\text{ minutes}$ |
+| 🚀 **Mission-Critical Mode** (`--nasa`, `--apple`, `--stripe`) | Code touching `auth/`, `payments/`, `billing/`, `db/migrations/`, `firmware/`, or PRs $> 400$ lines. | Full 10 Passes + FMEA Failure Mode Analysis + Mutation Testing ($\text{MSI} \ge 90\%$) + Two-Tier Sign-off. | Deep Formal Audit |
 
 ---
 
-## 🔍 Line-by-Line Code Review & Suggestions
+## 🏛️ Big Tech Engineering Review Standards & Quality Invariants
+
+### 1. NASA JPL Safety-Critical Engineering Standard ("Power of 10" — Gerard J. Holzmann)
+*Target: System-level determinism, embedded firmware, backend algorithms, and critical state machines.*
+
+1. **Simple Control Flow (Rule 1)**: Zero recursion (direct or indirect), zero `goto`, zero `setjmp`/`longjmp`. Call graphs must be strictly acyclic.
+2. **Fixed Loop Upper Bounds (Rule 2)**: Every loop MUST have a statically verifiable bound (`attempts < MAX_ATTEMPTS`). Infinite loops and unbounded polling are immediate merge blockers.
+3. **Deterministic Memory Lifecycle (Rule 3)**: Zero dynamic heap allocations (`malloc`, `new`, unbounded array growth) after system initialization in real-time execution loops.
+4. **Function Length Constraint (Rule 4)**: Functions MUST NOT exceed 60 lines of code (printable on a single standard sheet of paper).
+5. **High Assertion Density & Fail-Safe Recovery (Rule 5)**: Minimum 2 runtime assertions per non-trivial function. Assertions must be side-effect-free boolean tests with explicit recovery actions upon failure.
+6. **Smallest Lexical Scope (Rule 6)**: Declare all variables at the smallest possible lexical scope; ban global mutable state.
+7. **Mandatory Return & Parameter Validation (Rule 7)**: 100% of non-void return values MUST be inspected; 100% of input parameters MUST be validated at function entry.
+8. **Preprocessor & Macro Hygiene (Rule 8)**: Preprocessor limited to file inclusion and basic constants; ban token pasting (`##`), variable arguments (`...`), and macro recursion.
+9. **Strict Pointer & Indirection Limits (Rule 9)**: Maximum 1 level of pointer dereferencing (`*ptr`); ban raw function pointers in safety paths.
+10. **Zero Compiler Warnings (Rule 10)**: Compile with pedantic warnings enabled (`-Wall -Wextra -Werror`, `tsc --strict --noImplicitAny`) with zero tolerated warnings.
+
+---
+
+### 2. Apple Senior Software Engineer Standard (Performance, Concurrency & UI Hygiene)
+*Target: UI responsiveness, frame budgets, data-race freedom, battery/thermal management, and platform privacy.*
+
+1. **0-Hang Main Thread Invariant ($< 100\text{ ms}$)**:
+   - UI and main thread operations MUST complete in $< 100\text{ ms}$.
+   - Zero synchronous disk I/O, heavy JSON parsing, cryptographic hashing, or network calls on the main thread / `@MainActor`.
+   - Zero waiting on locks, semaphores, or synchronous dispatch on the main thread (prevents priority inversion).
+2. **0-Hitch UI & 120Hz ProMotion Frame Budget**:
+   - Frame hitch rate MUST remain $\le 10\text{ ms/s}$ (warning $\le 25\text{ ms/s}$, critical $> 50\text{ ms/s}$).
+   - Respect frame commit deadlines: **8.33 ms** for 120Hz ProMotion, **16.67 ms** for 60Hz displays.
+   - Enforce list virtualization (`FlashList`, `LazyVStack`) and offload complex layout math.
+3. **Swift 6+ Concurrency & Data-Race Safety**:
+   - Default UI views and ViewModels to `@MainActor`; escape with explicit `@concurrent` background functions.
+   - All types crossing concurrency boundaries MUST conform to `Sendable`.
+   - Audit `Task.detached` (drops actor context and task-locals) and treat `assumeIsolated` as an uncompromising contract.
+4. **ARC & Memory Leak Elimination**:
+   - Enforce `[weak self]` in closures, network callbacks, timer handlers, and async stream continuations.
+   - Use explicit `autoreleasepool` in tight allocation loops processing batches of objects.
+5. **Thermal & Energy Governance**:
+   - Adapt to system thermal state (`ProcessInfo.thermalState`); gracefully degrade rendering fidelity during thermal throttling.
+   - Eliminate view over-invalidation in SwiftUI/React; observe minimal state slices to prevent environment churn.
+6. **Container Sandboxing & Privacy (App Store Guidelines 2.5.1 & 2.5.2)**:
+   - Zero filesystem access outside assigned sandboxes; only public documented APIs; zero unredacted PII in logs.
+
+---
+
+### 3. Google Engineering Review Standard (Code Health & Velocity)
+*Target: Codebase maintainability, team velocity, and objective review criteria.*
+
+1. **Directional Code Health Over Perfection**:
+   - The primary purpose of code review is to ensure the codebase improves directionally over time.
+   - Do not block PRs over subjective aesthetic preferences if the code is safe, tested, and a net improvement.
+2. **Review Turnaround Velocity**:
+   - First review turnaround target: $< 4\text{ hours}$ (median). Fast feedback prevents context decay and merge conflicts.
+3. **Single-Reviewer Ownership**:
+   - 75% of changes require only 1 reviewer to eliminate responsibility diffusion.
+4. **Explicit Distinction: Mandatory vs. Educational Suggestions**:
+   - Review comments clearly distinguish between blockers (bugs, security, contract breakages) and informational mentoring notes (`Nit:` or `FYI:`).
+
+---
+
+### 4. Meta (Facebook) Engineering Standard (Test Plans, Revert Plans & Stacked Diffs)
+*Target: Change verification, disaster recovery, and change decomposition.*
+
+1. **Mandatory Reproducible Test Plan**:
+   - Every PR/diff MUST include a detailed "Test Plan" specifying exact reproduction steps, edge cases tested, and failure simulation results.
+2. **Explicit Revert Plan**:
+   - Critical PRs must include a "Revert Plan" documenting how an on-call engineer with zero domain knowledge can safely revert the PR during an incident.
+3. **Stacked Diffs (Small Atomic Changes)**:
+   - Break large features into linear stacks of small, atomic changes (median size $\sim 35$ lines).
+   - Strictly separate pure refactorings from functional logic modifications.
+4. **Concurrent Change Robustness**:
+   - Ensure signatures and database contracts are robust against race conditions from concurrent PR landings.
+
+---
+
+### 5. Amazon & AWS Engineering Standard (Blast Radius & Operational Readiness)
+*Target: Fault isolation, distributed resilience, and production telemetry.*
+
+1. **Blast Radius Minimization & FMEA Risk Scoring**:
+   - Audit every change for its failure boundary: If this code throws, stalls, or corrupts state, what downstream subsystems fail?
+   - Apply service isolation, regional cell architecture, and bulkhead patterns to contain damage.
+2. **Defensive Distributed Communications**:
+   - 100% of network calls, HTTP requests, and RPCs MUST configure explicit timeouts, circuit breakers, and exponential backoff with full jitter.
+3. **Operational Readiness Review (ORR) Gating**:
+   - Changes introducing new services or critical endpoints must include CloudWatch/Datadog metrics, error alarms, SLI/SLO dashboards, and runbook links.
+4. **Principal Engineer / Two-Tier Sign-Off**:
+   - High blast-radius mutations (core auth, routing, billing infrastructure) require secondary Principal Engineer sign-off.
+
+---
+
+### 6. Netflix Engineering Standard (Chaos Resilience & Graceful Degradation)
+*Target: Failure tolerance, backward-compatible evolutions, and zero cascading outages.*
+
+1. **Chaos & Failure Invariants**:
+   - Code must assume downstream microservices will fail; every external integration MUST provide a fallback path or graceful degradation.
+2. **Expand-Contract (Parallel Run) Migration Pattern**:
+   - Database schema and API contract evolutions must support old and new versions simultaneously before deprecation.
+3. **Adaptive Circuit Breakers**:
+   - Prevent cascading failures by wrapping cross-service dependencies in auto-tripping circuit breakers and in-memory caches (EVCache / Redis).
+
+---
+
+### 7. Stripe Engineering Standard (Idempotency & Financial Precision)
+*Target: Financial correctness, exact-once execution, and perpetual API stability.*
+
+1. **100% Idempotency on Mutating Endpoints**:
+   - All state-mutating HTTP requests (`POST`/`PUT`/`PATCH`) and background workers MUST require and enforce `Idempotency-Key` headers (UUID v4) cached for 24-72 hours.
+2. **Double-Entry Ledger Integrity**:
+   - Zero floating-point arithmetic for currency (enforce integer minor units e.g., cents / satoshis).
+   - Financial ledger entries must maintain mathematical conservation: $\sum \text{debits} = \sum \text{credits}$.
+3. **Pinnable API Versioning & Backward Compatibility**:
+   - Public API response shapes must never break; use transformation layers to translate modern models to older pinned versions.
+4. **Multi-Party Sign-Off on Money-Movement Paths**:
+   - Mandatory multi-engineer review on `payments/`, `payouts/`, `billing/`, and `ledger/` directories.
+
+---
+
+### 8. Microsoft Research Standard (PR Size & Quality Dynamics)
+*Target: Defect detection curves and empirical software engineering metrics.*
+
+1. **Line Count vs. Defect Rate Curve**:
+   - **$\le 200$ Lines**: Optimal review quality and highest defect detection rate ($\ge 75\%$).
+   - **$200 - 400$ Lines**: Acceptable range for comprehensive feature updates.
+   - **$400 - 800$ Lines**: Defect detection effectiveness drops by 50%.
+   - **$> 800$ Lines**: Defect detection drops sharply; mandatory rejection and PR splitting required.
+2. **Automated Pre-Merge Security Gates**:
+   - Automated CredScan (secrets), Component Governance (SCA for CVEs), and static code analysis must pass before human inspection.
+
+---
+
+### 9. CodeRabbit AI Agentic Quality Gate Standard
+*Target: AST-based structural checking, 1-click remediation, and automated merge blocking.*
+
+1. **Three-Tier Quality Gate**:
+   - **Tier 1 (CLI / IDE)**: Shift-left pre-commit linting and sanity audit.
+   - **Tier 2 (Contextual PR Review)**: Whole-repo codegraph analysis, cross-file caller/callee tracing, and AST-grep structural pattern matching.
+   - **Tier 3 (Pre-Merge Blocking Gate)**: Automated "Request Changes" workflow blocking merges until all Blocker/Major issues resolve.
+2. **AST-Based Structural Enforcement (`ast-grep` / Semgrep)**:
+   - Evaluates code shape over regex: flags `any` escapes, non-null assertions (`!`), raw SQL interpolation, unhandled promises, and missing status codes.
+3. **Change Stack & Blast Radius Cohorts**:
+   - Organizes PRs into structured reading order: **Contracts $\rightarrow$ Domain Logic $\rightarrow$ UI/Integrations $\rightarrow$ Migrations $\rightarrow$ Tests**.
+4. **1-Click Suggestion Diffs (` ```suggestion `)** + **🤖 "Fix All with AI Agents"**:
+   - Drop-in copy-paste fixes and consolidated autonomous agent prompts for instant remediation.
+5. **Confidence Scoring ($\ge 0.85$) & Precision Filtering**:
+   - Filters out noisy or speculative comments to maintain high signal-to-noise ratio.
+6. **Mutation Testing (Stryker MSI Indicator)**:
+   - Verifies tests survive boundary swaps (`>` to `>=`), boolean flips (`&&` to `||`), and conditional removals ($\text{MSI} \ge 90\%$).
+
+---
+
+## 🌐 Multi-Language AST Anti-Pattern Catalog
+
+### 1. TypeScript / JavaScript
+- **`any` Escape Hatch**: `ast-grep` pattern: `type: any` $\rightarrow$ Enforce strict interfaces or `unknown` with type narrowing.
+- **Forced Non-Null Assertion**: `ast-grep` pattern: `$EXPR!` $\rightarrow$ Enforce optional chaining `?.` or explicit nullish coalescing `??`.
+- **Unhandled Async Catch**: `ast-grep` pattern: `catch ($E) {}` $\rightarrow$ Enforce structured logging & error rethrowing.
+
+### 2. Swift / iOS
+- **Strong Self Closure Capture**: Pattern: `{ response in self.process(response) }` $\rightarrow$ Enforce `[weak self]` guard.
+- **Unchecked MainActor Hop**: Pattern: `DispatchQueue.main.sync` $\rightarrow$ Enforce `MainActor.run` or `@MainActor` isolation.
+- **Synchronous File/DB I/O on Main**: Pattern: `Data(contentsOf: url)` on MainActor $\rightarrow$ Offload to background task pool.
+
+### 3. Python
+- **Mutable Default Arguments**: Pattern: `def fn(items=[])` $\rightarrow$ Enforce `items=None` with `items = items or []`.
+- **Bare Except**: Pattern: `except:` $\rightarrow$ Enforce specific exception classes (`except ValueError:`).
+
+### 4. Go
+- **Unchecked Error Returns**: Pattern: `val, _ := fn()` $\rightarrow$ Enforce explicit `if err != nil { return nil, err }`.
+- **Goroutine Leak on Unbuffered Channel**: Pattern: `go func() { ch <- val }()` without cancellation context $\rightarrow$ Require `select { case <-ctx.Done(): ... }`.
+
+### 5. C / C++ / Embedded
+- **Unbounded While Loop**: Pattern: `while(true)` without internal break counter $\rightarrow$ Require `while (attempts < MAX_ATTEMPTS)`.
+- **Dynamic Heap in Runloop**: Pattern: `malloc()` or `new` inside `void loop()` $\rightarrow$ Require static buffer pool allocation.
+
+### 6. SQL / Database
+- **Raw String Query Interpolation**: Pattern: `SELECT * FROM $TABLE WHERE id = '$ID'` $\rightarrow$ Parameterized `$1, $2`.
+- **Unindexed Foreign Key**: Table creation with `FOREIGN KEY` lacking corresponding `CREATE INDEX`.
+
+---
+
+## 🎯 Review Severity Matrix & Blocking Policies
+
+| Severity | Definition | Examples | Merge Policy |
+|---|---|---|---|
+| 🚨 **Blocker** | NASA safety violation, security vulnerability, data loss, financial discrepancy, unbounded loop, memory leak, main-thread hang ($> 100\text{ms}$), missing idempotency key. | Unbounded while loop; raw SQL concatenation; missing Postgres RLS; strong retain cycle; float math in billing; missing idempotency on payment POST; sync I/O on UI thread. | **BLOCKS MERGE.** Requires fix and re-audit. |
+| ⚠️ **Major** | Apple performance violation, missing test plan, high blast radius without circuit breaker, missing error recovery, function $> 60$ lines, PR $> 400$ lines. | SwiftUI/React view over-invalidation; missing regression test; missing test/revert plan; non-Sendable type across concurrency boundary; missing timeout on remote RPC. | **BLOCKS MERGE** unless explicit lead approval. |
+| 💡 **Minor** | Suboptimal implementation, minor efficiency issue, YAGNI over-abstraction, readability improvement. | Custom date math instead of native `Intl`; single-use interface wrapper; missing type narrowing; missing docstring on public API. | **Recommended cleanup.** Does not block merge. |
+| 🔍 **Nit** | Micro-stylistic detail, comment typo, non-functional formatting. | Variable rename for clarity; typo in code comment; minor whitespace alignment. | **Informational.** Developer discretion. |
+
+---
+
+## 🔬 The 10-Pass Deep Audit Pipeline
+
+```
+[PR Diff] ──► Pass 1: Context, Change Stack & Blast Radius (Google/Amazon/Microsoft)
+          ──► Pass 2: Visual Architecture & Data Flow (Mermaid)
+          ──► Pass 3: Security, Privacy & Auth Compliance (OWASP/Apple Sandbox)
+          ──► Pass 4: NASA JPL Safety-Critical Invariants (Power of 10)
+          ──► Pass 5: Apple Performance, Concurrency & Main-Thread Hygiene
+          ──► Pass 6: Stripe Idempotency, Financial & Distributed Resilience (Netflix/Amazon)
+          ──► Pass 7: Ponytail YAGNI Pruning & Complexity Reduction
+          ──► Pass 8: Multi-Language AST Deep Pattern Audits
+          ──► Pass 9: Meta Test/Revert Plans & Mutation Test Synthesis (MSI >= 90%)
+          ──► Pass 10: Pre-Merge Quality Gate, 1-Click Suggestions & AI Fix Prompts
+```
+
+---
+
+## 🐰 Actionable PR Review Output Format
+
+Reviews MUST be rendered in this precise, executive structure:
+
+````markdown
+# 🛡️ 10/10 Master PR Review & Engineering Audit: [PR Title / Branch Name]
+
+## 📝 1. Executive Summary, Change Stack & Meta Plans
+- **Primary Objective**: [1-2 sentence high-level summary]
+- **Review Mode**: [⚡ Lightning / 🛡️ Standard / 🚀 Mission-Critical]
+- **PR Size Audit (Microsoft Curve)**: [N] lines changed — [🟢 Peak Quality $\le 200$ / 🟡 Acceptable $\le 400$ / 🔴 Split Required $> 800$]
+- **Change Stack (Reading Order)**:
+  1. *Contracts & Models*: [`src/types/auth.ts`](file:///src/types/auth.ts)
+  2. *Domain Logic*: [`src/services/authService.ts`](file:///src/services/authService.ts)
+  3. *UI & Presentation*: [`src/components/LoginForm.tsx`](file:///src/components/LoginForm.tsx)
+  4. *Test Suite*: [`src/services/__tests__/authService.test.ts`](file:///src/services/__tests__/authService.test.ts)
+- **Subsystem Blast Radius & FMEA Risk**: [Low / Medium / High] — [Downstream services affected and containment boundaries]
+- **Meta-Style Test Plan**:
+  - [x] Tested happy path with valid authentication credentials.
+  - [x] Simulated expired token failure and verified graceful redirect.
+  - [x] Verified network retry with identical `Idempotency-Key` does not duplicate ledger entry.
+- **Meta-Style Revert Plan**:
+  - Revert commit `abc1234`. No database migration rollback required. Safe for immediate zero-downtime rollback by on-call.
+
+---
+
+## 📐 2. Visual Architecture & Execution Flow
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Client as Client App
+    participant API as API Handler
+    participant Circuit as Circuit Breaker (Netflix)
+    participant Worker as Background Worker (@concurrent)
+    participant DB as Postgres (Supabase RLS)
+
+    Client->>API: POST /api/v1/charge (Idempotency-Key: UUIDv4)
+    API->>API: NASA Rule 7: Validate Input & Idempotency Key
+    API->>Circuit: Execute Payment Request
+    alt Circuit Open (Downstream Degraded)
+        Circuit-->>API: Graceful Fallback Response
+    else Circuit Closed (Healthy)
+        Circuit->>Worker: Dispatch Charge Processing
+        Worker->>DB: Record Double-Entry Ledger (Integer Cents)
+        DB-->>Worker: Commit Success
+        Worker-->>API: Charge Confirmation
+        API-->>Client: 201 Created (Cached Idempotency Result)
+    end
+```
+
+---
+
+## 📊 3. Big Tech Engineering Quality Scorecard
+
+| Standard & Domain | Status | Rating | Key Audit Findings |
+|---|---|---|---|
+| 🚀 **NASA JPL Safety** (Loops, Memory, Bounds) | 🟢 Pass / 🔴 Blocker | 10/10 | Bounded loops; $\ge 2$ assertions/func; no recursion. |
+| 🍏 **Apple Senior SWE** (0-Hang, 0-Hitch, Concurrency) | 🟢 Pass / 🔴 Blocker | 10/10 | Main thread clean; `@MainActor` isolated; ARC checked. |
+| 💳 **Stripe Idempotency & Financial Rigor** | 🟢 Pass / 🔴 Blocker | 10/10 | UUIDv4 idempotency keys; integer cents; ledger balanced. |
+| ☁️ **Amazon Blast Radius & Distributed Resilience** | 🟢 Pass / 🟡 Warning | 10/10 | Timeouts configured; backoff jitter added; bulkhead safe. |
+| 🍿 **Netflix Chaos & Graceful Degradation** | 🟢 Pass / 🟡 Warning | 10/10 | Circuit breaker active; fallback responses defined. |
+| 🔍 **Google Code Health & Velocity** | 🟢 Pass / 💡 Minor | 10/10 | Directional health improvement; clean single-responsibility. |
+| ✂️ **YAGNI & Complexity Pruning** (`ponytail`) | 🟢 Pass / 💡 Minor | 10/10 | Net -38 lines pruned; zero premature abstractions. |
+| 🧪 **Mutation Test Coverage** (MSI $\ge 90\%$) | 🟢 Pass / 🟡 Warning | 10/10 | Unit test suite generated; boundary mutants killed. |
+
+**Pre-Merge Quality Gate Decision**: 🚨 **REQUEST CHANGES** / 🟢 **APPROVE**
+
+---
+
+## 🔍 4. Line-by-Line Code Review & 1-Click Suggestions
 
 ### 🚨 Blocker Severity
 
-#### 1. Unparameterized SQL Query risking SQL Injection
-- **Location**: [`src/api/users.ts:L42-L45`](file:///src/api/users.ts#L42-L45)
-- **Problem**: Template string interpolation directly injects `userId` into raw SQL query, allowing SQL injection attacks.
-- **Why it Matters**: Malicious input in `userId` can bypass authentication or wipe database tables.
-- **1-Click Suggestion**:
+#### 1. [Finding Title]
+- **Standard Violated**: [Stripe Idempotency / NASA JPL Rule 2 / Apple Concurrency / OWASP Top 10]
+- **Location**: [`src/services/payment.ts:L45-L52`](file:///src/services/payment.ts#L45-L52)
+- **Problem**: [Precise technical description of defect]
+- **Why it Matters**: [Double charge risk, infinite loop, memory leak, or security flaw]
+- **Confidence Score**: 0.98
+- **1-Click Drop-in Fix**:
 ```suggestion
-    const query = `SELECT id, name, email FROM users WHERE id = $1`;
-    const result = await db.query(query, [userId]);
+    // Stripe Standard: Enforce Idempotency Key validation
+    const idempotencyKey = req.headers['idempotency-key'];
+    if (!idempotencyKey) {
+      throw new BadRequestError('Idempotency-Key header is required for payment operations');
+    }
 ```
 
 ---
 
 ### ⚠️ Major Severity
 
-#### 2. Re-render loop on high-frequency GPS coordinate updates
-- **Location**: [`src/components/RiderMap.tsx:L88-L94`](file:///src/components/RiderMap.tsx#L88-L94)
-- **Problem**: Storing live GPS position in React component state triggers 60 FPS re-renders of the entire map subtree.
-- **Why it Matters**: Causes severe UI lag, dropped frames, and excessive battery drain on mobile clients.
-- **1-Click Suggestion**:
+#### 2. [Finding Title]
+- **Standard Violated**: [Amazon Blast Radius / Netflix Fallback / Apple 0-Hang]
+- **Location**: [`src/clients/downstream.ts:L30-L38`](file:///src/clients/downstream.ts#L30-L38)
+- **Problem**: [Remote call without explicit timeout or circuit breaker]
+- **Why it Matters**: [Downstream latency spikes can exhaust worker pool and crash parent service]
+- **Confidence Score**: 0.94
+- **1-Click Drop-in Fix**:
 ```suggestion
-    // Use ref to animate marker directly without state re-renders
-    const markerRef = useRef<MarkerRef>(null);
-    markerRef.current?.animateMarkerToCoordinate(nextCoordinate, 500);
+    // Amazon Standard: Timeout + Exponential Backoff with Jitter
+    const response = await fetchWithTimeout(url, {
+      timeoutMs: 3000,
+      retries: 3,
+      backoffFactor: 2,
+      jitter: true,
+    });
 ```
 
 ---
 
-### 💡 Minor Severity & 🔍 Nits
+### 💡 Minor & 🔍 Nits
 
-#### 3. Redundant helper function duplicating native Array API
-- **Location**: [`src/utils/helpers.ts:L12-L18`](file:///src/utils/helpers.ts#L12-L18)
-- **Problem**: Custom array flattening helper replaces native `Array.prototype.flat()`.
-- **1-Click Suggestion**:
+#### 3. [Finding Title]
+- **Location**: [`src/utils/format.ts:L12-L18`](file:///src/utils/format.ts#L12-L18)
+- **Pruning Opportunity**: Net -6 lines by replacing custom formatter with native `Intl`.
+- **1-Click Drop-in Fix**:
 ```suggestion
-    const flatItems = items.flat();
+    const formatted = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(cents / 100);
 ```
 
 ---
 
-## 🧪 Auto-Generated Unit Test Suite
-
-The following unit tests cover untested functions modified in this PR:
+## 🧪 5. Mutation-Hardened Auto-Generated Test Suite (MSI $\ge 90\%$)
 
 ```typescript
-// src/api/__tests__/users.test.ts
-import { validateAndFormatUser } from '../users';
+// src/services/__tests__/payment.test.ts
+import { describe, it, expect, vi } from 'vitest';
+import { processPayment } from '../payment';
 
-describe('validateAndFormatUser', () => {
-  it('should format valid user input correctly', () => {
-    const input = { id: 'usr_123', email: 'test@example.com' };
-    const result = validateAndFormatUser(input);
-    expect(result).toEqual({ id: 'usr_123', email: 'test@example.com', isVerified: true });
+describe('processPayment (Big Tech Hardened)', () => {
+  it('deduplicates requests with matching idempotency keys (Stripe Standard)', async () => {
+    const key = '550e8400-e29b-41d4-a716-446655440000';
+    const firstCall = await processPayment({ key, amountInCents: 5000 });
+    const secondCall = await processPayment({ key, amountInCents: 5000 });
+    expect(secondCall.transactionId).toBe(firstCall.transactionId);
   });
 
-  it('should throw validation error on missing email', () => {
-    const input = { id: 'usr_123', email: '' };
-    expect(() => validateAndFormatUser(input)).toThrow('Invalid email');
+  it('fails fast on invalid negative currency bounds (NASA JPL Rule 7)', async () => {
+    await expect(processPayment({ key: 'test', amountInCents: -100 })).rejects.toThrow('Invalid amount');
   });
 
-  it('should handle null or undefined input gracefully', () => {
-    expect(() => validateAndFormatUser(null)).toThrow('User data required');
+  it('survives boundary mutation checks (> vs >=)', async () => {
+    const zeroResult = await processPayment({ key: 'zero-test', amountInCents: 0 });
+    expect(zeroResult.status).toBe('ZERO_AMOUNT_SKIPPED');
   });
 });
 ```
 
 ---
 
-## 🔄 Incremental Review & Next Steps
-- [ ] Address **Blocker** item #1 (`src/api/users.ts`).
-- [ ] Address **Major** item #2 (`src/components/RiderMap.tsx`).
-- [ ] Add auto-generated test file `src/api/__tests__/users.test.ts`.
-- Run `/incremental` after committing fixes for a fast secondary audit.
+## 🤖 6. "Fix All with AI Agents" Autonomous Instruction
+
+To resolve all identified issues in a single pass with your coding agent (Claude Code, Cursor, Codex), execute this prompt:
+
+```text
+Apply the following fixes from the PR Review audit:
+1. In `src/services/payment.ts:L45-L52`, enforce mandatory `idempotency-key` header verification.
+2. In `src/clients/downstream.ts:L30-L38`, wrap remote fetch in `fetchWithTimeout` with 3000ms timeout and backoff jitter.
+3. In `src/utils/format.ts:L12-L18`, replace custom formatter with native `Intl.NumberFormat`.
+4. Create test file `src/services/__tests__/payment.test.ts` with the provided test suite.
+Verify with `npm run test` and `npx tsc --noEmit`.
+```
+
+---
+
+## 🔄 7. Pre-Merge Verification Checklist
+- [ ] 🚨 Fix Blocker #1 in `src/services/payment.ts`
+- [ ] ⚠️ Fix Major #2 in `src/clients/downstream.ts`
+- [ ] 💡 Clean Minor #3 in `src/utils/format.ts`
+- [ ] Verify Meta Test Plan and Revert Plan are documented
+- [ ] Add auto-generated test suite in `src/services/__tests__/payment.test.ts`
+- [ ] Verify `npx tsc --noEmit` and `npx eslint` pass with 0 warnings
+- [ ] Re-run `/ultimate-review-workflow --incremental` to verify resolution before merge
 ````
 
 ---
 
-## Anti-Patterns to Reject
+## 🔗 Integrated Domain Skills & Sub-Skill Triggers
 
-| Anti-Pattern | Why It's Wrong | What to Recommend |
-|---|---|---|
-| Empty `catch (e) {}` | Hides bugs, makes troubleshooting impossible | Log error, notify monitoring, or rethrow |
-| Dynamic SQL generation | High risk of SQL injection | Use parameterized queries / Prisma placeholders |
-| Nested component declarations | Component is recreated on every render | Extract component to module scope |
-| "Todo: add tests later" | Postponed tests are never written | Write tests alongside implementation |
-| Factory for single implementation | Premature abstraction, code bloat | Direct instantiation; refactor only when 2nd impl is needed |
-| Client-side role validation | Client state can be tampered with | Enforce roles server-side / PostgreSQL RLS |
-| Blocking async events in route handlers | Increases response latency | Push long-running tasks to background queue (QStash) |
-| `delay()` in ESP32 `loop()` | Blocks CPU, causing drops in WiFi, MQTT, and keypad scanning | Non-blocking state machines using `millis()` timing checks |
-
----
-
-## Universal Checklists & Reference Architecture
-
-### 1. Complexity Pruning Check (`ponytail`)
-*   **YAGNI Enforcements:**
-    *   No empty interfaces or single-use abstractions.
-    *   No helper/wrapper methods that add zero transformation or logging value.
-    *   Ensure configuration properties are used immediately in active code paths.
-*   **Code Base Minimization:** Identify custom utility code that replicates native JS operations (such as array maps, date formatting, and string padding) and recommend native standard API replacements.
-
-### 2. Code Review Checklist Categories (Severity-Tiered Code Review (Blocker/Major/Minor/Nit))
-*   **Correctness:** Check edge/empty inputs, null/undefined navigation checks, catch-block recovery validation.
-*   **Security:** Verify parameters are not vulnerable to SQL injection, check for hardcoded secrets, and confirm auth checks occur on the server side.
-*   **Tests:** Verify regression coverage exists for any bugfix.
-
-## Integrated Skill Matrix & Sub-Skill Triggers
-
-This workflow integrates with and delegates to specialized domain skills across every layer of the tech stack:
-
-### 1. Security, Auth & Vulnerability Audits
-*   **`ultimate-security-workflow` & `ultimate-security-audit-workflow`**: Scans for OWASP Top 10 vulnerabilities, parameterized SQL enforcement, XSS escaping, CSRF protection, secure cookie flags, and IDOR/BOPA ownership checks.
-*   **`upstash-ratelimit-js`**: Verifies rate limiting on sensitive API routes and mutation endpoints.
-
-### 2. Database & Data Layer Integrity
-*   **`PostgreSQL & Database Optimization Patterns` & `PostgreSQL Indexing & Optimization Patterns`**: Audits Postgres queries for EXPLAIN bottlenecks, missing foreign key indexes, unindexed `WHERE`/`ORDER BY` clauses, and strict Supabase Row Level Security (RLS) policies.
-*   **`ultimate-database-workflow`**: Verifies database migration safety, additive schema evolution, explicit column selects, and transaction boundaries.
-
-### 3. Web & Fullstack Frameworks
-*   **Next.js App Router Best Practices & `React Performance Best Practices`**: Verifies React Server Component (RSC) vs Client Component boundaries, Server Action authentication validation inside function bodies, dynamic route `params` awaiting, and hydration safety.
-*   **`Component Composition Patterns`**: Replaces prop-drilling and boolean flag proliferation with compound React component composition patterns.
-
-### 4. Mobile & Native Application Performance
-*   **`React Native Performance Best Practices`**: Verifies Native UI thread animations (Reanimated), virtualized list keying (`FlashList`), safe area inset padding, and non-re-rendering marker ref handling.
-*   **Android Native Standards (Kotlin/Compose)**: Audits Kotlin/Compose state hoisting, Material Design 3 accessibility, and lifecycle cleanup.
-
-### 5. Embedded & IoT Firmware Safety
-*   **`ultimate-embedded-programming-workflow` & `ultimate-iot-hardware-workflow`**: Enforces non-blocking `loop()` architecture (zero `delay()`), stack allocation over heap `String` usage, thermal timer cutoffs (5000ms solenoid limit), watchdog heartbeat monitoring, and the photo-first unlock security sequence.
-*   **`iot-fw-no-block-loop` & `iot-fw-memory-safety`**: Scans C++ code for ISR safety, static memory pool sizing, and deadlock prevention.
-
-### 6. UX, Design Systems & Accessibility
-*   **Web Interface & Accessibility Standards (WCAG 2.2) & `ultimate-ux-workflow`**: Enforces WCAG 2.2 AA contrast ratios (4.5:1 body, 3:1 large text), keyboard focus rings, `aria-label` tags on icon buttons, minimum touch targets (44×44pt web/iOS, 48×48dp Android), and skeleton layout matching to prevent CLS layout shifts.
-*   **`UI/UX Design Intelligence & Micro-Interactions` & Modern Component Styling**: Checks adherence to design system tokens, responsive grid layouts, and clean Tailwind/Radix UI usage.
-
-### 7. Software Architecture & Clean Design
-*   **`ultimate-architecture-workflow` & `ultimate-monorepo-workflow`**: Checks clean layer separation (presentation vs domain vs infrastructure), guards against circular dependencies, and enforces monorepo package boundary rules.
-
-### 8. Testing & Quality Assurance
-*   **`Test-Driven Development (Red-Green-Refactor)` & `ultimate-testing-workflow`**: Enforces test-driven verification for bug fixes, deterministic test mocks, and auto-generates runnable Jest/Vitest unit test suites for untested changed functions.
-
-### 9. Code Minimization & Refactoring
-*   **Anti-Overengineering & Bloat Audit, `Codebase Bloat & Dead Code Audit`, `Technical Debt Tracking`**: Hunts YAGNI over-engineering, single-use abstractions, and custom helper wrappers, outputting line-reduction metrics (`-<N>` lines).
-*   **`kaizen` & `systematic-debugging`**: Drives continuous code improvement, error-proofing, and tracing upstream root causes over symptom patching.
-*   **Concise 1-Line Actionable Review**: Formats output in direct, high-impact, non-verbose natural language.
-*   **Strict Linting & Type Validation**: Executes strict type checking (`npx tsc --noEmit`) and linter checks (`npx eslint`) before completing review.
-
+- **Safety & Quality**: `superpowers-review`, `kaizen`, `superpowers-tdd`, `lint-and-validate`
+- **Security & Vulnerabilities**: `ultimate-security-workflow`, `ultimate-security-audit-workflow`, `upstash-ratelimit-js`
+- **Performance & Concurrency**: `postgres-best-practices`, `react-native-best-practices`, `ultimate-caching-workflow`
+- **Web & Frameworks**: `next-best-practices`, `vercel-react-best-practices`, `vercel-composition-patterns`
+- **Mobile & Embedded**: `android-native-dev`, `ultimate-embedded-programming-workflow`, `iot-fw-no-block-loop`, `iot-fw-memory-safety`
+- **YAGNI & Terse Delivery**: `ponytail-review`, `ponytail-audit`, `ponytail-debt`, `caveman-review`

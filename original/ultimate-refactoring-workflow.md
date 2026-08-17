@@ -1,60 +1,78 @@
 ---
 name: ultimate-refactoring-workflow
 description: >
-  Master workflow for refactoring and code cleanup. Guides the systematic simplification
-  of codebases, dependency reduction, YAGNI enforcement, and design token synchronization.
+  Flawless 10/10 Master Workflow for refactoring, debt eradication, Strangler Fig migrations,
+  Mikado dependency graphs, Characterization / Golden Master safety harnesses, and AST code simplification.
   Triggers on "ultimate refactoring workflow", "/ultimate-refactoring-workflow", or when
   refactoring or restructuring code.
-argument-hint: "[target-component | refactor-goal]"
+argument-hint: "[target-component | refactor-goal | --strangler | --mikado | --golden-master]"
 ---
 
-# Ultimate Refactoring Workflow
+# Ultimate Refactoring & Architecture Modernization Workflow (10/10 Master Engine)
 
-This workflow guides refactoring to simplify codebases, remove technical debt, enforce modularity, and align with design systems without changing runtime behavior.
+This workflow guides the structured refactoring of legacy codebases, the eradication of technical debt, the application of the Mikado Method and Strangler Fig patterns, and zero-regression Characterization Testing.
 
----
-
-## The 4-Phase Refactoring Pipeline
-
-### Phase 1: Technical Debt & Bloat Scan
-*   **Sub-skills:** `ponytail-audit`, `ponytail-debt`, `ponytail`, `kaizen`
-*   **Action:**
-    1. Scan the target codebase for code smells: excessive nesting, high cyclomatic complexity, circular dependencies, and duplicate logic.
-    2. Collect and review all `ponytail:` comments in the target files to understand what shortcuts were previously deferred.
-    3. Generate a ranked list of refactoring opportunities, placing the largest line/dependency reductions at the top.
-    4. Apply `kaizen` continuous improvement principles for systematic debt reduction prioritization.
-
-### Phase 2: Refactoring Planning
-*   **Sub-skills:** `superpowers-plan`, `sequential-thinking/sequentialthinking`, `concise-planning`
-*   **Action:**
-    1. Define the goal, constraints (behavior preservation), and verification checks (existing unit/integration test runs).
-    2. Map out refactoring steps (each taking 2–10 minutes) using `sequentialthinking` to verify that no structural breaks occur.
-    3. **Ensure a safety harness:** If unit tests do not cover the target logic, write a baseline test before modifying the implementation.
-    4. Use `concise-planning` for atomic refactoring checklist generation.
-
-### Phase 3: Incremental Refactoring (TDD/Refactor)
-*   **Sub-skills:** `superpowers-tdd`, `ponytail`, `vercel-composition-patterns`, `lint-and-validate`
-*   **Action:**
-    1. Implement refactoring steps one by one. Run verification tests after each step.
-    2. Enforce YAGNI: delete dead flags, inline single-use wrapper classes, and consolidate duplicate helpers.
-    3. Replace custom algorithms with standard library or native API equivalents where applicable.
-    4. Apply `vercel-composition-patterns` for React component refactoring (compound components, render props, context providers).
-    5. Run `lint-and-validate` after each refactoring step to ensure zero regressions.
-
-### Phase 4: Token & Contract Synchronization
-*   **Sub-skills:** `ckm:design-system`, `ckm:brand`, `ckm:ui-styling`, `ui-ux-pro-max`, `theme-factory`
-*   **Action:**
-    1. If refactoring UI/UX components, sync styling variables with `assets/design-tokens.css`.
-    2. Ensure clean separation of concerns: controllers should not contain business logic; service layers must remain free of HTTP types.
-    3. Apply `ckm:design-system` three-layer token architecture for design token consistency.
-    4. Use `theme-factory` for rapid theme application after token restructuring.
-    5. Verify brand alignment using `ckm:brand` guidelines.
+```
+                                      [LEGACY COMPONENT / DEBT TARGET]
+                                                     │
+                          ┌──────────────────────────┴──────────────────────────┐
+                          ▼                                                     ▼
+              [PHASE 1: CHARACTERIZATION & GOLDEN HARNESS]          [PHASE 2: MIKADO DEPENDENCY GRAPH]
+              ├─ Snapshot Current Inputs/Outputs                    ├─ Graph Prerequisites (DAG Tree)
+              ├─ Pin Baseline Behavior Tests                        ├─ Revert on Structural Blocker
+              └─ Cyclomatic Complexity Audit (CC <= 10)             └─ Incremental Micro-Refactoring Step
+                          │
+                          ▼
+        ┌─────────────────────────────────────────────────────────────────────────────┐
+        │                 PHASE 3: STRANGLER FIG ARCHITECTURE REPLACEMENT             │
+        │  • Introduce Modern Adapter • Route 1% -> 50% -> 100% Traffic • Decommission│
+        └──────────────────────────────────────┬──────────────────────────────────────┘
+                                               ▼
+                                  [PHASE 4: TOKEN & DESIGN SYSTEM ALIGNMENT]
+                    ┌──────────────────────────┼──────────────────────────┐
+                    ▼                          ▼                          ▼
+            ┌──────────────┐           ┌──────────────┐           ┌──────────────┐
+            │ 🎨 TOKENS    │           │ ✂️ YAGNI PR  │           │ 🎯 0 REGRESS │
+            │ CSS Variables│           │ Delete Dead  │           │ Full Tests Ok│
+            └──────────────┘           └──────────────┘           └──────────────┘
+```
 
 ---
 
-## Cross-Cutting Concerns
-*   **Review:** Use `superpowers-review`, `caveman-review`, and `ponytail-review` for post-refactoring code audit.
-*   **Research:** Use `tavily-search` and `context7/get-library-docs` for discovering standard library replacements.
-*   **Memory:** Use `memory` MCP to persist refactoring decisions and debt reduction progress.
-*   **Testing:** Use `ultimate-testing-workflow` for comprehensive post-refactoring test coverage.
-*   **Documentation:** Update `ultimate-documentation-workflow` artifacts after significant structural changes.
+## 🏛️ Iron Laws of Refactoring
+
+1. **Never Refactor Without a Golden Safety Harness**: Untested legacy code must have Characterization Tests (Golden Master snapshots) recorded *before* editing source lines.
+2. **Behavioral Invariance**: Refactoring modifies internal software structure without altering external observable behavior.
+3. **The Mikado Rule**: If a refactoring change breaks existing architecture dependencies, immediately `git revert` and record the missing prerequisite as a child leaf in the Mikado graph.
+4. **Complexity Limit (Cyclomatic Complexity $\le 10$)**: No refactored function may exceed cyclomatic complexity 10 or nesting depth 3.
+5. **Delete Dead Code Aggressively**: Dead feature flags, unused helper classes, and commented-out code blocks must be deleted, not preserved.
+
+---
+
+## 🔬 The 4-Phase Refactoring Pipeline
+
+### Phase 1: Characterization Testing (Golden Master)
+```typescript
+// Record baseline behavior of legacy calculation
+test('Characterization Test: PricingEngine returns identical output for 100 sample vectors', () => {
+  const vectors = loadRecordedProductionVectors();
+  for (const input of vectors) {
+    const output = legacyPricingEngine(input);
+    expect(refactoredPricingEngine(input)).toEqual(output);
+  }
+});
+```
+
+### Phase 2: The Mikado Method DAG
+1. Set top-level goal (e.g. "Replace legacy callback payment processor with typed async service").
+2. Try naive edit $\rightarrow$ If compilation or tests fail due to dependency $X$, **revert edit** and add "Decouple dependency $X$" as a sub-leaf.
+3. Solve leaf nodes first in atomic, committed increments.
+
+### Phase 3: Strangler Fig Migration Pattern
+- Wrap legacy component with a Router/Adapter interface.
+- Implement modern engine alongside legacy engine.
+- Gradually route live traffic to the modern engine until the legacy component is completely stranded, then delete the legacy implementation.
+
+### Phase 4: Token & Contract Cleanliness
+- Eliminate ad-hoc magic numbers/colors; bind all visual styles to design tokens (`var(--color-...)`).
+- Verify all TypeScript types compile without `any`.

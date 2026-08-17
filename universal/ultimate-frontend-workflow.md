@@ -17,7 +17,7 @@ This workflow coordinates and executes premium frontend engineering by integrati
 
 ## Iron Laws
 
-1. **No Placeholder Content.** Never use Lorem ipsum, Unsplash hotlinks, placehold.co, or Picsum URLs. Every image is generated locally via local asset generation or custom SVG. Every copy line is written intentionally.
+1. **No Placeholder Content.** Never use Lorem ipsum, Unsplash hotlinks, placehold.co, or Picsum URLs. Every image is generated locally via `generate_image`. Every copy line is written intentionally.
 2. **No Hardcoded Colors.** Zero hex/rgb values in JSX/TSX markup. All color values reference semantic design tokens from CSS variables.
 3. **GPU-Only Animations.** Only animate `transform`, `opacity`, `filter`, and `clip-path`. Never animate `width`, `height`, `margin`, `padding`, or any layout-reflowing property.
 4. **Server First.** Default all components to React Server Components (RSC). Use `"use client"` only on leaf-level interactive components (inputs, buttons with state, hooks).
@@ -131,6 +131,7 @@ Any component, layout, or style exhibiting these patterns is rejected as generic
 ## The 8-Phase Pipeline
 
 ### Phase 1: Brand & Aesthetic Alignment
+*   **Sub-skills:** `ckm:brand`, `ckm:design`, `theme-factory` (and the 61 brand analysis manuals)
 *   **Action:**
     1. Define the brand voice, tone, and visual direction. Choose a brand archetype from the 61 available:
        *   **Fintech/SaaS:** `design-md-stripe` (editorial gradient mesh), `design-md-revolut` (cobalt-violet + heavy Aeonik), `design-md-wise` (lime-green + weight-900 display).
@@ -144,6 +145,7 @@ Any component, layout, or style exhibiting these patterns is rejected as generic
     4. Choose a distinctive typography pair from the brand file. Never default to Inter or system fonts unless the brand explicitly specifies it.
 
 ### Phase 2: Design Token Architecture & CSS Variables
+*   **Sub-skills:** `ckm:design-system`, `ui-ux-pro-max`, `theme-factory`, `ckm:ui-styling`
 *   **Action:**
     1. Build a **three-layer token hierarchy:**
        *   **Primitive tokens:** Raw values (`--color-blue-500: #3b82f6`, `--space-4: 16px`, `--radius-md: 8px`).
@@ -153,12 +155,13 @@ Any component, layout, or style exhibiting these patterns is rejected as generic
     3. Enforce the spacing scale: `4px → 8px → 12px → 16px → 24px → 32px → 48px → 64px → 80px → 96px → 128px`. No arbitrary values.
     4. Define elevation/shadow scale: `--shadow-xs` through `--shadow-2xl` with consistent blur-spread ratios.
     5. Design light and dark themes **simultaneously**—token values flip, component code stays unchanged.
-    6. Use Design Theme Presets for rapid application of 10 pre-set themes (Vercel, Linear, Stripe, etc.).
-    7. Apply Modern Component Styling for shadcn/ui Radix-based component theming with Tailwind CSS integration.
+    6. Use `theme-factory` for rapid application of 10 pre-set themes (Vercel, Linear, Stripe, etc.).
+    7. Apply `ckm:ui-styling` for shadcn/ui Radix-based component theming with Tailwind CSS integration.
 
 ### Phase 3: Typography & Iconography System
+*   **Sub-skills:** `ui-ux-pro-max` (57 font pairings), `ckm:design-system`, `web-design-guidelines`
 *   **Action:**
-    1. Select font pairing from UI/UX Design Intelligence's 57 curated pairings or from the chosen brand SKILL.md.
+    1. Select font pairing from `ui-ux-pro-max`'s 57 curated pairings or from the chosen brand SKILL.md.
     2. Define the type scale: `--text-xs: 12px`, `--text-sm: 14px`, `--text-base: 16px`, `--text-lg: 18px`, `--text-xl: 20px`, `--text-2xl: 24px`, `--text-3xl: 30px`, `--text-4xl: 36px`, `--text-5xl: 48px`, `--text-6xl: 60px`, `--text-7xl: 72px`, `--text-8xl: 96px`.
     3. Set line-heights: display headlines 1.1–1.2, body text 1.5–1.7, UI labels 1.3–1.4.
     4. Set letter-spacing: display headlines -0.02em to -0.04em (tight), body 0em (normal), uppercase labels +0.05em to +0.1em (wide).
@@ -167,18 +170,21 @@ Any component, layout, or style exhibiting these patterns is rejected as generic
     7. Ensure icon baseline alignment with adjacent text using `vertical-align` or flex centering.
 
 ### Phase 4: Copywriting & Asset Generation
+*   **Sub-skills:** `ckm:banner-design` (22 styles), `ckm:design`, `ckm:slides`
+*   **Tool:** `generate_image`
 *   **Action:**
     1. Write persuasive, intentional copy using proven frameworks:
        *   **AIDA:** Attention → Interest → Desire → Action (best for landing pages).
        *   **PAS:** Problem → Agitate → Solution (best for product explainers).
        *   **FAB:** Features → Advantages → Benefits (best for pricing/feature grids).
        *   **BAB:** Before → After → Bridge (best for transformation narratives).
-    2. Generate all visual assets locally using local asset generation or custom SVG tool. Save to `public/images/` or `assets/`.
-    3. For hero banners and social graphics, use Hero Graphic & Banner Design (22 styles: minimalist, gradient, bold typography, photo-based, geometric, glassmorphism, 3D, neon, duotone, editorial, collage, retro, illustrated).
-    4. For presentation decks, use Data Presentation & Deck Layouts with Chart.js data visualizations.
+    2. Generate all visual assets locally using `generate_image` tool. Save to `public/images/` or `assets/`.
+    3. For hero banners and social graphics, use `ckm:banner-design` (22 styles: minimalist, gradient, bold typography, photo-based, geometric, glassmorphism, 3D, neon, duotone, editorial, collage, retro, illustrated).
+    4. For presentation decks, use `ckm:slides` with Chart.js data visualizations.
     5. Every image element must have descriptive `alt` text. Decorative images get `alt=""` and `aria-hidden="true"`.
 
 ### Phase 5: Layout Engineering & Component Architecture
+*   **Sub-skills:** `ckm:ui-styling`, `web-artifacts-builder`, `composition-patterns`, `react-best-practices`, `next-best-practices`
 *   **Action:**
     1. **Layout Systems:** Go beyond simple card rows. Use:
        *   **Bento Grids:** Asymmetric tile layouts with varied span sizes (2×1, 1×2, 2×2).
@@ -186,7 +192,7 @@ Any component, layout, or style exhibiting these patterns is rejected as generic
        *   **Masonry:** Pinterest-style variable-height column grids.
        *   **Overlap/Stack:** Layered cards with z-index depth and offset positioning.
        *   **Full-Bleed Sections:** Edge-to-edge color bands alternating light/dark canvases.
-    2. **Component Patterns:** Apply `Component Composition Patterns`:
+    2. **Component Patterns:** Apply `vercel-composition-patterns`:
        *   **Compound Components:** Shared context for complex children (e.g., `<Tabs>`, `<Accordion>`).
        *   **Render Props:** Delegate rendering decisions to consumers.
        *   **Polymorphic Components:** `as` prop for semantic HTML flexibility.
@@ -196,10 +202,11 @@ Any component, layout, or style exhibiting these patterns is rejected as generic
        *   Noise Textures: Subtle SVG noise overlays for depth.
        *   Gradient Meshes: Multi-stop radial/conic gradients as atmospheric backgrounds.
        *   Liquid Glass: iOS-style frosted glass with saturation boosts.
-    4. Use Next.js App Router Best Practices for RSC boundaries, `generateMetadata`, and route-level code splitting.
-    5. Use Modular UI Component Architecture for complex multi-component artifacts with state management and routing.
+    4. Use `next-best-practices` for RSC boundaries, `generateMetadata`, and route-level code splitting.
+    5. Use `web-artifacts-builder` for complex multi-component artifacts with state management and routing.
 
 ### Phase 6: Fluid Motion & Animation System
+*   **Sub-skills:** `ui-ux-pro-max`, `react-native-best-practices`, `react-native-best-practices-callstack`
 *   **Action:**
     1. **Animation Tool Decision Matrix:**
 
@@ -224,6 +231,7 @@ Any component, layout, or style exhibiting these patterns is rejected as generic
     7. For React Native: use Reanimated for 60fps UI-thread animations. Never animate on the JS thread for gestures.
 
 ### Phase 7: Responsive & Cross-Platform Engineering
+*   **Sub-skills:** `react-native-skills`, `android-native-dev`, `react-native-best-practices-callstack`
 *   **Action:**
     1. **Breakpoint system:** Design mobile-first, then scale up:
        *   `375px` — Mobile (iPhone SE baseline)
@@ -236,10 +244,12 @@ Any component, layout, or style exhibiting these patterns is rejected as generic
     2. **Container queries:** Use CSS container queries (`@container`) for component-level responsiveness when parent width matters more than viewport width.
     3. **Touch targets:** Minimum 44×44pt (iOS) / 48×48dp (Android). Extend small icons with `hitSlop` or padding.
     4. **Safe areas:** Respect notch, Dynamic Island, status bar, home indicator using `env(safe-area-inset-*)`.
-    5. For React Native: apply `React Native Architecture Patterns` and `React Native Thread Optimization`.
-    6. For Android Native: apply Android Native Standards (Kotlin/Compose) for Jetpack Compose + Material Design 3.
+    5. For React Native: apply `vercel-react-native-skills` and `react-native-best-practices-callstack`.
+    6. For Android Native: apply `android-native-dev` for Jetpack Compose + Material Design 3.
 
 ### Phase 8: Quality Gates & Final Review
+*   **Sub-skills:** `ui-ux-pro-max`, `web-design-guidelines`, `superpowers-review`, `lint-and-validate`, `caveman-review`, `ponytail-review`
+*   **MCP Tools:** `playwright` (browser_snapshot, browser_take_screenshot, browser_evaluate)
 *   **Action:**
     1. **Accessibility audit:**
        *   WCAG contrast: 4.5:1 body text, 3:1 large text (18px+ bold or 24px+ regular).
@@ -253,11 +263,11 @@ Any component, layout, or style exhibiting these patterns is rejected as generic
        *   CLS (Cumulative Layout Shift) < 0.1.
        *   FID (First Input Delay) < 100ms.
        *   Heavy libraries (Lottie, GSAP, Three.js, chart libs) are lazy-loaded via `dynamic()` or `React.lazy()`.
-    4. **Visual QA:** Use Playwright screenshot tool to capture screenshots at each breakpoint for visual regression.
-    5. Run Web Interface & Accessibility Standards (WCAG 2.2) for comprehensive Vercel Web Guidelines compliance.
-    6. Run Strict Linting & Type Validation for TypeScript, ESLint, and build verification.
-    7. Use Severity-Tiered Code Review (Blocker/Major/Minor/Nit) for severity-rated code audit (Blocker/Major/Minor/Nit).
-    8. Use Concise 1-Line Actionable Review for terse one-line findings and Anti-Overengineering & Bloat Audit for over-engineering detection.
+    4. **Visual QA:** Use `playwright/browser_take_screenshot` to capture screenshots at each breakpoint for visual regression.
+    5. Run `web-design-guidelines` for comprehensive Vercel Web Guidelines compliance.
+    6. Run `lint-and-validate` for TypeScript, ESLint, and build verification.
+    7. Use `superpowers-review` for severity-rated code audit (Blocker/Major/Minor/Nit).
+    8. Use `caveman-review` for terse one-line findings and `ponytail-review` for over-engineering detection.
 
 ---
 
@@ -440,7 +450,7 @@ export function UserList({ initialUsers }: { initialUsers: User[] }) {
 | Anti-Pattern | Why It's Wrong | Do This Instead |
 |---|---|---|
 | `style={{ color: '#ff0000' }}` | Hardcoded colors bypass theming | Use `className` with token-mapped classes |
-| `<img src="https://unsplash.com/..."` | External dependency, no control, CLS | Generate locally with local asset generation or custom SVG, use `next/image` |
+| `<img src="https://unsplash.com/..."` | External dependency, no control, CLS | Generate locally with `generate_image`, use `next/image` |
 | `animate={{ width: '100%' }}` | Layout reflow animation causes jank | Animate `transform: scaleX()` instead |
 | `delay(300)` before showing content | Artificial delay, feels broken | Use skeleton shimmer during real loading |
 | `{isLoading && <Spinner />}` full-page | Blocks all interaction, feels frozen | Use skeleton UI matching final layout dimensions |
@@ -449,9 +459,9 @@ export function UserList({ initialUsers }: { initialUsers: User[] }) {
 
 ---
 
-## Universal Checklists & Reference Architecture
+## Sub-Skill Checklists & Reference Templates
 
-### 1. React Performance Guidelines (`React Architecture Best Practices`)
+### 1. React Performance Guidelines (`react-best-practices`)
 *   **Eliminating Waterfalls:** Use `Promise.all()` to parallelize independent queries. Start promises early and await them late.
 *   **Re-render Optimization:**
     *   Derive state during render rather than sync-updating via `useEffect`.
@@ -470,10 +480,10 @@ export function UserList({ initialUsers }: { initialUsers: User[] }) {
 *   Avoid inline styles in render items; use memoized stylesheet objects.
 *   Only animate properties that compile directly to GPU-level commands (like `transform` and `opacity`).
 
-### 4. Custom Asset Pipeline (Modular UI Component Architecture)
+### 4. Custom Asset Pipeline (`web-artifacts-builder`)
 *   **AI Slop Avoidance:** Ensure you do not default to standard purple radial background gradients, centered flex layout overrides, uniform high radii, or Inter typography scales unless explicitly requested.
 
-### 5. Next.js 15+ Async Routing & Fetching (Next.js App Router Best Practices)
+### 5. Next.js 15+ Async Routing & Fetching (`next-best-practices`)
 *   **Async Parameters:** Dynamic route parameters (`params`) and query filters (`searchParams`) are resolved asynchronously. Always await them before parsing:
     ```typescript
     export default async function ProjectPage({
@@ -490,7 +500,7 @@ export function UserList({ initialUsers }: { initialUsers: User[] }) {
     ```
 *   **LCP Optimization:** Hero images above the fold must use `next/image` with `priority={true}` and explicit `sizes` configuration to disable lazy-loading and prevent layout shifts.
 
-### 6. React Native Render & Layout Stability (`React Native Performance Best Practices`)
+### 6. React Native Render & Layout Stability (`react-native-best-practices`)
 *   **StyleSheet Hoisting:** Never write inline objects `style={{ padding: 10 }}` inside list render loops or dynamic component bodies. Always hoist definitions using `StyleSheet.create` outside the component scope:
     ```typescript
     const styles = StyleSheet.create({
@@ -561,8 +571,8 @@ Every frontend build MUST pass the 75th percentile ($p75$) real-user field basel
 
 ## Cross-Cutting Concerns
 *   **UX Audit:** Chain with `ultimate-ux-workflow` for deep usability testing after implementation.
-*   **Research:** Use Web Search, Web Extraction Tool, and official library documentation for component library documentation and animation API references.
-*   **Memory:** Use Persistent Project Memory / Scratchpad to persist design decisions, token architecture, and component patterns across conversations.
+*   **Research:** Use `tavily-search`, `tavily-extract`, and `context7/get-library-docs` for component library documentation and animation API references.
+*   **Memory:** Use `memory` MCP to persist design decisions, token architecture, and component patterns across conversations.
 *   **Database:** Chain with `ultimate-database-workflow` when building data-driven dashboards or table views.
-*   **Testing:** Use Playwright / Headless Browser Automation for E2E visual regression testing and `Test-Driven Development (Red-Green-Refactor)` for component unit testing.
+*   **Testing:** Use `playwright` MCP for E2E visual regression testing and `superpowers-tdd` for component unit testing.
 *   **Deployment:** Use `ultimate-deployment-workflow` for production build optimization and CDN configuration.

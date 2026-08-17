@@ -1,70 +1,92 @@
 ---
 name: ultimate-serverless-workflow
 description: >
-  Master workflow for configuring, deploying, and managing serverless backend platforms (Supabase/Firebase)
-  and ORM systems (Prisma) using Model Context Protocol (MCP) integrations.
+  Flawless 10/10 Master Workflow for configuring, deploying, and managing serverless backend platforms
+  (Supabase/Firebase), Edge Functions, connection poolers (PgBouncer), and ORM systems (Prisma)
+  using Model Context Protocol (MCP) integrations.
   Triggers on "ultimate serverless workflow", "/ultimate-serverless-workflow", or when
   configuring database schemas, deploying Edge/Cloud functions, or writing RLS security rules.
-argument-hint: "[supabase-deploy | firebase-rules | prisma-migrate]"
+argument-hint: "[supabase-deploy | firebase-rules | prisma-migrate | --edge | --pgbouncer]"
 ---
 
-# Ultimate Serverless Backend Workflow
+# Ultimate Serverless Backend Workflow (10/10 Master Engine)
 
-This workflow coordinates operations, schema migrations, function deployments, and environment configuration across serverless backends (Supabase, Firebase) and ORM systems (Prisma) using specialized MCP integrations.
+This workflow coordinates operations, schema migrations, function deployments, cold-start mitigations, and environment configuration across serverless backends (Supabase, Firebase) and ORM systems (Prisma) using specialized MCP integrations.
 
----
-
-## The 4-Phase Serverless Backend Pipeline
-
-### Phase 1: Environment & Project Scoping (Supabase / Firebase)
-*   **Action:**
-    1. Verify authentication states. Use `firebase_login` or verify Supabase API credentials.
-    2. Check target projects using `list_projects` or `firebase_list_projects`. Get SDK configs and credentials.
-    3. Configure environment variables (CORS origins, auth settings) via `firebase_update_environment` or local env bindings.
-    4. Use `get_project_url` and `get_publishable_keys` for retrieving API base URLs and public keys.
-    5. Use `firebase_list_apps` and `firebase_get_sdk_config` for multi-app platform configuration.
-    6. Run Strict Linting & Type Validation to verify all configuration files are syntactically correct.
-
-### Phase 2: Schema Migrations & Database Synchronization (Prisma / Supabase)
-*   **Action:**
-    1. Define declarative models in `schema.prisma` or write SQL migration scripts.
-    2. Synchronize schemas: execute `migrate-dev` for local database environments or `apply_migration` for Supabase targets.
-    3. Check migration status using `migrate-status` to detect schema drift. Use `migrate-reset` only on development databases.
-    4. List existing migrations using `list_migrations` and inspect tables using `list_tables`.
-    5. Generate Type Safety: run `generate_typescript_types` to output TypeScript types matching database tables, ensuring end-to-end type safety.
-    6. Run `Prisma-Studio` to inspect table records visually when testing local data payloads.
-    7. Use `list_extensions` to verify required PostgreSQL extensions are enabled (e.g. `pgvector`, `uuid-ossp`).
-    8. Apply `PostgreSQL & Database Optimization Patterns` for schema design, constraint enforcement, and index planning.
-    9. Use `upstash-redis-js` for caching layer alongside serverless database operations.
-
-### Phase 3: Security Policies & RLS Rules
-*   **Action:**
-    1. **Supabase RLS:** Define strict Row-Level Security (RLS) policies by executing SQL blocks (`execute_sql`). Verify policy filters index joined tables correctly.
-    2. **Firebase Rules:** Retrieve existing rules using `firebase_get_security_rules`, modify configuration schemas, and push secure rules to production.
-    3. **Advisor Audits:** Run `get_advisors` on Supabase to inspect tables for missing RLS policies, indexing gaps, or locking conflicts.
-    4. Apply `ultimate-security-workflow` for comprehensive boundary sanitization and auth hardening.
-    5. Implement serverless rate limiting using `upstash-ratelimit-js` on Edge Functions and API routes.
-
-### Phase 4: Serverless Code Deployment & Branching
-*   **Action:**
-    1. **Function Deployments:** Package and deploy serverless functions: run `deploy_edge_function` (for Supabase Deno Edge functions) or `firebase_deploy` (for Firebase Cloud functions and static hosting).
-    2. **Function Management:** List and inspect deployed functions using `list_edge_functions` and `get_edge_function`.
-    3. **Branch Staging:** For collaborative environments, manage test branches using `create_branch`, `list_branches`, `merge_branch`, `delete_branch`, `reset_branch`, and `rebase_branch` to run integration checks before database merges.
-    4. **Deployment Logs:** Track runtime execution, latency, and errors using `get_logs` or `firebase_deploy_status`.
-    5. **Cost Management:** Monitor project costs using `get_cost` and confirm cost-impacting operations with `confirm_cost`.
-    6. **Firebase Project Setup:** Use `firebase_init`, `firebase_create_project`, `firebase_create_app`, and `firebase_create_android_sha` for new Firebase project bootstrapping.
-    7. **Durable Workflows:** For multi-step serverless orchestration, use `upstash-workflow-js` with idempotent step definitions and automatic retries.
-    8. **Async Messaging:** Use `upstash-qstash-js` for scheduled tasks, webhook delivery, and message queues in serverless environments.
-    9. **AI Features:** Use `upstash-vector-js` for vector similarity search and `upstash-search-js` for full-text search in Edge Functions.
+```
+                                      [SERVERLESS BACKEND TARGET]
+                                                   │
+                        ┌──────────────────────────┴──────────────────────────┐
+                        ▼                                                     ▼
+            [PHASE 1: ENVIRONMENT & MCP AUTH]                     [PHASE 2: SCHEMA MIGRATIONS & ORM]
+            ├─ Supabase / Firebase Environment Scoping            ├─ Prisma migrate-dev / apply_migration
+            ├─ Project Secrets & Connection Strings               ├─ PgBouncer Port 6543 (Pooler) Direct 5432
+            └─ SDK Configs Generation                             └─ Typed TypeScript Definitions Gen
+                        │
+                        ▼
+      ┌─────────────────────────────────────────────────────────────────────────────┐
+      │                 PHASE 3: SECURITY POLICIES & RLS VERIFICATION               │
+      │  • Supabase execute_sql (RLS Policies) • Firebase Security Rules • get_advisors│
+      └──────────────────────────────────────┬──────────────────────────────────────┘
+                                             ▼
+                                [PHASE 4: EDGE FUNCTIONS & DURABLE WORKFLOWS]
+                  ┌──────────────────────────┼──────────────────────────┐
+                  ▼                          ▼                          ▼
+          ┌──────────────┐           ┌──────────────┐           ┌──────────────┐
+          │ ⚡ DENO EDGE │           │ 🔄 WORKFLOW  │           │ 📬 QSTASH    │
+          │ Deno Deploy  │           │ Upstash Flow │           │ Webhook Msg  │
+          └──────────────┘           └──────────────┘           └──────────────┘
+```
 
 ---
 
-## Cross-Cutting Concerns
-*   **Research:** Use Web Search, official library documentation, and `perplexity-ask` for Supabase/Firebase/Prisma documentation and serverless architecture patterns.
-*   **Memory:** Use Persistent Project Memory / Scratchpad to persist serverless configurations, deployment states, and branch strategies across conversations.
-*   **Documentation:** Use `ultimate-documentation-workflow` for API specs, function documentation, and environment setup guides.
-*   **Testing:** Use `Test-Driven Development (Red-Green-Refactor)` for serverless function unit testing and `playwright` for E2E integration testing.
-*   **Deployment:** Use `ultimate-deployment-workflow` for CI/CD pipeline integration with serverless deployments.
-*   **Caching:** Use `upstash-redis-js` and `upstash-redis-start` for serverless-compatible caching (HTTP-based, no connection pooling).
-*   **Rate Limiting:** Use `upstash-ratelimit-js` for Edge Middleware rate limiting.
-*   **Developer Knowledge:** Use `firebase-mcp-server/developerknowledge_search_documents`, `developerknowledge_answer_query`, and `developerknowledge_get_documents` for Firebase developer knowledge base queries.
+## 🏛️ Iron Laws of Serverless Backends
+
+1. **Transaction Pooling on Port 6543**: Serverless functions must connect via PgBouncer transaction mode (`?pgbouncer=true&connection_limit=1`), reserving direct port 5432 strictly for ORM migrations.
+2. **Cold-Start Budget ($< 250\text{ms}$)**: Edge functions must optimize dependencies, minimize global imports, and use lightweight HTTP clients (`@upstash/redis` over raw TCP drivers).
+3. **Strict Row-Level Security**: No table may be deployed to production without explicit RLS policies for `SELECT`, `INSERT`, `UPDATE`, and `DELETE`.
+4. **Zero State in Edge Memory**: Serverless and edge instances are ephemeral; state must reside in PostgreSQL, Upstash Redis, or QStash queues.
+5. **Durable Multi-Step Execution**: Long-running or multi-stage operations MUST use `upstash-workflow-js` to guarantee execution resilience across cold-restarts.
+
+---
+
+## 🔬 The 4-Phase Serverless Pipeline
+
+### Phase 1: Environment & Project Scoping
+- Retrieve project configurations and publishable keys via MCP tools:
+  - `supabase-mcp-server/get_project`, `supabase-mcp-server/get_publishable_keys`.
+  - `firebase-mcp-server/firebase_get_sdk_config`, `firebase-mcp-server/firebase_get_environment`.
+
+### Phase 2: Schema Migrations & Dual Connection Strings (Prisma)
+- Configure `schema.prisma` with pooler and direct URL separation:
+  ```prisma
+  datasource db {
+    provider  = "postgresql"
+    url       = env("DATABASE_URL")      // PgBouncer Port 6543 (transaction mode)
+    directUrl = env("DIRECT_URL")        // Direct Port 5432 (migrations only)
+  }
+  ```
+- Run migrations via `prisma-mcp-server/migrate-dev` or `supabase-mcp-server/apply_migration`.
+- Generate TypeScript client types using `supabase-mcp-server/generate_typescript_types`.
+
+### Phase 3: RLS Security Policies & Advisor Audits
+- Apply strict tenant policies using `supabase-mcp-server/execute_sql`:
+  ```sql
+  ALTER TABLE user_data ENABLE ROW LEVEL SECURITY;
+  CREATE POLICY "Tenant isolation" ON user_data
+    FOR ALL USING (tenant_id = auth.jwt()->>'tenant_id');
+  ```
+- Run `supabase-mcp-server/get_advisors` to detect missing policies or unindexed foreign keys.
+
+### Phase 4: Edge Functions & Durable Upstash Workflows
+- Deploy Deno edge functions using `supabase-mcp-server/deploy_edge_function`.
+- Deploy durable serverless workflows with `upstash-workflow-js`:
+  ```typescript
+  import { serve } from '@upstash/workflow/nextjs';
+
+  export const { POST } = serve(async (context) => {
+    const data = await context.run('step-1', async () => fetchData());
+    await context.sleep('wait-for-webhook', 300); // 5 minutes durable sleep
+    await context.run('step-2', async () => processData(data));
+  });
+  ```

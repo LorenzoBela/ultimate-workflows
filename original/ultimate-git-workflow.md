@@ -1,57 +1,86 @@
 ---
 name: ultimate-git-workflow
 description: >
-  Master workflow for version control, branch management, clean staging, conventional
-  commits, and pre-release validation.
+  Flawless 10/10 Master Workflow for version control, stacked diffs (Meta standard),
+  conventional commits (Caveman Commit), interactive rebase sanitization, and pre-release branch protection.
   Triggers on "ultimate git workflow", "/ultimate-git-workflow", or when staging,
   committing, or pushing changes.
-argument-hint: "[commit-message | branch-name]"
+argument-hint: "[commit-message | branch-name | --stacked | --rebase | --push]"
 ---
 
-# Ultimate Git & Release Workflow
+# Ultimate Git & Release Workflow (10/10 Master Engine)
 
-This workflow enforces clean version control practices, ensures all commits conform to conventional standards, and runs automated validations before pushing to remote repositories.
+This workflow enforces surgical version control hygiene, stacked atomic diffs, conventional commit standards, pre-commit validation gates, and clean branch releases.
+
+```
+                                      [UNCOMMITTED WORKSPACE CHANGES]
+                                                     │
+                          ┌──────────────────────────┴──────────────────────────┐
+                          ▼                                                     ▼
+              [STEP 1: PRE-COMMIT VERIFICATION GATE]                [STEP 2: ATOMIC SCOPE STAGING]
+              ├─ Strict TypeScript Compile (tsc)                    ├─ Group by Domain (Contracts -> UI)
+              ├─ Linter (ESLint 0 Warnings)                         ├─ Discard Unrelated Edits
+              └─ Unit & Integration Tests Pass                      └─ Stacked Diff Decomposition (Meta)
+                          │
+                          ▼
+        ┌─────────────────────────────────────────────────────────────────────────────┐
+        │                 STEP 3: CONVENTIONAL COMMIT (CAVEMAN FORMAT)                │
+        │  • <type>(<scope>): <subject <=50 chars> • Terse "Why" Body • No Fluff      │
+        └──────────────────────────────────────┬──────────────────────────────────────┘
+                                               ▼
+                                  [STEP 4: BRANCH PROTECTION & REMOTE PUSH]
+                    ┌──────────────────────────┼──────────────────────────┐
+                    ▼                          ▼                          ▼
+            ┌──────────────┐           ┌──────────────┐           ┌──────────────┐
+            │ 🔀 REBASE    │           │ 🔐 GPG SIGN  │           │ 🚀 GIT PUSH  │
+            │ Clean History│           │ Verified Line│           │ Upstream PR  │
+            └──────────────┘           └──────────────┘           └──────────────┘
+```
 
 ---
 
-## The 4-Step Git Pipeline
+## 🏛️ Iron Laws of Version Control
 
-### Step 1: Pre-Commit Validation
-*   **Sub-skills:** `lint-and-validate`, `superpowers-tdd`, `systematic-debugging`
-*   **Action:**
-    1. Run compilers, builders, and linters (e.g., `npm run build`, `npm run lint`, or custom scripts) to verify the codebase is error-free.
-    2. Run the unit and integration test suites.
-    3. **No Bad Commits:** Never commit code that breaks compiles, fails linters, or violates test assertions.
-    4. Use `systematic-debugging` to resolve any test failures before proceeding.
+1. **No Broken Commits on Main**: Every commit must compile cleanly and pass 100% of tests.
+2. **One Logical Change Per Commit**: Staging must be atomic. Never combine unrelated UI tweaks, database migrations, and refactorings into a single monolithic commit.
+3. **Conventional Commits**: Commit messages must follow `<type>(<scope>): <subject>` where `<type>` is `feat`, `fix`, `refactor`, `perf`, `test`, `docs`, `chore`.
+4. **Subject Length Limit ($\le 50$ chars)**: Subject must be concise, written in imperative present tense ("add", "fix", not "added", "fixes").
+5. **No Secrets in History**: Pre-commit hooks (`gitleaks`) must actively prevent staging `.env` files, API keys, or private certificates.
+6. **Stacked Diffs (Meta Standard)**: Large features must be split into sequential, small pull requests ($\sim 35 - 100$ lines) building upon one another.
 
-### Step 2: Atomic Staging
-*   **Sub-skills:** `superpowers-review`, `ponytail-review`
-*   **Action:**
-    1. Run `git status` and `git diff` to review all pending changes.
-    2. Stage changes atomically. Group edits by their logical scope (e.g. staging database files separately from UI components). Avoid mass, unrelated "drive-by" staging.
-    3. Use `superpowers-review` for severity-rated code review of staged changes.
-    4. Apply `ponytail-review` to identify and flag over-engineering before committing.
+---
+
+## 🔬 The 4-Step Git Pipeline
+
+### Step 1: Pre-Commit Compilation & Quality Gate
+- Run `npx tsc --noEmit` and `npm run test` before staging.
+- Ensure 0 errors, 0 unresolved merge conflicts, and 0 linter warnings.
+
+### Step 2: Atomic Staging & Stacked Diffs
+- Inspect status via `git status` and `git diff`.
+- Stage related files together:
+  ```bash
+  # Stage contract first
+  git add src/types/payment.ts src/schema/payment.prisma
+  ```
 
 ### Step 3: Conventional Commit (Caveman Commit)
-*   **Sub-skills:** `caveman-commit`, `caveman`, `ponytail-caveman`
-*   **Action:**
-    1. Generate a conventional commit message: `<type>(<scope>): <subject>` (e.g. `feat(auth): add refresh token flow`).
-    2. Keep the subject line under 50 characters, starting with a lowercase verb.
-    3. Apply **caveman-commit** principles: drop pleasantries, keep sentences ultra-terse, and state "why" in the description only if it is not obvious from the code.
-    4. Use `ponytail-caveman` for maximum compression: lazy senior dev code + smart caveman communication.
+- Format:
+  ```text
+  feat(billing): enforce idempotency key on charge endpoint
+  ```
+- If explanation is necessary, keep body ultra-terse:
+  ```text
+  feat(billing): enforce idempotency key on charge endpoint
 
-### Step 4: Branch Management & Remote Push
-*   **Sub-skills:** `git-pushing`, `ultimate-deployment-workflow`
-*   **MCP Tools:** `memory`
-*   **Action:**
-    1. Verify you are on the correct branch. Avoid committing directly to `main` or `master` unless explicitly approved.
-    2. Push changes safely to the remote branch using `git push` via `git-pushing` skill.
-    3. Update the memory graph to track branch states or feature deployment observations.
-    4. Coordinate with `ultimate-deployment-workflow` for CI/CD pipeline triggers on push events.
+  Prevents double-charging customers during transient network retries.
+  Caches UUIDv4 keys in Upstash Redis for 24h.
+  ```
 
----
-
-## Cross-Cutting Concerns
-*   **Research:** Use `tavily-search` for Git workflow best practices and branching strategy documentation.
-*   **Monorepo:** Use `ultimate-monorepo-workflow` for multi-package workspace versioning and changeset management.
-*   **Security:** Verify no secrets are staged using pre-commit hooks (per `ultimate-security-audit-workflow`).
+### Step 4: Rebase & Push
+- Rebase on latest upstream main before pushing:
+  ```bash
+  git fetch origin
+  git rebase origin/main
+  git push origin feature/my-feature-branch
+  ```

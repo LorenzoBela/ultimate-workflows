@@ -1,61 +1,98 @@
 ---
 name: ultimate-data-workflow
 description: >
-  Master workflow for data pipeline engineering, ETL scripting, and data analysis.
-  Coordinates data extraction, cleansing, structured transformation, and loading.
+  Flawless 10/10 Master Workflow for data pipeline engineering, streaming ETL pipelines,
+  backpressure flow control, transactional batch COPY upserts, and Dead-Letter Queue (DLQ) error recovery.
   Triggers on "ultimate data workflow", "/ultimate-data-workflow", or when designing
   batch pipelines, parser scripts, database aggregations, or data transformations.
-argument-hint: "[etl-pipeline | parser-script | database-aggregation]"
+argument-hint: "[etl-pipeline | parser-script | database-aggregation | --stream | --batch | --dlq]"
 ---
 
-# Ultimate Data Pipeline & ETL Workflow
+# Ultimate Data Pipeline & ETL Workflow (10/10 Master Engine)
 
-This workflow drives reliable data pipeline engineering, schema parsing, validation, cleansing, and transaction-safe loads to ensure high data integrity and resource-efficient processing.
+This workflow drives streaming data ingestion, bounded memory buffering, backpressure flow control, schema validation, transaction-safe bulk loading (PostgreSQL `COPY` / batch upsert), and Dead-Letter Queue (DLQ) anomaly isolation.
 
----
-
-## The 4-Phase Data Pipeline
-
-### Phase 1: Data Schema & Extraction (E)
-*   **Sub-skills:** `supabase-postgres-best-practices`, `upstash-redis-js`, `upstash-ratelimit-js`
-*   **Action:**
-    1. Define the source data structure (CSV, JSON, XML, Parquet, or DB tables).
-    2. Build robust extractors that read data in chunks or streams to keep memory footprints low. Never load massive files entirely into RAM.
-    3. Implement rate-limiting, paginated queries, and retry-with-backoff strategies when extracting from external REST or GraphQL APIs.
-    4. Use `upstash-ratelimit-js` to enforce extraction rate limits on external API sources.
-    5. Cache intermediate extraction results in `upstash-redis-js` to support resumable extraction on failures.
-
-### Phase 2: Data Cleansing & Validation
-*   **Sub-skills:** `lint-and-validate`, `systematic-debugging`
-*   **Action:**
-    1. Validate input data structures against schemas at the extraction boundary.
-    2. Filter out corrupt, missing, or malformed rows. Log anomalies separately.
-    3. Normalize data formats (standardize datetime offsets, trim whitespace, deduplicate rows).
-    4. Use `systematic-debugging` for tracing data corruption root causes when validation failures occur.
-
-### Phase 3: Business Logic Transformation (T)
-*   **Sub-skills:** `superpowers-tdd`, `upstash-vector-js`, `upstash-search-js`
-*   **Action:**
-    1. Apply business transformations (aggregations, joins, metric computations, value mapping).
-    2. Ensure transform logic is pure (deterministic): given the same input, it must yield the exact same output.
-    3. Write unit tests targeting transformation edge cases (null records, out-of-bound variables) using `superpowers-tdd`.
-    4. For AI/ML pipelines, generate vector embeddings during transformation using `upstash-vector-js` and build search indexes using `upstash-search-js`.
-
-### Phase 4: Transaction-Safe Loading (L)
-*   **Sub-skills:** `ultimate-database-workflow`, `upstash-workflow-js`, `upstash-qstash-js`
-*   **MCP Tools:** `supabase-mcp-server/execute_sql`, `prisma-mcp-server/migrate-dev`
-*   **Action:**
-    1. Perform database insertions using bulk/batch inserts rather than single-record insertions to reduce network roundtrips.
-    2. Ensure loading processes are **Idempotent**: if a pipeline runs twice due to a crash, the final database state must remain unchanged.
-    3. Use database Transactions for writing aggregated datasets. If loading fails midway, roll back completely.
-    4. Implement dead-letter-queues (DLQ) or recovery logs for records that fail the load phase using `upstash-qstash-js`.
-    5. For durable multi-step ETL orchestration, define step-by-step pipelines with `upstash-workflow-js` for automatic retries and failure recovery.
-    6. Use `supabase-mcp-server/execute_sql` for direct SQL batch operations or `prisma-mcp-server/migrate-dev` for schema-driven data loads.
+```
+                                      [RAW SOURCE STREAM / BATCH DATA]
+                                                     │
+                          ┌──────────────────────────┴──────────────────────────┐
+                          ▼                                                     ▼
+              [PHASE 1: STREAMING EXTRACTION (E)]                   [PHASE 2: SCHEMA VALIDATION & CLEAN]
+              ├─ Node.js / Python Reactive Streams                  ├─ Zod / Pydantic Row Validation
+              ├─ Bounded Chunk Buffering (10k rows)                 ├─ Outlier Filtering & Normalization
+              └─ Backpressure Ingestion Throttling                  └─ ISO-8601 UTC & Cents Conversion
+                          │
+                          ▼
+        ┌─────────────────────────────────────────────────────────────────────────────┐
+        │                 PHASE 3: DETERMINISTIC BUSINESS TRANSFORMATION (T)          │
+        │  • Pure Functions • Idempotent Key Generation • Vector Embeddings (Upstash) │
+        └──────────────────────────────────────┬──────────────────────────────────────┘
+                                               ▼
+                                  [PHASE 4: TRANSACTIONAL BULK LOAD (L) & DLQ]
+                    ┌──────────────────────────┼──────────────────────────┐
+                    ▼                          ▼                          ▼
+            ┌──────────────┐           ┌──────────────┐           ┌──────────────┐
+            │ 🚀 PG COPY   │           │ 💾 DB TX     │           │ 📭 DEAD-LETT │
+            │ Batch Upsert │           │ All-or-None  │           │ DLQ QStash   │
+            └──────────────┘           └──────────────┘           └──────────────┘
+```
 
 ---
 
-## Cross-Cutting Concerns
-*   **Research:** Use `tavily-search`, `tavily-extract`, and `context7/get-library-docs` for discovering ETL framework APIs and data format parsers.
-*   **Documentation:** Use `docx` skill for generating formal data pipeline specification documents.
-*   **Memory:** Use `memory` MCP to persist pipeline configurations, data source schemas, and transformation rules across conversations.
-*   **Monitoring:** Use `upstash-redis-js` for pipeline health dashboards and real-time progress tracking.
+## 🏛️ Iron Laws of Data Pipeline Engineering
+
+1. **Bounded Memory Invariant**: Never load entire datasets into memory. Use streaming readers (`stream.Transform`, Python generators) with fixed buffer limits ($\le 10,000$ records).
+2. **Backpressure Compliance**: Pipeline consumers must signal upstream producers to pause when ingestion queues reach high-water marks.
+3. **Pure & Deterministic Transformations**: Given identical input rows, transformation logic must produce bit-for-bit identical output rows.
+4. **Idempotent Loading via Upsert**: Bulk database insertions must utilize `ON CONFLICT (natural_key) DO UPDATE` to prevent duplicate record corruption.
+5. **Dead-Letter Queue (DLQ) Quarantine**: Malformed or unparseable records must be routed to a quarantine DLQ (QStash / Kafka DLQ) without crashing the primary pipeline execution.
+
+---
+
+## 🔬 The 4-Phase Streaming ETL Pipeline
+
+### Phase 1: Streaming Extraction with Backpressure
+```typescript
+import { createReadStream } from 'fs';
+import { pipeline } from 'stream/promises';
+import { Transform } from 'stream';
+import csvParser from 'csv-parser';
+
+export async function processDataPipeline(filePath: string) {
+  let batch: any[] = [];
+  const BATCH_SIZE = 5000;
+
+  const transformer = new Transform({
+    objectMode: true,
+    async transform(chunk, encoding, callback) {
+      batch.push(chunk);
+      if (batch.length >= BATCH_SIZE) {
+        await flushBatch(batch);
+        batch = [];
+      }
+      callback();
+    },
+    async flush(callback) {
+      if (batch.length > 0) await flushBatch(batch);
+      callback();
+    }
+  });
+
+  await pipeline(createReadStream(filePath), csvParser(), transformer);
+}
+```
+
+### Phase 2: Transactional Batch Upsert
+```sql
+INSERT INTO transactions (id, user_id, amount_in_cents, status, created_at)
+VALUES 
+  ($1, $2, $3, $4, $5),
+  ($6, $7, $8, $9, $10)
+ON CONFLICT (id) 
+DO UPDATE SET 
+  status = EXCLUDED.status,
+  updated_at = now();
+```
+
+### Phase 3: Dead-Letter Queue (DLQ) Logging
+- Route rows failing schema validation directly to an isolated table `pipeline_quarantine_dlq` containing `raw_payload`, `error_reason`, `source_file`, and `quarantined_at`.

@@ -66,6 +66,7 @@ A       │    Low        │    Low        │    Medium     │
 ## The 5-Phase Brainstorming Pipeline
 
 ### Phase 1: Problem Definition & Constraints
+*   **Sub-skills:** `superpowers-brainstorm`, `concise-planning`, `sequential-thinking/sequentialthinking`
 *   **Action:**
     1. **The Goal Statement:** Write a single sentence: "We need to [ACTION] so that [OUTCOME] because [MOTIVATION]."
        *   *Example:* "We need to implement real-time GPS tracking so that recipients can see delivery progress because the current polling model creates 30-second stale windows."
@@ -82,6 +83,8 @@ A       │    Low        │    Low        │    Medium     │
     5. Use `sequentialthinking` to trace causal chains and uncover hidden dependencies.
 
 ### Phase 2: Divergent Option Generation (2–4 Options)
+*   **MCP Tools:** `sequential-thinking/sequentialthinking`, `perplexity-ask/perplexity_ask`, `tavily/tavily_search`, `tavily/tavily_research`
+*   **Sub-skills:** `tavily-best-practices`, `upstash`, `postgres-best-practices`
 *   **Action:**
     1. Generate 2–4 distinct, genuinely different implementation approaches. Examples:
        *   **Option A: Standard library / native platform** — Use built-in APIs, zero new dependencies.
@@ -91,9 +94,10 @@ A       │    Low        │    Low        │    Medium     │
     2. For each option, document a 3-line summary: what it does, how it works, and what it costs (time + complexity).
     3. Use `sequentialthinking` to trace the execution flow of each option, mapping state transitions and identifying edge cases.
     4. Use `perplexity_ask` for cross-referencing complex architectural patterns.
-    5. Use Web Search and Deep Research Engine for discovering existing solutions, community patterns, and known pitfalls.
+    5. Use `tavily_search` and `tavily_research` for discovering existing solutions, community patterns, and known pitfalls.
 
 ### Phase 3: Convergent Decision Matrix
+*   **Sub-skills:** `kaizen`, `ponytail`, `superpowers-review`
 *   **Action:**
     1. Score each option on a **1–5 scale** across the decision criteria.
     2. Calculate weighted scores. Present results in a comparison table:
@@ -109,6 +113,7 @@ A       │    Low        │    Low        │    Medium     │
     5. Apply `ponytail` YAGNI: reject any option that builds speculative capabilities not needed today.
 
 ### Phase 4: Risk Mapping & Mitigation
+*   **Sub-skills:** `superpowers-plan`, `ultimate-security-workflow`, `systematic-debugging`
 *   **Action:**
     1. For the recommended option, build a **Risk Register:**
 
@@ -123,12 +128,13 @@ A       │    Low        │    Low        │    Medium     │
     4. Apply `ultimate-security-workflow` for security-specific risk assessment.
 
 ### Phase 5: Acceptance Criteria & Handoff
+*   **Sub-skills:** `superpowers-plan`, `concise-planning`
 *   **Action:**
     1. Define **verifiable acceptance criteria** (not vague goals):
        *   ✅ "GPS marker updates within 2 seconds of device movement"
        *   ✅ "OTP reveal triggers when rider is within 50m (Haversine distance)"
        *   ❌ "Tracking should be fast"
-    2. Break the recommended option into **small, atomic implementation steps** (2–10 minutes each) using `Atomic Step-by-Step Implementation Planning`.
+    2. Break the recommended option into **small, atomic implementation steps** (2–10 minutes each) using `superpowers-plan`.
     3. Generate the atomic checklist using `concise-planning`.
     4. Persist brainstorm decisions, risk register, and acceptance criteria to the `memory` graph for cross-conversation recall.
 
@@ -369,9 +375,9 @@ At the conclusion of the brainstorming meeting or spike, confirm the following a
 
 ---
 
-## Universal Checklists & Reference Architecture
+## Sub-Skill Checklists & Reference Templates
 
-### 1. Scoping Guidelines (`Structured Brainstorming & Architecture Scoping`)
+### 1. Scoping Guidelines (`superpowers-brainstorm`)
 *   **Goal:** Define high-level target in 1–2 sentences.
 *   **Constraints:** Identify technology stack limitations, time allocations, compatibility requirements, performance targets, and "must not change" guidelines.
 *   **Known Context:** Establish what exists today: relevant files, components, and current system behaviors.
@@ -444,8 +450,8 @@ options.forEach(opt => {
 
 ## Cross-Cutting Concerns
 *   **Planning:** Feed brainstorm outputs directly into `ultimate-planning-workflow` for implementation planning.
-*   **Research:** Use Web Search, Deep Web Research, Web Extraction Tool, `perplexity-ask`, and official library documentation for validating technical assumptions.
+*   **Research:** Use `tavily-search`, `tavily-research`, `tavily-extract`, `perplexity-ask`, and `context7/get-library-docs` for validating technical assumptions.
 *   **Documentation:** Use `ultimate-documentation-workflow` and `docx` to formalize brainstorm outputs into ADR documents.
-*   **Presentation:** Use Data Presentation & Deck Layouts to create strategic HTML presentations of brainstorm outcomes with Chart.js decision matrices.
+*   **Presentation:** Use `ckm:slides` to create strategic HTML presentations of brainstorm outcomes with Chart.js decision matrices.
 *   **Architecture:** Feed architectural brainstorms into `ultimate-architecture-workflow` for ER diagrams and system design.
-*   **Memory:** Use Persistent Project Memory / Scratchpad to persist brainstorm decisions and rationale across conversations.
+*   **Memory:** Use `memory` MCP to persist brainstorm decisions and rationale across conversations.

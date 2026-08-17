@@ -38,18 +38,21 @@ This workflow guides the design, configuration, tool integration, lifecycle hook
 
 ## The 4-Phase Agent Development Pipeline
 
-### Phase 1: Environment & Agent Configuration
+### Phase 1: Environment & Agent Configuration
+*   **Sub-skills:** `google-antigravity-sdk`, `concise-planning`, `superpowers-brainstorm`
 *   **Action:**
     1. **Verify SDK Installation:** Check that the `google-antigravity` package is present in dependencies. Ensure API credentials (`GEMINI_API_KEY`) are set and validated.
     2. **Define Agent Settings:** Create the agent configuration (`LocalAgentConfig`). Set model temperature (low values for transactional agents, high for brainstorming), max output tokens, and stop sequences.
     3. **Setup Persona & System Instructions:** Write clear, concise instructions defining the agent's role, task constraints, and output format.
     4. **Perform Startup Checks:** Validate that all required backend connection strings and environment keys are loaded. Fail fast if any configuration is missing.
     5. **Atomic Checklist Generation:** Use `concise-planning` to map out the agent configuration, tool bindings, and verification tests.
-    6. **Brainstorm Architecture:** Use `Structured Brainstorming & Architecture Scoping` to evaluate multi-agent structures, coordinator-child configurations, and memory strategies.
+    6. **Brainstorm Architecture:** Use `superpowers-brainstorm` to evaluate multi-agent structures, coordinator-child configurations, and memory strategies.
     7. **Local Mock Environment Setup:** Configure mock implementations of external API keys, preventing actual network request costs during local debugging loops.
     8. **Lock Model Checkpoints:** Force system runs to execute against specific, locked model snapshots rather than rolling auto-update tags.
 
-### Phase 2: Tooling & MCP Server Integrations
+### Phase 2: Tooling & MCP Server Integrations
+*   **Sub-skills:** `google-antigravity-sdk`, `upstash-box-js`, `upstash-redis-js`, `upstash-qstash-js`, `upstash-workflow-js`, `upstash-vector-js`, `upstash-search-js`, `upstash-ratelimit-js`, `upstash-cli`, `tavily-best-practices`
+*   **MCP Tools:** `supabase-mcp-server/*`, `firebase-mcp-server/*`, `prisma-mcp-server/*`, `playwright/*`, `tavily/*`, `perplexity-ask/*`, `sequential-thinking/*`, `memory/*`, `context7/*`
 *   **Action:**
     1. **Expose Custom Tools:** Bind Python or JavaScript functions to the agent, providing precise type annotations and detailed docstrings for function-calling.
     2. **Integrate MCP Servers:** Connect the agent to external toolsets using Model Context Protocol (MCP) clients.
@@ -61,29 +64,31 @@ This workflow guides the design, configuration, tool integration, lifecycle hook
     8. **Integrate Semantic Search:** Use `upstash-vector-js` for semantic search queries over text chunks, matching cosine similarity thresholds.
     9. **Full-Text Search:** Use `upstash-search-js` for keyword-based document retrieval in agent knowledge bases.
     10. **Rate Limiting:** Use `upstash-ratelimit-js` to protect agent-facing API endpoints from abuse.
-    11. **Web Research:** Apply `Web Search & Intelligence Strategy` for production-ready search integrations in agentic workflows.
+    11. **Web Research:** Apply `tavily-best-practices` for production-ready search integrations in agentic workflows.
     12. **Docker Container Cleanup:** Implement automatic teardown scripts that destroy containers and release memory caches on process exit.
 
-### Phase 3: Lifecycle Hooking & Subagent Orchestration
+### Phase 3: Lifecycle Hooking & Subagent Orchestration
+*   **Sub-skills:** `google-antigravity-sdk`, `cavecrew`, `caveman`, `caveman-compress`, `ponytail-caveman`, `ultimate-agent-workflow`
 *   **Action:**
     1. **Register Hooks:** Hook into the agent runtime using `on_pre_turn`, `on_post_turn`, and `on_tool_execute` methods.
     2. **Implement Retry Backoff:** Write error-recovery hooks that intercept model errors or API failures and run retries with exponential backoff and jitter.
     3. **Design Multi-Agent Networks:** Setup a supervisor agent that coordinates execution, delegating tasks to child subagents and consolidating their findings.
     4. **Expose Cavecrew Subagents:** Integrate specialized subagents (`cavecrew-investigator`, `cavecrew-builder`, `cavecrew-reviewer`) for targeted, file-bounded execution.
-    5. **Compress Instructions:** Run `Prompt & Context Optimization` on subagent templates to reduce input context footprint.
+    5. **Compress Instructions:** Run `caveman-compress` on subagent templates to reduce input context footprint.
     6. **Apply Ponytail Simplicity:** Enforce `ponytail` YAGNI principles to ensure subagents write minimal, clean code without bloating the codebase.
     7. **Token Budget Quotas Hook:** Inject a token check in the `pre-turn` lifecycle hook. Stop the turn if the running thread has consumed over 120k tokens.
     8. **Execution Queue Locks:** Prevent race conditions in parallel subagent writes by registering a mutex lock in the Redis coordination key.
 
-### Phase 4: Persistence, Structured Output & Auditing
+### Phase 4: Persistence, Structured Output & Auditing
+*   **Sub-skills:** `google-antigravity-sdk`, `upstash-redis-start`, `memory`, `systematic-debugging`, `lint-and-validate`
 *   **Action:**
     1. **Enforce Structured JSON:** Restrict the agent model output to valid JSON matching defined Pydantic classes or TypeScript interfaces.
     2. **Restore Conversation State:** Persist session data to disk or a database to allow agents to resume conversations with history intact.
     3. **Setup Scratch Databases:** Use `upstash-redis-start` to provision zero-config, ephemeral Redis instances for short-term task orchestration.
-    4. **Update Knowledge Graph:** Record architectural patterns, database schemas, and tool structures in the Persistent Project Memory / Scratchpad node to maintain continuity.
+    4. **Update Knowledge Graph:** Record architectural patterns, database schemas, and tool structures in the `memory` MCP node to maintain continuity.
     5. **Audit Token Costs:** Track prompt and execution tokens, calculate costs, and monitor performance latency in structured logs.
     6. **Debug Failures Systematically:** Apply the `systematic-debugging` template when diagnosing agent crashes, testing hypotheses before applying fixes.
-    7. **Run Validation Checks:** Validate agent code and configuration schemas using Strict Linting & Type Validation before deployment.
+    7. **Run Validation Checks:** Validate agent code and configuration schemas using `lint-and-validate` before deployment.
     8. **Git Traceability Commit:** When an execution batch completes, write an automated summary message and trigger a git push.
 
 ---
@@ -382,7 +387,7 @@ export function runSafetyPredicate(toolCall: ToolCall): boolean {
 
 ## Cross-Cutting Concerns
 *   **Delegation:** Link with `ultimate-agent-workflow` to manage subagent prompts, context limits, and token budgets.
-*   **Research:** Use `Web Search & Intelligence Strategy`, `perplexity-ask`, and official library documentation to gather API reference documentation.
-*   **Validation:** Run Strict Linting & Type Validation on all model configuration scripts, hooks, and tool classes.
-*   **Review:** Use Severity-Tiered Code Review (Blocker/Major/Minor/Nit) and Anti-Overengineering & Bloat Audit to audit agent code for security flaws and code complexity.
+*   **Research:** Use `tavily-best-practices`, `perplexity-ask`, and `context7/get-library-docs` to gather API reference documentation.
+*   **Validation:** Run `lint-and-validate` on all model configuration scripts, hooks, and tool classes.
+*   **Review:** Use `superpowers-review` and `ponytail-review` to audit agent code for security flaws and code complexity.
 *   **Git:** Coordinate branches, commits, and pushes using `ultimate-git-workflow` and `git-pushing`.
