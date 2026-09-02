@@ -2,15 +2,50 @@
 name: ultimate-research-workflow
 description: >
   Master workflow for technical research, document mining, API checks, and dependency validation.
-  Combines Hexa-Engine simultaneous search (Tavily + Exa + Linkup + Jina AI + Firecrawl + Bright Data executed in parallel),
-  anti-bot Cloudflare bypassing, specialized Developer PR triage, academic paper mining, deep PDF extraction,
-  semantic reranking, 6-way cross-verification matrix, and memory graph persistence.
+  Combines Pentadeca-Engine simultaneous search (Tavily + Context7 + You.com + Exa AI + Jina AI + SERPdive + Linkup + Parallel Search + SerpApi + GitHub + Firecrawl + Crawleo + Bright Data + Apify Cloud + Brave Search executed in parallel),
+  anti-bot Cloudflare bypassing, mass cloud crawling, token-efficient excerpt extraction, specialized Developer PR triage,
+  direct Google/Scholar SERP extraction, official library type stub resolution, raw repository AST exploration,
+  academic paper mining, deep PDF extraction, semantic reranking, 15-way cross-verification matrix, and memory graph persistence.
   Triggers on "ultimate research workflow", "/ultimate-research-workflow", or when
   researching libraries, APIs, or system designs.
 argument-hint: "[research-topic | search-query]"
 ---
 
-# Ultimate Research Workflow (Hexa-Engine Architecture)
+# Ultimate Research Workflow (Pentadeca-Engine Architecture)
+
+> [!CAUTION]
+> ### 🛑 STRICT 15/15 EXECUTION HARD GATE — NO ENGINE LEFT BEHIND
+> This workflow enforces an unbreakable, non-negotiable execution rule: **EVERY single research invocation MUST dispatch to and compile findings from ALL FIFTEEN (15) MCP engines.**
+>
+> **Cluster 1: Canonical Docs & Official Specs**
+> 1. **Tavily** (`tavily`) — Canonical official docs & site crawling
+> 2. **Context7** (`context7`) — Official TypeScript type definitions & parameter stubs
+> 3. **You.com** (`ydc-search`) — LLM-optimized live web retrieval, grounded news & research synthesis
+>
+> **Cluster 2: Neural Vectors & Deep Passages**
+> 4. **Exa AI** (`exa`) — Neural semantic code vectors & patterns
+> 5. **Jina AI** (`jina-remote-server`) — In-body passage quotes (~100 words) & neural reranking
+> 6. **SERPdive** (`serpdive`) — Answer-ready content extraction & compressed neural synthesis
+>
+> **Cluster 3: Real-Time & Live SERP Intelligence**
+> 7. **Linkup** (`linkup`) — Real-time agent grounding & deep research
+> 8. **Parallel Search** (`parallel-search`) — Low-latency, high-density answer excerpts
+> 9. **SerpApi** (`serpapi`) — Live Google/Scholar SERP scraping & organic rank consensus
+>
+> **Cluster 4: Raw Code, AST & Repo Triage**
+> 10. **GitHub** (`github`) — Raw repository source code AST, issues & merged PR diffs
+> 11. **Firecrawl** (`firecrawl-mcp`) — Developer index PR triage & live headless DOM scraping
+> 12. **Crawleo** (`crawleo`) — Multi-format crawl, clean markdown & SERP RAG ingestion
+>
+> **Cluster 5: Anti-Bot Crushing & Mass Recursive Crawling**
+> 13. **Bright Data** (`brightdata`) — Anti-bot crusher, Web Unlocker & Cloudflare bypass
+> 14. **Apify Cloud** (`apify`) — Mass recursive multi-page cloud website crawler
+> 15. **Brave Search** (`brave-search`) — Independent 30B+ index & freshness-tagged forums
+>
+> **Enforcement Rules:**
+> - **Zero Omissions:** Running any subset ($N < 15$) is a **CRITICAL PROTOCOL VIOLATION**.
+> - **15 Discrete Submissions:** All 15 engines MUST each output their discrete findings section before synthesis.
+> - **Full 15-Way Compilation:** The final deliverable MUST compile all 15 findings into the 15-way matrix before drawing conclusions.
 
 This workflow drives systematic information retrieval, document mining, API verification, and library health analysis. It guarantees that technical decisions, library choices, and API usage patterns are based on verified, up-to-date documentation — never hallucinated, assumed, or guessed.
 
@@ -24,32 +59,39 @@ By following this workflow, engineering teams avoid:
 
 ---
 
-## The Hexa-Engine Architecture
+## The 5 Strategic Research Clusters (Pentadeca Architecture)
+
+To guarantee 100% comprehensive coverage without single-engine blindspots, the 15 research engines are structured into **Five Specialized Functional Clusters (3 Engines per Cluster)**. Every research dispatch MUST query all five clusters simultaneously:
 
 ```
-                              [USER TECHNICAL QUERY]
-                                        │
-           ┌────────────────────────────┼────────────────────────────┐
-           │                 PARALLEL HEXA DISPATCH                  │
-           ▼                            ▼                            ▼
-  ┌─────────────────┐          ┌─────────────────┐          ┌─────────────────┐
-  │ 1. TAVILY       │          │ 2. EXA          │          │ 3. LINKUP       │
-  │ Canonical Docs  │          │ Neural Vectors  │          │ Production AI   │
-  │ & Domain Filter │          │ & AST Code Repos│          │ Real-Time Search│
-  └────────┬────────┘          └────────┬────────┘          └────────┬────────┘
-           │                            │                            │
-           ▼                            ▼                            ▼
-  ┌─────────────────┐          ┌─────────────────┐          ┌─────────────────┐
-  │ 4. JINA AI      │          │ 5. FIRECRAWL    │          │ 6. BRIGHT DATA  │
-  │ Deep Passages   │          │ Developer PRs   │          │ Web Unlocker    │
-  │ & Neural Rerank │          │ & Clean DOM AST │          │ & Anti-Bot Wall │
-  └────────┬────────┘          └────────┬────────┘          └────────┬────────┘
-           │                            │                            │
-           └────────────────────────────┼────────────────────────────┘
-                                        ▼
-                      [6-WAY CROSS-VERIFICATION MATRIX]
-                                        ▼
-                         [100% GROUNDED SOLUTION]
+┌──────────────────────────────────────────────────────────────────────────────────────────────────┐
+│                      PENTADECA 15-ENGINE HARDENED CLUSTER TOPOLOGY (PRO MAX)                     │
+├──────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ 🏛️ CLUSTER 1: CANONICAL DOCS & OFFICIAL SPECIFICATIONS (Ground Truth Anchor)                     │
+│   1. Tavily (`tavily`)            : Official documentation portals & authority sites.            │
+│   2. Context7 (`context7`)        : Canonical TypeScript types, interface ASTs & param stubs.   │
+│   3. You.com (`ydc-search`)       : Deterministic search synthesis & structured LLM grounding.   │
+├──────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ 🧠 CLUSTER 2: NEURAL VECTORS & DEEP PASSAGES (Concept & Semantic Depth)                          │
+│   4. Exa AI (`exa`)               : Neural semantic embeddings & code pattern matching.          │
+│   5. Jina AI (`jina-remote-server`): Deep in-body passage spans (~100 words) & neural reranking. │
+│   6. SERPdive (`serpdive`)        : Answer-ready LLM content extraction & compressed synthesis.  │
+├──────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ ⚡ CLUSTER 3: REAL-TIME & LIVE SERP INTELLIGENCE (Freshness & Consensus)                          │
+│   7. Linkup (`linkup`)            : Real-time agent grounding with structured citation trees.    │
+│   8. Parallel Search (`parallel-search`): Ultra-low latency, token-dense answer excerpts.       │
+│   9. SerpApi (`serpapi`)          : Google & Google Scholar SERP scraping, rank consensus.       │
+├──────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ 🐙 CLUSTER 4: RAW CODE, AST & REPO TRIAGE (Source Implementation Grounding)                      │
+│  10. GitHub (`github`)            : Direct repository source AST, merged PR diffs & changelogs.  │
+│  11. Firecrawl (`firecrawl-mcp`)  : Developer index PR triage & dynamic headless JS DOM scraping.│
+│  12. Crawleo (`crawleo`)          : Multi-format crawl, clean markdown & SERP RAG ingestion.     │
+├──────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ 🛡️ CLUSTER 5: ANTI-BOT CRUSHING & MASS RECURSIVE CRAWLING (Deep Web Reach)                       │
+│  13. Bright Data (`brightdata`)   : Web Unlocker, Cloudflare Turnstile & CAPTCHA crusher.        │
+│  14. Apify Cloud (`apify`)        : Mass multi-thousand page recursive cloud web scraping.       │
+│  15. Brave Search (`brave-search`): Independent 30B+ index, forum threads & freshness age filter.│
+└──────────────────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
@@ -60,23 +102,32 @@ By following this workflow, engineering teams avoid:
 2. **Pin Versions.** Every library recommendation must include the exact version tested (`package@version`). "Use library X" without a version is incomplete research.
 3. **Cite Everything.** Every finding must include a direct URL to the source and a verbatim quote span. Uncited claims are hypotheses, not research.
 4. **Acknowledge Staleness.** Explicitly state documentation age, last update date, and any known deprecations. Old docs are dangerous docs.
-5. **Cross-Reference.** No single source is authoritative. Verify critical findings across the Hexa-Engine matrix (official docs + community/GitHub PRs + deep page passages + unblocked enterprise sources).
+5. **Cross-Reference.** No single source is authoritative. Verify critical findings across the Pentadeca-Engine matrix (official docs + community/GitHub PRs + deep page passages + unblocked enterprise sources + independent web crawlers + high-density agent excerpts + mass cloud crawlers + direct SERP knowledge graphs + official Context7 library type definitions + direct GitHub repository AST/commit mining + You.com LLM-grounded web search + SERPdive answers + Crawleo RAG scrapes).
 6. **No Speculative Libraries.** Never suggest a library or package that is not published on npm or PyPI. Always check active status.
 7. **Document Alternatives.** Never recommend a library without evaluating at least 2 competitors.
 8. **Time-Box Research.** Limit active search and extraction to a maximum of **15 minutes**. If findings are still inconclusive, re-formulate query decomposition.
-9. **Hexa-Engine Simultaneous Submission & 6-Way Comparison Mandate (Tavily + Exa + Linkup + Jina AI + Firecrawl + Bright Data).** When researching the web, ALWAYS execute queries across the 6-engine spectrum:
+9. **Strict 15/15 Execution Invariant & "No Engine Left Behind" Mandate (Tavily + Context7 + You.com + Exa + Jina AI + SERPdive + Linkup + Parallel Search + SerpApi + GitHub + Firecrawl + Crawleo + Bright Data + Apify Cloud + Brave Search).** Every single technical research task MUST dispatch queries across ALL FIFTEEN (15) MCP engines simultaneously. Zero exceptions. No engine may ever be omitted, skipped, or deemed optional:
    - **Tavily (`tavily_search` / `tavily_research`):** Domain-scoped keyword indexing, authority doc crawling, multi-step search.
+   - **Context7 (`context7`):** Canonical library documentation resolver (`resolve-library-id`) and live version-pinned API/TypeScript definition extractor (`get-library-docs`).
+   - **You.com (`ydc-search` / `@youdotcom-oss/mcp`):** Real-time web index optimized for LLM reasoning, delivering deterministic structured web results, snippet extractions, live news, and multi-source research synthesis.
    - **Exa (`web_search_exa` / `web_fetch_exa`):** Neural vector semantic search, natural language intent, similar code pattern discovery.
-   - **Linkup (`linkup-search` / `linkup-fetch` / `linkup-research`):** Production-grade real-time agent search with deep grounding and structured citations.
    - **Jina AI (`jina-remote-server`):** Deep in-page passage extraction (~100 words via `search_web_deep`), batch parallel queries (`search_web`), academic papers (`search_arxiv`, `search_ssrn`), PDF extraction (`extract_pdf`), and semantic reranking (`sort_by_relevance`).
+   - **SERPdive (`serpdive` / `serpdive_search`):** High-speed LLM-grounded search returning answer-ready page content, compressed token snippets, and neural answers.
+   - **Linkup (`linkup-search` / `linkup-fetch` / `linkup-research`):** Production-grade real-time agent search with deep grounding and structured citations.
+   - **Parallel Search (`parallel-search` / `search.parallel.ai`):** Dedicated AI-native search & token-efficient excerpt extraction engine delivering high-density, answer-ready snippets (`web_search`, `web_fetch`) with zero hallucination.
+   - **SerpApi (`serpapi`):** Live search engine results page (SERP) scraping across Google, Google Scholar, Google News, Baidu, and Patents with rich structured JSON, organic citations, and knowledge graphs (250 free searches/mo).
+   - **GitHub (`github` / `@modelcontextprotocol/server-github`):** Direct repository source code mining, commit history exploration, AST inspection, raw file fetching, issue/PR search, and release changelog verification.
    - **Firecrawl (`firecrawl-mcp`):** Developer index (`categories: ["developer"]` covering GitHub issues/merged PRs/curated docs via `firecrawl_search`), headless JS scraping (`firecrawl_scrape` with `maxAge: 0` and browser actions), sitemaps (`firecrawl_map`), recursive crawls (`firecrawl_crawl`), structured LLM extraction (`firecrawl_extract`), and autonomous agents (`firecrawl_agent`).
+   - **Crawleo (`crawleo` / `crawleo_search`, `crawleo_scrape`):** AI search, Google SERP/News/Maps scraping, and headless JS rendering (`render_js=true`), returning clean markdown for LLM grounding.
    - **Bright Data (`brightdata`):** Web Unlocker & proxy shield that bypasses Cloudflare Turnstile, Akamai, CAPTCHAs, and geoblocks on protected enterprise portals.
-   **All engines must EACH submit their own independent findings version/report.** Do NOT blend their initial outputs prematurely. You MUST perform an explicit 6-way side-by-side comparison matrix to analyze consensus, conflicting signatures, unique code angles, and trade-offs before reaching a final decision.
+   - **Apify Cloud (`@apify/actors-mcp-server` / `apify`):** Mass cloud-hosted recursive website crawling (`apify/website-content-crawler`), Google/search actor execution, and deep multi-page markdown harvesting ($5/mo free platform usage).
+   - **Brave Search (`brave-search` / `@modelcontextprotocol/server-brave-search`):** Independent 30B+ page web crawler index separate from Google/Bing, discovering un-indexed developer blogs, independent forums, and freshness-tagged content (`age` field).
+   **EVERY SINGLE ONE of the 15 engines must complete its run and submit its independent findings report.** No engine is left behind. You MUST compile all 15 reports into their 5 functional clusters and perform an explicit 15-way side-by-side comparison matrix to analyze consensus, conflicting signatures, unique code angles, and trade-offs before reaching a final decision.
 10. **Anti-Bot Escalation Protocol.** If any URL returns `403 Forbidden`, Cloudflare challenge, or CAPTCHA lockout across standard engines, immediately escalate to **Bright Data Web Unlocker** / `scraping_browser` to extract raw DOM content without failure.
 11. **Zero-Vagueness Invariant & Goated Prompt Blueprint.** Never issue vague, low-signal queries (e.g., `react state`, `supabase auth`). Every MCP search invocation MUST follow the **Goated Prompt Engineering Blueprint**: combining (1) target artifact type, (2) exact library version pinning, (3) boolean domain scoping, and (4) explicit negative exclusions.
 12. **Google Chain-of-Evidence (CoE) Zero-Phantom Reference Mandate.** Every factual claim, API signature, and metric MUST carry an explicit inline evidence tag binding it to a verified URL or registry API response. Citations generated from LLM memory are BANNED.
-13. **AutoVerifier Hexa-Source Claim Extraction.** Factual assertions MUST be decomposed into structured `(Subject, Predicate, Object)` claim triples to detect cross-source contradictions and method-code misalignments across all 6 search engines before recommending solutions.
-14. **Dynamic Failover & Resilience Protocol.** If any of the 6 engines encounters rate limits or network issues, the remaining active engines dynamically scale up results count (+50%) to ensure 100% data density. Research NEVER halts.
+13. **AutoVerifier Pentadeca-Source Claim Extraction.** Factual assertions MUST be decomposed into structured `(Subject, Predicate, Object)` claim triples to detect cross-source contradictions and method-code misalignments across all 15 search engines before recommending solutions.
+14. **Dynamic Failover & Resilience Protocol.** If any of the 15 engines encounters rate limits or network issues, the remaining active engines dynamically scale up results count (+20%) to ensure 100% data density. Research NEVER halts, and the affected engine's attempted run is still logged.
 
 ---
 
@@ -87,7 +138,7 @@ By following this workflow, engineering teams avoid:
   - *Completeness:* Every claim in a research report MUST link to a recorded evidence chain.
   - *Correctness:* Each evidence chain MUST genuinely support the attached claim (zero paraphrase drift).
 - **CoE 4-Check Integrity Audit:**
-  1. **Reference Verification:** 100% of citations resolved via live registry/scholarly APIs (`context7`, `tavily_extract`, `web_fetch_exa`, Linkup `linkup-fetch`, Jina `read_url`, Firecrawl `firecrawl_scrape`, Bright Data Unlocker). Zero phantom references allowed.
+  1. **Reference Verification:** 100% of citations resolved via live registry/scholarly/source APIs (`context7`, `github`, `tavily_extract`, `web_fetch_exa`, Linkup `linkup-fetch`, Jina `read_url`, Firecrawl `firecrawl_scrape`, Bright Data Unlocker, Brave Search API, Parallel Search `web_fetch`, Apify datasets, SerpApi Google results, You.com API, SERPdive, Crawleo). Zero phantom references allowed.
   2. **Metric & Score Verification:** Exact performance/bundle-size numbers verified against raw log lines or benchmark tables.
   3. **Method-Code Alignment:** Described library patterns MUST match actual source code AST declarations.
   4. **Specification Violation Check:** Enforce exact version bounds (e.g. Next.js 15, React 19, TypeScript 5.5, Node 22).
@@ -95,22 +146,26 @@ By following this workflow, engineering teams avoid:
 ### 2. Google PAT (Paper Assistant Tool) Semantic Segmentation & Compute Allocation
 - **Dynamic Segment Compute Allocation:**
   - Segment research topics into semantic components (e.g., *API Signatures*, *Migration Paths*, *Performance Benchmarks*, *Security Hazards*).
-  - Dynamically allocate search tool calls across the 6 engines based on information density:
-    - **Tavily (16.6%):** Canonical documentation portals, authoritative domains, and exact parameter specifications.
-    - **Exa (16.6%):** Semantic natural language intent, neural code patterns, and real-world implementation repositories.
-    - **Linkup (16.6%):** Real-time agent grounding, production search queries, and high-speed deep analysis.
-    - **Jina AI (16.6%):** Deep in-page passage reading (`search_web_deep`), academic research (`search_arxiv`/`search_ssrn`), PDF tables (`extract_pdf`), and semantic reranking (`sort_by_relevance`).
-    - **Firecrawl (16.6%):** Developer index (`categories: ["developer"]`), merged GitHub PRs, live headless JS scrape (`maxAge: 0`), sitemaps (`firecrawl_map`), and structured schema extraction (`firecrawl_extract`).
-    - **Bright Data (16.6%):** Anti-bot bypassing, Web Unlocker scraping on Cloudflare-protected domains, and enterprise SERP validation.
+  - Dynamically allocate search tool calls across all 15 engines grouped into 5 clusters (20% per cluster, 6.67% per engine):
+    - **Cluster 1 (Authority & Canonical Specs - 20%):** Tavily, Context7, You.com
+    - **Cluster 2 (Neural Vector & Deep Passages - 20%):** Exa AI, Jina AI, SERPdive
+    - **Cluster 3 (Real-Time Agent & SERP Consensus - 20%):** Linkup, Parallel Search, SerpApi
+    - **Cluster 4 (Raw Code AST & Merged PR Triage - 20%):** GitHub, Firecrawl, Crawleo
+    - **Cluster 5 (Anti-Bot Bypass & Mass Cloud Crawling - 20%):** Bright Data, Apify Cloud, Brave Search
 
-### 3. AutoVerifier 6-Layer Knowledge Graph & Claim Triples
-Decompose complex technical assertions into structured `(Subject, Predicate, Object)` triples before synthesizing recommendations:
-- *Example:* `(Next.js 15 App Router, requires, React 19)`
-- *Example:* `(Prisma v6, supports, Supabase Transaction Pooling on Port 6543)`
-- *Example:* `(Firecrawl developer index, exposes, data.developer PR fixes)`
-- *Example:* `(Jina search_web_deep, extracts, ~100-word in-body passages)`
-- *Example:* `(Bright Data Web Unlocker, unblocks, Cloudflare Turnstile protected docs)`
-- Cross-reference triples across all 6 engine outputs (Tavily, Exa, Linkup, Jina AI, Firecrawl, Bright Data) to spot contradictions and overclaims automatically.
+### 3. AutoVerifier 15-Layer Knowledge Graph & Claim Triples
+Decompose complex technical assertions into structured `(Subject, Predicate, Object)` triples across the 5 clusters:
+- *Cluster 1:* `(Context7 resolve-library-id, resolves, canonical date-fns v4 type stubs)`
+- *Cluster 1:* `(You.com ydc-search, grounds, real-time web facts and multi-source research snippets)`
+- *Cluster 2:* `(Jina search_web_deep, extracts, ~100-word in-body passages)`
+- *Cluster 2:* `(SERPdive search, synthesizes, answer-ready LLM content extraction)`
+- *Cluster 3:* `(Parallel Search web_search, delivers, answer-ready 25k char capped excerpts)`
+- *Cluster 4:* `(GitHub search_code, locates, PrismaPg adapter instantiation in production repos)`
+- *Cluster 4:* `(Firecrawl developer index, exposes, data.developer PR fixes)`
+- *Cluster 4:* `(Crawleo crawl, renders, JavaScript SPA markdown AST)`
+- *Cluster 5:* `(Bright Data Web Unlocker, unblocks, Cloudflare Turnstile protected docs)`
+- *Cluster 5:* `(Brave Search index, discovers, independent forum workarounds with freshness age)`
+- Cross-reference triples across all 15 engine outputs to spot contradictions and overclaims automatically.
 
 ### 4. DeepTRACE Bi-partite Citation Matrix & Minimal Source Cover
 - Construct a **Statement-by-Source Matrix** evaluating whether listed URL sources factually support each sentence in the report.
@@ -118,7 +173,7 @@ Decompose complex technical assertions into structured `(Subject, Predicate, Obj
 
 ### 5. HiEviDR Hierarchical Evidence Graph & Progressive Gating
 - **Evidence Graph Construction ($\mathcal{G} = (\mathcal{N}_\text{e} \cup \mathcal{N}_\text{c} \cup \{n_\text{conclusion}\}, \mathcal{E})$):**
-  - *Evidence Nodes ($\mathcal{N}_\text{e}$):* Atomic textual, tabular, or visual evidence items retrieved directly from sources across the 6 engines.
+  - *Evidence Nodes ($\mathcal{N}_\text{e}$):* Atomic textual, tabular, or visual evidence items retrieved directly from sources across the 13 engines.
   - *Claim Nodes ($\mathcal{N}_\text{c}$):* Intermediate reasoning statements grounded in one or more evidence nodes.
   - *Conclusion Node ($n_\text{conclusion}$):* Final analytical answer supported by the entire directed acyclic graph.
 - **Progressive Gating Mechanism:**
@@ -151,15 +206,15 @@ $$\text{Query} = \text{[Scope Filter]} + \text{[Exact Package @ Version / Symbol
 
 ---
 
-### 2. Hexa-Engine Search Strategy Matrix
+### 2. Pentadeca-Engine Search Strategy Matrix
 
-| Dimension | Tavily Search (`tavily`) | Exa Semantic (`exa`) | Linkup Search (`linkup`) | Jina AI (`jina-remote-server`) | Firecrawl (`firecrawl-mcp`) | Bright Data (`brightdata`) |
-|---|---|---|---|---|---|---|
-| **Query Style** | Structured boolean (`site:`, `"exact"`, `AND/OR`) | Natural language semantic intent ("Production TS example of...") | Natural language full questions & deep research queries | Multi-query arrays + deep in-body passage questions | Boolean operators (`site:`, `categories: ["developer"]`) | URL targets, scraping commands, SERP queries |
-| **Search Depth** | MANDATORY: `search_depth="advanced"`, `max_results=10-20` | Semantic vector neural search (`numResults=10-20`) | `depth: "deep"` or `depth: "standard"`, `maxResults=10-20` | Deep passage extraction (`search_web_deep`, `snippet_source="auto"`) | Developer-focused index (`data.developer`), inline `scrapeOptions` | Raw residential proxy fetch, Web Unlocker bypassing |
-| **Domain Control** | Strict `include_domains` & `exclude_domains` | `category="github"`, `category="research paper"` | `includeDomains` / `excludeDomains`, `fromDate`/`toDate` | Geo/Language targeting (`gl`, `hl`), time filters (`tbs`) | `includeDomains` / `excludeDomains`, `categories: ["developer"]` | Global residential proxy geo-targeting (Country/City) |
-| **Unique Capabilities** | Official API docs, domain crawling (`tavily_crawl`), multi-step research (`tavily_research`) | Vector similarity discovery, niche implementations, competitor mapping | Real-time agent grounding, deep multi-source research tasks (`linkup-research`), JS page fetch | Grounded in-body paragraph extraction (~100 words), batch multi-queries (up to 5), neural reranking (`sort_by_relevance`), PDF extraction (`extract_pdf`), arXiv/SSRN papers | Specialized index over GitHub PRs/issues, commit READMEs, live headless JS scrape (`maxAge: 0`, actions), sitemaps, structured JSON schemas | **Anti-Bot Crusher:** Web Unlocker, CAPTCHA solver, Cloudflare Turnstile bypass, residential proxy mesh |
-| **Best For** | Canonical docs, API parameters, site crawling | Architectural patterns, novel alternatives, semantic code matches | High-speed LLM grounding, real-time news/prices, deep cited research | Dense technical answers buried in page bodies, academic specs, PDF tables, neural reranking | Bug fixes in merged PRs, exact error stack workarounds, clean markdown DOM extraction | Scraping Cloudflare-protected enterprise portals, paywalled sites, anti-bot blocked domains |
+| Dimension | Tavily (`tavily`) | Context7 (`context7`) | You.com (`ydc-search`) | Exa AI (`exa`) | Jina AI (`jina`) | SERPdive (`serpdive`) | Linkup (`linkup`) | Parallel (`parallel`) | SerpApi (`serpapi`) | GitHub (`github`) | Firecrawl (`firecrawl`) | Crawleo (`crawleo`) | Bright Data (`brightdata`) | Apify (`apify`) | Brave Search (`brave`) |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| **Cluster** | 🏛️ Cluster 1 (Canonical) | 🏛️ Cluster 1 (Specs) | 🏛️ Cluster 1 (Synthesis) | 🧠 Cluster 2 (Vectors) | 🧠 Cluster 2 (Passages) | 🧠 Cluster 2 (Answers) | ⚡ Cluster 3 (Real-Time) | ⚡ Cluster 3 (Excerpts) | ⚡ Cluster 3 (Google SERP) | 🐙 Cluster 4 (Source AST) | 🐙 Cluster 4 (Dev PRs) | 🐙 Cluster 4 (RAG Scrape) | 🛡️ Cluster 5 (Anti-Bot) | 🛡️ Cluster 5 (Cloud Crawl) | 🛡️ Cluster 5 (30B+ Index) |
+| **Query Style** | Structured boolean (`site:`, `"exact"`) | Canonical library names (`libraryName`) | Natural language questions, synthesis | Natural semantic intent ("Production TS...") | Multi-query arrays + deep passage queries | Answer-ready questions (`model: "mako"`) | Deep questions & research queries | Objective description + query arrays | Live SERP query (`engine: "google"`) | Code qualifiers (`path:`, `repo:`) | Developer boolean (`categories: ["developer"]`) | Multi-format scrape & Google SERP | URL targets, scraping commands, SERP | Actor execution (`website-content-crawler`) | Direct keywords, boolean filters, time |
+| **Search Depth** | Advanced (`search_depth="advanced"`) | Package ID resolution & doc extraction | Real-time web index query | Semantic neural vectors (`numResults=15`) | Deep passage extraction (`search_web_deep`) | Compressed LLM token extraction (`krill`/`mako`) | Deep agent research (`depth: "deep"`) | Low-latency agent mode (25k char cap) | Live Google/Scholar pages 1-5 | Exact AST code search, raw tree fetch | Developer index (`data.developer`), JS actions | Headless JS rendering (`render_js=true`) | Raw residential proxy fetch, Unlocker | Recursive multi-depth domain crawl | Independent index, freshness age filters |
+| **Unique Capabilities** | Official API docs, domain crawling | TypeScript AST stubs & param schemas | LLM-grounded search & multi-source facts | Vector similarity, pattern discovery | Grounded in-body paragraph spans (~100w) | Fast answer-ready page content, low token count | Real-time agent grounding, citation trees | Answer-ready dense snippet returns | Google organic rankings, knowledge graphs | Raw source code files, merged PR diffs | Merged PR fixes, issue triage, JS DOM | Multi-format markdown crawl, RAG ingestion | Bypasses Cloudflare Turnstile, CAPTCHAs | Mass 1,000+ page cloud crawler | Independent non-Google 30B+ index |
+| **Best For** | Canonical docs, API parameters | Official types, interface contracts | Real-time fact verification, LLM grounding | Architectural patterns, novel alternatives | Dense answers buried in page bodies, PDFs | Compressed LLM answers, zero-token bloat | High-speed LLM grounding, real-time news | Low-latency agent loop grounding | Google search validation, Scholar citations | Production repo patterns, raw AST checks | Bug fixes in merged PRs, clean DOM | Single-page app RAG scraping, Google Maps | Scraping Cloudflare-protected portals | Bulk recursive documentation scraping | Independent developer blogs, niche forums |
 
 ---
 
@@ -362,7 +417,90 @@ $$\text{Query} = \text{[Scope Filter]} + \text{[Exact Package @ Version / Symbol
 }
 ```
 
-#### G. Context7 Official Library Documentation Flow (`context7`)
+#### G. Brave Search Suite (`brave-search`)
+```json
+// 1. Independent Web Search with Age Tagging & Zero SEO Distortion
+{
+  "query": "site:github.com/LibreHardwareMonitor OR site:reddit.com/r/hardware \"WinRing0\" VulnerableDriver Defender workaround 2026",
+  "count": 15
+}
+
+// 2. Freshness-Filtered Discovery
+{
+  "query": "Prisma v6 Supabase PgBouncer prepared statement error fix",
+  "count": 10
+}
+```
+
+#### H. Parallel Search Suite (`parallel-search`)
+```json
+// 1. AI-Native Objective Search with Query Multi-Angling
+{
+  "objective": "Find the exact workaround for PrismaClientInitializationError with Supabase transaction pooling in Next.js 15",
+  "search_queries": [
+    "PrismaClientInitializationError Supabase port 6543",
+    "Prisma v6 connection_limit=1 pgbouncer=true Next.js 15",
+    "PrismaPg adapter Supabase connection pooler"
+  ]
+}
+
+// 2. Token-Efficient Excerpt Fetch
+{
+  "url": "https://docs.parallel.ai/integrations/mcp/search-mcp"
+}
+```
+
+#### I. Apify Cloud Crawling & Scraping Suite (`apify`)
+```json
+// 1. Recursive Website Content Crawler (Markdown Extraction for LLMs)
+{
+  "actorId": "apify/website-content-crawler",
+  "runInput": {
+    "startUrls": [{ "url": "https://docs.supabase.com" }],
+    "maxCrawlPages": 50,
+    "crawlerType": "playwright:adaptive",
+    "saveMarkdown": true
+  }
+}
+
+// 2. Google Search Scraper Actor (High-Volume SERP Extractions)
+{
+  "actorId": "apify/google-search-scraper",
+  "runInput": {
+    "queries": "Prisma v6 Supabase PgBouncer prepared statement workaround",
+    "maxPagesPerQuery": 1,
+    "resultsPerPage": 10
+  }
+}
+```
+
+#### J. SerpApi Search Suite (`serpapi`)
+```json
+// 1. Direct Google Web Search with Rich Knowledge Graph
+{
+  "engine": "google",
+  "q": "site:docs.supabase.com OR site:github.com/prisma \"PrismaClientInitializationError\" connection pooling PgBouncer",
+  "num": 10,
+  "hl": "en",
+  "gl": "us"
+}
+
+// 2. Google Scholar Academic Citations Search
+{
+  "engine": "google_scholar",
+  "q": "Distributed consensus algorithms Raft log compaction memory optimization",
+  "num": 10
+}
+
+// 3. Google News Real-Time Discovery
+{
+  "engine": "google_news",
+  "q": "Next.js React 19 security CVE advisory",
+  "gl": "us"
+}
+```
+
+#### K. Context7 Official Library Documentation Flow (`context7`)
 ```json
 // Step 1: Resolve Library Name to Canonical ID
 {
@@ -376,29 +514,104 @@ $$\text{Query} = \text{[Scope Filter]} + \text{[Exact Package @ Version / Symbol
 }
 ```
 
+#### L. GitHub Code Mining & Repository Suite (`github` / MCP)
+```json
+// 1. Code Search for Exact Implementation Patterns & AST Signatures
+{
+  "q": "\"@prisma/adapter-pg\" \"PrismaPg\" path:lib/ filename:prisma language:typescript",
+  "per_page": 10
+}
+
+// 2. Direct Source File & Type Definition Inspection
+{
+  "owner": "prisma",
+  "repo": "prisma",
+  "path": "packages/client/src/generation/TSClient/common.ts",
+  "ref": "main"
+}
+
+// 3. Merged PR and Bug Fix Discussion Triage
+{
+  "q": "repo:prisma/prisma is:pr is:merged \"PrismaClientInitializationError\" \"pgbouncer\"",
+  "sort": "updated",
+  "order": "desc"
+}
+
+// 4. Commit History & Release Notes Verification
+{
+  "owner": "supabase",
+  "repo": "supabase",
+  "path": "apps/docs/docs/guides/database/connecting-to-postgres.mdx",
+  "per_page": 5
+}
+```
+
+#### M. You.com Search & Research Suite (`ydc-search` / `@youdotcom-oss/mcp`)
+```json
+// 1. LLM-Grounded Real-Time Web Search
+{
+  "query": "Next.js 15 App Router Server Actions breaking changes React 19 migration"
+}
+
+// 2. Multi-Source Topic Research & Synthesis
+{
+  "query": "Supabase PgBouncer transaction pooling configuration with Prisma v6 ORM"
+}
+```
+
+#### N. SERPdive Search Suite (`serpdive` / `serpdive_search`)
+```json
+// 1. High-Density Answer-Ready Search
+{
+  "query": "Next.js 15 Prisma PgBouncer transaction mode pool connection singleton",
+  "model": "mako"
+}
+
+// 2. Fast Low-Token Ingestion Search
+{
+  "query": "Emergency Response Liberty County summer 2026 map overhaul update leak",
+  "model": "krill"
+}
+```
+
+#### O. Crawleo Scraping & Search Suite (`crawleo` / `crawleo_search`, `crawleo_scrape`)
+```json
+// 1. Live Web & Google SERP Scraping
+{
+  "query": "Emergency Response Liberty County 2026 map overhaul",
+  "num": 5
+}
+
+// 2. Dynamic Headless JS Render & Clean Markdown Extraction
+{
+  "url": "https://docs.crawleo.dev",
+  "render_js": true
+}
+```
+
 ---
 
 ### 4. 5-Tier Search Query Matrix
 
-When conducting a comprehensive research audit, execute queries across all 5 tiers simultaneously using the Hexa-Engine stack:
+When conducting a comprehensive research audit, execute queries across all 5 tiers simultaneously using the Pentadeca-Engine stack:
 
-| Tier | Objective | Tavily Pattern | Exa Neural Pattern | Linkup Pattern | Jina Deep Passage | Firecrawl Developer | Bright Data Target |
-|---|---|---|---|---|---|---|---|
-| **Tier 1: Canonical Docs** | API signatures & types | `site:[docs_domain] "[symbol]" signature typescript` | `"Official API reference and TypeScript stubs for [symbol]"` | `"What is the exact TypeScript function signature for [symbol] in [docs_domain]?"` | `"[symbol] TypeScript function signature parameters return type"` | `"[symbol]" site:[docs_domain]` with `formats: ["markdown"]` | Direct crawl on protected doc portals |
-| **Tier 2: Real Production Code** | AST & usage examples | `site:github.com "[symbol]" "import {" typescript` | `"Production code example using [symbol] in Next.js/React"` | `"How to use [symbol] in a production TypeScript project with error handling"` | `"production implementation of [symbol] handling error states"` | `categories: ["developer"] "[symbol]" "import"` | Repo mirror extraction |
-| **Tier 3: Error & Bug Tracker** | GitHub issues & CVEs | `site:github.com/[repo]/issues "[exact_error_string]" fix` | `"How to resolve [exact_error_string] when using [package]"` | `"How to fix [exact_error_string] error in [package]"` | `"[exact_error_string] workaround root cause"` | `categories: ["developer"] "[exact_error_string]"` | Protected issue forums & internal portals |
-| **Tier 4: Benchmarks & Trade-offs** | Performance & size | `"[package_A]" vs "[package_B]" bundle size gzipped latency` | `"Detailed performance comparison and trade-offs between [A] and [B]"` | `"Compare performance, memory usage, and bundle size of [A] vs [B]"` | `"benchmark latency memory allocation [A] vs [B]"` | `"[package_A]" vs "[package_B]" benchmark throughput memory` | High-volume benchmark datasets |
-| **Tier 5: Deprecations** | Migration paths | `"deprecated" "[old_symbol]" replace "[new_symbol]" migration` | `"Upgrading [package] from v[X] to v[Y] breaking changes codemod"` | `"What are the breaking changes upgrading from [old_symbol] to [new_symbol]?"` | `"migration guide breaking changes [old_symbol] to [new_symbol]"` | `categories: ["developer"] "breaking change" "[old_symbol]" v[new_version]` | Legacy changelog archives |
+| Tier | Objective | Cluster 1 (Tavily / Context7 / You.com) | Cluster 2 (Exa / Jina / SERPdive) | Cluster 3 (Linkup / Parallel / SerpApi) | Cluster 4 (GitHub / Firecrawl / Crawleo) | Cluster 5 (Bright Data / Apify / Brave) |
+|---|---|---|---|---|---|---|
+| **Tier 1: Canonical Docs** | API signatures & types | Context7 `resolve-library-id`, Tavily `site:[domain] "[symbol]"`, You.com `"[symbol] canonical docs"` | Exa `"[symbol] TS signature"`, Jina `search_web_deep`, SERPdive `"[symbol] API parameters"` | Linkup `linkup-fetch`, Parallel `web_search`, SerpApi `engine: "google"` `site:[domain]` | GitHub `/types/index.d.ts`, Firecrawl `categories: ["developer"]`, Crawleo clean markdown crawl | Bright Data Web Unlocker, Apify `website-content-crawler`, Brave `"[symbol]" site:[domain]` |
+| **Tier 2: Real Production Code** | AST & usage examples | Context7 code examples, Tavily `"Production code [symbol]"`, You.com `"production pattern [symbol]"` | Exa `category="github"`, Jina in-body passages, SERPdive `"production example [symbol]"` | Linkup agent citations, Parallel dense excerpts, SerpApi `"import { [symbol] }"` | GitHub `search_code` `path:src "import { [symbol] }"`, Firecrawl merged PR diffs, Crawleo JS render | Bright Data unblocked enterprise repos, Apify code index, Brave fresh blogs |
+| **Tier 3: Error & Bug Tracker** | GitHub issues & CVEs | Context7 known caveats, Tavily `site:github.com "[error]"`, You.com `"[error] fix"` | Exa semantic error matches, Jina `"[error] workaround"`, SERPdive `"[error] root cause"` | Linkup live workarounds, Parallel answer excerpts, SerpApi `site:github.com "[error]"` | GitHub `search_issues` `"[error]"`, Firecrawl PR triage, Crawleo forum scrape | Bright Data protected bug portals, Apify issue crawls, Brave freshness forums |
+| **Tier 4: Benchmarks & Trade-offs** | Performance & size | Context7 comparison specs, Tavily `"[A]" vs "[B]" bundle`, You.com `"[A] vs [B] benchmark"` | Exa benchmark papers, Jina memory specs, SERPdive `"[A] vs [B] latency"` | Linkup real-time benchmarks, Parallel dense metrics, SerpApi `engine: "google_scholar"` | GitHub `/benchmarks` harnesses, Firecrawl PR performance stats, Crawleo metric scrape | Bright Data benchmark bypass, Apify mass benchmark datasets, Brave independent reviews |
+| **Tier 5: Deprecations** | Migration paths | Context7 version diffs, Tavily `"deprecated [old] replace [new]"`, You.com `"migration guide"` | Exa migration patterns, Jina breaking changes, SERPdive `"migration from [old] to [new]"` | Linkup upgrade timelines, Parallel migration snippets, SerpApi `engine: "google_news"` | GitHub `CHANGELOG.md` & `search_code` `"@deprecated"`, Firecrawl PR fixes, Crawleo release crawl | Bright Data unblocked release docs, Apify migration archives, Brave age-filtered changelogs |
 
 ---
 
-## The 5-Phase Hexa Research Pipeline
+## The 5-Phase Pentadeca Research Pipeline
 
 ```mermaid
 flowchart TD
-    P1[Phase 1: Query Decomposition\nsequentialthinking + expand_query + concise-planning] --> P2[Phase 2: Hexa-Engine Simultaneous Search\nTavily + Exa + Linkup + Jina AI + Firecrawl + Bright Data]
-    P2 --> P3[Phase 3: Targeted Hexa Extraction & Anti-Bot Escalation\nread_url + firecrawl_scrape + linkup-fetch + Web Unlocker + context7]
-    P3 --> P4[Phase 4: Semantic Reranking & 6-Way Cross-Verification\nsort_by_relevance + deduplicate_strings + Hexa Matrix]
+    P1[Phase 1: Query Decomposition\nsequentialthinking + expand_query + concise-planning] --> P2[Phase 2: Pentadeca-Engine Simultaneous Search\nTavily + Context7 + You.com + Exa + Jina + SERPdive + Linkup + Parallel + SerpApi + GitHub + Firecrawl + Crawleo + BrightData + Apify + Brave]
+    P2 --> P3[Phase 3: Targeted Pentadeca Extraction & Anti-Bot Escalation\nread_url + firecrawl_scrape + linkup-fetch + Web Unlocker + web_fetch + apify + serpapi + context7 + github + ydc-search + serpdive + crawleo]
+    P3 --> P4[Phase 4: Semantic Reranking & 15-Way Cross-Verification\nsort_by_relevance + deduplicate_strings + Pentadeca Matrix]
     P4 --> P5[Phase 5: Knowledge Persistence & Reporting\nmemory graph + bibtex + report.md + artifacts]
 ```
 
@@ -416,7 +629,7 @@ flowchart TD
     3. **Expand Queries:** Use Jina `expand_query` to generate semantic query synonyms and alternative search formulations.
     4. **Plan Execution:** Use `concise-planning` to draft an atomic research checklist.
 
-### Phase 2: Hexa-Engine Simultaneous Broad Search & Multi-Domain Discovery
+### Phase 2: Dodeca-Engine Simultaneous Broad Search & Multi-Domain Discovery
 *   **MCP Tools:**
     - `tavily/tavily_search`, `tavily/tavily_research`, `tavily/tavily_map`, `tavily/tavily_crawl`
     - `exa/web_search_exa`, `exa/web_fetch_exa`
@@ -424,36 +637,54 @@ flowchart TD
     - `jina-remote-server/search_web_deep`, `jina-remote-server/search_web`, `jina-remote-server/parallel_search_web`, `jina-remote-server/search_arxiv`, `jina-remote-server/search_ssrn`, `jina-remote-server/guess_datetime_url`
     - `firecrawl-mcp/firecrawl_search`, `firecrawl-mcp/firecrawl_developer_search`, `firecrawl-mcp/firecrawl_map`, `firecrawl-mcp/firecrawl_crawl`, `firecrawl-mcp/firecrawl_agent`
     - `brightdata/web_data_`, `brightdata/scraping_browser`
-*   **Sub-skills:** `tavily-best-practices`
+    - `brave-search/brave_web_search`, `brave-search/brave_local_search`
+    - `parallel-search/web_search`, `parallel-search/web_fetch`
+    - `apify/actors-mcp-server` (cloud-hosted actor crawler and search execution)
+    - `serpapi` (direct Google, Scholar, and News SERP queries)
+    - `context7/resolve-library-id`, `context7/get-library-docs` (official documentation & type resolver)
+    - `github` (direct code AST search, raw file tree inspection, issue/PR triage)
 *   **Action:**
-    1. **Hexa-Engine Parallel Dispatch:** Execute queries across ALL SIX engines simultaneously to eliminate blindspots:
+    1. **Mandatory 12/12 Parallel Dispatch (Zero Omissions Allowed):** Execute queries across ALL TWELVE engines simultaneously. Omitting any engine from execution is a hard failure:
        - **Tavily:** Advanced keyword search, authority domain filtering (`include_domains`), and multi-result sets (10-20 results).
        - **Exa:** Neural vector semantic search (`category="github"`, `category="research paper"`) for contextual code implementations.
        - **Linkup:** Real-time production search (`depth: "deep"`) with domain constraints for clean agent grounding.
-       - **Jina AI:** Deep passage search (`search_web_deep`) to extract ~100-word answers directly from webpage bodies, or batch parallel search (`search_web` with query arrays).
-       - **Firecrawl:** Developer index search (`firecrawl_search` with `categories: ["developer"]`) to query GitHub issues, merged PRs, repository READMEs, and curated doc sites (`data.developer` group).
+       - **Jina AI:** Deep passage search (`search_web_deep`) to extract ~100-word answers directly from webpage bodies.
+       - **Firecrawl:** Developer index search (`firecrawl_search` with `categories: ["developer"]`) to query GitHub issues, merged PRs, and repository READMEs.
        - **Bright Data:** Enterprise SERP queries and global residential IP unblocking.
+       - **Brave Search:** Independent web index queries for non-Google/Bing discovery with age freshness markers.
+       - **Parallel Search:** Objective-based multi-angle queries returning dense, answer-ready excerpts.
+       - **Apify Cloud:** Execute mass recursive doc crawls (`apify/website-content-crawler`) and deep search actors.
+       - **SerpApi:** Scrape Google organic results, knowledge panels, and Google Scholar academic citations.
+       - **Context7:** Resolve canonical package ID and pull official version-specific documentation and TypeScript stubs.
+       - **GitHub:** Query repository source files, AST declarations, active/closed issues, and merged pull request commit diffs.
     2. **Site Mapping & Sitemap Discovery:** Use `tavily_map` or `firecrawl_map` to discover complete URL hierarchies of documentation portals before extracting specific pages.
-    3. **Academic & Research Ingestion:** Use Jina `search_arxiv` / `search_ssrn` when researching algorithms, state machines, consensus protocols, or cryptographic specs.
+    3. **Academic & Research Ingestion:** Use Jina `search_arxiv` / `search_ssrn` and SerpApi `google_scholar` when researching algorithms, state machines, consensus protocols, or cryptographic specs.
     4. **Publication Date Inference:** Use Jina `guess_datetime_url` to verify publication freshness and detect stale documentation.
 
-### Phase 3: Targeted Hexa Extraction, Parsing & Anti-Bot Escalation
+### Phase 3: Targeted Dodeca Extraction, Parsing & Anti-Bot Escalation
 *   **MCP Tools:**
     - `jina-remote-server/read_url`, `jina-remote-server/parallel_read_url`, `jina-remote-server/extract_pdf`
     - `firecrawl-mcp/firecrawl_scrape`, `firecrawl-mcp/firecrawl_extract`, `firecrawl-mcp/firecrawl_parse`, `firecrawl-mcp/firecrawl_interact`
     - `linkup/linkup-fetch`
+    - `parallel-search/web_fetch`
     - `brightdata/scraping_browser`, Web Unlocker
     - `tavily/tavily_extract`
     - `exa/web_fetch_exa`
+    - `apify` dataset retrieval
+    - `serpapi` structured JSON parsing
     - `context7/resolve-library-id`, `context7/get-library-docs`
+    - `github/get_file_contents`, `github/search_code`
     - `playwright/browser_navigate`, `playwright/browser_evaluate`
 *   **Action:**
     1. **Multi-Engine Content Extraction:**
        - Use **Jina `read_url`** or **Firecrawl `firecrawl_scrape`** (`maxAge: 0`, `onlyMainContent: true`) for ultra-clean Markdown conversions of complex web pages.
+       - Use **Parallel `web_fetch`** for instant token-efficient markdown extraction.
        - Use **Linkup `linkup-fetch`** (`renderJs: true`) for dynamic JS-rendered technical blogs.
-       - Use **Firecrawl `firecrawl_scrape` with `actions`** (`wait`, `click`, `scroll`) for pages requiring JavaScript hydration, tab clicking, or cookie banner bypass.
+       - Use **Apify Cloud** datasets for bulk multi-page documentation crawls.
+       - Use **Firecrawl `firecrawl_scrape` with `actions`** (`wait`, `click`, `scroll`) for pages requiring JavaScript hydration.
        - Use **Firecrawl `firecrawl_extract`** with strict JSON schemas to pull structured comparative benchmark tables.
        - Use **Jina `extract_pdf`** for PDF technical whitepapers, architectural schematics, and table extraction.
+       - Use **GitHub `get_file_contents`** to inspect raw source files, type definitions (`index.d.ts`), and config schemas.
     2. **Anti-Bot Escalation:**
        - If any extraction returns `403 Forbidden`, Cloudflare Turnstile challenge, or CAPTCHA block, immediately dispatch **Bright Data Web Unlocker** to penetrate the anti-bot layer and extract clean DOM content.
     3. **Context7 Official Type Resolution:**
@@ -464,7 +695,7 @@ flowchart TD
        - Verify minimum supported version and compatibility bounds.
        - Check for recent deprecation tags or breaking AST shifts.
 
-### Phase 4: Semantic Reranking, Deduplication & 6-Way Cross-Verification Matrix
+### Phase 4: Semantic Reranking, Deduplication & 12-Way Cross-Verification Matrix
 *   **MCP Tools:**
     - `jina-remote-server/sort_by_relevance`, `jina-remote-server/deduplicate_strings`, `jina-remote-server/classify_text`
     - `upstash-redis-js`, `upstash-vector-js`, `upstash-search-js`
@@ -473,18 +704,24 @@ flowchart TD
        - Use Jina `sort_by_relevance` to rank all retrieved documentation paragraphs and code snippets directly against the user's technical query.
        - Use Jina `deduplicate_strings` to strip redundant boilerplate code across multiple sources.
        - Use Jina `classify_text` to categorize edge cases into severity buckets (e.g. `[Breaking, Workaround, Deprecation, Security]`).
-    2. **Submit 6 Independent Reports:**
+    2. **Compile 12 Discrete Independent Reports (All 12 Required):** You MUST compile all 12 independent findings sections before synthesis. Omitting any engine's section is a protocol violation:
        - **Version 1 (Tavily):** Authority domain docs, keyword index hits, site crawl summaries.
        - **Version 2 (Exa):** Neural semantic code patterns, architectural alternatives, similarity matches.
        - **Version 3 (Linkup):** Real-time grounded answers, structured citations, multi-angle research.
        - **Version 4 (Jina AI):** Passage-level grounded quotes (~100 words), academic backing, reranked relevance scores.
        - **Version 5 (Firecrawl):** Developer index hits (`data.developer`), merged GitHub PRs, bug fix commits, AST clean markdown.
        - **Version 6 (Bright Data):** Anti-bot bypassed enterprise data, Cloudflare-unlocked portals, raw DOM extractions.
-    3. **6-Way Side-by-Side Comparison Matrix:**
-       - **Consensus Points (6/6 or 5/6 agreement):** High-confidence facts, stable API signatures, verified patterns.
+       - **Version 7 (Brave Search):** Independent non-Google/Bing index hits, forum findings, and freshness-tagged threads.
+       - **Version 8 (Parallel Search):** High-density answer-ready excerpts, token-optimized snippets, multi-angle objective coverage.
+       - **Version 9 (Apify Cloud):** Mass recursive website crawling outputs, structured actor datasets, and full-site markdown harvests.
+       - **Version 10 (SerpApi):** Live Google and Google Scholar SERP results, organic ranking consensus, and knowledge panel facts.
+       - **Version 11 (Context7):** Official library type stubs, parameter schemas, and version-specific interface contracts.
+       - **Version 12 (GitHub):** Raw source code AST patterns, live repository implementations, merged PR commit diffs, and issue threads.
+    3. **12-Way Side-by-Side Comparison Matrix:**
+       - **Consensus Points (12/12, 11/12, 10/12, 9/12 agreement):** High-confidence facts, stable API signatures, verified patterns.
        - **Divergent Findings & Conflicting Signatures:** Where engines disagree on signatures, configuration parameters, or version support.
-       - **Unique Insights:** Niche workarounds discovered by Firecrawl in merged PRs, passage quotes extracted by Jina, unblocked enterprise data from Bright Data, conceptual alternatives found by Exa, or canonical doc specs indexed by Tavily and Linkup.
-    4. **Final Decision Synthesis:** Formulate the unified recommendation based on the hexa comparison matrix.
+       - **Unique Insights:** Niche workarounds discovered by Firecrawl and GitHub in merged PRs, passage quotes extracted by Jina, unblocked enterprise data from Bright Data, independent forum solutions from Brave, dense objective excerpts from Parallel, mass crawl context from Apify, direct Google rankings from SerpApi, official type signatures from Context7, conceptual alternatives found by Exa, or canonical doc specs indexed by Tavily and Linkup.
+    4. **Final Decision Synthesis:** Formulate the unified recommendation based on the dodeca comparison matrix.
     5. **Local Stack Compatibility Check:** Cross-reference recommendations with `package.json`, `tsconfig.json`, and runtime environments.
     6. **Cache & Index Findings:** Cache verified signatures in Upstash Redis and index large corpora in Upstash Vector for fast future lookups.
 
@@ -497,7 +734,7 @@ flowchart TD
 *   **Action:**
     1. **Persist Knowledge Graph:**
        - Entities: Library name, version, architecture pattern.
-       - Observations: Verified signatures, bundle metrics, breaking changes, hexa consensus status.
+       - Observations: Verified signatures, bundle metrics, breaking changes, dodeca consensus status.
        - Relations: `replaces`, `compatible-with`, `conflicts-with`, `depends-on`.
     2. **Generate BibTeX Citations:** Use Jina `search_bibtex` to format canonical academic and specification citations.
     3. **Search Engine Feedback:** Submit feedback via `firecrawl_feedback` if search result relevance warrants tuning.
@@ -570,36 +807,82 @@ flowchart TD
 | Scraping Browser | `url`, `zone: "scraping_browser"` | Headless browser execution with built-in residential proxy rotation for heavy single-page applications. |
 | SERP API | `query`, `engine: "google"\|"bing"`, `country` | Real-time geo-targeted search results from global locations. |
 
+### 7. Brave Search Suite (`brave-search`)
+| Tool / Parameter | Key Inputs | Description & Core Use Case |
+|---|---|---|
+| `brave_web_search` | `query: string`, `count: number` (1-20), `offset: number` | **Independent Web Index Search.** Queries Brave's 30B+ independent crawler index with freshness metadata (`age` field) and extra snippets. |
+| `brave_local_search` | `query: string`, `count: number` | Local business and geographic entity search. |
+
+### 8. Parallel Search Suite (`parallel-search`)
+| Tool / Parameter | Key Inputs | Description & Core Use Case |
+|---|---|---|
+| `web_search` | `objective: string`, `search_queries: string[]`, `session_id: string` | **AI-Native Objective Search.** Returns high-density, answer-ready excerpts (capped to ~25k chars) tuned for agent reasoning loops. |
+| `web_fetch` | `url: string` | **Token-Efficient Web Fetch.** Fast markdown extraction from specific target URLs. |
+
+### 9. Apify Cloud Crawling Suite (`apify`)
+| Tool / Parameter | Key Inputs | Description & Core Use Case |
+|---|---|---|
+| `call-actor` | `actorId`, `runInput` | **Mass Cloud Crawling & Actor Execution.** Runs `apify/website-content-crawler`, `apify/google-search-scraper`, and hundreds of specialized cloud scrapers ($5/mo free platform usage). |
+| `get-dataset-items` | `datasetId`, `limit` | **Dataset Retrieval.** Fetches cleaned, structured JSON and Markdown scraped across hundreds of target URLs. |
+
+### 10. SerpApi Search Suite (`serpapi`)
+| Tool / Parameter | Key Inputs | Description & Core Use Case |
+|---|---|---|
+| `google_search` | `q`, `engine: "google"`, `num: 10`, `gl`, `hl` | **Direct Google SERP Scraper.** Scrapes Google organic results, knowledge graphs, answer boxes, and sitelinks (250 free searches/mo). |
+| `google_scholar_search` | `q`, `engine: "google_scholar"`, `num: 10` | **Academic Citation & Author Search.** Extracts citations, author profiles, and peer-reviewed paper rankings. |
+
+### 11. Context7 Documentation Suite (`context7`)
+| Tool / Parameter | Key Inputs | Description & Core Use Case |
+|---|---|---|
+| `resolve-library-id` | `libraryName: string` | **Canonical Library Name Resolver.** Maps package names across registries to unambiguous Context7 IDs. |
+| `get-library-docs` | `libraryId: string`, `query?: string` | **Version-Pinned Official Docs & Type Stubs.** Extracts verified TypeScript signatures, interface contracts, and canonical examples. |
+
+### 12. GitHub Repository & Code Mining Suite (`github` / MCP)
+| Tool / Parameter | Key Inputs | Description & Core Use Case |
+|---|---|---|
+| `search_code` | `q: string`, `per_page?: number` | **Exact AST & Implementation Search.** Discovers live production code patterns, import declarations, and interface implementations across GitHub. |
+| `get_file_contents` | `owner: string`, `repo: string`, `path: string`, `ref?: string` | **Raw Source & Type Definition Inspector.** Reads raw `.ts`, `.d.ts`, and config files directly from authoritative repositories. |
+| `search_issues` / `search_issues_and_pull_requests` | `q: string`, `sort?: string`, `order?: string` | **Issue & PR Bug Fix Tracker.** Scans merged PRs, release discussions, and open issue bug threads. |
+| `list_commits` | `owner: string`, `repo: string`, `path?: string`, `sha?: string` | **Commit History & Changelog Tracker.** Tracks breaking changes, commit diffs, and unreleased fixes. |
+
+### 13. You.com Search & Research Suite (`ydc-search` / `@youdotcom-oss/mcp`)
+| Tool / Parameter | Key Inputs | Description & Core Use Case |
+|---|---|---|
+| `you-search` | `query: string`, `count?: number` | **LLM-Optimized Live Web Search.** Returns deterministic structured web results, ranked snippets, and fresh facts tailored for AI reasoning. |
+| `you-research` | `query: string`, `depth?: string` | **Multi-Source Research Synthesis.** Deep web analysis compiling multi-source citations, news coverage, and live developer findings. |
+| `you-contents` | `urls: string[]` | **Targeted Content Extraction.** High-speed snippet and body extraction across specific verified URLs. |
+
 ---
 
 ## Specialized Research Sub-Workflows
 
-### Sub-Workflow A: Developer GitHub Issue & Merged PR Triage
+### Sub-Workflow A: Developer GitHub Issue & Merged PR Triage (Firecrawl + GitHub + You.com)
 When debugging obscure framework errors or undocumented API behavior:
 1. Issue `firecrawl_search` with `categories: ["developer"]` and the exact error string.
-2. Inspect `data.developer` results to find merged PRs and closed issue discussions.
-3. Use Jina `search_web_deep` with the error string to extract explanatory passages from developer blogs or forum posts.
-4. Extract the exact workaround or pull request commit diff.
+2. Query GitHub MCP (`search_issues_and_pull_requests` / `search_code`) to locate the source code throwing the error and inspect merged PR diffs.
+3. Use Jina `search_web_deep` and You.com `you-search` with the error string to extract explanatory passages from developer blogs or forum posts.
+4. Extract the exact workaround, patch, or pull request commit diff.
 
 ### Sub-Workflow B: Anti-Bot Bypassing on Cloudflare/Protected Sites (Bright Data)
 When standard scrapers encounter 403 Forbidden or CAPTCHA challenges:
 1. Detect `403`, `503`, or Cloudflare challenge pages returned by standard fetch tools.
 2. Escalate the target URL to **Bright Data Web Unlocker**.
 3. Extract clean unblocked DOM content and convert to Markdown.
-4. Incorporate unblocked findings into the 6-way matrix.
+4. Incorporate unblocked findings into the 13-way matrix.
 
-### Sub-Workflow C: Academic Literature & Specification Mining (Jina + arXiv)
+### Sub-Workflow C: Academic Literature & Specification Mining (Jina + arXiv + SerpApi)
 When researching algorithms, mathematical formulas, or consensus mechanisms:
 1. Query Jina `search_arxiv` or `search_ssrn`.
-2. Extract mathematical formulas and tables using Jina `extract_pdf`.
-3. Generate formal BibTeX entries using Jina `search_bibtex`.
-4. Rerank paper abstracts against technical requirements using Jina `sort_by_relevance`.
+2. Cross-reference academic citations with SerpApi `engine: "google_scholar"`.
+3. Extract mathematical formulas and tables using Jina `extract_pdf`.
+4. Generate formal BibTeX entries using Jina `search_bibtex`.
+5. Rerank paper abstracts against technical requirements using Jina `sort_by_relevance`.
 
-### Sub-Workflow D: Autonomous Asynchronous Deep Dive (Firecrawl + Linkup + Tavily)
+### Sub-Workflow D: Autonomous Asynchronous Deep Dive (Firecrawl + Linkup + Tavily + Apify + You.com)
 For broad multi-day architectural evaluations:
-1. Launch `linkup-research`, `firecrawl_agent`, and `tavily_research` concurrently with the comprehensive architectural inquiry.
+1. Launch `linkup-research`, `firecrawl_agent`, `tavily_research`, `you-research`, and `apify/website-content-crawler` concurrently with the comprehensive architectural inquiry.
 2. Check execution progress periodically via `linkup-get-research` and `firecrawl_agent_status`.
-3. Synthesize the resulting autonomous multi-source reports into the 6-way verification matrix.
+3. Synthesize the resulting autonomous multi-source reports into the 13-way verification matrix.
 
 ### Sub-Workflow E: Dynamic SPA & Interactive JavaScript Scraping (Firecrawl Actions)
 For documentation locked behind tabs, accordions, or interactive dropdowns:
@@ -622,6 +905,12 @@ To ensure zero re-research overhead across long development sessions:
 1. Cache verified API signatures and config templates in Upstash Redis (`upstash-redis-js`) with appropriate TTLs.
 2. Vectorize multi-page documentation corpora using Upstash Vector (`upstash-vector-js`) for instant semantic retrieval.
 
+### Sub-Workflow G: Official Type Stub Verification & Raw AST Code Grounding (Context7 + GitHub)
+To eliminate phantom types, signature drift, and hallucinated function arguments:
+1. Call `context7/resolve-library-id` followed by `context7/get-library-docs` to retrieve canonical TypeScript signatures and interface contracts.
+2. Call GitHub MCP (`search_code` / `get_file_contents`) to verify how the function is defined in `/src` or `/types` in the official repository.
+3. Validate parameter counts, optional properties, return promises, and generic parameters before writing code.
+
 ---
 
 ## Real-World Case Studies with Verified AST Code
@@ -631,7 +920,7 @@ To ensure zero re-research overhead across long development sessions:
 #### The Topic
 Select a modern, lightweight utility library for date parsing, formatting, and time zone manipulation in a Next.js 15 App Router application with React Server Components.
 
-#### Hexa-Engine Evaluation Scorecard
+#### Trideca-Engine Evaluation Scorecard
 
 | Metric | Day.js | date-fns | Native `Intl` |
 |---|---|---|---|
@@ -646,7 +935,7 @@ Select a modern, lightweight utility library for date parsing, formatting, and t
 #### Verified Code Usage Snippets
 
 ##### 1. date-fns (v4.1.0+)
-*Verified via Context7 + Jina `read_url` (`date-fns.org`)*
+*Verified via Context7 + GitHub AST + Jina `read_url` (`date-fns.org`)*
 ```typescript
 import { format, addDays } from 'date-fns';
 
@@ -679,13 +968,20 @@ console.log(formatter.format(new Date()));
 #### The Problem
 `PrismaClientInitializationError: Can't reach database server at 'aws-0-us-east-1.pooler.supabase.com:6543'` during concurrent Server Actions.
 
-#### Hexa Cross-Verification Investigation
+#### Trideca Cross-Verification Investigation
 - **Tavily Finding:** Official Supabase docs mandate appending `?pgbouncer=true&connection_limit=1` to the pooler connection string.
 - **Exa Finding:** Next.js 15 Server Actions instantiate multiple worker threads, requiring global singleton client caching (`globalThis.prisma`).
 - **Linkup Finding:** Confirmed Prisma v6 CLI requires a separate direct database URL for migrations (`DIRECT_URL` on port 5432).
 - **Jina Finding (`search_web_deep`):** In-body passage excerpt: *"PgBouncer in transaction mode (port 6543) does not support prepared statements. Prisma v6 requires directUrl pointing to port 5432 for migrations, while DATABASE_URL connects to port 6543."*
 - **Firecrawl Finding (`data.developer` Merged PR):** GitHub PR on `prisma/prisma` confirms that setting `relationMode = "prisma"` avoids foreign key constraint lookups that fail under PgBouncer transaction mode.
 - **Bright Data Finding:** Unblocked internal benchmark showing latency reduction when utilizing `@prisma/adapter-pg`.
+- **Brave Search Finding:** Discovered community forum discussions highlighting prepared statement issues under Supabase poolers.
+- **Parallel Search Finding:** Delivered high-density excerpts confirming port 5432 vs 6543 dual-connection strings in Prisma v6.
+- **Apify Cloud Finding:** Crawled full Supabase database troubleshooting guide confirming pooler timeout defaults.
+- **SerpApi Finding:** Google organic top rankings confirmed the exact migration guide for Prisma v6 adapter setups.
+- **Context7 Finding:** Resolved `@prisma/adapter-pg` driver adapter constructor signature and parameter types (`PrismaPg({ connectionString })`).
+- **GitHub Finding:** Scanned `prisma/prisma` repository `/packages/adapter-pg/src/pg.ts` source file and confirmed `connectionString` vs `pool` instantiation contracts.
+- **You.com Finding:** Synthesized multi-source community consensus confirming Prisma v6 connection pooling stability fixes with driver adapters.
 
 #### Verified Working Configuration
 ```prisma
@@ -740,18 +1036,18 @@ if (process.env.NODE_ENV !== "production") globalForPrisma.prisma = prisma;
 
 When evaluating search results, grade sources using the following confidence checklist to filter out noise:
 
-*   **Grade A (90-100% Confidence): Official Documentation & Specs**
-     MDN Web Docs, PostgreSQL Official Docs, React Dev Docs, RFC specifications, official SDK changelogs. Match signatures exactly.
+*   **Grade A (90-100% Confidence): Official Documentation, Type Stubs & Specs**
+     MDN Web Docs, Context7 official docs, PostgreSQL Official Docs, React Dev Docs, RFC specifications, official SDK changelogs. Match signatures exactly.
 *   **Grade B (75-89% Confidence): Verified Library Code & Merged GitHub PRs**
      GitHub source files (`/src`), merged PR diffs, verified release notes, official examples inside registry repositories. Use to trace internal function behaviors.
 *   **Grade C (50-74% Confidence): Active Community Threads & Issue Trackers**
-     GitHub issues (with >3 reactions/confirmations), Stack Overflow (with accepted checkmark and recent edits). Crucial for workarounds and undocumented limits.
+     GitHub issues (with >3 reactions/confirmations), Stack Overflow (with accepted checkmark and recent edits), Brave freshness-indexed forum discussions, You.com real-time news synthesis. Crucial for workarounds and undocumented limits.
 *   **Grade D (0-49% Confidence): Medium Articles, Personal Blogs, and AI Summaries**
      Medium posts, Dev.to tutorials, outdated YouTube description logs. Low trust. Use only as high-level conceptual inspiration; always verify code independently.
 
 ---
 
-## 6-Way Cross-Verification Report Format
+## 15-Way Cross-Verification Report Format
 
 ```markdown
 ## Research: [Topic]
@@ -759,48 +1055,98 @@ When evaluating search results, grade sources using the following confidence che
 ### Executive Summary
 [2-3 sentence summary with pinned versions, architectural decisions, and bundle impact]
 
-### Hexa-Engine Independent Submissions
+### Pentadeca-Engine Independent Submissions (Grouped by Cluster)
 
-#### 1. Tavily Research Version
+#### 🏛️ Cluster 1: Canonical Docs & Official Specs
+##### 1. Tavily Research Pitch
 - **Focus:** Authority domain search & official docs crawling
-- **Key Findings:** [Summary of Tavily's independent findings]
+- **Key Findings:** [Summary of Tavily's independent findings + verbatim quote]
 - **Proposed Solution:** [Tavily's primary recommendation + version]
 
-#### 2. Exa Research Version
+##### 2. Context7 Research Pitch
+- **Focus:** Canonical library docs, TypeScript type stubs & parameter schemas
+- **Key Findings:** [Summary of official type signatures and interface declarations via resolve-library-id / get-library-docs]
+- **Proposed Solution:** [Context7's primary recommendation + version]
+
+##### 3. You.com (YDC) Research Pitch
+- **Focus:** LLM-grounded live web retrieval, real-time news & deterministic synthesis
+- **Key Findings:** [Summary of You.com search snippets, live facts, and consensus data]
+- **Proposed Solution:** [You.com's primary recommendation + version]
+
+#### 🧠 Cluster 2: Neural Vectors & Deep Passages
+##### 4. Exa AI Research Pitch
 - **Focus:** Neural/Semantic vector search & concept matching
-- **Key Findings:** [Summary of Exa's independent findings]
+- **Key Findings:** [Summary of Exa's independent findings + code vectors]
 - **Proposed Solution:** [Exa's primary recommendation + version]
 
-#### 3. Linkup Research Version
-- **Focus:** Real-time agent search & structured grounding
-- **Key Findings:** [Summary of Linkup's independent findings]
-- **Proposed Solution:** [Linkup's primary recommendation + version]
-
-#### 4. Jina AI Research Version
+##### 5. Jina AI Research Pitch
 - **Focus:** Deep passage-level grounding, academic backing & neural reranking
 - **Key Findings:** [Passage excerpts (~100 words) extracted from page bodies via search_web_deep]
 - **Proposed Solution:** [Jina's primary recommendation + version]
 
-#### 5. Firecrawl Research Version
+##### 6. SERPdive Research Pitch
+- **Focus:** Answer-ready LLM content extraction & compressed neural synthesis
+- **Key Findings:** [Summary of SERPdive answers, compressed tokens, and fast extracted content]
+- **Proposed Solution:** [SERPdive's primary recommendation + version]
+
+#### ⚡ Cluster 3: Real-Time & Live SERP Intelligence
+##### 7. Linkup Research Pitch
+- **Focus:** Real-time agent search & structured grounding
+- **Key Findings:** [Summary of Linkup's independent findings + live citations]
+- **Proposed Solution:** [Linkup's primary recommendation + version]
+
+##### 8. Parallel Search Research Pitch
+- **Focus:** High-density AI excerpts, token-optimized fetching & objective-scoped results
+- **Key Findings:** [Dense answer-ready snippets and concise technical extractions]
+- **Proposed Solution:** [Parallel Search's primary recommendation + version]
+
+##### 9. SerpApi Research Pitch
+- **Focus:** Direct Google/Scholar SERP scraping, organic rankings & knowledge graphs
+- **Key Findings:** [Google top ranking consensus and verified citation metadata]
+- **Proposed Solution:** [SerpApi's primary recommendation + version]
+
+#### 🐙 Cluster 4: Raw Code, AST & Repo Triage
+##### 10. GitHub Code Mining Pitch
+- **Focus:** Live repository code AST, raw file inspection & merged PR triage
+- **Key Findings:** [Summary of GitHub code search, raw source checks, and merged PR diffs]
+- **Proposed Solution:** [GitHub's primary recommendation + version]
+
+##### 11. Firecrawl Research Pitch
 - **Focus:** Developer index (`data.developer`), merged GitHub PRs & live markdown scrape
 - **Key Findings:** [Summary of Firecrawl's developer index, PR fixes, and issue workarounds]
 - **Proposed Solution:** [Firecrawl's primary recommendation + version]
 
-#### 6. Bright Data Research Version
+##### 12. Crawleo Research Pitch
+- **Focus:** Multi-format crawl, clean markdown, dynamic JS rendering & SERP RAG ingestion
+- **Key Findings:** [Summary of Crawleo rendered markdown, clean DOM extractions, and Google SERP RAG data]
+- **Proposed Solution:** [Crawleo's primary recommendation + version]
+
+#### 🛡️ Cluster 5: Anti-Bot Crushing & Mass Recursive Crawling
+##### 13. Bright Data Research Pitch
 - **Focus:** Anti-bot bypass, Web Unlocker & protected portal extraction
 - **Key Findings:** [Unblocked enterprise data & Cloudflare-protected documentation]
 - **Proposed Solution:** [Bright Data's primary recommendation + version]
 
-### 6-Way Cross-Verification Matrix
-| Evaluation Dimension | Tavily | Exa | Linkup | Jina AI | Firecrawl | Bright Data | Consensus Verdict |
-|---|---|---|---|---|---|---|---|
-| Recommended Approach | [Tavily] | [Exa] | [Linkup] | [Jina] | [Firecrawl] | [Bright Data] | [Hexa-Verified Choice] |
-| API Signature / Spec | [Tavily] | [Exa] | [Linkup] | [Jina] | [Firecrawl] | [Bright Data] | [Verified AST Standard] |
-| Performance / Bundle | [Tavily] | [Exa] | [Linkup] | [Jina] | [Firecrawl] | [Bright Data] | [Verified Benchmark] |
-| Edge Cases & Fixes | [Tavily] | [Exa] | [Linkup] | [Jina] | [Firecrawl] | [Bright Data] | [Mitigated Edge Cases] |
+##### 14. Apify Cloud Research Pitch
+- **Focus:** Mass multi-page website crawling, recursive doc indexing & cloud datasets
+- **Key Findings:** [Bulk markdown extractions from website-content-crawler]
+- **Proposed Solution:** [Apify's primary recommendation + version]
+
+##### 15. Brave Search Research Pitch
+- **Focus:** Independent web crawler index, freshness age tagging & forum threads
+- **Key Findings:** [Non-Google/Bing unindexed forum posts & independent developer insights]
+- **Proposed Solution:** [Brave Search's primary recommendation + version]
+
+### 15-Way Cross-Verification Matrix
+| Evaluation Dimension | Tavily | Context7 | You.com | Exa AI | Jina AI | SERPdive | Linkup | Parallel | SerpApi | GitHub | Firecrawl | Crawleo | Bright Data | Apify | Brave Search | Consensus Verdict |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Recommended Approach | [Tavily] | [Context7] | [You.com] | [Exa] | [Jina] | [SERPdive] | [Linkup] | [Parallel] | [SerpApi] | [GitHub] | [Firecrawl] | [Crawleo] | [Bright Data] | [Apify] | [Brave] | [Pentadeca-Verified Choice] |
+| API Signature / Spec | [Tavily] | [Context7] | [You.com] | [Exa] | [Jina] | [SERPdive] | [Linkup] | [Parallel] | [SerpApi] | [GitHub] | [Firecrawl] | [Crawleo] | [Bright Data] | [Apify] | [Brave] | [Verified AST Standard] |
+| Performance / Bundle | [Tavily] | [Context7] | [You.com] | [Exa] | [Jina] | [SERPdive] | [Linkup] | [Parallel] | [SerpApi] | [GitHub] | [Firecrawl] | [Crawleo] | [Bright Data] | [Apify] | [Brave] | [Verified Benchmark] |
+| Edge Cases & Fixes | [Tavily] | [Context7] | [You.com] | [Exa] | [Jina] | [SERPdive] | [Linkup] | [Parallel] | [SerpApi] | [GitHub] | [Firecrawl] | [Crawleo] | [Bright Data] | [Apify] | [Brave] | [Mitigated Edge Cases] |
 
 ### Final Decision & Rationale
-[Chosen approach + exact pinned version + detailed justification based on hexa consensus]
+[Chosen approach + exact pinned version + detailed justification based on pentadeca consensus]
 
 ### Code Snippet Example (Verified AST)
 ```typescript
@@ -811,15 +1157,33 @@ When evaluating search results, grade sources using the following confidence che
 - [Known limitation 1 & workaround from Firecrawl merged PR]
 - [Passage constraint 2 from Jina deep search]
 - [Unblocked insight 3 from Bright Data Web Unlocker]
-- [Compatibility boundary 4 verified in Tavily & Linkup official docs]
+- [Independent forum insight 4 from Brave Search]
+- [High-density excerpt constraint 5 from Parallel Search]
+- [Deep crawl nuance 6 from Apify Cloud]
+- [Google ranking consensus 7 from SerpApi]
+- [Type definition constraint 8 from Context7]
+- [Repository AST implementation nuance 9 from GitHub]
+- [LLM synthesis nuance 10 from You.com]
+- [Compressed token nuance 11 from SERPdive]
+- [Rendered markdown nuance 12 from Crawleo]
+- [Compatibility boundary 13 verified in Tavily & Linkup official docs]
 
 ### Evidence Chains & BibTeX Citations
 1. [URL 1] - [Tavily / Official Docs] - `verbatim quote or signature`
-2. [URL 2] - [Exa / Neural Implementation] - `verbatim quote or code snippet`
-3. [URL 3] - [Linkup / Agent Search] - `verbatim quote`
-4. [URL 4] - [Jina / Deep Passage] - `verbatim quote or benchmark`
-5. [URL 5] - [Firecrawl / Developer PR Index] - `verbatim quote or bug fix`
-6. [URL 6] - [Bright Data / Web Unlocker] - `verbatim quote or unblocked doc`
+2. [URL 2] - [Context7 / Official Type Stub] - `verbatim TypeScript signature`
+3. [URL 3] - [You.com / Real-Time Grounding] - `verbatim search synthesis snippet`
+4. [URL 4] - [Exa / Neural Implementation] - `verbatim quote or code snippet`
+5. [URL 5] - [Jina / Deep Passage] - `verbatim quote or benchmark`
+6. [URL 6] - [SERPdive / Answer Extraction] - `verbatim answer quote`
+7. [URL 7] - [Linkup / Agent Search] - `verbatim quote`
+8. [URL 8] - [Parallel Search / AI Excerpts] - `verbatim quote or high-density snippet`
+9. [URL 9] - [SerpApi / Google SERP] - `verbatim quote from organic snippet`
+10. [URL 10] - [GitHub / Repo AST Code] - `verbatim source implementation quote`
+11. [URL 11] - [Firecrawl / Developer PR Index] - `verbatim quote or bug fix`
+12. [URL 12] - [Crawleo / RAG Render Scrape] - `verbatim markdown quote`
+13. [URL 13] - [Bright Data / Web Unlocker] - `verbatim quote or unblocked doc`
+14. [URL 14] - [Apify Cloud / Mass Crawl] - `verbatim quote from dataset`
+15. [URL 15] - [Brave Search / Independent Index] - `verbatim quote or forum fix`
 
 ```bibtex
 @article{key2026,
@@ -843,11 +1207,20 @@ Track executed queries and search scopes using this structure inside the scratch
 | ID | Engine | Tool Used | Query / Parameters | Results Count | Top Source URL | Date Run |
 |---|---|---|---|---|---|---|
 | Q01 | Tavily | `tavily_search` | `site:docs.supabase.com "PgBouncer" port 6543` | 12 | `https://docs.supabase.com/...` | 2026-08-15 |
-| Q02 | Exa | `web_search_exa` | `Production Next.js 15 Prisma Supabase pooler connection singleton` | 15 | `https://github.com/...` | 2026-08-15 |
-| Q03 | Linkup | `linkup-search` | `Prisma v6 connection pooling Supabase port 6543` | 10 | `https://prisma.io/docs/...` | 2026-08-15 |
-| Q04 | Jina | `search_web_deep` | `how to fix PrismaClientInitializationError Supabase connection limit` | 8 | `https://prisma.io/docs/...` | 2026-08-15 |
-| Q05 | Firecrawl | `firecrawl_search` | `categories: ["developer"] "PrismaClientInitializationError" PgBouncer` | 10 | `https://github.com/prisma/prisma/pull/...` | 2026-08-15 |
-| Q06 | Bright Data | Web Unlocker | `https://enterprise-protected-docs.com/database-pooling` | 1 | `https://enterprise-protected-docs.com/...` | 2026-08-15 |
+| Q02 | Context7 | `get-library-docs` | `libraryId: "prisma", query: "adapter-pg driver configuration"` | 1 | `https://context7.ai/...` | 2026-08-15 |
+| Q03 | You.com | `you-search` | `Prisma v6 Supabase PgBouncer transaction mode connection limit` | 10 | `https://you.com/...` | 2026-08-15 |
+| Q04 | Exa | `web_search_exa` | `Production Next.js 15 Prisma Supabase pooler connection singleton` | 15 | `https://github.com/...` | 2026-08-15 |
+| Q05 | Jina | `search_web_deep` | `how to fix PrismaClientInitializationError Supabase connection limit` | 8 | `https://prisma.io/docs/...` | 2026-08-15 |
+| Q06 | SERPdive | `serpdive_search` | `PrismaClientInitializationError Supabase connection limit` | 10 | `https://serpdive.com/...` | 2026-08-15 |
+| Q07 | Linkup | `linkup-search` | `Prisma v6 connection pooling Supabase port 6543` | 10 | `https://prisma.io/docs/...` | 2026-08-15 |
+| Q08 | Parallel | `web_search` | `objective: "Fix PrismaClientInitializationError in Supabase"` | 10 | `https://parallel.ai/...` | 2026-08-15 |
+| Q09 | SerpApi | `google_search` | `q: "Prisma v6 Supabase PgBouncer prepared statement"` | 10 | `https://google.com/...` | 2026-08-15 |
+| Q10 | GitHub | `search_code` | `"@prisma/adapter-pg" "PrismaPg" repo:prisma/prisma` | 8 | `https://github.com/prisma/prisma/...` | 2026-08-15 |
+| Q11 | Firecrawl | `firecrawl_search` | `categories: ["developer"] "PrismaClientInitializationError" PgBouncer` | 10 | `https://github.com/prisma/prisma/pull/...` | 2026-08-15 |
+| Q12 | Crawleo | `crawleo_search` | `Prisma v6 Supabase PgBouncer prepared statement error` | 5 | `https://crawleo.dev/...` | 2026-08-15 |
+| Q13 | Bright Data | Web Unlocker | `https://enterprise-protected-docs.com/database-pooling` | 1 | `https://enterprise-protected-docs.com/...` | 2026-08-15 |
+| Q14 | Apify | `call-actor` | `actorId: "apify/website-content-crawler", startUrls: ["https://docs.supabase.com"]` | 45 | `https://docs.supabase.com/...` | 2026-08-15 |
+| Q15 | Brave Search | `brave_web_search` | `site:github.com/prisma "PrismaClientInitializationError" Supabase` | 15 | `https://github.com/...` | 2026-08-15 |
 ```
 
 ---
@@ -856,9 +1229,18 @@ Track executed queries and search scopes using this structure inside the scratch
 When research yields zero results or search queries fail to uncover the error, apply this checklist:
 - [ ] **Strip Dynamic Variables:** Remove system paths, GUIDs, database IDs, and timestamps from the search query. Search only for the static string components.
 - [ ] **Search for Parent Exception:** If the child stack trace is too specific, search for the parent wrapper class or error module definition (e.g. `PrismaClientKnownRequestError` instead of `P2002`).
-- [ ] **Query Developer Index in Firecrawl:** Call `firecrawl_search` with `categories: ["developer"]` to specifically scan GitHub issues and closed/merged PR discussions.
+- [ ] **Query Developer Index in Firecrawl:** Call `firecrawl_search` with `categories: ["developer"]` to scan GitHub issues and closed/merged PR discussions.
 - [ ] **Extract Deep In-Body Passages via Jina:** Call `search_web_deep` to locate explanations that search engines missed in headline snippets.
+- [ ] **Query Answer-Ready Extraction via SERPdive:** Call `serpdive_search` with `model: "mako"` for compressed synthesis.
+- [ ] **Scrape Dynamic SPAs via Crawleo:** Call `crawleo_scrape` with `render_js=true` to extract clean markdown DOM.
+- [ ] **Query Independent Index via Brave:** Call `brave_web_search` to catch unindexed forum threads outside Google/Bing filters.
+- [ ] **Dispatch Objective Search via Parallel:** Call `web_search` with multi-angle query arrays for answer-ready dense excerpts.
+- [ ] **Trigger Mass Site Crawl via Apify:** Call `apify/website-content-crawler` to pull full multi-page documentation trees.
+- [ ] **Check Google Ranking Consensus via SerpApi:** Call `google_search` via SerpApi to inspect canonical organic Google listings.
+- [ ] **Resolve Official Library AST in Context7:** Call `context7/resolve-library-id` and `get-library-docs` to check exact parameter schemas and deprecation flags.
+- [ ] **Search Raw Code & PRs via GitHub MCP:** Call `search_code` or `search_issues_and_pull_requests` to pinpoint the exact line throwing the exception in the library repository.
 - [ ] **Escalate Anti-Bot Blockades to Bright Data:** If sites return 403 or Cloudflare challenge pages, use Bright Data Web Unlocker.
+- [ ] **Ground with You.com Real-Time Synthesis:** Use `you-search` / `you-research` to uncover live community fixes and breaking changelog announcements.
 - [ ] **Trace Native Code:** Go to the library's GitHub repository. Use code search to locate the file throwing the exception string. Identify what code paths trigger that error code.
 - [ ] **Verify Open PRs:** Check open/closed PRs on GitHub. Often a fix is implemented but not yet published in an official release.
 
@@ -868,9 +1250,10 @@ When research yields zero results or search queries fail to uncover the error, a
 
 | Anti-Pattern | Why It's Wrong | Do This Instead |
 |---|---|---|
+| Skipping engines / running partial subset | Leaves critical blindspots (AST stubs, unreleased PR fixes, unblocked docs) | **Strict 13/13 Invariant:** Run all 13 engines every time ("No Engine Left Behind") |
 | "I know this API works" | Memory may be stale or hallucinated | Verify against current docs before using |
 | Recommending without version | Version changes break APIs | Always pin `library@version` |
-| Single-source trust | Docs can be outdated or wrong | Cross-reference across Hexa engines |
+| Single-source trust | Docs can be outdated or wrong | Cross-reference across Trideca engines |
 | "Just use X" without trade-offs | Hides complexity and risks | Present options with scored comparison |
 | Blog post as sole source | Blogs age poorly, may be inaccurate | Prefer official docs + GitHub issues |
 | Skipping npm audit | Hidden CVEs in transitive deps | Always check dependency security |
@@ -880,9 +1263,9 @@ When research yields zero results or search queries fail to uncover the error, a
 
 ## Research Quality Checklist
 
-- [ ] Hexa-engine search executed in parallel (Tavily + Exa + Linkup + Jina AI + Firecrawl + Bright Data)
-- [ ] 6 independent reports submitted before comparison
-- [ ] 6-way cross-verification matrix constructed
+- [ ] **13/13 MCP Invariant Enforced:** All 13 engines executed (Tavily + Exa + Linkup + Jina AI + Firecrawl + Bright Data + Brave Search + Parallel Search + Apify Cloud + SerpApi + Context7 + GitHub + You.com) with NO engine left behind
+- [ ] 13 independent reports submitted and compiled before synthesis
+- [ ] 13-way cross-verification matrix constructed with consensus analysis
 - [ ] Anti-bot escalation applied if encountering Cloudflare 403 blocks
 - [ ] Every finding cites a direct URL source with verbatim evidence span
 - [ ] Version numbers pinned for all recommendations (`package@version`)
@@ -890,3 +1273,4 @@ When research yields zero results or search queries fail to uncover the error, a
 - [ ] Known issues, gotchas, merged PR workarounds, and deprecations documented
 - [ ] Academic papers cited with BibTeX entries when applicable
 - [ ] Findings persisted to memory graph for future reference
+
