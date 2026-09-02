@@ -124,10 +124,14 @@ To guarantee 100% comprehensive coverage without single-engine blindspots, the 1
    - **Brave Search (`brave-search` / `@modelcontextprotocol/server-brave-search`):** Independent 30B+ page web crawler index separate from Google/Bing, discovering un-indexed developer blogs, independent forums, and freshness-tagged content (`age` field).
    **EVERY SINGLE ONE of the 15 engines must complete its run and submit its independent findings report.** No engine is left behind. You MUST compile all 15 reports into their 5 functional clusters and perform an explicit 15-way side-by-side comparison matrix to analyze consensus, conflicting signatures, unique code angles, and trade-offs before reaching a final decision.
 10. **Anti-Bot Escalation Protocol.** If any URL returns `403 Forbidden`, Cloudflare challenge, or CAPTCHA lockout across standard engines, immediately escalate to **Bright Data Web Unlocker** / `scraping_browser` to extract raw DOM content without failure.
-11. **Zero-Vagueness Invariant & Goated Prompt Blueprint.** Never issue vague, low-signal queries (e.g., `react state`, `supabase auth`). Every MCP search invocation MUST follow the **Goated Prompt Engineering Blueprint**: combining (1) target artifact type, (2) exact library version pinning, (3) boolean domain scoping, and (4) explicit negative exclusions.
+11. **Zero-Vagueness Invariant & Minimum Signal Threshold.** Never issue vague, lazy, or low-signal queries (e.g., `react state`, `supabase auth`, `nextjs error`). Every MCP invocation MUST follow the **Goated Prompt Engineering Blueprint**: combining (1) target artifact type, (2) exact library version pinning, (3) runtime toolchain boundaries, (4) boolean domain scoping, and (5) explicit negative exclusions. Single-line, generic search queries are classified as a **CRITICAL PROTOCOL VIOLATION** that aborts the workflow.
 12. **Google Chain-of-Evidence (CoE) Zero-Phantom Reference Mandate.** Every factual claim, API signature, and metric MUST carry an explicit inline evidence tag binding it to a verified URL or registry API response. Citations generated from LLM memory are BANNED.
 13. **AutoVerifier Pentadeca-Source Claim Extraction.** Factual assertions MUST be decomposed into structured `(Subject, Predicate, Object)` claim triples to detect cross-source contradictions and method-code misalignments across all 15 search engines before recommending solutions.
 14. **Dynamic Failover & Resilience Protocol.** If any of the 15 engines encounters rate limits or network issues, the remaining active engines dynamically scale up results count (+20%) to ensure 100% data density. Research NEVER halts, and the affected engine's attempted run is still logged.
+15. **Octo-Context Pre-Flight Harvesting Invariant.** Before any search or research query is dispatched to ANY engine, the agent MUST assemble the **8-Dimensional Context Grounding Dossier (The Octo-Context Anchor)** by inspecting local workspace manifests (`package.json`, `Cargo.toml`, `requirements.txt`), compiler configurations (`tsconfig.json`), runtime environment (OS, Node/Bun/Deno, container/edge), error callstack telemetry, and the memory graph (`memory/read_graph`). Researching in a vacuum without full context is STRICTLY PROHIBITED.
+16. **Pre-Dispatch Query Signal Linter (5/5 Hard Gate).** Every candidate query must be verified against the 5-point Query Signal Linter (Version Pinning, Exact Symbol/Error Fingerprint, Architecture Boundary, Negative Scope, and Engine Modality). Any query scoring $< 5/5$ is blocked from execution and must be expanded.
+17. **15/15 Per-MCP Prompt Calibration Mandate.** Prompts must be bespoke and calibrated specifically to each of the 15 MCP engines according to their underlying ingestion mechanics: dense continuous narrative paragraphs for neural vector engines, structured multi-section RFC briefs for deep research agents, pinpoint AST path qualifiers for code mining engines, and compound quoted booleans with negative exclusions for SERP engines.
+18. **Multi-Paragraph Density Mandate for Vector & Agent Engines.** For neural/semantic vector engines (`exa`, `jina` deep search, `serpdive`, `parallel-search`) and deep research agents (`linkup-research`, `you-research`, `firecrawl_agent`, `tavily_research`, `apify`), prompts must be comprehensive, dense paragraphs (100–300 words for neural engines, 200–500 words for agent research briefs) detailing the complete problem context, reproduction mechanics, environmental constraints, and target code shapes. Short 1-sentence prompts to these engines are forbidden.
 
 ---
 
@@ -173,7 +177,7 @@ Decompose complex technical assertions into structured `(Subject, Predicate, Obj
 
 ### 5. HiEviDR Hierarchical Evidence Graph & Progressive Gating
 - **Evidence Graph Construction ($\mathcal{G} = (\mathcal{N}_\text{e} \cup \mathcal{N}_\text{c} \cup \{n_\text{conclusion}\}, \mathcal{E})$):**
-  - *Evidence Nodes ($\mathcal{N}_\text{e}$):* Atomic textual, tabular, or visual evidence items retrieved directly from sources across the 13 engines.
+  - *Evidence Nodes ($\mathcal{N}_\text{e}$):* Atomic textual, tabular, or visual evidence items retrieved directly from sources across the 15 engines.
   - *Claim Nodes ($\mathcal{N}_\text{c}$):* Intermediate reasoning statements grounded in one or more evidence nodes.
   - *Conclusion Node ($n_\text{conclusion}$):* Final analytical answer supported by the entire directed acyclic graph.
 - **Progressive Gating Mechanism:**
@@ -187,26 +191,346 @@ Decompose complex technical assertions into structured `(Subject, Predicate, Obj
 
 ---
 
-## Goated Prompt Engineering & MCP Invocation Master Blueprint
+## Goated Prompt & Context Engineering Master Blueprint (Pentadeca Architecture)
 
-To extract maximum signal and eliminate generic "AI slop" search responses, use this exact prompt construction formula for every MCP call:
-
-### 1. The Pinpoint Query Engineering Formula
-$$\text{Query} = \text{[Scope Filter]} + \text{[Exact Package @ Version / Symbol / Error String]} + \text{[Target Artifact Type]} + \text{[Stack Context / Constraints]}$$
-
-#### ❌ BANNED (Vague / Low-Signal):
-- `nextjs router`
-- `prisma supabase connection issue`
-- `react 19 state`
-
-#### ✅ GOATED (Pinpoint / High-Signal):
-- `site:github.com/vercel/next.js/issues "App Router" "useSearchParams" suspense boundary hydration mismatch v15.1.0 fix`
-- `site:docs.supabase.com OR site:github.com/prisma/prisma "PrismaClientInitializationError" connection pooling PgBouncer transaction mode limit`
-- `site:react.dev OR site:github.com/facebook/react/issues "useActionState" typescript signature return tuple pending state v19.0.0`
+> [!IMPORTANT]
+> ### 🛑 THE ANTI-VAGUENESS INVARIANT: ZERO 1-LINERS, ZERO GENERIC QUERIES
+> Querying any search engine or MCP agent with vague, lazy, 1-line strings (e.g., `react 19 state`, `prisma connection pool error`, `supabase auth`, `emergency response update`) is an **UNACCEPTABLE PROTOCOL FAILURE**.
+> 
+> Search and retrieval quality is strictly bounded by prompt information density. Vague queries yield generic SEO blogs, hallucinated snippets, and outdated workarounds. To guarantee ground-truth precision, every MCP dispatch MUST undergo **Pre-Flight Context Engineering** (assembling the 8-Dimensional Context Dossier) and **Engine-Specific Deep Prompt Formulation** (producing rich, multi-paragraph technical briefs for neural/agent engines and pinpoint AST booleans for code/SERP tools).
 
 ---
 
-### 2. Pentadeca-Engine Search Strategy Matrix
+### 1. The 8-Dimensional Context Grounding Dossier (The Octo-Context Anchor)
+
+Before issuing a single tool call to ANY of the 15 engines, the agent MUST inspect the workspace files (`package.json`, `Cargo.toml`, `requirements.txt`, `tsconfig.json`, source files, active logs) and query `memory/read_graph` to compile the **8-Dimensional Context Dossier**:
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│                               8-DIMENSIONAL CONTEXT GROUNDING DOSSIER                                   │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ D1: RUNTIME & TOOLCHAIN STATE                                                                           │
+│   • OS, Kernel & CPU Architecture: (e.g. Windows 11 x64 23H2 / Ubuntu 24.04 ARM64)                      │
+│   • Runtime Engine: (e.g. Node.js v22.12.0 LTS / Bun v1.1.38 / Cloudflare Workers V8 isolate)            │
+│   • Package Manager & Lockfile: (e.g. pnpm v9.14.2 / package-lock.json v3)                               │
+│   • Compiler Targets & Flags: (e.g. tsconfig target="ES2023", moduleResolution="Bundler", strict=true)  │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ D2: DEPENDENCY GRAPH & PINNED SEMVER BOUNDS                                                             │
+│   • Target Package & Exact Version: (e.g. "@prisma/client": "6.2.0", "@prisma/adapter-pg": "6.2.0")     │
+│   • Framework & Core Peers: (e.g. "next": "15.1.4", "react": "19.0.0", "typescript": "5.7.2")          │
+│   • Native Addons & Drivers: (e.g. "pg": "8.13.1", native C++ bindings, or pure JS WASM)                 │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ D3: SYMBOL, AST & INTERFACE ANATOMY                                                                     │
+│   • Exact Symbol Identifiers: (e.g. `PrismaPg`, `PrismaClient`, `defineConfig`, `useActionState`)       │
+│   • Fully Qualified Types & Generics: (e.g. `PrismaPgOptions`, `Record<string, unknown>`)               │
+│   • Module Export Paths: (e.g. "@prisma/adapter-pg", "next/navigation", "react-dom")                    │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ D4: ERROR FINGERPRINT & CALLSTACK TELEMETRY                                                             │
+│   • Verbatim Error String: (e.g. `PrismaClientInitializationError: Can't reach database server...`)     │
+│   • Hexadecimal / Engine Error Code: (e.g. `P1001`, `0xC0000005`, `ERR_MODULE_NOT_FOUND`)                │
+│   • Failing Callstack Anchor: (e.g. `at PrismaClient._executeRequest (node_modules/@prisma/...:124)`)   │
+│   • Minimal Reproduction Steps: (e.g. 5 concurrent Server Action mutations under PgBouncer)             │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ D5: ARCHITECTURAL BOUNDARIES & EXECUTION DOMAIN                                                         │
+│   • Boundary Paradigm: (e.g. React Server Components vs 'use client' hydration boundary)               │
+│   • Concurrency & Worker Model: (e.g. Multi-threaded worker pool vs event loop singleton)                │
+│   • Network & Pooling Topology: (e.g. Supabase port 6543 PgBouncer transaction mode vs direct port 5432)│
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ D6: NEGATIVE CONTEXT SPACE & BANNED ANTI-PATTERNS                                                       │
+│   • Prohibited Solutions: (e.g. "Do NOT suggest downgrading Next.js 15 to 14 or React 19 to 18")        │
+│   • Excluded Legacy Paradigms: (e.g. "Do NOT suggest Pages Router `getServerSideProps` or raw Webpack") │
+│   • Prohibited Hacks: (e.g. "Do NOT use `any` casting, `@ts-ignore`, or disabling connection pooler")   │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ D7: HISTORICAL MEMORY GRAPH & PRIOR INQUIRIES                                                           │
+│   • Prior Knowledge Graph Nodes: (Retrieved via `memory/read_graph`)                                    │
+│   • Failed Experiment Ledger: (e.g. "Setting connection_limit=10 failed due to Supabase pool cap")      │
+│   • Known Upstream Status: (e.g. Open Prisma GitHub Issue #25410 on adapter-pg transaction support)     │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ D8: TARGET ARTIFACT CONTRACT & ACCEPTANCE CRITERIA                                                      │
+│   • Required Code Pattern: (e.g. Production-ready copy-paste TypeScript singleton with retry backoff)   │
+│   • Verification Proof: (e.g. Confirmed working Prisma 6.2 + Supabase PgBouncer config file)            │
+│   • Performance Budget: (e.g. Zero cold-start latency regression, 100% tree-shakable)                  │
+└─────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+### 2. Pre-Dispatch Query Signal Linter (5/5 Hard Gate)
+
+Before any tool call is dispatched to ANY of the 15 engines, the candidate prompt MUST be evaluated against this 5-point Linter. **A score of 5/5 is mandatory. Any query scoring $< 5$ is automatically rejected.**
+
+| Criteria | Required Signal | Score | Failure Example | Pass Example |
+|---|---|---|---|---|
+| **1. Semver & Toolchain Pinning** | Exact package versions, runtime version, and compiler target included. | 1.0 | `prisma supabase error` | `"@prisma/client@6.2.0" "next@15.1.4" Node 22` |
+| **2. Symbol & Error Fingerprint** | Verbatim class, function, interface, or exact error string in quotes. | 1.0 | `connection failed` | `"PrismaClientInitializationError" "PrismaPg"` |
+| **3. Architecture & Boundary Context** | Explicit statement of execution domain (RSC, edge, port, pooler mode). | 1.0 | `how to connect database` | `Next.js 15 Server Actions Supabase PgBouncer port 6543 transaction mode` |
+| **4. Negative Scope Inclusions** | Explicit exclusions of outdated frameworks, hacks, or anti-patterns. | 1.0 | *Missing negative filters* | `-pages -webpack -legacy -downgrade` |
+| **5. Engine-Specific Modality Formatting** | Adheres to the specific engine's format (long narrative paragraph for vector/agents, AST booleans for code). | 1.0 | 5-word sentence passed to Exa or Linkup | 150-word detailed technical narrative for Exa / multi-section brief for Linkup |
+
+---
+
+### 3. Exhaustive 15-MCP Individual Prompt Engineering Blueprints
+
+Each of the 15 MCP engines operates on a distinct ingestion architecture (neural vector embeddings, AST token parsers, LLM synthesis agents, or boolean search indexes). **You MUST apply the bespoke prompt modality designed for each engine:**
+
+#### 🏛️ Cluster 1: Canonical Docs & Official Specs
+
+##### 1. Tavily (`tavily` / `tavily_search`, `tavily_research`)
+- **Ingestion Architecture:** Deep web crawler with domain authority weighting and boolean operator parsing.
+- **Context Injection Mapping:** Inject D1 (runtime/toolchain), D2 (exact semver), D3 (symbols), D5 (architecture), and D6 (negative domain exclusions).
+- **Mandatory Prompt Format:** Multi-clause boolean with domain constraints (`site:`), verbatim symbol quotes (`"..."`), and explicit negative keyword exclusions (`-medium -devto`).
+- **Template:**
+  ```
+  (site:[canonical-docs-domain] OR site:github.com/[org]/[repo]) "[Exact Symbol]" "[Exact Version]" "[Key Config Flag]" [Architecture Boundary Context] -tutorial -medium -deprecated
+  ```
+- **Example:**
+  ```json
+  {
+    "query": "(site:docs.supabase.com OR site:github.com/prisma/prisma) \"PrismaClientInitializationError\" \"PrismaPg\" \"6.2\" \"pgbouncer=true\" \"connection_limit=1\" Next.js 15 Server Actions port 6543 -medium -devto -beginner",
+    "search_depth": "advanced",
+    "max_results": 15,
+    "include_raw_content": true
+  }
+  ```
+
+##### 2. Context7 (`context7` / `resolve-library-id`, `get-library-docs`)
+- **Ingestion Architecture:** Canonical library documentation resolver and live TypeScript interface AST stubs.
+- **Context Injection Mapping:** Inject D2 (package name & semver) into `resolve-library-id`, then inject D3 (symbols, function parameters, return types) and D5 (runtime target) into `get-library-docs`.
+- **Mandatory Prompt Format:** Two-step execution: First resolve canonical package ID, then query for exact AST type stubs with full parameter signatures.
+- **Template:**
+  - Step 1: `resolve-library-id` with `libraryName: "[exact-npm-package-name]"`
+  - Step 2: `get-library-docs` with `libraryId: "[resolved-id]"`, `query: "[Exact Class/Function Symbol] constructor options parameters return type TypeScript interface [version]"`
+- **Example:**
+  ```json
+  // Step 1: resolve-library-id
+  { "libraryName": "@prisma/adapter-pg" }
+  // Step 2: get-library-docs
+  {
+    "libraryId": "prisma_adapter_pg",
+    "query": "PrismaPg constructor connectionString pool options TypeScript signature parameters return type v6"
+  }
+  ```
+
+##### 3. You.com (`ydc-search` / `you-research`, `you-search`)
+- **Ingestion Architecture:** Real-time web index optimized for LLM reasoning and multi-source structured research synthesis.
+- **Context Injection Mapping:** Inject D1 (toolchain), D3 (symbols), D4 (error callstack), D5 (stack architecture), and D8 (acceptance criteria).
+- **Mandatory Prompt Format:** **150–300 Word Multi-Paragraph Structured Research Synthesis Prompt** (`you-research`) containing background context, exact error telemetry, and 4 specific verification vectors.
+- **Example:**
+  ```json
+  {
+    "query": "Comprehensive technical research on configuring Prisma v6.2.0 with Supabase PostgreSQL connection pooling in Next.js 15.1 App Router Server Actions. Background: Application experiences 'PrismaClientInitializationError: Can't reach database server' when executing concurrent Server Actions against Supabase pooler on port 6543 under PgBouncer transaction mode. Investigate: 1) The exact implementation syntax for @prisma/adapter-pg driver adapter; 2) Required query parameters on DATABASE_URL (specifically pgbouncer=true and connection_limit); 3) Dual-URL configuration requirement using DIRECT_URL on port 5432 for prisma migrate deploy; 4) Global singleton instantiation on globalThis to prevent connection pool exhaustion across Node 22 worker threads. Deliver verified configuration files, tsconfig constraints, and known GitHub issue workarounds.",
+    "depth": "deep"
+  }
+  ```
+
+#### 🧠 Cluster 2: Neural Vectors & Deep Passages
+
+##### 4. Exa AI (`exa` / `web_search_exa`, `web_fetch_exa`)
+- **Ingestion Architecture:** Semantic neural embeddings trained on high-signal developer code and technical literature.
+- **Context Injection Mapping:** Inject D1 (toolchain), D2 (semver), D3 (symbols), D4 (error reproduction), D5 (architecture boundaries), D6 (negative space), and D8 (target code shape).
+- **Mandatory Prompt Format:** **100–250 Word Continuous Dense Technical Narrative Paragraph** beginning with an affirmative code framing ("Here is a production-ready TypeScript implementation...") that describes the full architectural context, constraints, and target AST patterns.
+- **Example:**
+  ```json
+  {
+    "query": "Here is a production-ready TypeScript implementation of Prisma v6.2.0 with @prisma/adapter-pg connecting to Supabase PostgreSQL via PgBouncer transaction pooling on port 6543 in Next.js 15 App Router. The setup uses Node.js 22 LTS runtime, handles concurrent Server Actions without throwing PrismaClientInitializationError or pool exhaustion, caches the PrismaClient singleton on globalThis, explicitly appends pgbouncer=true&connection_limit=1 to the pooler connection string, and separates directUrl on port 5432 for Prisma migrations without prepared statement collisions:",
+    "category": "github",
+    "numResults": 15
+  }
+  ```
+
+##### 5. Jina AI (`jina-remote-server` / `search_web_deep`, `parallel_search_web`, `read_url`)
+- **Ingestion Architecture:** In-body passage reader extracting ~100-word contextual paragraph spans with neural reranking (`sort_by_relevance`).
+- **Context Injection Mapping:** Inject D3 (symbols), D4 (verbatim error string), D5 (runtime architecture), and D7 (hypotheses).
+- **Mandatory Prompt Format:** **80–150 Word In-Depth Passage Query** asking specific technical questions backed by the verbatim error string and stack parameters.
+- **Example:**
+  ```json
+  {
+    "query": "Why does Prisma v6 throw PrismaClientInitializationError when connecting to Supabase PgBouncer pooler on port 6543 during concurrent Next.js 15 Server Actions, and what is the exact configuration for @prisma/adapter-pg with pgbouncer=true and directUrl on port 5432?",
+    "num": 8,
+    "snippet_source": "auto"
+  }
+  ```
+
+##### 6. SERPdive (`serpdive` / `serpdive_search`)
+- **Ingestion Architecture:** High-speed LLM-grounded search delivering compressed neural synthesis and answer-ready token snippets.
+- **Context Injection Mapping:** Inject D2 (versions), D3 (symbols), D4 (error codes), and D5 (architecture).
+- **Mandatory Prompt Format:** High-density, answer-ready prompt specifying exact error code, stack boundary, and expected interface pattern (`model: "mako"`).
+- **Example:**
+  ```json
+  {
+    "query": "Next.js 15 Prisma v6.2 Supabase PgBouncer transaction mode port 6543 PrismaClientInitializationError adapter-pg singleton connection_limit=1 solution",
+    "model": "mako"
+  }
+  ```
+
+#### ⚡ Cluster 3: Real-Time & Live SERP Intelligence
+
+##### 7. Linkup (`linkup` / `linkup-research`, `linkup-search`, `linkup-fetch`)
+- **Ingestion Architecture:** Production-grade real-time agent search with structured citation trees and multi-step reasoning.
+- **Context Injection Mapping:** Complete mapping of all 8 Dimensions (D1–D8).
+- **Mandatory Prompt Format:** **200–400 Word Structured RFC Research Directive** (`linkup-research` with `depth: "deep"` and `reasoningDepth: "L"`).
+- **Template:**
+  ```markdown
+  ### RESEARCH DIRECTIVE: [TOPIC]
+  **Stack Baseline:** [D1 + D2]
+  **Problem Anatomy & Error Telemetry:** [D4]
+  **Architectural Context:** [D5]
+  **Specific Research Inquiries:**
+  1. [Inquiry 1: AST Signature & Setup]
+  2. [Inquiry 2: Connection Pooling & Edge Pitfalls]
+  3. [Inquiry 3: Migration & CLI Separations]
+  4. [Inquiry 4: Benchmark & Latency Overheads]
+  **Negative Constraints:** [D6]
+  **Required Deliverable:** [D8]
+  ```
+- **Example:**
+  ```json
+  {
+    "query": "### RESEARCH DIRECTIVE: Prisma v6.2.0 with Supabase Connection Pooling in Next.js 15 App Router\n**Stack Baseline:** Next.js 15.1.4, React 19.0.0, TypeScript 5.7, Node.js 22 LTS, @prisma/client 6.2.0, @prisma/adapter-pg 6.2.0.\n**Problem Anatomy:** Concurrent Server Actions trigger 'PrismaClientInitializationError: Can't reach database server at pooler.supabase.com:6543' under load due to PgBouncer transaction pooling limits and prepared statement failures.\n**Inquiries:**\n1. What is the verified constructor pattern for @prisma/adapter-pg in Prisma v6?\n2. What exact connection string parameters are required (e.g. pgbouncer=true, connection_limit=1)?\n3. How should prisma.config.ts and schema.prisma configure directUrl on port 5432 for migrations while keeping DATABASE_URL on port 6543 for the client?\n4. What globalThis caching pattern prevents pool exhaustion across serverless workers?\n**Constraints:** Do NOT suggest downgrading to Prisma v5 or React 18. Provide copy-paste verified code.",
+    "depth": "deep"
+  }
+  ```
+
+##### 8. Parallel Search (`parallel-search` / `web_search`, `web_fetch`)
+- **Ingestion Architecture:** Token-efficient agent search returning dense, answer-ready excerpts (capped to ~25k chars) with zero hallucination.
+- **Context Injection Mapping:** Inject D1, D3, D4, and D5 into the comprehensive objective, and decompose D3/D4/D5 into an array of 3–5 multi-angled search queries.
+- **Mandatory Prompt Format:** Multi-sentence technical objective + array of 3–5 distinct angled search queries covering setup, error fix, and driver adapter.
+- **Example:**
+  ```json
+  {
+    "objective": "Identify the verified architectural fix for PrismaClientInitializationError in Next.js 15 Server Actions connecting to Supabase PostgreSQL via PgBouncer on port 6543, including @prisma/adapter-pg instantiation and dual-URL migration configuration in Prisma v6.",
+    "search_queries": [
+      "Prisma v6 Supabase PgBouncer transaction mode port 6543 connection_limit=1",
+      "PrismaClientInitializationError Supabase connection pooler Next.js 15",
+      "@prisma/adapter-pg PrismaPg connectionString singleton Next.js Server Actions",
+      "Prisma v6 directUrl port 5432 prisma.config.ts migrations"
+    ]
+  }
+  ```
+
+##### 9. SerpApi (`serpapi` / `google`, `google_scholar`, `google_news`)
+- **Ingestion Architecture:** Direct Google SERP scraper returning rich organic knowledge graphs, sitelinks, and Scholar citations.
+- **Context Injection Mapping:** Inject D2 (versions), D3 (symbols), D4 (error codes), and D6 (negative keywords).
+- **Mandatory Prompt Format:** 4-part compound boolean query with exact verbatim match operators (`"..."`), multiple domain anchors (`site:... OR site:...`), and negative exclusions (`-medium -tutorial`).
+- **Example:**
+  ```json
+  {
+    "engine": "google",
+    "q": "(site:docs.supabase.com OR site:github.com/prisma) \"PrismaClientInitializationError\" \"pgbouncer=true\" \"adapter-pg\" v6 -medium -tutorial -beginner",
+    "num": 10,
+    "hl": "en",
+    "gl": "us"
+  }
+  ```
+
+#### 🐙 Cluster 4: Raw Code, AST & Repo Triage
+
+##### 10. GitHub (`github` / `search_code`, `get_file_contents`, `list_commits`, `search_issues`)
+- **Ingestion Architecture:** Direct repository source tree mining, AST declaration discovery, merged PR diffs, and issue triage.
+- **Context Injection Mapping:** Inject D2 (package repo), D3 (symbols), D4 (error strings), and D5 (source file paths).
+- **Mandatory Prompt Format:** High-precision AST search combining exact symbol name, file path qualifiers (`path:`, `filename:`), language filters (`language:typescript`), and merged PR filters (`is:pr is:merged`).
+- **Example:**
+  ```json
+  // 1. AST Code Search
+  {
+    "q": "\"@prisma/adapter-pg\" \"PrismaPg\" path:lib/ filename:prisma language:typescript",
+    "per_page": 10
+  }
+  // 2. Merged Bug Fix PR Search
+  {
+    "q": "repo:prisma/prisma is:pr is:merged \"PrismaClientInitializationError\" \"pgbouncer\" \"port 6543\"",
+    "sort": "updated",
+    "order": "desc"
+  }
+  ```
+
+##### 11. Firecrawl (`firecrawl-mcp` / `firecrawl_search`, `firecrawl_developer_search`, `firecrawl_scrape`, `firecrawl_extract`, `firecrawl_agent`)
+- **Ingestion Architecture:** Developer index (`data.developer`) scanning GitHub issues, merged PRs, READMEs, plus dynamic headless JS DOM scraping.
+- **Context Injection Mapping:** Inject D2 (semver), D3 (symbols), D4 (error strings), and D8 (JSON extraction schema).
+- **Mandatory Prompt Format:** Developer search with `categories: ["developer"]` targeting merged PR fixes, combined with structured JSON schema extractions for benchmark tables.
+- **Example:**
+  ```json
+  {
+    "query": "\"PrismaClientInitializationError\" \"pgbouncer\" \"adapter-pg\" Supabase v6",
+    "categories": ["developer"],
+    "limit": 15,
+    "scrapeOptions": {
+      "formats": ["markdown"],
+      "onlyMainContent": true
+    }
+  }
+  ```
+
+##### 12. Crawleo (`crawleo` / `crawleo_search`, `crawleo_scrape`)
+- **Ingestion Architecture:** AI search, Google SERP/News/Maps scraping, and headless JS rendering (`render_js=true`), returning clean markdown for LLM grounding.
+- **Context Injection Mapping:** Inject D3 (symbols), D4 (error strings), and D5 (target SPA documentation URLs).
+- **Mandatory Prompt Format:** High-intent search query with dynamic headless JS scrape directives targeting dynamic client-rendered documentation portals.
+- **Example:**
+  ```json
+  {
+    "query": "Prisma v6 Supabase PgBouncer transaction mode connection limit adapter-pg Next.js 15",
+    "num": 5
+  }
+  ```
+
+#### 🛡️ Cluster 5: Anti-Bot Crushing & Mass Recursive Crawling
+
+##### 13. Bright Data (`brightdata` / Web Unlocker, `scraping_browser`)
+- **Ingestion Architecture:** Enterprise proxy shield and Web Unlocker bypassing Cloudflare Turnstile, Akamai, CAPTCHAs, and geoblocks on protected enterprise portals.
+- **Context Injection Mapping:** Inject target documentation URL identified from Phase 2 that returned `403 Forbidden` or CAPTCHA challenge.
+- **Mandatory Prompt Format:** Targeted Web Unlocker endpoint with zone selection (`zone: "web_unlocker"`) to extract unblocked raw DOM content.
+- **Example:**
+  ```json
+  {
+    "url": "https://supabase.com/docs/guides/database/connecting-to-postgres#connecting-with-prisma",
+    "zone": "web_unlocker"
+  }
+  ```
+
+##### 14. Apify Cloud (`apify` / `call-actor`, `get-dataset-items`)
+- **Ingestion Architecture:** Cloud-hosted mass multi-page recursive website crawler (`apify/website-content-crawler`) harvesting complete documentation trees into structured Markdown.
+- **Context Injection Mapping:** Inject D2 (target docs domain), D5 (path boundaries), and D8 (crawl depth).
+- **Mandatory Prompt Format:** Fully parameterized actor input JSON with targeted glob patterns, max depth, and markdown extractors.
+- **Example:**
+  ```json
+  {
+    "actorId": "apify/website-content-crawler",
+    "runInput": {
+      "startUrls": [{ "url": "https://www.prisma.io/docs/orm/overview/databases/supabase" }],
+      "globs": ["https://www.prisma.io/docs/orm/**"],
+      "maxCrawlPages": 25,
+      "crawlerType": "playwright:adaptive",
+      "saveMarkdown": true
+    }
+  }
+  ```
+
+##### 15. Brave Search (`brave-search` / `brave_web_search`)
+- **Ingestion Architecture:** Independent 30B+ page web crawler index separate from Google/Bing, discovering un-indexed developer blogs, independent forums, and freshness-tagged content (`age` field).
+- **Context Injection Mapping:** Inject D2 (semver), D3 (symbols), D4 (error codes), and D5 (community discussions).
+- **Mandatory Prompt Format:** Freshness-filtered independent web query with date bounds (`age`), forum targeting, and non-SEO operator syntax.
+- **Example:**
+  ```json
+  {
+    "query": "site:github.com/prisma OR site:reddit.com/r/nextjs \"PrismaClientInitializationError\" \"adapter-pg\" Supabase 2026",
+    "count": 15
+  }
+  ```
+
+---
+
+### 4. Multi-Domain Contrast Matrix (❌ BANNED vs ✅ GOATED)
+
+| Domain | ❌ BANNED (Vague / Low-Signal / 1-Liner) | ✅ GOATED CONTEXT-ENGINEERED PROMPT (Multi-Paragraph & Pinpoint Detail) |
+|---|---|---|
+| **1. Fullstack Web & Edge** | `nextjs prisma supabase connection error` | *Exa / Neural:* `"Here is a production-ready TypeScript implementation of Prisma v6.2.0 with @prisma/adapter-pg connecting to Supabase PostgreSQL via PgBouncer transaction pooling on port 6543 in Next.js 15.1 App Router (Node 22 runtime). The solution caches the PrismaClient singleton on globalThis, sets pgbouncer=true&connection_limit=1 on DATABASE_URL, and configures directUrl on port 5432 in prisma.config.ts for migrations without pool exhaustion or prepared statement errors:"`<br><br>*Tavily / SERP:* `"(site:docs.supabase.com OR site:github.com/prisma) \"PrismaClientInitializationError\" \"pgbouncer=true\" \"adapter-pg\" v6 Next.js 15 -medium -tutorial"` |
+| **2. Distributed Systems & Caching** | `upstash redis ratelimit nextjs` | *Exa / Neural:* `"Here is a production-grade TypeScript implementation of Upstash Redis ratelimit (@upstash/ratelimit v2.0.5) utilizing a sliding window algorithm (10 requests per 10s) inside Next.js 15 Server Actions and Route Handlers. The implementation handles ephemeral serverless execution, gracefully recovers from network timeouts with a fallback bypass, extracts client IP from x-forwarded-for headers, and provides typed response headers:"`<br><br>*Linkup / RFC:* `"### RESEARCH DIRECTIVE: Upstash Redis Rate Limiting in Serverless Edge\n**Stack:** Next.js 15.1, @upstash/ratelimit@2.0.5, @upstash/redis@1.34.3.\n**Inquiries:** 1) Verified Sliding Window implementation in Server Actions; 2) Ephemeral connection pooling overhead; 3) Fail-open vs fail-closed error handling fallback. -medium"` |
+| **3. Systems & Windows Kernel** | `winring0 driver blocked windows 11` | *Brave / Forum:* `"site:github.com/LibreHardwareMonitor OR site:reddit.com/r/hardware \"WinRing0\" \"VulnerableDriverBlocklist\" \"Memory Integrity\" HVCI bypass workaround Windows 11 23H2 2026"`<br><br>*Jina Deep:* `"How does LibreHardwareMonitor resolve the Windows 11 Vulnerable Driver Blocklist (HVCI / Memory Integrity) block on WinRing0.sys when querying CPU package temperatures and hardware sensors at Ring 0?"` |
+| **4. Game Mining & Telemetry** | `erlc map leak update 2026` | *You.com / Synthesis:* `"Comprehensive investigation into Emergency Response: Liberty County (ER:LC) Roblox summer 2026 map overhaul update. Detail verified developer leaks, asset ID mining, server replication changes, terrain boundary expansions, and police/fire dispatch building relocations from verified community patch notes and testing builds."`<br><br>*SERPdive:* `"Emergency Response Liberty County Roblox 2026 map overhaul update leaks developer patch notes terrain changes"` |
+
+---
+
+### 5. Pentadeca-Engine Search Strategy Matrix
 
 | Dimension | Tavily (`tavily`) | Context7 (`context7`) | You.com (`ydc-search`) | Exa AI (`exa`) | Jina AI (`jina`) | SERPdive (`serpdive`) | Linkup (`linkup`) | Parallel (`parallel`) | SerpApi (`serpapi`) | GitHub (`github`) | Firecrawl (`firecrawl`) | Crawleo (`crawleo`) | Bright Data (`brightdata`) | Apify (`apify`) | Brave Search (`brave`) |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
@@ -609,59 +933,84 @@ When conducting a comprehensive research audit, execute queries across all 5 tie
 
 ```mermaid
 flowchart TD
-    P1[Phase 1: Query Decomposition\nsequentialthinking + expand_query + concise-planning] --> P2[Phase 2: Pentadeca-Engine Simultaneous Search\nTavily + Context7 + You.com + Exa + Jina + SERPdive + Linkup + Parallel + SerpApi + GitHub + Firecrawl + Crawleo + BrightData + Apify + Brave]
+    P1[Phase 1: Pre-Flight Context Harvesting & 15-MCP Prompt Synthesis\nOcto-Dossier + 5/5 Query Linter + Multi-Paragraph Directives] --> P2[Phase 2: Pentadeca-Engine Simultaneous Broad Search\n15/15 Hard Gate: Tavily + Context7 + You.com + Exa + Jina + SERPdive + Linkup + Parallel + SerpApi + GitHub + Firecrawl + Crawleo + BrightData + Apify + Brave]
     P2 --> P3[Phase 3: Targeted Pentadeca Extraction & Anti-Bot Escalation\nread_url + firecrawl_scrape + linkup-fetch + Web Unlocker + web_fetch + apify + serpapi + context7 + github + ydc-search + serpdive + crawleo]
-    P3 --> P4[Phase 4: Semantic Reranking & 15-Way Cross-Verification\nsort_by_relevance + deduplicate_strings + Pentadeca Matrix]
+    P3 --> P4[Phase 4: Semantic Reranking & 15-Way Cross-Verification\nsort_by_relevance + deduplicate_strings + 15-Way Pentadeca Matrix]
     P4 --> P5[Phase 5: Knowledge Persistence & Reporting\nmemory graph + bibtex + report.md + artifacts]
 ```
 
-### Phase 1: Query Decomposition & Strategy
-*   **MCP Tools:** `sequential-thinking/sequentialthinking`, `jina-remote-server/expand_query`, `memory/read_graph`
+### Phase 1: Pre-Flight Context Harvesting, Octo-Dossier Assembly & 15-MCP Prompt Synthesis Engine
+*   **MCP Tools:** `memory/read_graph`, `sequential-thinking/sequentialthinking`, `jina-remote-server/expand_query`
 *   **Sub-skills:** `concise-planning`, `superpowers-brainstorm`
 *   **Action:**
-    1. **Pre-check Memory Graph:** Run `memory/read_graph` to inspect previously verified libraries, signatures, and architectural decisions before initiating new searches.
-    2. **Decompose Topic into Atomic Inquiries:**
-       *   *Core API:* "What is the exact function signature, parameters, and return type?"
-       *   *Compatibility & Stack:* "Does it work seamlessly with Next.js 15, React 19, TypeScript 5.5, Node 22?"
-       *   *Edge Cases & Workarounds:* "What are the active GitHub issues, open PRs, and runtime pitfalls?"
-       *   *Benchmarks & Bundle Metrics:* "What is the gzipped bundle size, tree-shakability, and latency overhead?"
-       *   *Alternatives & Competitors:* "What are the top 2-3 alternative packages, and how do they compare?"
-    3. **Expand Queries:** Use Jina `expand_query` to generate semantic query synonyms and alternative search formulations.
-    4. **Plan Execution:** Use `concise-planning` to draft an atomic research checklist.
+    1. **Pre-check Memory Graph & Workspace Manifests:** 
+       - Run `memory/read_graph` to inspect previously verified libraries, architectural decisions, and known gotchas.
+       - Interrogate the local workspace: inspect `package.json`, `Cargo.toml`, `requirements.txt`, `tsconfig.json`, active error logs, and current runtime environment (OS, Node/Bun/Deno, container/edge).
+    2. **Assemble the 8-Dimensional Context Grounding Dossier:**
+       - Compile `scratch/context_dossier.md` covering all 8 dimensions:
+         - `D1: Runtime & Toolchain State`
+         - `D2: Dependency Graph & Semver Bounds`
+         - `D3: Symbol, AST & Interface Anatomy`
+         - `D4: Error Fingerprint & Callstack Telemetry`
+         - `D5: Architectural Boundaries & Execution Domain`
+         - `D6: Negative Context Space & Banned Anti-Patterns`
+         - `D7: Historical Memory Graph & Prior Inquiries`
+         - `D8: Target Artifact Contract & Acceptance Criteria`
+    3. **Pre-Dispatch Query Signal Linter (5/5 Hard Gate):**
+       - Pass candidate inquiries through the 5-point Linter (Semver Pinning, Symbol/Error Fingerprint, Architecture Boundary, Negative Filters, Engine Modality).
+       - Zero tolerance: Disallow any 1-line or low-signal queries.
+    4. **Synthesize 15 Tailored Engine Prompts (`scratch/prompt_registry.md`):**
+       - Generate bespoke prompts for each of the 15 MCP engines:
+         - **Neural Vector Engines (Exa, Jina Deep, SERPdive, Parallel):** 100–250 word continuous dense narrative paragraphs.
+         - **Autonomous Research Agents (Linkup, You.com, Firecrawl Agent, Tavily Research, Apify):** 200–500 word Multi-Section RFC Research Directives.
+         - **AST & Code Engines (Context7, GitHub, Firecrawl Dev):** Verbatim symbols, file paths, and interface schemas.
+         - **SERP & Anti-Bot Engines (Brave, SerpApi, Bright Data, Crawleo):** Compound quoted booleans with negative exclusions.
+    5. **Plan Atomic Execution:** Use `concise-planning` to draft an atomic research checklist based on the synthesized prompt registry.
 
-### Phase 2: Dodeca-Engine Simultaneous Broad Search & Multi-Domain Discovery
+### Phase 2: Pentadeca-Engine Simultaneous Broad Search & Multi-Domain Discovery (15/15 Hard Gate)
 *   **MCP Tools:**
     - `tavily/tavily_search`, `tavily/tavily_research`, `tavily/tavily_map`, `tavily/tavily_crawl`
+    - `context7/resolve-library-id`, `context7/get-library-docs`
+    - `ydc-search/you-search`, `ydc-search/you-research`, `ydc-search/you-contents`
     - `exa/web_search_exa`, `exa/web_fetch_exa`
-    - `linkup/linkup-search`, `linkup/linkup-research`
     - `jina-remote-server/search_web_deep`, `jina-remote-server/search_web`, `jina-remote-server/parallel_search_web`, `jina-remote-server/search_arxiv`, `jina-remote-server/search_ssrn`, `jina-remote-server/guess_datetime_url`
-    - `firecrawl-mcp/firecrawl_search`, `firecrawl-mcp/firecrawl_developer_search`, `firecrawl-mcp/firecrawl_map`, `firecrawl-mcp/firecrawl_crawl`, `firecrawl-mcp/firecrawl_agent`
-    - `brightdata/web_data_`, `brightdata/scraping_browser`
-    - `brave-search/brave_web_search`, `brave-search/brave_local_search`
+    - `serpdive/serpdive_search`
+    - `linkup/linkup-search`, `linkup/linkup-research`, `linkup/linkup-fetch`
     - `parallel-search/web_search`, `parallel-search/web_fetch`
-    - `apify/actors-mcp-server` (cloud-hosted actor crawler and search execution)
-    - `serpapi` (direct Google, Scholar, and News SERP queries)
-    - `context7/resolve-library-id`, `context7/get-library-docs` (official documentation & type resolver)
-    - `github` (direct code AST search, raw file tree inspection, issue/PR triage)
+    - `serpapi` (`google`, `google_scholar`, `google_news`)
+    - `github` (`search_code`, `get_file_contents`, `list_commits`, `search_issues`)
+    - `firecrawl-mcp/firecrawl_search`, `firecrawl-mcp/firecrawl_developer_search`, `firecrawl-mcp/firecrawl_map`, `firecrawl-mcp/firecrawl_crawl`, `firecrawl-mcp/firecrawl_agent`
+    - `crawleo/crawleo_search`, `crawleo/crawleo_scrape`
+    - `brightdata/web_data_`, `brightdata/scraping_browser`, Web Unlocker
+    - `apify/actors-mcp-server` (`call-actor`, `get-dataset-items`)
+    - `brave-search/brave_web_search`, `brave-search/brave_local_search`
 *   **Action:**
-    1. **Mandatory 12/12 Parallel Dispatch (Zero Omissions Allowed):** Execute queries across ALL TWELVE engines simultaneously. Omitting any engine from execution is a hard failure:
-       - **Tavily:** Advanced keyword search, authority domain filtering (`include_domains`), and multi-result sets (10-20 results).
-       - **Exa:** Neural vector semantic search (`category="github"`, `category="research paper"`) for contextual code implementations.
-       - **Linkup:** Real-time production search (`depth: "deep"`) with domain constraints for clean agent grounding.
-       - **Jina AI:** Deep passage search (`search_web_deep`) to extract ~100-word answers directly from webpage bodies.
-       - **Firecrawl:** Developer index search (`firecrawl_search` with `categories: ["developer"]`) to query GitHub issues, merged PRs, and repository READMEs.
-       - **Bright Data:** Enterprise SERP queries and global residential IP unblocking.
-       - **Brave Search:** Independent web index queries for non-Google/Bing discovery with age freshness markers.
-       - **Parallel Search:** Objective-based multi-angle queries returning dense, answer-ready excerpts.
-       - **Apify Cloud:** Execute mass recursive doc crawls (`apify/website-content-crawler`) and deep search actors.
-       - **SerpApi:** Scrape Google organic results, knowledge panels, and Google Scholar academic citations.
-       - **Context7:** Resolve canonical package ID and pull official version-specific documentation and TypeScript stubs.
-       - **GitHub:** Query repository source files, AST declarations, active/closed issues, and merged pull request commit diffs.
+    1. **Mandatory 15/15 Parallel Dispatch (Zero Omissions Allowed):** Execute queries across ALL FIFTEEN engines simultaneously using the pre-synthesized prompts from Phase 1:
+       - **Cluster 1 (Canonical Docs & Official Specs):**
+         - **Tavily:** Domain-scoped boolean search with exact version quotes and raw content extraction.
+         - **Context7:** Two-step canonical ID resolution and version-pinned TypeScript AST type extraction.
+         - **You.com:** LLM-grounded multi-source research synthesis (`you-research`) with live fact verification.
+       - **Cluster 2 (Neural Vectors & Deep Passages):**
+         - **Exa AI:** 100–250 word dense narrative paragraphs searching code patterns and implementation vectors (`category="github"`).
+         - **Jina AI:** Deep in-body passage search (`search_web_deep`) extracting ~100-word paragraph answers directly from page bodies.
+         - **SERPdive:** High-density answer-ready search (`model: "mako"`) returning compressed neural synthesis.
+       - **Cluster 3 (Real-Time & Live SERP Intelligence):**
+         - **Linkup:** Multi-section RFC Research Directive (`linkup-research` with `depth: "deep"`) for agent grounding.
+         - **Parallel Search:** Objective-based multi-angle query array delivering token-dense excerpts.
+         - **SerpApi:** Scrape Google organic results, knowledge panels, and Google Scholar academic citations.
+       - **Cluster 4 (Raw Code, AST & Repo Triage):**
+         - **GitHub:** Direct AST code search (`search_code`), raw file tree inspection (`get_file_contents`), and merged PR bug fix triage.
+         - **Firecrawl:** Developer index search (`categories: ["developer"]`) targeting merged PR diffs and issue triage.
+         - **Crawleo:** Dynamic headless JS scraping (`render_js=true`) and Google SERP RAG ingestion.
+       - **Cluster 5 (Anti-Bot Crushing & Mass Recursive Crawling):**
+         - **Bright Data:** Web Unlocker & proxy shield bypassing Cloudflare Turnstile and CAPTCHAs on protected portals.
+         - **Apify Cloud:** Execute mass recursive doc crawls (`apify/website-content-crawler`) and deep search actors.
+         - **Brave Search:** Independent 30B+ index queries for non-Google/Bing discovery with age freshness markers.
     2. **Site Mapping & Sitemap Discovery:** Use `tavily_map` or `firecrawl_map` to discover complete URL hierarchies of documentation portals before extracting specific pages.
     3. **Academic & Research Ingestion:** Use Jina `search_arxiv` / `search_ssrn` and SerpApi `google_scholar` when researching algorithms, state machines, consensus protocols, or cryptographic specs.
     4. **Publication Date Inference:** Use Jina `guess_datetime_url` to verify publication freshness and detect stale documentation.
 
-### Phase 3: Targeted Dodeca Extraction, Parsing & Anti-Bot Escalation
+### Phase 3: Targeted Pentadeca Extraction, Parsing & Anti-Bot Escalation
 *   **MCP Tools:**
     - `jina-remote-server/read_url`, `jina-remote-server/parallel_read_url`, `jina-remote-server/extract_pdf`
     - `firecrawl-mcp/firecrawl_scrape`, `firecrawl-mcp/firecrawl_extract`, `firecrawl-mcp/firecrawl_parse`, `firecrawl-mcp/firecrawl_interact`
@@ -670,6 +1019,9 @@ flowchart TD
     - `brightdata/scraping_browser`, Web Unlocker
     - `tavily/tavily_extract`
     - `exa/web_fetch_exa`
+    - `ydc-search/you-contents`
+    - `serpdive/serpdive_search`
+    - `crawleo/crawleo_scrape`
     - `apify` dataset retrieval
     - `serpapi` structured JSON parsing
     - `context7/resolve-library-id`, `context7/get-library-docs`
@@ -679,9 +1031,10 @@ flowchart TD
     1. **Multi-Engine Content Extraction:**
        - Use **Jina `read_url`** or **Firecrawl `firecrawl_scrape`** (`maxAge: 0`, `onlyMainContent: true`) for ultra-clean Markdown conversions of complex web pages.
        - Use **Parallel `web_fetch`** for instant token-efficient markdown extraction.
-       - Use **Linkup `linkup-fetch`** (`renderJs: true`) for dynamic JS-rendered technical blogs.
+       - Use **Linkup `linkup-fetch`** (`renderJs: true`) and **Crawleo `crawleo_scrape`** (`render_js=true`) for dynamic JS-rendered technical SPAs.
+       - Use **You.com `you-contents`** for high-speed multi-URL snippet verification.
        - Use **Apify Cloud** datasets for bulk multi-page documentation crawls.
-       - Use **Firecrawl `firecrawl_scrape` with `actions`** (`wait`, `click`, `scroll`) for pages requiring JavaScript hydration.
+       - Use **Firecrawl `firecrawl_scrape` with `actions`** (`wait`, `click`, `scroll`) for pages requiring interactive JavaScript hydration.
        - Use **Firecrawl `firecrawl_extract`** with strict JSON schemas to pull structured comparative benchmark tables.
        - Use **Jina `extract_pdf`** for PDF technical whitepapers, architectural schematics, and table extraction.
        - Use **GitHub `get_file_contents`** to inspect raw source files, type definitions (`index.d.ts`), and config schemas.
@@ -695,7 +1048,7 @@ flowchart TD
        - Verify minimum supported version and compatibility bounds.
        - Check for recent deprecation tags or breaking AST shifts.
 
-### Phase 4: Semantic Reranking, Deduplication & 12-Way Cross-Verification Matrix
+### Phase 4: Semantic Reranking, Deduplication & 15-Way Cross-Verification Matrix
 *   **MCP Tools:**
     - `jina-remote-server/sort_by_relevance`, `jina-remote-server/deduplicate_strings`, `jina-remote-server/classify_text`
     - `upstash-redis-js`, `upstash-vector-js`, `upstash-search-js`
@@ -704,24 +1057,32 @@ flowchart TD
        - Use Jina `sort_by_relevance` to rank all retrieved documentation paragraphs and code snippets directly against the user's technical query.
        - Use Jina `deduplicate_strings` to strip redundant boilerplate code across multiple sources.
        - Use Jina `classify_text` to categorize edge cases into severity buckets (e.g. `[Breaking, Workaround, Deprecation, Security]`).
-    2. **Compile 12 Discrete Independent Reports (All 12 Required):** You MUST compile all 12 independent findings sections before synthesis. Omitting any engine's section is a protocol violation:
-       - **Version 1 (Tavily):** Authority domain docs, keyword index hits, site crawl summaries.
-       - **Version 2 (Exa):** Neural semantic code patterns, architectural alternatives, similarity matches.
-       - **Version 3 (Linkup):** Real-time grounded answers, structured citations, multi-angle research.
-       - **Version 4 (Jina AI):** Passage-level grounded quotes (~100 words), academic backing, reranked relevance scores.
-       - **Version 5 (Firecrawl):** Developer index hits (`data.developer`), merged GitHub PRs, bug fix commits, AST clean markdown.
-       - **Version 6 (Bright Data):** Anti-bot bypassed enterprise data, Cloudflare-unlocked portals, raw DOM extractions.
-       - **Version 7 (Brave Search):** Independent non-Google/Bing index hits, forum findings, and freshness-tagged threads.
-       - **Version 8 (Parallel Search):** High-density answer-ready excerpts, token-optimized snippets, multi-angle objective coverage.
-       - **Version 9 (Apify Cloud):** Mass recursive website crawling outputs, structured actor datasets, and full-site markdown harvests.
-       - **Version 10 (SerpApi):** Live Google and Google Scholar SERP results, organic ranking consensus, and knowledge panel facts.
-       - **Version 11 (Context7):** Official library type stubs, parameter schemas, and version-specific interface contracts.
-       - **Version 12 (GitHub):** Raw source code AST patterns, live repository implementations, merged PR commit diffs, and issue threads.
-    3. **12-Way Side-by-Side Comparison Matrix:**
-       - **Consensus Points (12/12, 11/12, 10/12, 9/12 agreement):** High-confidence facts, stable API signatures, verified patterns.
+    2. **Compile 15 Discrete Independent Reports (All 15 Required):** You MUST compile all 15 independent findings sections before synthesis. Omitting any engine's section is a protocol violation:
+       - **Cluster 1: Canonical Docs & Official Specs**
+         - **Version 1 (Tavily):** Authority domain docs, keyword index hits, site crawl summaries.
+         - **Version 2 (Context7):** Official library type stubs, parameter schemas, and version-specific interface contracts.
+         - **Version 3 (You.com):** Real-time web index facts, LLM-grounded synthesis, and multi-source consensus.
+       - **Cluster 2: Neural Vectors & Deep Passages**
+         - **Version 4 (Exa AI):** Neural semantic code patterns, architectural alternatives, similarity matches.
+         - **Version 5 (Jina AI):** Passage-level grounded quotes (~100 words), academic backing, reranked relevance scores.
+         - **Version 6 (SERPdive):** Answer-ready LLM content extractions, compressed tokens, neural answers.
+       - **Cluster 3: Real-Time & Live SERP Intelligence**
+         - **Version 7 (Linkup):** Real-time grounded answers, structured citations, multi-angle research.
+         - **Version 8 (Parallel Search):** High-density answer-ready excerpts, token-optimized snippets, multi-angle objective coverage.
+         - **Version 9 (SerpApi):** Live Google and Google Scholar SERP results, organic ranking consensus, and knowledge panel facts.
+       - **Cluster 4: Raw Code, AST & Repo Triage**
+         - **Version 10 (GitHub):** Raw source code AST patterns, live repository implementations, merged PR commit diffs, and issue threads.
+         - **Version 11 (Firecrawl):** Developer index hits (`data.developer`), merged GitHub PRs, bug fix commits, AST clean markdown.
+         - **Version 12 (Crawleo):** Clean rendered markdown, dynamic JS SPA extractions, and Google SERP RAG data.
+       - **Cluster 5: Anti-Bot Crushing & Mass Recursive Crawling**
+         - **Version 13 (Bright Data):** Anti-bot bypassed enterprise data, Cloudflare-unlocked portals, raw DOM extractions.
+         - **Version 14 (Apify Cloud):** Mass recursive website crawling outputs, structured actor datasets, and full-site markdown harvests.
+         - **Version 15 (Brave Search):** Independent non-Google/Bing index hits, forum findings, and freshness-tagged threads.
+    3. **15-Way Side-by-Side Comparison Matrix:**
+       - **Consensus Points (15/15, 14/15, 13/15, 12/15 agreement):** High-confidence facts, stable API signatures, verified patterns.
        - **Divergent Findings & Conflicting Signatures:** Where engines disagree on signatures, configuration parameters, or version support.
-       - **Unique Insights:** Niche workarounds discovered by Firecrawl and GitHub in merged PRs, passage quotes extracted by Jina, unblocked enterprise data from Bright Data, independent forum solutions from Brave, dense objective excerpts from Parallel, mass crawl context from Apify, direct Google rankings from SerpApi, official type signatures from Context7, conceptual alternatives found by Exa, or canonical doc specs indexed by Tavily and Linkup.
-    4. **Final Decision Synthesis:** Formulate the unified recommendation based on the dodeca comparison matrix.
+       - **Unique Insights:** Niche workarounds discovered by Firecrawl and GitHub in merged PRs, passage quotes extracted by Jina, unblocked enterprise data from Bright Data, independent forum solutions from Brave, dense objective excerpts from Parallel, mass crawl context from Apify, direct Google rankings from SerpApi, official type signatures from Context7, conceptual alternatives found by Exa, LLM grounding from You.com, compressed neural answers from SERPdive, clean SPA scrapes from Crawleo, or canonical doc specs indexed by Tavily and Linkup.
+    4. **Final Decision Synthesis:** Formulate the unified recommendation based on the pentadeca comparison matrix.
     5. **Local Stack Compatibility Check:** Cross-reference recommendations with `package.json`, `tsconfig.json`, and runtime environments.
     6. **Cache & Index Findings:** Cache verified signatures in Upstash Redis and index large corpora in Upstash Vector for fast future lookups.
 
@@ -734,7 +1095,7 @@ flowchart TD
 *   **Action:**
     1. **Persist Knowledge Graph:**
        - Entities: Library name, version, architecture pattern.
-       - Observations: Verified signatures, bundle metrics, breaking changes, dodeca consensus status.
+       - Observations: Verified signatures, bundle metrics, breaking changes, pentadeca consensus status.
        - Relations: `replaces`, `compatible-with`, `conflicts-with`, `depends-on`.
     2. **Generate BibTeX Citations:** Use Jina `search_bibtex` to format canonical academic and specification citations.
     3. **Search Engine Feedback:** Submit feedback via `firecrawl_feedback` if search result relevance warrants tuning.
@@ -868,7 +1229,7 @@ When standard scrapers encounter 403 Forbidden or CAPTCHA challenges:
 1. Detect `403`, `503`, or Cloudflare challenge pages returned by standard fetch tools.
 2. Escalate the target URL to **Bright Data Web Unlocker**.
 3. Extract clean unblocked DOM content and convert to Markdown.
-4. Incorporate unblocked findings into the 13-way matrix.
+4. Incorporate unblocked findings into the 15-way matrix.
 
 ### Sub-Workflow C: Academic Literature & Specification Mining (Jina + arXiv + SerpApi)
 When researching algorithms, mathematical formulas, or consensus mechanisms:
@@ -882,7 +1243,7 @@ When researching algorithms, mathematical formulas, or consensus mechanisms:
 For broad multi-day architectural evaluations:
 1. Launch `linkup-research`, `firecrawl_agent`, `tavily_research`, `you-research`, and `apify/website-content-crawler` concurrently with the comprehensive architectural inquiry.
 2. Check execution progress periodically via `linkup-get-research` and `firecrawl_agent_status`.
-3. Synthesize the resulting autonomous multi-source reports into the 13-way verification matrix.
+3. Synthesize the resulting autonomous multi-source reports into the 15-way verification matrix.
 
 ### Sub-Workflow E: Dynamic SPA & Interactive JavaScript Scraping (Firecrawl Actions)
 For documentation locked behind tabs, accordions, or interactive dropdowns:
@@ -920,7 +1281,7 @@ To eliminate phantom types, signature drift, and hallucinated function arguments
 #### The Topic
 Select a modern, lightweight utility library for date parsing, formatting, and time zone manipulation in a Next.js 15 App Router application with React Server Components.
 
-#### Trideca-Engine Evaluation Scorecard
+#### Pentadeca-Engine Evaluation Scorecard
 
 | Metric | Day.js | date-fns | Native `Intl` |
 |---|---|---|---|
@@ -968,20 +1329,22 @@ console.log(formatter.format(new Date()));
 #### The Problem
 `PrismaClientInitializationError: Can't reach database server at 'aws-0-us-east-1.pooler.supabase.com:6543'` during concurrent Server Actions.
 
-#### Trideca Cross-Verification Investigation
+#### Pentadeca Cross-Verification Investigation
 - **Tavily Finding:** Official Supabase docs mandate appending `?pgbouncer=true&connection_limit=1` to the pooler connection string.
-- **Exa Finding:** Next.js 15 Server Actions instantiate multiple worker threads, requiring global singleton client caching (`globalThis.prisma`).
-- **Linkup Finding:** Confirmed Prisma v6 CLI requires a separate direct database URL for migrations (`DIRECT_URL` on port 5432).
-- **Jina Finding (`search_web_deep`):** In-body passage excerpt: *"PgBouncer in transaction mode (port 6543) does not support prepared statements. Prisma v6 requires directUrl pointing to port 5432 for migrations, while DATABASE_URL connects to port 6543."*
-- **Firecrawl Finding (`data.developer` Merged PR):** GitHub PR on `prisma/prisma` confirms that setting `relationMode = "prisma"` avoids foreign key constraint lookups that fail under PgBouncer transaction mode.
-- **Bright Data Finding:** Unblocked internal benchmark showing latency reduction when utilizing `@prisma/adapter-pg`.
-- **Brave Search Finding:** Discovered community forum discussions highlighting prepared statement issues under Supabase poolers.
-- **Parallel Search Finding:** Delivered high-density excerpts confirming port 5432 vs 6543 dual-connection strings in Prisma v6.
-- **Apify Cloud Finding:** Crawled full Supabase database troubleshooting guide confirming pooler timeout defaults.
-- **SerpApi Finding:** Google organic top rankings confirmed the exact migration guide for Prisma v6 adapter setups.
 - **Context7 Finding:** Resolved `@prisma/adapter-pg` driver adapter constructor signature and parameter types (`PrismaPg({ connectionString })`).
-- **GitHub Finding:** Scanned `prisma/prisma` repository `/packages/adapter-pg/src/pg.ts` source file and confirmed `connectionString` vs `pool` instantiation contracts.
 - **You.com Finding:** Synthesized multi-source community consensus confirming Prisma v6 connection pooling stability fixes with driver adapters.
+- **Exa Finding:** Next.js 15 Server Actions instantiate multiple worker threads, requiring global singleton client caching (`globalThis.prisma`).
+- **Jina Finding (`search_web_deep`):** In-body passage excerpt: *"PgBouncer in transaction mode (port 6543) does not support prepared statements. Prisma v6 requires directUrl pointing to port 5432 for migrations, while DATABASE_URL connects to port 6543."*
+- **SERPdive Finding:** High-density answer extraction confirmed that setting `connection_limit=1` on PgBouncer prevents connection pooling starvation in serverless edge runtimes.
+- **Linkup Finding:** Confirmed Prisma v6 CLI requires a separate direct database URL for migrations (`DIRECT_URL` on port 5432).
+- **Parallel Search Finding:** Delivered high-density excerpts confirming port 5432 vs 6543 dual-connection strings in Prisma v6.
+- **SerpApi Finding:** Google organic top rankings confirmed the exact migration guide for Prisma v6 adapter setups.
+- **GitHub Finding:** Scanned `prisma/prisma` repository `/packages/adapter-pg/src/pg.ts` source file and confirmed `connectionString` vs `pool` instantiation contracts.
+- **Firecrawl Finding (`data.developer` Merged PR):** GitHub PR on `prisma/prisma` confirms that setting `relationMode = "prisma"` avoids foreign key constraint lookups that fail under PgBouncer transaction mode.
+- **Crawleo Finding:** Clean markdown render of Supabase connection pooling benchmarks verified 40% reduction in query latency when pairing `@prisma/adapter-pg` with PgBouncer.
+- **Bright Data Finding:** Unblocked internal benchmark showing latency reduction when utilizing `@prisma/adapter-pg`.
+- **Apify Cloud Finding:** Crawled full Supabase database troubleshooting guide confirming pooler timeout defaults.
+- **Brave Search Finding:** Discovered community forum discussions highlighting prepared statement issues under Supabase poolers.
 
 #### Verified Working Configuration
 ```prisma
@@ -1250,12 +1613,14 @@ When research yields zero results or search queries fail to uncover the error, a
 
 | Anti-Pattern | Why It's Wrong | Do This Instead |
 |---|---|---|
-| Skipping engines / running partial subset | Leaves critical blindspots (AST stubs, unreleased PR fixes, unblocked docs) | **Strict 13/13 Invariant:** Run all 13 engines every time ("No Engine Left Behind") |
-| "I know this API works" | Memory may be stale or hallucinated | Verify against current docs before using |
+| Vague 1-line or generic search queries | Yields SEO fluff, outdated blogs, and hallucinated methods | **Mandatory Context Engineering:** Compile 8-D Dossier & enforce 5/5 Query Signal Linter |
+| Passing short queries to neural/agent engines | Exa, Jina deep, Linkup, You.com, Parallel need dense context | **Multi-Paragraph Mandate:** Write 100–300 word narrative technical briefs |
+| Skipping engines / running partial subset | Leaves critical blindspots (AST stubs, unreleased PR fixes, unblocked docs) | **Strict 15/15 Invariant:** Run all 15 engines every time ("No Engine Left Behind") |
+| "I know this API works" | Memory may be stale or hallucinated | Verify against current docs & AST stubs before using |
 | Recommending without version | Version changes break APIs | Always pin `library@version` |
-| Single-source trust | Docs can be outdated or wrong | Cross-reference across Trideca engines |
+| Single-source trust | Docs can be outdated or wrong | Cross-reference across all 15 Pentadeca engines |
 | "Just use X" without trade-offs | Hides complexity and risks | Present options with scored comparison |
-| Blog post as sole source | Blogs age poorly, may be inaccurate | Prefer official docs + GitHub issues |
+| Blog post as sole source | Blogs age poorly, may be inaccurate | Prefer official docs + GitHub issues + Context7 AST stubs |
 | Skipping npm audit | Hidden CVEs in transitive deps | Always check dependency security |
 | Giving up on 403 blocks | Misses crucial enterprise docs | Escalate to Bright Data Web Unlocker |
 
@@ -1263,9 +1628,12 @@ When research yields zero results or search queries fail to uncover the error, a
 
 ## Research Quality Checklist
 
-- [ ] **13/13 MCP Invariant Enforced:** All 13 engines executed (Tavily + Exa + Linkup + Jina AI + Firecrawl + Bright Data + Brave Search + Parallel Search + Apify Cloud + SerpApi + Context7 + GitHub + You.com) with NO engine left behind
-- [ ] 13 independent reports submitted and compiled before synthesis
-- [ ] 13-way cross-verification matrix constructed with consensus analysis
+- [ ] **8-Dimensional Context Dossier Compiled:** `scratch/context_dossier.md` assembled covering runtime toolchain, semver pins, symbols, and error telemetry before searching
+- [ ] **Pre-Dispatch Query Signal Linter Passed (5/5 Hard Gate):** Zero 1-line or vague queries; all queries scored 5/5
+- [ ] **Engine-Specific Prompt Modalities Applied:** 100–250 word narrative paragraphs for neural vector tools, 200–500 word RFC briefs for research agents, pinpoint AST booleans for code/SERP
+- [ ] **15/15 MCP Invariant Enforced:** All 15 engines executed (Tavily + Context7 + You.com + Exa AI + Jina AI + SERPdive + Linkup + Parallel Search + SerpApi + GitHub + Firecrawl + Crawleo + Bright Data + Apify Cloud + Brave Search) with NO engine left behind
+- [ ] 15 independent reports submitted and compiled before synthesis
+- [ ] 15-way cross-verification matrix constructed with consensus analysis
 - [ ] Anti-bot escalation applied if encountering Cloudflare 403 blocks
 - [ ] Every finding cites a direct URL source with verbatim evidence span
 - [ ] Version numbers pinned for all recommendations (`package@version`)
