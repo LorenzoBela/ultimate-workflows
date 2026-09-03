@@ -132,6 +132,8 @@ To guarantee 100% comprehensive coverage without single-engine blindspots, the 1
 16. **Pre-Dispatch Query Signal Linter (5/5 Hard Gate).** Every candidate query must be verified against the 5-point Query Signal Linter (Version Pinning, Exact Symbol/Error Fingerprint, Architecture Boundary, Negative Scope, and Engine Modality). Any query scoring $< 5/5$ is blocked from execution and must be expanded.
 17. **15/15 Per-MCP Prompt Calibration Mandate.** Prompts must be bespoke and calibrated specifically to each of the 15 MCP engines according to their underlying ingestion mechanics: dense continuous narrative paragraphs for neural vector engines, structured multi-section RFC briefs for deep research agents, pinpoint AST path qualifiers for code mining engines, and compound quoted booleans with negative exclusions for SERP engines.
 18. **Multi-Paragraph Density Mandate for Vector & Agent Engines.** For neural/semantic vector engines (`exa`, `jina` deep search, `serpdive`, `parallel-search`) and deep research agents (`linkup-research`, `you-research`, `firecrawl_agent`, `tavily_research`, `apify`), prompts must be comprehensive, dense paragraphs (100–300 words for neural engines, 200–500 words for agent research briefs) detailing the complete problem context, reproduction mechanics, environmental constraints, and target code shapes. Short 1-sentence prompts to these engines are forbidden.
+19. **Verbatim Payload Dispatch Invariant.** All tool calls dispatched to the 15 research engines MUST copy their payload verbatim from the approved machine-dispatchable prompt registry (`scratch/prompt_registry.json`). Condensing, summarizing, paraphrasing, or shortening registered prompts into search-bar phrases during tool invocation is a **STRICT PROTOCOL VIOLATION**.
+20. **100-Word Minimum for Neural & LLM Engines.** Engines in the Neural/Agentic tiers (You.com `you-search`/`you-research`, Exa `web_search_exa`, Linkup `linkup-research`, Parallel Search `objective`) MUST receive full, rich multi-paragraph prompts of at least 100 words containing: (a) Technical Context & Architecture Baseline, (b) 3–4 Exact Research Inquiries, and (c) Negative Scope Constraints. Any prompt $< 100$ words dispatched to these engines is an immediate protocol failure.
 
 ---
 
@@ -266,6 +268,56 @@ Before any tool call is dispatched to ANY of the 15 engines, the candidate promp
 | **3. Architecture & Boundary Context** | Explicit statement of execution domain (RSC, edge, port, pooler mode). | 1.0 | `how to connect database` | `Next.js 15 Server Actions Supabase PgBouncer port 6543 transaction mode` |
 | **4. Negative Scope Inclusions** | Explicit exclusions of outdated frameworks, hacks, or anti-patterns. | 1.0 | *Missing negative filters* | `-pages -webpack -legacy -downgrade` |
 | **5. Engine-Specific Modality Formatting** | Adheres to the specific engine's format (long narrative paragraph for vector/agents, AST booleans for code). | 1.0 | 5-word sentence passed to Exa or Linkup | 150-word detailed technical narrative for Exa / multi-section brief for Linkup |
+
+---
+
+### 2.1 The Payload-Locked JSON Prompt Registry Standard (`scratch/prompt_registry_<topic>.json`)
+
+To eliminate the agent's natural "Search Query Reflex" (the tendency to compress registered detailed prompts into short 15-word search strings), the prompt registry MUST be authored as a **machine-dispatchable JSON artifact** containing the literal tool argument payloads:
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "topic": "[Exact Technical Topic]",
+  "timestamp": "2026-09-03T00:00:00Z",
+  "engines": {
+    "tavily": {
+      "tool": "tavily_search",
+      "args": {
+        "query": "(site:docs.domain.com OR site:github.com/org/repo) \"ExactSymbol\" \"v1.0.0\" [Architecture Context] -legacy -deprecated",
+        "search_depth": "advanced"
+      }
+    },
+    "ydc-search": {
+      "tool": "you-search",
+      "args": {
+        "query": "Paragraph 1: Detailed Technical Context...\n\nParagraph 2: Specific Architectural Inquiries:\n1. ...\n2. ...\n3. ...\n\nParagraph 3: Negative Constraints & Exclusions..."
+      },
+      "word_count": 145
+    },
+    "exa": {
+      "tool": "web_search_exa",
+      "args": {
+        "query": "Here is a production-ready TypeScript implementation of [Exact Component] in [Runtime Context] that handles [Edge Cases] without throwing [Exact Error]...",
+        "numResults": 10
+      },
+      "word_count": 120
+    }
+  }
+}
+```
+
+### 2.2 The Pre-Dispatch Verification Gate & Verbatim Assertion Check
+
+Before executing each tool call in Phase 2, the assistant MUST execute a mental verification check ensuring the argument passed to the tool is a **100% exact substring match** of the registered JSON payload:
+
+```text
+[DISPATCH GATE] Engine: <engine_name> | Registry Match: 100% VERBATIM | Word Count: <N> words | Linter: 5/5 PASS
+```
+
+**Non-Negotiable Execution Rules:**
+1. **Zero Condensation:** Passing a summarized, shortened, or paraphrased string to a tool when a detailed prompt exists in the registry is a **PROTOCOL BREACH**.
+2. **The 100-Word Neural Minimum:** For You.com, Exa AI, Linkup, and Parallel Search `objective`, the query string MUST be $\ge 100$ words. If it is shorter than 100 words, dispatch is BLOCKED until the full contextual narrative is restored.
 
 ---
 
@@ -959,12 +1011,13 @@ flowchart TD
     3. **Pre-Dispatch Query Signal Linter (5/5 Hard Gate):**
        - Pass candidate inquiries through the 5-point Linter (Semver Pinning, Symbol/Error Fingerprint, Architecture Boundary, Negative Filters, Engine Modality).
        - Zero tolerance: Disallow any 1-line or low-signal queries.
-    4. **Synthesize 15 Tailored Engine Prompts (`scratch/prompt_registry.md`):**
-       - Generate bespoke prompts for each of the 15 MCP engines:
-         - **Neural Vector Engines (Exa, Jina Deep, SERPdive, Parallel):** 100–250 word continuous dense narrative paragraphs.
-         - **Autonomous Research Agents (Linkup, You.com, Firecrawl Agent, Tavily Research, Apify):** 200–500 word Multi-Section RFC Research Directives.
+    4. **Synthesize Payload-Locked Engine Prompts (`scratch/prompt_registry.json` & `.md`):**
+       - Author `scratch/prompt_registry.json` with literal tool argument objects ready for direct dispatch:
+         - **Neural Vector Engines (Exa, Jina Deep, SERPdive, Parallel `objective`):** Mandatory 100–250 word continuous dense narrative paragraphs.
+         - **Autonomous Research Agents (Linkup, You.com, Firecrawl Agent, Tavily Research, Apify):** Mandatory 150–500 word Multi-Section RFC Research Directives.
          - **AST & Code Engines (Context7, GitHub, Firecrawl Dev):** Verbatim symbols, file paths, and interface schemas.
          - **SERP & Anti-Bot Engines (Brave, SerpApi, Bright Data, Crawleo):** Compound quoted booleans with negative exclusions.
+       - Verify that every Neural/LLM engine query has a minimum word count of $\ge 100$ words.
     5. **Plan Atomic Execution:** Use `concise-planning` to draft an atomic research checklist based on the synthesized prompt registry.
 
 ### Phase 2: Pentadeca-Engine Simultaneous Broad Search & Multi-Domain Discovery (15/15 Hard Gate)
@@ -985,11 +1038,13 @@ flowchart TD
     - `apify/actors-mcp-server` (`call-actor`, `get-dataset-items`)
     - `brave-search/brave_web_search`, `brave-search/brave_local_search`
 *   **Action:**
-    1. **Mandatory 15/15 Parallel Dispatch (Zero Omissions Allowed):** Execute queries across ALL FIFTEEN engines simultaneously using the pre-synthesized prompts from Phase 1:
+    1. **Mandatory 15/15 Parallel Verbatim Dispatch (Zero Omissions, Zero Condensations):**
+       - For every tool call, assert `[DISPATCH GATE] Engine: <name> | Registry Match: 100% VERBATIM | Word Count: <N> words | Linter: 5/5 PASS`.
+       - Copy arguments verbatim from `scratch/prompt_registry.json`. Do NOT compress into short search queries:
        - **Cluster 1 (Canonical Docs & Official Specs):**
          - **Tavily:** Domain-scoped boolean search with exact version quotes and raw content extraction.
          - **Context7:** Two-step canonical ID resolution and version-pinned TypeScript AST type extraction.
-         - **You.com:** LLM-grounded multi-source research synthesis (`you-research`) with live fact verification.
+         - **You.com:** LLM-grounded multi-source research synthesis (`you-research` / `you-search`) with full 150+ word structured prompt.
        - **Cluster 2 (Neural Vectors & Deep Passages):**
          - **Exa AI:** 100–250 word dense narrative paragraphs searching code patterns and implementation vectors (`category="github"`).
          - **Jina AI:** Deep in-body passage search (`search_web_deep`) extracting ~100-word paragraph answers directly from page bodies.

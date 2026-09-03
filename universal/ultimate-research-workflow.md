@@ -80,6 +80,8 @@ To guarantee comprehensive coverage without single-source blindspots, technical 
 14. **AutoVerifier 5-Pillar Claim Extraction.** Factual assertions MUST be decomposed into structured `(Subject, Predicate, Object)` claim triples to detect cross-source contradictions and method-code misalignments before recommending solutions.
 15. **Local AST Source Grounding.** When verifying TypeScript or JavaScript libraries, inspect the installed declaration files directly in `node_modules/<pkg>/dist/*.d.ts` using `grep` or `cat` to ground types in physical files rather than assumptions.
 16. **Anti-Bot Escalation.** If documentation portals return 403 Forbidden or Cloudflare Turnstile blocks under standard curl/fetch, escalate to headless browser execution (`playwright`, `puppeteer`) or archive mirrors (`web.archive.org`).
+17. **Verbatim Payload Dispatch Invariant.** All search and research queries MUST copy their payload verbatim from the approved prompt registry (`scratch/prompt_registry.json`). Condensing, summarizing, or shortening registered detailed prompts into search-bar phrases during query execution is a **STRICT PROTOCOL VIOLATION**.
+18. **100-Word Minimum for AI & Neural Search Engines.** Prompts dispatched to AI synthesis engines (Perplexity, Phind, You.com, Exa, Linkup) MUST be full, rich multi-paragraph prompts of at least 100 words containing: (a) Technical Context & Architecture Baseline, (b) 3–4 Exact Research Inquiries, and (c) Negative Scope Constraints.
 
 ---
 
@@ -150,6 +152,40 @@ Before executing ANY search query, evaluate it against this 5-point Linter. **A 
 | **3. Architecture & Boundary Context** | Explicit statement of execution domain (RSC, edge, port, pooler mode). | 1.0 | `how to connect database` | `Next.js 15 Server Actions Supabase PgBouncer port 6543 transaction mode` |
 | **4. Negative Scope Inclusions** | Explicit exclusions of outdated frameworks, hacks, or anti-patterns. | 1.0 | *Missing negative filters* | `-pages -webpack -legacy -downgrade` |
 | **5. Modality Formatting** | Adheres to the target tool's format (long narrative paragraph for AI search, compound booleans for SERP, AST qualifiers for GitHub). | 1.0 | 5-word sentence passed to AI engine | 150-word detailed technical narrative for AI search / multi-section RFC brief |
+
+---
+
+### 2.1 The Payload-Locked JSON Prompt Registry Standard (`scratch/prompt_registry.json`)
+
+To eliminate the natural "Search Query Reflex" (the tendency to compress registered detailed prompts into short 15-word search strings), the prompt registry MUST be authored as a **machine-dispatchable JSON artifact** containing the literal tool argument payloads:
+
+```json
+{
+  "topic": "[Exact Technical Topic]",
+  "timestamp": "2026-09-03T00:00:00Z",
+  "queries": {
+    "ai_neural_engine": {
+      "query": "Paragraph 1: Detailed Technical Context...\n\nParagraph 2: Specific Architectural Inquiries:\n1. ...\n2. ...\n\nParagraph 3: Negative Constraints & Exclusions...",
+      "word_count": 140
+    },
+    "web_serp_engine": {
+      "query": "(site:docs.domain.com OR site:github.com/org/repo) \"ExactSymbol\" \"v1.0.0\" [Architecture Context] -legacy -deprecated"
+    },
+    "github_ast_engine": {
+      "query": "\"ExactSymbol\" filename:config.ts path:src/"
+    }
+  }
+}
+```
+
+### 2.2 The Pre-Dispatch Verification Gate & Verbatim Assertion Check
+
+Before executing each search inquiry, verify:
+```text
+[DISPATCH GATE] Target: <engine_or_cli> | Registry Match: 100% VERBATIM | Word Count: <N> words | Linter: 5/5 PASS
+```
+1. **Zero Condensation:** Copy arguments verbatim from `scratch/prompt_registry.json`. Do NOT shorten or rephrase prompts during execution.
+2. **The 100-Word Neural Minimum:** Any prompt dispatched to an AI search engine (Perplexity, Phind, You.com, Exa, Linkup) MUST be $\ge 100$ words.
 
 ---
 
