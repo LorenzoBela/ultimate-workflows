@@ -1,6 +1,10 @@
 ---
 name: ultimate-research-workflow
 description: >
+  MANDATORY PRE-FLIGHT INVARIANT: The assistant MUST NOT call any search tool on Turn 1.
+  You MUST first call `write_to_file` to persist the machine-dispatchable `scratch/prompt_registry_<topic>.json`
+  containing literal payloads (with >=100 words for Neural/LLM engines: You.com, Exa, Linkup, Parallel Search)
+  before issuing a single search tool call.
   Master workflow for technical research, document mining, API checks, and dependency validation.
   Combines Pentadeca-Engine simultaneous search (Tavily + Context7 + You.com + Exa AI + Jina AI + SERPdive + Linkup + Parallel Search + SerpApi + GitHub + Firecrawl + Crawleo + Bright Data + Apify Cloud + Brave Search executed in parallel),
   anti-bot Cloudflare bypassing, mass cloud crawling, token-efficient excerpt extraction, specialized Developer PR triage,
@@ -14,6 +18,14 @@ argument-hint: "[research-topic | search-query]"
 # Ultimate Research Workflow (Pentadeca-Engine Architecture)
 
 > [!CAUTION]
+> ### 🛑 MANDATORY TURN 1 ACTION: ZERO SEARCHES BEFORE PROMPT REGISTRY IS WRITTEN TO DISK
+> When `/ultimate-research-workflow` is triggered, the assistant **MUST NOT** immediately call `tavily_search`, `web_search_exa`, `search_web_deep`, or any search tool.
+> 
+> **YOUR VERY FIRST TOOL CALL MUST BE `write_to_file` TO PERSIST `scratch/prompt_registry_<topic>.json`.**
+> 
+> Calling any search tool before `scratch/prompt_registry_<topic>.json` is written to disk is an **INSTANT CRITICAL PROTOCOL VIOLATION**.
+> Calling any neural or LLM engine (You.com, Exa, Linkup, Parallel Search) with a vague query (< 100 words) is an **IMMEDIATE PROTOCOL FAILURE**.
+>
 > ### 🛑 STRICT 15/15 EXECUTION HARD GATE — NO ENGINE LEFT BEHIND
 > This workflow enforces an unbreakable, non-negotiable execution rule: **EVERY single research invocation MUST dispatch to and compile findings from ALL FIFTEEN (15) MCP engines.**
 >
@@ -43,9 +55,37 @@ argument-hint: "[research-topic | search-query]"
 > 15. **Brave Search** (`brave-search`) — Independent 30B+ index & freshness-tagged forums
 >
 > **Enforcement Rules:**
+> - **Mandatory Step 0:** Must create `scratch/prompt_registry_<topic>.json` before dispatching a single search.
 > - **Zero Omissions:** Running any subset ($N < 15$) is a **CRITICAL PROTOCOL VIOLATION**.
 > - **15 Discrete Submissions:** All 15 engines MUST each output their discrete findings section before synthesis.
 > - **Full 15-Way Compilation:** The final deliverable MUST compile all 15 findings into the 15-way matrix before drawing conclusions.
+
+---
+
+## 0. ⚡ Mandatory Turn 1 Tool Call Blueprint: Autonomous Prompt Registry Creation
+
+When this workflow is invoked, **DO NOT GENERATE VAGUE 1-LINE SEARCH QUERIES**. Immediately perform the following two pre-flight steps on Turn 1:
+
+1. **Step 1 (Pre-Flight Context Dossier)**: Write `scratch/context_dossier_<topic>.md` covering the 8 dimensions (D1–D8).
+2. **Step 2 (Machine-Dispatchable Prompt Registry)**: Write `scratch/prompt_registry_<topic>.json` via `write_to_file` containing literal argument payloads for ALL 15 ENGINES:
+   - **Neural & LLM Engines (You.com, Exa, Linkup, Parallel Search `objective`):** MUST contain $\ge 100$ words with Context, Inquiries, and Negative Constraints.
+   - **SERP & Anti-Bot Engines (Tavily, Brave, SerpApi, Bright Data, Crawleo):** Compound booleans with exact symbols and negative exclusions.
+   - **Code & AST Engines (GitHub, Context7, Firecrawl Dev):** Exact symbol names, file paths, and interface schemas.
+
+```json
+// MANDATORY TURN 1 ACTION EXAMPLE:
+write_to_file({
+  "TargetFile": "C:\\Users\\Lorenzo Bela\\.gemini\\antigravity\\brain\\<conv-id>\\scratch\\prompt_registry_<topic>.json",
+  "Overwrite": true,
+  "CodeContent": "{\n  \"$schema\": \"https://json-schema.org/draft/2020-12/schema\",\n  \"topic\": \"...\",\n  \"engines\": {\n    \"tavily\": { \"tool\": \"tavily_search\", \"args\": { \"query\": \"...\" } },\n    \"ydc-search\": { \"tool\": \"you-search\", \"args\": { \"query\": \"... (>= 100 words) ...\" } },\n    \"exa\": { \"tool\": \"web_search_exa\", \"args\": { \"query\": \"... (>= 100 words) ...\" } },\n    \"linkup\": { \"tool\": \"linkup-search\", \"args\": { \"query\": \"... (>= 100 words) ...\" } }\n  }\n}"
+})
+```
+
+**ONLY AFTER `prompt_registry_<topic>.json` is written to disk may you dispatch queries to the 15 engines, asserting:**
+```text
+[DISPATCH GATE] Engine: <engine_name> | Registry Match: 100% VERBATIM | Word Count: <N> words | Linter: 5/5 PASS
+```
+
 
 This workflow drives systematic information retrieval, document mining, API verification, and library health analysis. It guarantees that technical decisions, library choices, and API usage patterns are based on verified, up-to-date documentation — never hallucinated, assumed, or guessed.
 

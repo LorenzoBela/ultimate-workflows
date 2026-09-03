@@ -13,10 +13,36 @@ argument-hint: "[research-topic | search-query | --deep | --ast | --verify]"
 # Ultimate Technical Research Workflow (Universal Edition — Standalone & Zero-MCP)
 
 > [!CAUTION]
+> ### 🛑 MANDATORY TURN 1 ACTION: ZERO SEARCHES BEFORE PROMPT REGISTRY IS WRITTEN TO DISK
+> When `/ultimate-research-workflow` is triggered, the assistant **MUST NOT** immediately call search tools or issue web search commands.
+> 
+> **YOUR VERY FIRST ACTION MUST BE TO PERSIST `scratch/prompt_registry_<topic>.json` TO DISK.**
+> 
+> Running search queries before `scratch/prompt_registry_<topic>.json` is written to disk is an **INSTANT CRITICAL PROTOCOL VIOLATION**.
+> Running any neural or LLM research engine with a vague query (< 100 words) is an **IMMEDIATE PROTOCOL FAILURE**.
+>
 > ### 🛑 THE ANTI-VAGUENESS & CONTEXT-FIRST RESEARCH MANDATE
 > This workflow enforces an unbreakable, non-negotiable research rule: **NEVER issue vague, lazy, 1-line search queries (e.g. `react state`, `prisma error`, `supabase auth`).**
 > 
 > Technical research quality is strictly bounded by prompt information density. Vague queries yield SEO blog slop, hallucinated methods, and obsolete workarounds. Every technical research task MUST compile the **8-Dimensional Context Grounding Dossier (The Octo-Context Anchor)** and pass the **Pre-Dispatch Query Signal Linter (5/5 Score Gate)** before querying search engines, developer platforms, or AI models.
+
+---
+
+## 0. ⚡ Mandatory Turn 1 Action: Autonomous Prompt Registry Creation
+
+When this workflow is invoked, **DO NOT GENERATE VAGUE 1-LINE SEARCH QUERIES**. Immediately perform the following two pre-flight steps on Turn 1:
+
+1. **Step 1 (Pre-Flight Context Dossier)**: Write `scratch/context_dossier_<topic>.md` covering the 8 dimensions (D1–D8).
+2. **Step 2 (Machine-Dispatchable Prompt Registry)**: Write `scratch/prompt_registry_<topic>.json` containing literal argument payloads for all search engines and tools:
+   - **Neural & AI Research Engines (Exa, Perplexity, You.com, Linkup, Parallel Search):** MUST contain $\ge 100$ words with Context, Inquiries, and Negative Constraints.
+   - **Standard Search Engines (Google, Brave, DuckDuckGo):** Compound booleans with exact symbols and negative exclusions.
+   - **Code & CLI Tools (GitHub CLI, `npm view`, `cargo search`):** Exact symbol names, file paths, and package bounds.
+
+**ONLY AFTER `prompt_registry_<topic>.json` is written to disk may you dispatch queries to search tools, asserting:**
+```text
+[DISPATCH GATE] Engine: <engine_name> | Registry Match: 100% VERBATIM | Word Count: <N> words | Linter: 5/5 PASS
+```
+
 
 This workflow drives systematic information retrieval, document mining, API verification, and library health analysis across universal developer environments (Cursor, Claude Code, Windsurf, Cline, Copilot, Terminal, and standard web/CLI tooling). It guarantees that technical decisions, library choices, and API usage patterns are based on verified, up-to-date documentation — never hallucinated, assumed, or guessed.
 
