@@ -5,7 +5,9 @@ This folder contains **38 engineering workflows synchronized from Gemini**.
 ### Key Characteristics:
 - **Shared Gemini Gates**: Prose/design rules and Graphify gates are synchronized from Gemini. Specialized workflows can reference external skills or CLIs; Graphify is required when its graph is present.
 - **Portable Tooling**: Uses CLI and IDE guidance, with existing standalone adaptations retained for multi-agent execution, planning, research, and review.
-- **Platform Agnostic**: 100% compatible with Cursor (`.cursor/rules`), Claude Code (`.claude/skills`), Windsurf (`.windsurfrules`), Cline (`.clinerules`), Copilot, Antigravity, and raw system prompts.
+- **Supported Targets**: Codex (`.agents/skills/<name>/SKILL.md`), Cursor (`.cursor/rules`), Claude Code (`.claude/skills`), Windsurf (`.windsurfrules`), Cline (`.clinerules`), Copilot, Antigravity, and raw system prompts.
+
+For Codex, run `npx github:LorenzoBela/ultimate-workflows codex` from your target project, then invoke a skill such as `$ultimate-planning-workflow`. See [Codex setup and usage](../README.md#codex-desktop-app-cli-and-ide-extension) for installation, updates, and examples.
 
 ### Quick Links to Workflows:
 

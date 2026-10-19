@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
 [![Workflows: 38](https://img.shields.io/badge/Workflows-38%20Total-brightgreen.svg)](./universal/)
-[![Compatibility](https://img.shields.io/badge/Supports-Cursor%20%7C%20Claude%20Code%20(CC)%20%7C%20Antigravity%20(AGY)%20%7C%20Windsurf%20%7C%20Cline%20%7C%20VS%20Code-orange.svg)](#-one-line-installers)
+[![Compatibility](https://img.shields.io/badge/Supports-Codex%20%7C%20Cursor%20%7C%20Claude%20Code%20(CC)%20%7C%20Antigravity%20(AGY)%20%7C%20Windsurf%20%7C%20Cline%20%7C%20VS%20Code-orange.svg)](#-one-line-installers)
 
 A battle-tested suite of **38 master engineering workflows** crafted for autonomous AI agents, coding assistants, and pair-programming environments.
 
@@ -13,6 +13,61 @@ Eliminate generic "AI slop", vague pseudocode, and brittle architectures. Every 
 ## ⚡ One-Line Installers (Instant Setup)
 
 Install into **any current project repository** in seconds:
+
+### Codex (desktop app, CLI, and IDE extension)
+
+**1. Install.** Open a terminal in the project where you want to use the workflows. With Node.js/npm and Git installed, run this in PowerShell, macOS, or Linux:
+
+```sh
+npx github:LorenzoBela/ultimate-workflows codex
+```
+
+The command installs all 38 universal workflows into the current project. It creates one folder per skill, preserving the workflow's `name` and `description`:
+
+```text
+your-project/
+└── .agents/
+    └── skills/
+        ├── ultimate-debugging-workflow/
+        │   └── SKILL.md
+        ├── ultimate-planning-workflow/
+        │   └── SKILL.md
+        └── ...
+```
+
+**2. Open the project in Codex.** Codex discovers skills in `.agents/skills/`. If newly installed skills do not appear, restart Codex. See the [official skill documentation](https://learn.chatgpt.com/docs/build-skills).
+
+**3. Use a workflow.** Name the skill in your prompt, or use `$` to select it:
+
+```text
+Use $ultimate-planning-workflow to plan email sign-in for this project.
+```
+
+```text
+Use $ultimate-debugging-workflow to investigate why login fails after a refresh.
+```
+
+For an explicit parallel run, request `$ultimate-multi-agent-invoker` with an approved plan. Installing these files supplies workflow instructions; it does not install the external tools, other skills, or MCP connections referenced by a workflow.
+
+**Updating:** rerun the install command from the same project. It replaces matching `ultimate-*/SKILL.md` files, so save any local customizations first. Commit `.agents/skills/` if teammates should use the same workflows. Avoid installing duplicate copies at both project and user scope.
+
+**Already cloned this repository?** Run the installer from your target project's terminal using the path to the clone:
+
+```sh
+node /path/to/ultimate-workflows/scripts/install.js codex
+```
+
+Without Node.js, the clone also includes native installers. Run either command from the target project, replacing the example path with your clone's location:
+
+```powershell
+& 'C:\path\to\ultimate-workflows\scripts\install.ps1' -Target codex
+```
+
+```sh
+bash /path/to/ultimate-workflows/scripts/install.sh codex
+```
+
+---
 
 ### 🎯 Cursor IDE (`.cursor/rules/*.mdc`)
 ```bash
@@ -103,10 +158,13 @@ irm https://raw.githubusercontent.com/LorenzoBela/ultimate-workflows/main/script
 npx github:LorenzoBela/ultimate-workflows all
 ```
 
+Includes Codex's `.agents/skills/<name>/SKILL.md` folders alongside the other IDE targets.
+
 ---
 
 ## 📑 Table of Contents
 
+- [Codex setup and usage](#codex-desktop-app-cli-and-ide-extension)
 - [What Are Ultimate Workflows?](#-what-are-ultimate-workflows)
 - [Two Editions: Universal vs. Original](#-two-editions-universal-vs-original)
 - [Complete 38-Workflow Catalog](#-complete-38-workflow-catalog)

@@ -1,13 +1,14 @@
 {
   "name": "ultimate-workflows",
   "version": "2.1.0",
-  "description": "38 Master AI Agent Workflows for Cursor, Claude Code, Windsurf, Cline, Copilot, and Antigravity.",
+  "description": "38 Master AI Agent Workflows for Codex, Cursor, Claude Code, Windsurf, Cline, Copilot, and Antigravity.",
   "main": "scripts/install.js",
   "bin": {
     "ultimate-workflows": "./scripts/install.js"
   },
   "scripts": {
     "install:all": "node scripts/install.js all",
+    "install:codex": "node scripts/install.js codex",
     "install:cursor": "node scripts/install.js cursor",
     "install:claude": "node scripts/install.js claude",
     "install:agy": "node scripts/install.js agy",
@@ -17,6 +18,7 @@
   },
   "keywords": [
     "ai-agents",
+    "codex",
     "cursor-rules",
     "claude-code",
     "windsurf",

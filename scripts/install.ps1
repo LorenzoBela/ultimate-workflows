@@ -1,5 +1,6 @@
 # Ultimate Workflows - Windows PowerShell Installer
 # Usage:
+#   .\scripts\install.ps1 -Target codex
 #   .\scripts\install.ps1 -Target cursor
 #   .\scripts\install.ps1 -Target claude
 #   .\scripts\install.ps1 -Target agy
@@ -20,6 +21,16 @@ $DestDir = Get-Location
 Write-Host "`n⚡ Installing Ultimate Workflows to target: [$Target] in $DestDir" -ForegroundColor Cyan
 
 $mdFiles = Get-ChildItem -Path $UniversalDir -Filter "*.md" | Where-Object { $_.Name -ne "README.md" }
+
+function Install-Codex {
+    Write-Host "Installing Codex skills (.agents/skills/<name>/SKILL.md)..." -ForegroundColor Yellow
+    foreach ($file in $mdFiles) {
+        $dest = Join-Path $DestDir (".agents\skills\" + $file.BaseName)
+        New-Item -ItemType Directory -Path $dest -Force | Out-Null
+        Copy-Item -LiteralPath $file.FullName -Destination (Join-Path $dest "SKILL.md") -Force
+    }
+    Write-Host "Codex skills installed ($($mdFiles.Count) skills)." -ForegroundColor Green
+}
 
 function Install-Cursor {
     Write-Host "📦 Installing Cursor rules (.cursor/rules/)..." -ForegroundColor Yellow
@@ -93,6 +104,7 @@ function Install-Copilot {
 }
 
 switch ($Target.ToLower()) {
+    "codex" { Install-Codex }
     "cursor" { Install-Cursor }
     "claude" { Install-Claude }
     "cc" { Install-Claude }
@@ -105,6 +117,7 @@ switch ($Target.ToLower()) {
     "copilot" { Install-Copilot }
     "vscode" { Install-Copilot }
     "all" {
+        Install-Codex
         Install-Cursor
         Install-Claude
         Install-AGY
@@ -114,7 +127,7 @@ switch ($Target.ToLower()) {
     }
     Default {
         Write-Host "Unknown target: $Target" -ForegroundColor Red
-        Write-Host "Valid targets: cursor, claude, agy, windsurf, cline, copilot, all"
+        Write-Host "Valid targets: codex, cursor, claude, agy, windsurf, cline, copilot, all"
     }
 }
 

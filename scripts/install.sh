@@ -2,7 +2,7 @@
 
 # Ultimate Workflows - Universal Bash Installer
 # Usage:
-#   ./scripts/install.sh [cursor | claude | agy | windsurf | cline | copilot | all]
+#   ./scripts/install.sh [codex | cursor | claude | agy | windsurf | cline | copilot | all]
 
 TARGET="${1:-all}"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -11,6 +11,18 @@ UNIVERSAL_DIR="$ROOT_DIR/universal"
 DEST_DIR="$(pwd)"
 
 echo "⚡ Installing Ultimate Workflows to target: [$TARGET] in $DEST_DIR"
+
+install_codex() {
+  echo "Installing Codex skills (.agents/skills/<name>/SKILL.md)..."
+  for f in "$UNIVERSAL_DIR"/*.md; do
+    filename=$(basename "$f" .md)
+    if [ "$filename" != "README" ]; then
+      mkdir -p "$DEST_DIR/.agents/skills/$filename" || return 1
+      cp "$f" "$DEST_DIR/.agents/skills/$filename/SKILL.md" || return 1
+    fi
+  done
+  echo "Codex skills installed."
+}
 
 install_cursor() {
   echo "📦 Installing Cursor rules (.cursor/rules/)..."
@@ -89,6 +101,9 @@ install_copilot() {
 }
 
 case "$TARGET" in
+  codex)
+    install_codex || exit 1
+    ;;
   cursor)
     install_cursor
     ;;
@@ -108,6 +123,7 @@ case "$TARGET" in
     install_copilot
     ;;
   all)
+    install_codex || exit 1
     install_cursor
     install_claude
     install_agy
@@ -117,7 +133,7 @@ case "$TARGET" in
     ;;
   *)
     echo "Unknown target: $TARGET"
-    echo "Available: cursor, claude, agy, windsurf, cline, copilot, all"
+    echo "Available: codex, cursor, claude, agy, windsurf, cline, copilot, all"
     exit 1
     ;;
 esac

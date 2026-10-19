@@ -2,7 +2,7 @@
 
 /**
  * Universal Installer for Ultimate Workflows
- * Supports: cursor, claude, agy, windsurf, cline, copilot, all
+ * Supports: codex, cursor, claude, agy, windsurf, cline, copilot, all
  */
 
 const fs = require('fs');
@@ -33,6 +33,18 @@ function copyWorkflows(destDir, transformFn, ext = '.md') {
 console.log(`\n⚡ Installing Ultimate Workflows to [${target.toUpperCase()}] target in: ${cwd}\n`);
 
 let installed = [];
+
+// Codex discovers each skill at .agents/skills/<name>/SKILL.md.
+if (target === 'codex' || target === 'all') {
+  const dest = path.join(cwd, '.agents', 'skills');
+  workflows.forEach(file => {
+    const name = file.replace(/\.md$/, '');
+    const skillDir = path.join(dest, name);
+    fs.mkdirSync(skillDir, { recursive: true });
+    fs.copyFileSync(path.join(universalDir, file), path.join(skillDir, 'SKILL.md'));
+  });
+  installed.push(`Codex (${workflows.length} skills in .agents/skills/<name>/SKILL.md)`);
+}
 
 // 1. Cursor IDE (.cursor/rules/*.mdc)
 if (target === 'cursor' || target === 'all') {
