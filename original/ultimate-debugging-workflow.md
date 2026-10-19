@@ -1,41 +1,74 @@
 ---
 name: ultimate-debugging-workflow
-description: >
-  MANDATORY MULTI-AGENT SWARM RUNTIME RULE: The assistant MUST NOT debug inline in the supervisor thread.
-  When triggered, the assistant MUST immediately call `invoke_subagent` on Turn 1 to spawn the parallel
-  diagnostic swarm (cavecrew-triage / research + cavecrew-reproducer / self + cavecrew-investigator / self).
-  Strictly multi-agent debugging, incident mitigation, and root-cause isolation swarm engine (12/10 Frontier Edition).
-  Orchestrates specialized subagents (cavecrew-mitigator, cavecrew-triage, cavecrew-reproducer, cavecrew-investigator,
-  cavecrew-bisector, cavecrew-profiler, cavecrew-suggester, cavecrew-builder, cavecrew-reviewer, cavecrew-arbiter) with
-  ponytail-caveman hyper-compression. Integrates SWE-Doctor Multi-Faceted Bug Reproduction Tests (BRT), Spectrum-Based
-  Fault Localization (SBFL Ochiai Metric), SGAgent Causal Suggestion (explicit invariant repair planning), Stryker
-  Mutation Testing Gates (MSI >= 85%), Flake-Guarded Automated Git Bisect Bots & Zeller's ddmin diff slicing, Ephemeral
-  Git Worktree Isolation (.worktrees/debug-h<id>), 3-Strike Multi-Stage Escalation, Pentadeca 15-Engine simultaneous error
-  triage (Tavily + Context7 + You.com + Exa AI + Jina AI + SERPdive + Linkup + Parallel Search + SerpApi + GitHub +
-  Firecrawl + Crawleo + Bright Data + Apify Cloud + Brave Search), Google SRE incident mitigation ("Stop the Bleeding"),
-  Apple 0-Hang/0-Hitch threading budgets, Microsoft Time Travel Debugging (TTD) & Minidump analysis, Amazon COE 5-Whys,
-  Meta Scuba distributed tracing, Netflix Chaos & circuit breaking, Postgres lock tree diagnostics, and DRAMA CVPR 2026
-  trust-chain guardian recovery.
-  Triggers on "ultimate debugging workflow", "/ultimate-debugging-workflow", or when systematically troubleshooting errors.
-argument-hint: "[error-message | bug-description | --multi-agent | --bisect | --heap-dump | --deadlock | --triage | --pentadeca]"
+description: Flawless 12/10 Master Workflow for autonomous multi-agent debugging, automated program repair (APR), Spectrum-Based Fault Localization (SBFL), multi-faceted bug reproduction, mutation testing gates, and production incident mitigation. Integrates SWE-Doctor, SGAgent, Big Tech standards (Google, Apple, Microsoft, Amazon, Meta, Netflix), Git worktree isolation, and zero-blast-radius self-healing.
 ---
 
-# Ultimate Multi-Agent Debugging Workflow (12/10 Frontier Swarm Engine)
+<!-- INVARIANT_START:ANTI_AI_SLOP -->
+## 🛑 HARDENED ANTI-AI SLOP MANDATE: NATURAL PROSE & BESPOKE DESIGN CRAFT
+All agent communications, architectural plans, reviews, code comments, and frontend implementations MUST strictly adhere to natural human engineering standards. Both corporate AI prose slop and cookie-cutter "vibecoded" UI slop are strictly banned.
+
+### 1. Zero Prose & Grammar Slop (Natural Human Voice)
+- **Banned Lexicon:**
+  - *Empty Verbs:* delve, embark, foster, resonate, underscore, leverage, elevate, harness, navigate, empower, illuminate, facilitate, tailor, showcase, unveil.
+  - *Corporate Buzz-Adjectives:* testament, tapestry, beacon, cornerstone, robust, seamless, pivotal, crucial, paramount, cutting-edge, vibrant, bespoke, game-changer, journey, realm, landscape, holistic, comprehensive, multifaceted, versatile, transformative.
+  - *Formulaic Transitions:* furthermore, moreover, in conclusion, it is worth noting, at the end of the day, without further ado, needless to say.
+- **Banned Syntactical Patterns:**
+  - **Zero Sycophancy / Pleasantries:** NEVER start responses with "Certainly!", "Great question!", "I'd be happy to help!", "Awesome!", or "Let's dive in!".
+  - **Zero Summary Outros:** NEVER end answers with a repetitive paragraph restating earlier points using generic corporate filler.
+  - **Zero Formulaic "Rule-of-Three" Bullets:** Do not default to 3-bullet lists where each bullet starts with a bold abstract noun followed by a colon and fluff.
+  - **Zero Hedging:** Do not write "You might want to potentially consider checking...". Write "Check X, or Y crashes."
+- **Natural Voice Standard:** Speak like a systems developer in terminal, Slack, or GitHub issues: blunt, concise, precise, pragmatic. Code and runnable shell commands come first.
+
+### 2. Zero Visual & UI/UX Design Slop (Bespoke Engineering Craft)
+- **Banned Color Clichés:**
+  - BAN default AI Blue-to-Indigo/Purple gradients (`bg-gradient-to-r from-blue-600 to-indigo-700` or violet hues).
+  - BAN colored ambient glowing shadows (`box-shadow` with >= 24px blur matching accent color).
+  - BAN washed-out low-contrast gray text (`text-gray-400` / `text-gray-500` failing WCAG AA 4.5:1).
+  - BAN gradient headline text (`bg-clip-text text-transparent bg-gradient-to-r` on H1s).
+- **Banned Layout & Component Tropes:**
+  - BAN cookie-cutter Bento Grid walls filled with fake stats, empty cards, or generic Lucide icon spam.
+  - BAN centered hero boilerplate with a floating pill above H1 (`"✨ New: [Feature]"`).
+  - BAN unmodified shadcn/ui defaults (`--radius: 0.5rem`, stock button/card exports without brand styling).
+  - BAN tinted circular icon containers (`bg-primary/10 text-primary p-3 rounded-full`).
+  - BAN static terminal window mockups with red/yellow/green dots in the hero.
+  - BAN raw emojis used as icons (`✨`, `🚀`, `⚡`, `🔒`) in production UI markup.
+- **Bespoke Design Standard:**
+  - Commit to an intentional aesthetic: brutalist, high-density telemetry, refined editorial, or precision dark-mode.
+  - High information density (Linear/Stripe standard), micro-borders (`rgba(255,255,255,0.08)`), and tabular numerals (`tabular-nums`).
+  - Every component must implement all 7 states: `Default, Hover, Focus-Visible, Active, Loading (Skeleton), Disabled, Error`.
+<!-- INVARIANT_END:ANTI_AI_SLOP -->
+
+<!-- INVARIANT_START:GRAPHIFY -->
+## 🧠 HARDENED GRAPHIFY KNOWLEDGE ENGINE GATE (AST-FIRST CODE INTELLIGENCE)
+Whenever `graphify-out/graph.json` exists in the repository root, agents MUST interact with the AST knowledge graph. Blind directory traversal and unconstrained multi-file context dumping are strictly banned.
+
+1. **Zero-Blind-Grep Invariant:**
+   - Running unstructured grep (`grep -r`, `Select-String *.*`, `ripgrep` across entire project) to locate callers or symbol references is FORBIDDEN when `graph.json` is present.
+   - Agents must query Graphify first: `graphify query "<symbol_or_concept>"`.
+
+2. **Blast Radius Gate (`graphify explain "<symbol>"`):**
+   - Before modifying, refactoring, or deleting any shared interface, model, route, or function, the agent MUST run `graphify explain "<symbol>"`.
+   - If incoming edge count > 0, every caller surfaced by Graphify MUST be explicitly enumerated in the task DAG or implementation plan before touching code.
+
+3. **Call-Path Fault Tracing (`graphify path "<source>" "<target>" --undirected`):**
+   - When debugging multi-hop failures (e.g. UI -> API -> DB), the agent must run `graphify path` to map the exact shortest call chain between entry point and crash sink before reading source code.
+
+4. **Leiden Community Worktree Partitioning:**
+   - When spawning parallel subagents in `ultimate-multi-agent-invoker`, tasks MUST be partitioned by Leiden community clusters (from `graphify-out/graph.json`).
+   - If two tasks share a God Node (identified in `graphify-out/GRAPH_REPORT.md`), they CANNOT run concurrently without explicit file-level mutex locks.
+
+5. **Subagent Context Clamp (70% Token Reduction):**
+   - Never dump entire raw source files into subagent prompts. Inject only the scoped subgraph from `graphify query "<task_scope>"`.
+
+6. **Post-Commit AST Synchronization (`graphify update .`):**
+   - After completing code modifications or merging Git worktrees, the agent MUST run `graphify update .` (local AST delta update, 2s runtime, 0 API tokens) to maintain graph synchronization.
+<!-- INVARIANT_END:GRAPHIFY -->
 
 > [!CAUTION]
-> ### 🛑 STRICT MULTI-AGENT SWARM RUNTIME MANDATE — ZERO INLINE DEBUGGING
-> When `/ultimate-debugging-workflow` is triggered, the assistant **MUST NOT** perform debugging, searching, inspecting, or patching inline in the supervisor thread.
-> 
-> **You MUST IMMEDIATELY invoke the subagent swarm using `invoke_subagent` on Turn 1:**
-> - **Batch 1 (Parallel Triage & Forensic Discovery)**: Dispatch `cavecrew-triage` (`TypeName: 'research'`, `Role: 'Pentadeca Triage Scout'`) and `cavecrew-investigator` (`TypeName: 'self'`, `Role: 'SBFL & AST Investigator'`) simultaneously.
-> - **Batch 2 (SWE-Doctor Multi-Faceted Bug Reproduction)**: Dispatch `cavecrew-reproducer` (`TypeName: 'self'`, `Role: 'Multi-Faceted Test Designer'`) to author `fail-to-pass` tests before touching code.
-> - **Batch 3 (Active SRE Mitigation — if outage/live failure)**: Dispatch `cavecrew-mitigator` (`TypeName: 'self'`, `Role: 'SRE Mitigation Specialist'`) to stop bleeding, toggle Redis feature flags, or rollback.
-> - **Batch 4 (SGAgent Causal Suggestion & Repair Planning)**: Dispatch `cavecrew-suggester` (`TypeName: 'self'`, `Role: 'Causal Repair Suggester'`) to formulate the repaired invariant contract and negative constraints.
-> - **Batch 5 (Isolated Worktree Ponytail Fix)**: Dispatch `cavecrew-builder` (`TypeName: 'self'`, `Workspace: 'branch'`, `Role: 'Worktree Surgical Patcher'`) to apply the minimal ponytail fix in `.worktrees/debug-h<id>`.
-> - **Batch 6 (Adversarial Mutation Gate & Guardian Review)**: Dispatch `cavecrew-reviewer` (`TypeName: 'self'`, `Role: 'Mutation Verifier & Auditor'`) to enforce Stryker MSI $\ge 85\%$ and run the Amazon COE 5-Whys.
-> - **Batch 7 (Worktree Diff Reconciliation & Teardown)**: Dispatch `cavecrew-arbiter` (`TypeName: 'self'`, `Role: 'Worktree Arbiter'`) to merge the verified patch and prune the ephemeral worktree.
-> 
-> Failing to call `invoke_subagent` on Turn 1 is a **CRITICAL PROTOCOL VIOLATION**.
+> **MULTI-AGENT PARALLEL SWARM MANDATE (NO INLINE DEBUGGING)**:
+> When debugging complex, elusive, intermittent, performance-critical, or production-grade issues, **NEVER** debug sequentially or inline within the supervisor thread. You **MUST IMMEDIATELY** spawn a parallel swarm of specialized subagents (`cavecrew-mitigator`, `cavecrew-triage`, `cavecrew-investigator`, `cavecrew-bisector`, `cavecrew-reproducer`, `cavecrew-suggester`, `cavecrew-builder`, `cavecrew-reviewer`, `cavecrew-arbiter`) using `invoke_subagent`.
+>
+> In single-threaded or trivial contexts, execute the exact deterministic procedures outlined below sequentially without deviation.
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────────────────────────────┐
@@ -55,35 +88,30 @@ argument-hint: "[error-message | bug-description | --multi-agent | --bisect | --
 
 ---
 
-## 0. ⚡ Mandatory Turn 1 Antigravity Tool Call Blueprint
+## ⚡ Turn 1 Execution Blueprint: Instant Swarm Spawning
 
-When the user asks to debug an error or triggers this workflow, **DO NOT GENERATE EXPLANATORY TEXT**. Immediately emit the following native tool call in your very first response:
+When invoked with an error, stack trace, or incident, dispatch the diagnostic swarm on **Turn 1**:
 
 ```json
-invoke_subagent({
+{
   "Subagents": [
     {
-      "TypeName": "research",
-      "Role": "Pentadeca Triage Scout",
-      "Model": "inherit",
-      "Prompt": "[ROLE: cavecrew-triage]\n[ATOM:ERROR] \"<exact_error_or_issue>\"\n[ATOM:ACTION] Execute parallel search across Pentadeca 15-Engine matrix (Cluster 1: Tavily, Context7, You.com | Cluster 2: Exa AI, Jina AI, SERPdive | Cluster 3: Linkup, Parallel Search, SerpApi | Cluster 4: GitHub, Firecrawl, Crawleo | Cluster 5: Bright Data, Apify Cloud, Brave Search) for canonical solutions.\n[CONSTRAINTS] Omit conversational filler. Extract root cause and verified workaround link.\n[OUTPUT CONTRACT]\ntriage: <canonical URL>\nroot_cause: <concise explanation <= 20 words>\nworkaround: <code snippet or config flag>"
+      "TypeName": "self",
+      "Role": "cavecrew-triage",
+      "Prompt": "[ROLE: cavecrew-triage]\n[ATOM:ERROR] \"<exact_error_signature>\"\n[ATOM:ACTION] Dispatch triage across Pentadeca 15-Engine matrix (5 clusters) to locate known root causes and upstream issues.\n[OUTPUT CONTRACT] Return canonical URL, 20-word root cause, and verified workaround."
     },
     {
       "TypeName": "self",
-      "Role": "Multi-Faceted Test Designer",
-      "Model": "inherit",
-      "Prompt": "[ROLE: cavecrew-reproducer]\n[ATOM:ERROR] \"<exact_error_or_issue>\"\n[ATOM:ACTION] Write standalone Multi-Faceted Bug Reproduction Tests (SWE-Doctor standard) covering primary failure and boundary conditions. Verify tests FAIL deterministically on baseline code (fail-to-pass)."
+      "Role": "cavecrew-reproducer",
+      "Prompt": "[ROLE: cavecrew-reproducer]\n[ATOM:ERROR] \"<exact_error_signature>\"\n[ATOM:ACTION] Write standalone Multi-Faceted Bug Reproduction Tests (SWE-Doctor standard) covering primary failure and boundary conditions. Verify tests FAIL deterministically on current code (fail-to-pass)."
     },
     {
       "TypeName": "self",
-      "Role": "SBFL & AST Investigator",
-      "Model": "inherit",
-      "Prompt": "[ROLE: cavecrew-investigator]\n[ATOM:ERROR] \"<exact_error_or_issue>\"\n[ATOM:TARGET] <suspect_files_or_directories>\n[ATOM:ACTION] Compute Spectrum-Based Fault Localization (SBFL Ochiai metric) and trace Tree-sitter AST call-graph from crash sink to suspicious candidate nodes. Prune search space to top 3-5 functions.\n[CONSTRAINTS] Omit filler. Output caveman path:line format.\n[OUTPUT CONTRACT]\nsuspicious_nodes:\n- path:line — symbol — ochiai_score"
+      "Role": "cavecrew-investigator",
+      "Prompt": "[ROLE: cavecrew-investigator]\n[ATOM:ERROR] \"<exact_error_signature>\"\n[ATOM:ACTION] Compute Spectrum-Based Fault Localization (SBFL Ochiai metric) and trace Tree-sitter AST call-graph from crash sink to suspicious candidate nodes. Prune search space to top 3-5 functions."
     }
-  ],
-  "toolAction": "Dispatching diagnostic swarm",
-  "toolSummary": "Diagnostic swarm"
-})
+  ]
+}
 ```
 
 ---
@@ -527,6 +555,7 @@ class FrontierSwarmDebugger:
         cwd = task.worktree_path if task.worktree_path else os.getcwd()
         
         try:
+            # Subagent execution logic
             proc = subprocess.run(
                 ["python", "-c", f"print('Executing {task.role} on {task.target_files}')"],
                 cwd=cwd,
@@ -544,6 +573,12 @@ class FrontierSwarmDebugger:
 
     def run_evidence_gated_pipeline(self):
         print(f"🚀 [12/10 Debug Swarm] Ingesting: {self.error_signature}")
+        # Phase 1: Triage across Pentadeca
+        # Phase 2: SWE-Doctor Multi-Faceted Reproduction & SBFL
+        # Phase 3: SGAgent Causal Suggestion
+        # Phase 4: Git Worktree Isolation & Builder Fix
+        # Phase 5: Adversarial Mutation Testing Gate (MSI >= 85%)
+        # Phase 6: Arbiter Diff Merge & Amazon COE Post-Mortem
         print("✅ Pipeline instantiated with zero blast radius.")
 
 if __name__ == "__main__":

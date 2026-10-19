@@ -1,10 +1,10 @@
-# ⚡ Ultimate Workflows: 35 Production-Grade AI Agent Workflows
+# ⚡ Ultimate Workflows: 38 Production-Grade AI Agent Workflows
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
-[![Workflows: 35](https://img.shields.io/badge/Workflows-35%20Total-brightgreen.svg)](./universal/)
+[![Workflows: 38](https://img.shields.io/badge/Workflows-38%20Total-brightgreen.svg)](./universal/)
 [![Compatibility](https://img.shields.io/badge/Supports-Cursor%20%7C%20Claude%20Code%20(CC)%20%7C%20Antigravity%20(AGY)%20%7C%20Windsurf%20%7C%20Cline%20%7C%20VS%20Code-orange.svg)](#-one-line-installers)
 
-A battle-tested suite of **35 master engineering workflows** crafted for autonomous AI agents, coding assistants, and pair-programming environments.
+A battle-tested suite of **38 master engineering workflows** crafted for autonomous AI agents, coding assistants, and pair-programming environments.
 
 Eliminate generic "AI slop", vague pseudocode, and brittle architectures. Every workflow enforces mathematical precision, design tokens, anti-slop rulesheets, step-by-step phased execution pipelines, and deterministic verification gates.
 
@@ -109,7 +109,7 @@ npx github:LorenzoBela/ultimate-workflows all
 
 - [What Are Ultimate Workflows?](#-what-are-ultimate-workflows)
 - [Two Editions: Universal vs. Original](#-two-editions-universal-vs-original)
-- [Complete 34-Workflow Catalog](#-complete-34-workflow-catalog)
+- [Complete 38-Workflow Catalog](#-complete-38-workflow-catalog)
   - [1. AI & Autonomous Agent Engineering](#1-ai--autonomous-agent-engineering)
   - [2. System Architecture & Technical Planning](#2-system-architecture--technical-planning)
   - [3. Fullstack & Application Engineering](#3-fullstack--application-engineering)
@@ -138,24 +138,26 @@ Standard AI code generation often suffers from "vibecoding": generic UI defaults
 
 ## 📦 Two Editions: Universal vs. Original
 
+The `original/` edition mirrors the 38 `ultimate-*` skills installed in Gemini. The `universal/` edition includes the same updates while retaining its existing portability adaptations for multi-agent execution, planning, research, and review. Both editions include Gemini's shared prose/design and Graphify gates; Graphify integration requires the Graphify CLI when a knowledge graph is present.
+
 ```text
 ultimate-workflows/
-├── universal/    # 🌟 Recommended: Standalone, 100% portable for any agent/IDE
+├── universal/    # 🌟 Recommended: Portable adaptations for supported agents/IDEs
 ├── original/     # Advanced: Includes custom sub-skill links and MCP server hooks
 ├── scripts/      # Automated multi-IDE installer scripts (Node, Bash, PowerShell)
 └── README.md     # Documentation & quickstart index
 ```
 
-| Feature | `universal/` (Standalone) | `original/` (Ecosystem) |
+| Feature | `universal/` (Portable) | `original/` (Ecosystem) |
 | :--- | :---: | :---: |
-| **External Dependencies** | **None (Zero dependencies)** | Requires specific sub-skills & MCPs |
+| **External Dependencies** | Some workflows require specialized skills or CLIs; Graphify gates apply when a graph is present | Requires ecosystem sub-skills, CLIs, and MCPs |
 | **Tool Execution** | Standard CLI (`grep`, `npm`, `vitest`, `git`) | MCP Tools (`memory`, `playwright`, `tavily`) |
-| **Sub-Skill References** | Embedded self-contained instructions | Linked to custom `.gemini`/`.agent` skills |
-| **IDE / Agent Portability** | **Works everywhere out-of-the-box** | Best for custom Antigravity/MCP agents |
+| **Sub-Skill References** | Embedded guidance plus specialized skill references | Linked to ecosystem skills |
+| **IDE / Agent Portability** | Supported IDEs with required workflow tools configured | Best for custom Antigravity/MCP agents |
 
 ---
 
-## 📚 Complete 35-Workflow Catalog
+## 📚 Complete 38-Workflow Catalog
 
 ### 1. AI & Autonomous Agent Engineering
 
@@ -172,6 +174,7 @@ ultimate-workflows/
 
 | Workflow | Universal File | Summary |
 | :--- | :---: | :--- |
+| **Graphify Code Intelligence** | [`ultimate-graphify-workflow.md`](./universal/ultimate-graphify-workflow.md) | Knowledge graph navigation, impact analysis, call paths, and graph maintenance. |
 | **System Architecture** | [`ultimate-architecture-workflow.md`](./universal/ultimate-architecture-workflow.md) | Domain-Driven Design (DDD), Mermaid architecture diagrams, ADR creation, and boundary specs. |
 | **Brainstorming & Scoping** | [`ultimate-brainstorm-workflow.md`](./universal/ultimate-brainstorm-workflow.md) | Structured technical brainstorming, trade-off matrix evaluation, constraint mapping, and scope bounding. |
 | **Implementation Planning** | [`ultimate-planning-workflow.md`](./universal/ultimate-planning-workflow.md) | Atomic step-by-step task breakdown, dependency sequencing, rollback plans, and verification plans. |
@@ -220,6 +223,7 @@ ultimate-workflows/
 | **Systematic Debugging** | [`ultimate-debugging-workflow.md`](./universal/ultimate-debugging-workflow.md) | Multi-agent diagnostic swarm (`cavecrew`), Turn 1 subagent dispatch, Google SRE incident mitigation, and TDD regression fix. |
 | **Production Deployment** | [`ultimate-deployment-workflow.md`](./universal/ultimate-deployment-workflow.md) | CI/CD pipelines, containerization (Docker), zero-downtime blue/green rollouts, and health check gates. |
 | **Git & Release Operations** | [`ultimate-git-workflow.md`](./universal/ultimate-git-workflow.md) | Atomic conventional commits, clean branching strategies, pre-commit validation, and release tags. |
+| **Code Cleanup** | [`ultimate-code-cleaner.md`](./universal/ultimate-code-cleaner.md) | AST-guided dead code, unused export, and dependency cleanup with verification gates. |
 | **Code Refactoring** | [`ultimate-refactoring-workflow.md`](./universal/ultimate-refactoring-workflow.md) | Systematic technical debt elimination, dead-code removal, modular decomposition, and safety regressions. |
 | **Code Review Standards** | [`ultimate-review-workflow.md`](./universal/ultimate-review-workflow.md) | Severity-tiered code audits (Blocker, Major, Minor, Nit) with concrete actionable diff recommendations. |
 | **Security Auditing (SAST)** | [`ultimate-security-audit-workflow.md`](./universal/ultimate-security-audit-workflow.md) | Static vulnerability scans, OWASP Top 10 auditing, dependency CVE scans, and compliance checking. |
@@ -235,6 +239,7 @@ ultimate-workflows/
 | **Scripting & Automation** | [`ultimate-automation-workflow.md`](./universal/ultimate-automation-workflow.md) | Developer CLI utilities, cron runners, build task automations, and cross-platform shell scripts. |
 | **Document Intelligence** | [`ultimate-document-intelligence-workflow.md`](./universal/ultimate-document-intelligence-workflow.md) | Parsing, OCR scraping, semantic table extraction from PDF, DOCX, XLSX, and scanned documents. |
 | **Document Engineering** | [`ultimate-document-workflow.md`](./universal/ultimate-document-workflow.md) | Programmatic DOCX generation, XML styling, tracked changes auditing, and PDF conversions. |
+| **Natural English** | [`ultimate-natural-english-workflow.md`](./universal/ultimate-natural-english-workflow.md) | Clear prose, natural tone, and removal of formulaic language. |
 | **Technical Documentation** | [`ultimate-documentation-workflow.md`](./universal/ultimate-documentation-workflow.md) | Developer READMEs, OpenAPI/Swagger specifications, Architecture Decision Records (ADRs), and user guides. |
 | **Deep Research Strategy** | [`ultimate-research-workflow.md`](./universal/ultimate-research-workflow.md) | Pentadeca-Engine (15/15) parallel search, 5 strategic clusters, deep passage quotes, and 15-way consensus matrix. |
 | **User Experience (UX) Audit** | [`ultimate-ux-workflow.md`](./universal/ultimate-ux-workflow.md) | Usability heuristics, micro-interaction reviews, WCAG 2.2 accessibility verification, and UX polish. |
@@ -279,7 +284,7 @@ ultimate-git-workflow (Conventional commit)
 
 ## 🛡️ Anti-Slop Engineering Rules
 
-All 34 workflows enforce strict quality gates against generic AI-generated code:
+All 38 workflows enforce strict quality gates against generic AI-generated code:
 
 - **No AI Default Palettes:** Forbids unstyled indigo-blue gradients, washed-out grey body text, and generic purple accents.
 - **No Untracked Typographic Scales:** Mandates optical letter-spacing, `text-wrap: balance` on headlines, and explicit line-heights.

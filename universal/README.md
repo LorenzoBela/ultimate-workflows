@@ -1,10 +1,10 @@
-# 🌟 Universal Editions (Standalone & Zero-Dependency)
+# 🌟 Universal Editions (Portable Adaptations)
 
-This folder contains **35 standalone, self-contained engineering workflows**.
+This folder contains **38 engineering workflows synchronized from Gemini**.
 
 ### Key Characteristics:
-- **Zero External Skill Dependencies**: All guidelines, checklists, anti-slop rulesheets, and execution phases are embedded directly into each Markdown file.
-- **Universal Tooling**: Uses standard CLI commands (`npm`, `pnpm`, `pytest`, `vitest`, `git`, `grep`) and native IDE capabilities rather than proprietary MCP servers.
+- **Shared Gemini Gates**: Prose/design rules and Graphify gates are synchronized from Gemini. Specialized workflows can reference external skills or CLIs; Graphify is required when its graph is present.
+- **Portable Tooling**: Uses CLI and IDE guidance, with existing standalone adaptations retained for multi-agent execution, planning, research, and review.
 - **Platform Agnostic**: 100% compatible with Cursor (`.cursor/rules`), Claude Code (`.claude/skills`), Windsurf (`.windsurfrules`), Cline (`.clinerules`), Copilot, Antigravity, and raw system prompts.
 
 ### Quick Links to Workflows:
@@ -16,6 +16,7 @@ This folder contains **35 standalone, self-contained engineering workflows**.
 - [`ultimate-notebooklm-workflow.md`](./ultimate-notebooklm-workflow.md)
 
 #### Architecture & Technical Planning
+- [`ultimate-graphify-workflow.md`](./ultimate-graphify-workflow.md)
 - [`ultimate-architecture-workflow.md`](./ultimate-architecture-workflow.md)
 - [`ultimate-brainstorm-workflow.md`](./ultimate-brainstorm-workflow.md)
 - [`ultimate-planning-workflow.md`](./ultimate-planning-workflow.md)
@@ -40,6 +41,7 @@ This folder contains **35 standalone, self-contained engineering workflows**.
 - [`ultimate-iot-software-workflow.md`](./ultimate-iot-software-workflow.md)
 
 #### Quality, Security, Ops & Debugging
+- [`ultimate-code-cleaner.md`](./ultimate-code-cleaner.md)
 - [`ultimate-best-practices-workflow.md`](./ultimate-best-practices-workflow.md)
 - [`ultimate-debugging-workflow.md`](./ultimate-debugging-workflow.md)
 - [`ultimate-deployment-workflow.md`](./ultimate-deployment-workflow.md)
@@ -51,6 +53,7 @@ This folder contains **35 standalone, self-contained engineering workflows**.
 - [`ultimate-testing-workflow.md`](./ultimate-testing-workflow.md)
 
 #### UX, Automation & Document Intelligence
+- [`ultimate-natural-english-workflow.md`](./ultimate-natural-english-workflow.md)
 - [`ultimate-automation-workflow.md`](./ultimate-automation-workflow.md)
 - [`ultimate-document-intelligence-workflow.md`](./ultimate-document-intelligence-workflow.md)
 - [`ultimate-document-workflow.md`](./ultimate-document-workflow.md)
