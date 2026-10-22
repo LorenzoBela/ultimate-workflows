@@ -1,75 +1,17 @@
 ---
 name: ultimate-iot-hardware-workflow
 description: >
-  Flawless 10/10 Master Workflow for IoT hardware schematic design, PCB layout routing,
+  Engineering workflow for IoT hardware schematic design, PCB layout routing,
   non-blocking C++ firmware, hardware watchdog integration, flash encryption, and dual-bank OTA updates.
   Triggers on "ultimate iot hardware workflow", "/ultimate-iot-hardware-workflow", or when
   designing IoT devices, routing high-frequency traces, or authoring embedded firmware.
 argument-hint: "[schematic | pcb-layout | firmware-arch | --ota | --watchdog]"
 ---
 
-<!-- INVARIANT_START:ANTI_AI_SLOP -->
-## 🛑 HARDENED ANTI-AI SLOP MANDATE: NATURAL PROSE & BESPOKE DESIGN CRAFT
-All agent communications, architectural plans, reviews, code comments, and frontend implementations MUST strictly adhere to natural human engineering standards. Both corporate AI prose slop and cookie-cutter "vibecoded" UI slop are strictly banned.
+Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization. Research always requires all 15 prescribed provider inputs.
 
-### 1. Zero Prose & Grammar Slop (Natural Human Voice)
-- **Banned Lexicon:**
-  - *Empty Verbs:* delve, embark, foster, resonate, underscore, leverage, elevate, harness, navigate, empower, illuminate, facilitate, tailor, showcase, unveil.
-  - *Corporate Buzz-Adjectives:* testament, tapestry, beacon, cornerstone, robust, seamless, pivotal, crucial, paramount, cutting-edge, vibrant, bespoke, game-changer, journey, realm, landscape, holistic, comprehensive, multifaceted, versatile, transformative.
-  - *Formulaic Transitions:* furthermore, moreover, in conclusion, it is worth noting, at the end of the day, without further ado, needless to say.
-- **Banned Syntactical Patterns:**
-  - **Zero Sycophancy / Pleasantries:** NEVER start responses with "Certainly!", "Great question!", "I'd be happy to help!", "Awesome!", or "Let's dive in!".
-  - **Zero Summary Outros:** NEVER end answers with a repetitive paragraph restating earlier points using generic corporate filler.
-  - **Zero Formulaic "Rule-of-Three" Bullets:** Do not default to 3-bullet lists where each bullet starts with a bold abstract noun followed by a colon and fluff.
-  - **Zero Hedging:** Do not write "You might want to potentially consider checking...". Write "Check X, or Y crashes."
-- **Natural Voice Standard:** Speak like a systems developer in terminal, Slack, or GitHub issues: blunt, concise, precise, pragmatic. Code and runnable shell commands come first.
 
-### 2. Zero Visual & UI/UX Design Slop (Bespoke Engineering Craft)
-- **Banned Color Clichés:**
-  - BAN default AI Blue-to-Indigo/Purple gradients (`bg-gradient-to-r from-blue-600 to-indigo-700` or violet hues).
-  - BAN colored ambient glowing shadows (`box-shadow` with >= 24px blur matching accent color).
-  - BAN washed-out low-contrast gray text (`text-gray-400` / `text-gray-500` failing WCAG AA 4.5:1).
-  - BAN gradient headline text (`bg-clip-text text-transparent bg-gradient-to-r` on H1s).
-- **Banned Layout & Component Tropes:**
-  - BAN cookie-cutter Bento Grid walls filled with fake stats, empty cards, or generic Lucide icon spam.
-  - BAN centered hero boilerplate with a floating pill above H1 (`"✨ New: [Feature]"`).
-  - BAN unmodified shadcn/ui defaults (`--radius: 0.5rem`, stock button/card exports without brand styling).
-  - BAN tinted circular icon containers (`bg-primary/10 text-primary p-3 rounded-full`).
-  - BAN static terminal window mockups with red/yellow/green dots in the hero.
-  - BAN raw emojis used as icons (`✨`, `🚀`, `⚡`, `🔒`) in production UI markup.
-- **Bespoke Design Standard:**
-  - Commit to an intentional aesthetic: brutalist, high-density telemetry, refined editorial, or precision dark-mode.
-  - High information density (Linear/Stripe standard), micro-borders (`rgba(255,255,255,0.08)`), and tabular numerals (`tabular-nums`).
-  - Every component must implement all 7 states: `Default, Hover, Focus-Visible, Active, Loading (Skeleton), Disabled, Error`.
-<!-- INVARIANT_END:ANTI_AI_SLOP -->
-
-<!-- INVARIANT_START:GRAPHIFY -->
-## 🧠 HARDENED GRAPHIFY KNOWLEDGE ENGINE GATE (AST-FIRST CODE INTELLIGENCE)
-Whenever `graphify-out/graph.json` exists in the repository root, agents MUST interact with the AST knowledge graph. Blind directory traversal and unconstrained multi-file context dumping are strictly banned.
-
-1. **Zero-Blind-Grep Invariant:**
-   - Running unstructured grep (`grep -r`, `Select-String *.*`, `ripgrep` across entire project) to locate callers or symbol references is FORBIDDEN when `graph.json` is present.
-   - Agents must query Graphify first: `graphify query "<symbol_or_concept>"`.
-
-2. **Blast Radius Gate (`graphify explain "<symbol>"`):**
-   - Before modifying, refactoring, or deleting any shared interface, model, route, or function, the agent MUST run `graphify explain "<symbol>"`.
-   - If incoming edge count > 0, every caller surfaced by Graphify MUST be explicitly enumerated in the task DAG or implementation plan before touching code.
-
-3. **Call-Path Fault Tracing (`graphify path "<source>" "<target>" --undirected`):**
-   - When debugging multi-hop failures (e.g. UI -> API -> DB), the agent must run `graphify path` to map the exact shortest call chain between entry point and crash sink before reading source code.
-
-4. **Leiden Community Worktree Partitioning:**
-   - When spawning parallel subagents in `ultimate-multi-agent-invoker`, tasks MUST be partitioned by Leiden community clusters (from `graphify-out/graph.json`).
-   - If two tasks share a God Node (identified in `graphify-out/GRAPH_REPORT.md`), they CANNOT run concurrently without explicit file-level mutex locks.
-
-5. **Subagent Context Clamp (70% Token Reduction):**
-   - Never dump entire raw source files into subagent prompts. Inject only the scoped subgraph from `graphify query "<task_scope>"`.
-
-6. **Post-Commit AST Synchronization (`graphify update .`):**
-   - After completing code modifications or merging Git worktrees, the agent MUST run `graphify update .` (local AST delta update, 2s runtime, 0 API tokens) to maintain graph synchronization.
-<!-- INVARIANT_END:GRAPHIFY -->
-
-# Ultimate IoT Hardware & Firmware Workflow (10/10 Master Engine)
+# Ultimate IoT Hardware & Firmware Workflow (Engineering Workflow)
 
 This workflow guides the end-to-end development of IoT physical devices and low-level firmware—covering schematic drafting, PCB trace layouts, cooperative non-blocking C++ architectures, memory protections, hardware watchdog integrations, and secure dual-bank over-the-air (OTA) updates.
 
@@ -102,11 +44,11 @@ This workflow guides the end-to-end development of IoT physical devices and low-
 
 ## 🏛️ Iron Laws of IoT Hardware & Firmware
 
-1. **Zero Heap Allocation After Boot**: No `malloc`, `free`, `new`, or `delete` in runtime loops. All buffers are statically allocated.
-2. **Never Block the Event Loop**: Calling `delay()` in the main thread is forbidden. All operations must use non-blocking monotonic clock comparisons (`millis()`).
-3. **Hardware Watchdog Protection**: Every critical RTOS task must participate in watchdog pet routines (`esp_task_wdt_reset()`).
-4. **Dual-Bank A/B Partitioning for OTA**: Firmware updates must download to an inactive partition, verify cryptographic hash/signatures, and fall back to the golden image if boot validation fails.
-5. **High-Side Power Gating for Battery Life**: Power to sensors and radio modems must be gated via hardware PMOS switches to enable true zero-current sleep states.
+1. **Bounded memory policy**: Select static allocation or bounded pools for hard real-time paths where required. SDK/network libraries may need dynamic allocation; document lifetime, failure handling, fragmentation and measured RAM/stack bounds.
+2. **Scheduler-aware timing**: Keep cooperative event loops responsive with monotonic deadlines. Dedicated RTOS tasks may use bounded blocking waits that yield correctly; choose the target SDK primitives and verify cancellation/timeouts.
+3. **Hardware Watchdog Protection**: Configure task/idle watchdog subscriptions for the selected SDK and feed only after bounded health progress; scheduler yielding and watchdog feeding are distinct requirements.
+4. **Recoverable authenticated OTA**: On targets supporting A/B, update an inactive partition and validate signatures before selection; configure rollback and acknowledge health explicitly. On constrained targets, use a documented equivalent recovery design. A golden image is usable only if boot/anti-rollback policy permits it.
+5. **Measured power management**: Select integrated load switches, PMOS gating or supported device sleep states for sensors/modems where appropriate to meet a measured sleep-current budget; account for switch leakage and GPIO back-powering.
 
 ---
 
@@ -114,7 +56,7 @@ This workflow guides the end-to-end development of IoT physical devices and low-
 
 ### Phase 1: Schematic Design & RF Routing
 - Route 50-ohm RF traces on Layer 1 over an unbroken Ground Plane on Layer 2.
-- Place decoupling capacitors within 2mm of MCU power pins.
+- Follow selected component reference-layout decoupling/return-loop constraints; 2mm is an illustrative placement goal requiring layout review.
 
 ### Phase 2: Non-Blocking Firmware State Machine
 ```cpp
@@ -133,6 +75,13 @@ void loop() {
 ```
 
 ### Phase 3: Secure Dual-Bank OTA Update
-- Download update to `ota_1` partition.
-- Verify SHA-256 signature against hardware public key.
-- Set boot partition and trigger software restart. If crash loop occurs, bootloader reverts to `ota_0`.
+- Discover the actual SDK/target partition table and flash constraints; for ESP-IDF select `esp_ota_get_next_update_partition(NULL)`, never hardcode ota_1 or overwrite the active image. A/B storage is platform-dependent.
+- Verify a cryptographic image signature using the configured trusted key and platform secure-boot/OTA mechanism. SHA-256 is a digest, not itself a signature. Also verify target identity, image bounds and security version.
+- Enable and verify `CONFIG_BOOTLOADER_APP_ROLLBACK_ENABLE` on supported ESP-IDF targets. Set the candidate boot partition only after the complete image validates. On first boot run bounded health checks, then call `esp_ota_mark_app_valid_cancel_rollback()`; if unhealthy, use the documented invalid/rollback path. A restart before confirmation can trigger rollback when the configuration and a valid prior image support it.
+- Coordinate anti-rollback eFuse/security-version policy with recoverability; an old image below the security floor cannot be assumed usable. Provision/rotate/revoke signing keys through an authorized manufacturing/release process and never expose private keys in logs or examples.
+
+## Target verification and recovery
+
+The scheduling example assumes transmitTelemetryData/serviceNetworkState are bounded nonblocking operations; verify their driver/network timeouts and task scheduling on the target. Adopt static allocation only when compatible with SDK/library lifecycles and measured RAM/stack constraints. Verify unsigned monotonic-timer wraparound behavior.
+
+Before declaring OTA safe, run target/HIL cases for corrupted/unsigned/wrong-target images, active-partition protection, interrupted download, power loss while selecting an image, reset before health acknowledgement and successful confirmation. Confirm the exact rollback partition selected and availability after anti-rollback updates. Test brownout, stuck peripheral and watchdog starvation. Host mocks do not prove bootloader recovery, secure provisioning, thermal safety or sleep current; mark unavailable target evidence explicitly and retain that gate before production rollout.

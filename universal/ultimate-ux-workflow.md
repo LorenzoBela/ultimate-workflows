@@ -1,348 +1,92 @@
 ---
 name: ultimate-ux-workflow
-description: >
-  Master workflow for User Experience (UX) audits, usability engineering, accessibility
-  verification, and platform design compliance.
-  Triggers on "ultimate ux workflow", "/ultimate-ux-workflow", or when conducting
-  usability audits, reviewing interactive flows, or validating accessibility.
-argument-hint: "[ux-audit | accessibility-check | component-flow]"
+description: Audit or implement usable, accessible user flows with platform-aware interaction, clear feedback, state preservation, measured performance and honest automated/manual verification. Preserve existing brand and distinguish standards from design heuristics.
+argument-hint: "[flow | component | accessibility | usability-audit]"
 ---
 
-<!-- INVARIANT_START:ANTI_AI_SLOP -->
-## 🛑 HARDENED ANTI-AI SLOP MANDATE: NATURAL PROSE & BESPOKE DESIGN CRAFT
-All agent communications, architectural plans, reviews, code comments, and frontend implementations MUST strictly adhere to natural human engineering standards. Both corporate AI prose slop and cookie-cutter "vibecoded" UI slop are strictly banned.
+Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve established authorization. Research requires all 15 prescribed provider inputs.
 
-### 1. Zero Prose & Grammar Slop (Natural Human Voice)
-- **Banned Lexicon:**
-  - *Empty Verbs:* delve, embark, foster, resonate, underscore, leverage, elevate, harness, navigate, empower, illuminate, facilitate, tailor, showcase, unveil.
-  - *Corporate Buzz-Adjectives:* testament, tapestry, beacon, cornerstone, robust, seamless, pivotal, crucial, paramount, cutting-edge, vibrant, bespoke, game-changer, journey, realm, landscape, holistic, comprehensive, multifaceted, versatile, transformative.
-  - *Formulaic Transitions:* furthermore, moreover, in conclusion, it is worth noting, at the end of the day, without further ado, needless to say.
-- **Banned Syntactical Patterns:**
-  - **Zero Sycophancy / Pleasantries:** NEVER start responses with "Certainly!", "Great question!", "I'd be happy to help!", "Awesome!", or "Let's dive in!".
-  - **Zero Summary Outros:** NEVER end answers with a repetitive paragraph restating earlier points using generic corporate filler.
-  - **Zero Formulaic "Rule-of-Three" Bullets:** Do not default to 3-bullet lists where each bullet starts with a bold abstract noun followed by a colon and fluff.
-  - **Zero Hedging:** Do not write "You might want to potentially consider checking...". Write "Check X, or Y crashes."
-- **Natural Voice Standard:** Speak like a systems developer in terminal, Slack, or GitHub issues: blunt, concise, precise, pragmatic. Code and runnable shell commands come first.
+# UX and accessibility workflow
 
-### 2. Zero Visual & UI/UX Design Slop (Bespoke Engineering Craft)
-- **Banned Color Clichés:**
-  - BAN default AI Blue-to-Indigo/Purple gradients (`bg-gradient-to-r from-blue-600 to-indigo-700` or violet hues).
-  - BAN colored ambient glowing shadows (`box-shadow` with >= 24px blur matching accent color).
-  - BAN washed-out low-contrast gray text (`text-gray-400` / `text-gray-500` failing WCAG AA 4.5:1).
-  - BAN gradient headline text (`bg-clip-text text-transparent bg-gradient-to-r` on H1s).
-- **Banned Layout & Component Tropes:**
-  - BAN cookie-cutter Bento Grid walls filled with fake stats, empty cards, or generic Lucide icon spam.
-  - BAN centered hero boilerplate with a floating pill above H1 (`"✨ New: [Feature]"`).
-  - BAN unmodified shadcn/ui defaults (`--radius: 0.5rem`, stock button/card exports without brand styling).
-  - BAN tinted circular icon containers (`bg-primary/10 text-primary p-3 rounded-full`).
-  - BAN static terminal window mockups with red/yellow/green dots in the hero.
-  - BAN raw emojis used as icons (`✨`, `🚀`, `⚡`, `🔒`) in production UI markup.
-- **Bespoke Design Standard:**
-  - Commit to an intentional aesthetic: brutalist, high-density telemetry, refined editorial, or precision dark-mode.
-  - High information density (Linear/Stripe standard), micro-borders (`rgba(255,255,255,0.08)`), and tabular numerals (`tabular-nums`).
-  - Every component must implement all 7 states: `Default, Hover, Focus-Visible, Active, Loading (Skeleton), Disabled, Error`.
-<!-- INVARIANT_END:ANTI_AI_SLOP -->
+Use for requested interaction/flow improvements, usability audits or accessibility work. Inputs: actual user task, audience/platform, current interface/brand, accessibility target, device/browser matrix and authorized implementation scope. An audit is read-only unless changes are authorized. Do not replace an existing design system or force a new component/list/animation library merely to follow this workflow.
 
-<!-- INVARIANT_START:GRAPHIFY -->
-## 🧠 HARDENED GRAPHIFY KNOWLEDGE ENGINE GATE (AST-FIRST CODE INTELLIGENCE)
-Whenever `graphify-out/graph.json` exists in the repository root, agents MUST interact with the AST knowledge graph. Blind directory traversal and unconstrained multi-file context dumping are strictly banned.
+## 1. Understand the task and information architecture
 
-1. **Zero-Blind-Grep Invariant:**
-   - Running unstructured grep (`grep -r`, `Select-String *.*`, `ripgrep` across entire project) to locate callers or symbol references is FORBIDDEN when `graph.json` is present.
-   - Agents must query Graphify first: `graphify query "<symbol_or_concept>"`.
+Map the primary journey, decisions, terminology, entry/exit points and recovery paths. Observe actual content density and user needs; scanning patterns such as F/Z layouts are optional heuristics, not fixed placement rules. Use clear navigation labels, progressive disclosure where helpful and consistent vocabulary. Validate real task completion, confusion and error recovery; visual polish alone does not establish usability.
 
-2. **Blast Radius Gate (`graphify explain "<symbol>"`):**
-   - Before modifying, refactoring, or deleting any shared interface, model, route, or function, the agent MUST run `graphify explain "<symbol>"`.
-   - If incoming edge count > 0, every caller surfaced by Graphify MUST be explicitly enumerated in the task DAG or implementation plan before touching code.
+Inspect empty/single/many-item states, long or localized text, RTL where supported, missing permissions, expired sessions, offline/slow connections and partial failures. Preserve meaningful user data during validation/retry. Returning navigation should restore appropriate scroll/filter/form state while revalidating data according to freshness, authorization and privacy requirements.
 
-3. **Call-Path Fault Tracing (`graphify path "<source>" "<target>" --undirected`):**
-   - When debugging multi-hop failures (e.g. UI -> API -> DB), the agent must run `graphify path` to map the exact shortest call chain between entry point and crash sink before reading source code.
+## 2. Choose platform-appropriate interactions
 
-4. **Leiden Community Worktree Partitioning:**
-   - When spawning parallel subagents in `ultimate-multi-agent-invoker`, tasks MUST be partitioned by Leiden community clusters (from `graphify-out/graph.json`).
-   - If two tasks share a God Node (identified in `graphify-out/GRAPH_REPORT.md`), they CANNOT run concurrently without explicit file-level mutex locks.
+Provide perceptible, prompt feedback and progress for long work; choose skeletons, progress bars, spinners or plain status based on the task and likely duration. 100ms feedback and 300ms loading heuristics are design targets to measure, not universal standards. Avoid fabricated progress phases or invented error causes. Prefer real reasons when known and useful next steps when they are not.
 
-5. **Subagent Context Clamp (70% Token Reduction):**
-   - Never dump entire raw source files into subagent prompts. Inject only the scoped subgraph from `graphify query "<task_scope>"`.
+Support cancellation/undo where feasible and describe irreversible consequences. Keep navigation usable during partial loading unless a genuine state constraint requires otherwise. Optimistic updates need a visible pending state and defined reconciliation/rollback; use them only when failed effects are recoverable. Prevent duplicate side effects in the server contract as well as in the UI.
 
-6. **Post-Commit AST Synchronization (`graphify update .`):**
-   - After completing code modifications or merging Git worktrees, the agent MUST run `graphify update .` (local AST delta update, 2s runtime, 0 API tokens) to maintain graph synchronization.
-<!-- INVARIANT_END:GRAPHIFY -->
+Respect native safe areas, browser history/back gestures, keyboard behavior and platform widget conventions. Gesture conflicts and nesting depend on the actual UI: do not ban every horizontal gesture inside a vertical list. Touch feedback, haptics, shake effects and scaling animations are choices, not required treatments for every action. Respect reduced motion and avoid motion-only feedback.
 
-# Ultimate UX & Usability Workflow
+## 3. Separate standards from larger design targets
 
-This workflow drives comprehensive User Experience auditing, implementation, and verification. It ensures interfaces are accessible, responsive, navigable, performant, and genuinely delightful to use. This is the definitive quality gate for anything user-facing.
+For web WCAG 2.2 AA, use the actual applicable success criteria and exceptions. Platform guidance may set larger targets:
 
----
-
-## Iron Laws
-
-1. **Users Don't Read, They Scan.** Design for scanning: clear visual hierarchy, bold headings, short paragraphs, bullet points, and progressive disclosure.
-2. **Feedback Is Non-Negotiable.** Every user action (tap, click, submit, swipe) must produce visible feedback within 100ms. If an operation takes >300ms, show a skeleton or progress indicator.
-3. **Accessibility Is Not Optional.** WCAG 2.2 AA compliance is the minimum bar. Color is never the sole indicator of state. Every interactive element is keyboard-navigable.
-4. **Layout Stability Is Sacred.** Cumulative Layout Shift (CLS) < 0.1. Reserve space for dynamic content, images, ads, and loading states. Skeleton dimensions must match final layout.
-5. **Errors Are Opportunities.** Error states must tell the user: (1) what happened, (2) why it happened, and (3) what to do next. Never show raw error codes, stack traces, or blank screens.
-6. **Form Friction is Conversion Death.** Minimize required fields, leverage native autofill, validate inputs inline, and preserve input state on error.
-
----
-
-## Usability Heuristics Mapping (Nielsen's 10)
-
-| Heuristic | Application in Code | Reject If |
+| Subject | Requirement/reference | Verification |
 |---|---|---|
-| **Visibility of System Status** | Spinners, skeletons, progress bars, active tabs. | Long tasks with no feedback; dead buttons. |
-| **Match Between System & Real World** | Plain language, natural categories, logical icons. | Tech jargon in user-facing copy; confusing glyphs. |
-| **User Control & Freedom** | "Undo" buttons, cancel transitions, clear escapes. | Modal traps with no close button; un-cancellable actions. |
-| **Consistency & Standards** | Shared typography scale, design tokens, standard UI. | Mix of custom scrollbars or distinct modal formats. |
-| **Error Prevention** | Disabling invalid submit; date-pickers instead of input. | Letting user submit bad data, then throwing cryptic error. |
-| **Recognition Rather than Recall** | Visible search history, persistence of state, hints. | Blank forms that clear themselves after a single validation error. |
-| **Flexibility & Efficiency of Use** | Keyboard shortcuts, bulk actions, power-user flags. | Forcing power users to click through 5-step wizards. |
-| **Aesthetic & Minimalist Design** | Generous padding, no noise, bento layout, clear space. | Crowding 50 inputs into a single viewport with tiny fonts. |
-| **Help Users Recognize Errors** | Inline validation, red borders, actionable text hints. | Vague "Error 500" red banners; missing highlight on error fields. |
-| **Help & Documentation** | Contextual tooltips, inline helpers, clean FAQs. | Missing labels on obscure mathematical configurations. |
+| Web target size | SC 2.5.8: 24×24 CSS px or its spacing/equivalent/inline/user-agent/essential exceptions | Inspect actual hit areas/spacing; 44×44 is a larger design target rather than the AA minimum |
+| iOS / Android targets | Apply current platform guidance for the selected control; 44pt / 48dp are common design references | Check actual target geometry and device interaction |
+| Text contrast | Generally 4.5:1; 3:1 for qualifying large text (18pt regular or 14pt bold, approximately 24px/18.67px) | Check actual rendered size, weight, colors and applicable exceptions |
+| Non-text contrast | Apply SC 1.4.11 to essential visual information identifying controls/states | Inspect actual boundary/state context, not every decorative border |
+| Focus | Visible, logically ordered, not obscured where applicable | Keyboard journey including overlays/sticky UI |
+| Reflow / text resize | Apply relevant WCAG criteria at required zoom/viewport conditions | Manual 200–400% checks with meaningful task content |
 
----
+Use semantic controls and associated labels; decorative icons are hidden from assistive technology and icon-only controls need an accessible name. Do not force a specific aria-label when visible text already labels the control. Choose ARIA only when needed and keep name/role/state synchronized. Proper heading structure matters; a rigid one-h1 count alone does not prove or disprove conformance.
 
-## The 6-Phase UX Pipeline
+Keyboard patterns depend on widget semantics: Tab between controls, arrows within appropriate composites, Enter/Space according to native control behavior. Modals need contained focus; ordinary dropdowns are not automatically modal traps. Native/browser validation and date inputs can be appropriate; do not disable them solely for styling.
 
-### Phase 1: Information Architecture & Content Strategy
-*   **Sub-skills:** `ui-ux-pro-max` (99 UX guidelines, 161 product types), `concise-planning`, `superpowers-brainstorm`
-*   **Action:**
-    1. Map the content hierarchy: define primary, secondary, and tertiary content zones for each page.
-    2. Apply the **F-Pattern** (text-heavy pages) or **Z-Pattern** (landing pages) scanning model to place critical elements in natural eye-tracking positions.
-    3. Define the information scent: every navigation label, button text, and link text must clearly communicate what the user will get when they interact.
-    4. Establish a consistent vocabulary: use the same terms across the entire application (e.g., never mix "Settings" and "Preferences" for the same concept).
-    5. Use `concise-planning` for atomic UX audit checklists.
-    6. Use `superpowers-brainstorm` for evaluating alternative IA structures.
+## 4. Dialog focus lifecycle
 
-### Phase 2: Touch, Gesture & Interaction Design
-*   **Sub-skills:** `ui-ux-pro-max`, `react-native-skills`, `react-native-best-practices`, `react-native-best-practices-callstack`, `android-native-dev`
-*   **Action:**
-    1. **Touch Targets:** Minimum dimensions enforced:
+Prefer a supported native dialog or tested installed accessible primitive. Illustrative DOM integration (not a framework lifecycle or conformance certificate):
 
-       | Platform | Minimum Size | Spacing Between |
-       |---|---|---|
-       | iOS (HIG) | 44×44pt | 8pt minimum |
-       | Android (M3) | 48×48dp | 8dp minimum |
-       | Web (WCAG) | 44×44px | 8px minimum (24px recommended) |
-
-    2. **Interaction Feedback Matrix:**
-
-       | Action | Feedback | Timing |
-       |---|---|---|
-       | Tap/Click | Scale down 0.97 + opacity 0.8 | < 80ms |
-       | Hover (web) | Background tint shift | < 50ms |
-       | Long press | Haptic + context menu | 300–500ms |
-       | Swipe gesture | Rubber-band physics at edges | Real-time |
-       | Submit/Save | Button → loading spinner → success check | Immediate → async |
-       | Error | Shake animation + red border + inline message | < 100ms |
-
-    3. **Gesture Safety:** Prevent gesture conflicts:
-       *   No horizontal swipe gestures inside vertically scrollable lists.
-       *   No nested scroll views without explicit `nestedScrollEnabled` control.
-       *   Back-swipe (iOS) and edge gestures must never be hijacked by custom gestures.
-    4. **Safe Areas:** Respect notch, Dynamic Island, status bar, home indicator using `env(safe-area-inset-*)` or `SafeAreaView`.
-    5. Apply platform-specific skills for native gesture handling.
-
-### Phase 3: Navigation & Flow Architecture
-*   **Sub-skills:** `ui-ux-pro-max`, `next-best-practices`, `react-best-practices`, `composition-patterns`
-*   **Action:**
-    1. **Navigation Hierarchy Rules:**
-       *   Top-level: Tabs (≤5 items), sidebar, or top nav. Always visible/accessible.
-       *   Contextual: Breadcrumbs, back arrows, or "up" navigation within flows.
-       *   Actions: FABs, toolbars, or context menus for operations within a view.
-    2. **State Preservation:** When the user navigates back:
-       *   ✅ Restore scroll position.
-       *   ✅ Preserve filter/sort selections.
-       *   ✅ Keep half-filled form inputs.
-       *   ❌ Never force a full page reload or data refetch.
-    3. **Progressive Disclosure:** Complex forms use multi-step wizards with:
-       *   Clear step indicators (1/3, 2/3, 3/3) — not vague spinners.
-       *   Back/Previous navigation at every step.
-       *   Validation at each step before proceeding (fail-fast, not fail-at-end).
-    4. **Loading State Hierarchy:**
-       *   Global shell loads first (nav, sidebar always visible).
-       *   Navigation always interactive — never blocked by content loading.
-       *   Content areas load independently with per-section skeletons.
-       *   **FORBIDDEN:** Blank screens, full-screen spinners for partial data, blocking navigation during loads.
-    5. Apply `next-best-practices` for route-level code splitting, prefetching, and scroll restoration.
-
-### Phase 4: Accessibility (a11y) — The Non-Negotiable Gate
-*   **Sub-skills:** `ui-ux-pro-max`, `web-design-guidelines`, `ckm:ui-styling`
-*   **MCP Tools:** `playwright` (browser_snapshot, browser_evaluate)
-*   **Action:**
-    1. **Color & Contrast:**
-
-       | Element | Minimum Ratio | Tool to Verify |
-       |---|---|---|
-       | Body text (< 18px) | 4.5:1 | WebAIM Contrast Checker |
-       | Large text (≥ 18px bold / ≥ 24px) | 3:1 | axe-core |
-       | UI components (borders, icons) | 3:1 | Manual check |
-       | Focus indicators | 3:1 against adjacent | Visual inspection |
-
-    2. **Semantic HTML & ARIA:**
-       *   Use correct semantic elements: `<button>` for actions, `<a>` for navigation, `<nav>` for nav blocks, `<main>` for primary content.
-       *   One `<h1>` per page. Heading levels descend sequentially (h1 → h2 → h3, never skip levels).
-       *   Icon-only buttons MUST have `aria-label`. Decorative icons get `aria-hidden="true"`.
-       *   Form inputs MUST have associated `<label>` elements (not just placeholders).
-       *   Use `role`, `aria-expanded`, `aria-controls`, `aria-live` for dynamic content regions.
-    3. **Keyboard Navigation:**
-       *   All interactive elements reachable via Tab key.
-       *   Visible focus rings (never `outline: none` without replacement).
-       *   Escape closes modals and dropdowns, returning focus to the trigger.
-       *   Enter/Space activates buttons and checkboxes.
-       *   Arrow keys navigate within composite widgets (tabs, menus, listboxes).
-    4. **Motion Safety:**
-       *   ALL animations wrapped in `@media (prefers-reduced-motion: reduce)`.
-       *   Provide instant state changes as fallback.
-       *   No flashing content (>3 flashes per second — WCAG 2.3.1).
-    5. Use `playwright/browser_evaluate` for programmatic axe-core accessibility audits.
-    6. Apply `ckm:ui-styling` for shadcn/ui Radix primitives with built-in ARIA support.
-
-### Phase 5: Perceived Performance & Loading States
-*   **Sub-skills:** `ckm:design-system`, `react-best-practices`, `next-best-practices`
-*   **Action:**
-    1. **The Skeleton Law:** If content takes >300ms to load, show a skeleton screen — not a spinner. Skeletons MUST:
-       *   Match the exact dimensions of the final rendered content.
-       *   Reflect content hierarchy (title skeleton wider than subtitle skeleton).
-       *   Render instantly (< 16ms, before any data fetch begins).
-       *   Shimmer left-to-right with a subtle gradient animation.
-    2. **Optimistic UI:** For highly-likely-to-succeed actions (toggling favorites, sending messages):
-       *   Update the UI immediately, before the API response.
-       *   Show visually distinct "pending" state (subtle opacity or pulse).
-       *   Auto-rollback if the API responds with an error.
-       *   Only use for actions where rollback is trivial and non-destructive.
-    3. **Streaming & Progressive Rendering:**
-       *   Above-the-fold content streams first.
-       *   Below-the-fold content deferred via `Suspense` boundaries.
-       *   Independent data blocks load independently (no waterfall fetching).
-    4. **Layout Stability (CLS Prevention):**
-       *   Reserve explicit `width`/`height` on all images and media.
-       *   Skeletons match final content dimensions exactly.
-       *   Never inject content above the current viewport position.
-       *   Fonts use `font-display: swap` with `size-adjust` for metric compatibility.
-
-### Phase 6: Error, Empty & Edge States
-*   **Sub-skills:** `ui-ux-pro-max`, `systematic-debugging`, `ckm:banner-design`
-*   **Action:**
-    1. **Error State Design (Every error must answer 3 questions):**
-       *   **What happened?** — Clear, human-readable title (not "Error 500" or "Something went wrong").
-       *   **Why?** — Brief explanation ("Your session expired" / "The server is temporarily unavailable").
-       *   **What to do?** — Actionable CTA ("Sign in again" / "Retry" / "Go back").
-    2. **Empty State Design:**
-       *   Provide an illustration or icon (use `generate_image` or `ckm:banner-design`).
-       *   Include a primary action button ("Create your first project" / "Add an item").
-       *   Never show a blank white screen with no guidance.
-    3. **Edge Cases Checklist:**
-       *   [ ] What happens with 0 items? (Empty state)
-       *   [ ] What happens with 1 item? (Singular copy: "1 result" not "1 results")
-       *   [ ] What happens with 1,000+ items? (Pagination, virtual scrolling, or "Load more")
-       *   [ ] What happens with extremely long text? (Truncation with `text-overflow: ellipsis`)
-       *   [ ] What happens offline? ("You're offline" banner with cached content below)
-       *   [ ] What happens on slow 3G? (Skeletons visible for 3–10 seconds gracefully)
-    4. **Network Resilience:**
-       *   Graceful error states on network failure — never crash or show raw errors.
-       *   Retry buttons visible with exponential backoff.
-       *   Clear "You're offline" messaging when connectivity drops.
-
----
-
-## Form UX Optimization Checklist
-
-- [ ] Focus shifts logically down the form elements.
-- [ ] Autofill types match constraints (`autocomplete="email"`, `autocomplete="tel"`).
-- [ ] No fields clear themselves when validation fails.
-- [ ] Focus remains on the errored input field upon submission validation.
-- [ ] Submitting a form displays a loading indicator and disables the CTA button to prevent double-submits.
-- [ ] Keyboards displayed on mobile screens match fields (`inputmode="numeric"`, `inputmode="email"`).
-- [ ] Text fields offer native autocorrect management (`autocorrect="off"`, `autocapitalize="none"` where necessary).
-
----
-
-## Dynamic Skeleton UI Boilerplate Template
-
-```html
-<!-- Skeleton Wrapper representing a dynamic dashboard card -->
-<div class="p-6 bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-xl space-y-4 shadow-sm w-[350px]">
-  <div class="flex items-center space-x-4">
-    <!-- Circle Icon Skeleton -->
-    <div class="w-12 h-12 bg-zinc-200 dark:bg-zinc-700 rounded-full animate-pulse"></div>
-    <div class="space-y-2 flex-1">
-      <!-- Title Skeleton -->
-      <div class="h-4 bg-zinc-200 dark:bg-zinc-700 rounded-md w-3/4 animate-pulse"></div>
-      <!-- Subtitle Skeleton -->
-      <div class="h-3 bg-zinc-200 dark:bg-zinc-700 rounded-md w-1/2 animate-pulse"></div>
-    </div>
-  </div>
-  <!-- Body Content Line Skeletons -->
-  <div class="space-y-2">
-    <div class="h-3 bg-zinc-200 dark:bg-zinc-700 rounded-md w-full animate-pulse"></div>
-    <div class="h-3 bg-zinc-200 dark:bg-zinc-700 rounded-md w-5/6 animate-pulse"></div>
-  </div>
-</div>
+```typescript
+const dialog = document.querySelector<HTMLDialogElement>('#edit-dialog');
+const trigger = document.querySelector<HTMLButtonElement>('#open-edit');
+if (!dialog || !trigger) throw new Error('Required dialog elements missing');
+trigger.addEventListener('click', () => {
+  dialog.showModal(); // native modal semantics/inert background; test support
+  const initial = dialog.querySelector<HTMLElement>('[data-initial-focus]');
+  initial?.focus(); // choose an appropriate field or tabindex=-1 heading
+});
+dialog.addEventListener('close', () => {
+  if (trigger.isConnected && !trigger.disabled) trigger.focus();
+  // If removed, choose the next logical workflow target.
+});
 ```
 
----
+Provide a programmatically named dialog, suitable initial focus, an explicit close action and inert background behavior. Test Escape/cancel, focus restoration, trigger removal, no-focusable content, dynamic fields, hidden/disabled controls, nested dialogs and scrolling. Remove listeners on component teardown; use framework refs/effects where needed. If the trigger disappears, focus the next logical task target rather than a detached node.
 
-## UX Copywriting & Microcopy Guidelines
+## 5. Loading, resilience and measured performance
 
-*   **Error Messaging:** Use clear, non-guilt-inducing, helpful text.
-    *   *Bad:* "Invalid Input: Code must be 6 digits!" (Aggressive, exclamation point)
-    *   *Good:* "Please enter a 6-digit confirmation code. You can find this in your SMS message history."
-*   **Call-to-Action (CTA):** Action-oriented verbs indicating value.
-    *   *Bad:* "Submit" / "Click here" (Vague, lacks scent)
-    *   *Good:* "Start Free Trial" / "Save Changes" / "Complete Delivery"
-*   **Loading State Copy:** Make waiting interactive and clear. Differentiate static text from dynamic loops.
-    *   *Static:* "Loading data..." (Generic)
-    *   *Dynamic:* "Verifying security keys..." → "Connecting to box GPS..." → "Syncing local storage..."
+Reserve appropriate media/content space to prevent disruptive layout shifts; skeletons should resemble the expected structure without blocking useful content. Use relevant field/lab metrics and device workloads, such as CLS and interaction responsiveness, with project budgets and distributions. Do not promise a skeleton renders within one universal 16ms frame.
 
----
+Choose virtualization, prefetching, streaming and independent loading boundaries from actual framework support and measured item/network cost. Avoid speculative overfetching on expensive/private routes. List length alone does not mandate FlashList or any package. Make offline state and retry outcomes clear, preserve input on errors, and apply bounded retry behavior rather than automatic duplicate mutations.
 
-## Accessibility Bug Signatures & Code Fixes
+Forms need useful labels/autocomplete/input types, understandable constraints and error summaries/focus when appropriate. Disabling submission is not universally better than allowing accessible validation; test discoverability and correction. Long text may require wrapping or expansion rather than silent ellipsis. Avoid color-only state distinctions.
 
-### 1. Keyboard Navigable Trigger Elements
-*   **Bad Code:**
-    ```jsx
-    // Invisible to tab index and keyboard space/enter activation
-    <div onClick={toggleMenu} className="cursor-pointer">
-      <MenuIcon />
-    </div>
-    ```
-*   **Good Code:**
-    ```jsx
-    <button 
-      onClick={toggleMenu} 
-      aria-label="Toggle Navigation Menu"
-      aria-expanded={isOpen}
-      className="focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 rounded"
-    >
-      <MenuIcon aria-hidden="true" />
-    </button>
-    ```
+## 6. Verify automated and manual scope
 
-### 2. Modal Focus Trap Pattern
-*   When a modal is opened:
-    1. Active keyboard focus MUST be shifted into the modal.
-    2. Focus must remain trapped inside the modal (pressing Tab at the last item wraps to the first).
-    3. Pressing `Escape` must close the modal and return focus to the trigger element that opened it.
-
----
-
-## Programmatic Accessibility E2E Test (Playwright / axe-core)
+Use actual installed scanner versions and supported rule tags. Illustrative Playwright/axe check below covers only configured machine-testable rules:
 
 ```typescript
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 
 test.describe('Accessibility Compliance Audit', () => {
-  test('Page meets WCAG 2.2 AA standards', async ({ page }) => {
+  test('Page has no findings in configured automated WCAG rule tags', async ({ page }) => {
     await page.goto('/dashboard');
     
     // Wait for dynamic hydration to settle
     await page.waitForSelector('main');
 
     const accessibilityScanResults = await new AxeBuilder({ page })
-      .withTags(['wcag2a', 'wcag2aa'])
+      .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'])
       .analyze();
 
     expect(accessibilityScanResults.violations).toEqual([]);
@@ -350,175 +94,10 @@ test.describe('Accessibility Compliance Audit', () => {
 });
 ```
 
----
+Record manual keyboard/assistive-technology name-role-state testing, screen-reader status announcements, focus lifecycle, zoom/reflow, target geometry, reduced motion and meaningful error recovery. No empty axe result can certify all WCAG 2.2 AA criteria. If a tool/browser/device is unavailable, name the unrun check and its consequence; do not substitute a guessed pass.
 
-## Touch Target Expansion Patterns
+For implemented changes, run representative user journeys across the agreed viewport/device matrix and inspect screenshots where visual layout matters. Include disabled/pending/loading/error/empty states when they actually apply; not every component needs seven fabricated states. Cross-check actual content, localization, high contrast and permissions where relevant.
 
-When styling small interactive items (e.g., close buttons, small toggles, arrow links), the visible element may be small, but the interactive tap surface must meet minimum requirements (44px/48px).
+## Completion and recovery
 
-### 1. CSS Pseudo-Element Expansion (Web)
-```css
-/* Visible button is 16x16px, but click area is expanded to 44x44px */
-.btn-close-small {
-  position: relative;
-  width: 16px;
-  height: 16px;
-}
-
-.btn-close-small::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 44px;
-  height: 44px;
-  min-width: 44px;
-  min-height: 44px;
-}
-```
-
-### 2. React Native `hitSlop` Configuration (Mobile)
-```tsx
-// Explicitly define tap padding in pixels around the visible boundary
-<TouchableOpacity
-  onPress={handleClose}
-  hitSlop={{ top: 14, bottom: 14, left: 14, right: 14 }}
-  style={{ width: 16, height: 16 }}
->
-  <CloseIcon />
-</TouchableOpacity>
-```
-
----
-
-## Brand-Integrated UX Patterns (Quick Reference)
-
-| Brand Archetype | Canvas | CTA Shape | Animation Style | Card Radius |
-|---|---|---|---|---|
-| Apple (Photography-first) | White alternating dark | Pill, Action Blue | Gentle parallax | 16–20px |
-| Linear (Developer luxury) | Near-black #010102 | Charcoal pill | Subtle fade-in | 8px |
-| Stripe (Fintech editorial) | Deep navy | Pill, indigo | Mesh gradient hero | 8–12px |
-| Airbnb (Warm marketplace) | White | Pill, Rausch pink | Card hover lift | 14–16px |
-| Vercel (Developer platform) | Near-white | Black pill | Mesh gradient hero | 8px |
-| Notion (Workspace) | White | Purple pill, rounded | Slide-in panels | 8px |
-| Revolut (Fintech bold) | Black | Cobalt-violet pill | Product mockup reveals | 12–20px |
-
----
-
-## Anti-Patterns (Reject These)
-
-| Anti-Pattern | Why It's Wrong | Do This Instead |
-|---|---|---|
-| Full-screen spinner for partial data | Blocks all interaction, feels frozen | Per-section skeleton screens |
-| `placeholder` as the only label | Disappears on input, accessibility failure | Always pair with visible `<label>` |
-| Color-only error indication | Inaccessible to colorblind users | Add icon + text alongside color |
-| Modal on page load | Interrupts task, hostile UX | Use inline banners or toast notifications |
-| Infinite scroll without "back to top" | User loses position, frustrating | Add floating "back to top" button |
-| Custom scrollbars | Inconsistent cross-platform behavior | Use native scrollbars, style minimally |
-| Alert/confirm browser dialogs | Ugly, blocks thread, can't style | Use custom modal with accessible focus trap |
-
----
-
-## Sub-Skill Checklists & Reference Templates
-
-### 1. Touch & Layout Stability on Mobile (`react-native-skills`)
-*   **Virtualization Priority:** Enforce `FlashList` for any list handling more than 50 entries to stabilize frame rates.
-*   **Gestures:** Use Reanimated worklets and the `GestureDetector` harness instead of JS thread responders.
-*   **Measure Traps:** Avoid manual `measure()` calls in layouts. Use `onLayout` listener callbacks to prevent thread blocks.
-
-### 2. React UI Performance (`react-best-practices` & `composition-patterns`)
-*   **Derived UI State:** Never use `useEffect` to synchronise local UI state changes. Derive UI boolean values directly during execution to avoid layout-flickers.
-*   **Compound UI Contexts:** Avoid building complex configuration properties for UI components; separate them into semantic subcomponents (e.g. `<Modal.Header>`, `<Modal.Body>`).
-
-### 3. Accessibility Audit Checklist (`web-design-guidelines`)
-*   Validate visual contrast ratios across high-priority elements.
-*   Verify that interactive components trap keyboard focus correctly when modals/dropdowns are open.
-
-### 4. TTI & Startup Optimization on Mobile (`react-native-best-practices`)
-*   **Defer Non-Essential SDKs:** Do not initialize heavy analytics, logging, or third-party tracking scripts during the initial render loop. Defer them using task schedulers (`InteractionManager.runAfterInteractions` or `setTimeout`) to optimize Time-To-Interactive (TTI).
-*   **State Hydration:** Display skeletal fallbacks or cached state on first render to prevent blank layouts.
-
-### 5. Navigation Pre-Fetching & State Retention (`next-best-practices`)
-*   **Route Prefetching:** Always prefetch pages likely to be visited using `<Link prefetch={true}>` or programmatic prefetching on hover to minimize route transition delays.
-*   **Scroll & View State:** Ensure route changes preserve focus states and scroll positions. Return views to their top-most coordinate unless returning to a list, in which case coordinate positions must be cached and restored.
-
-### 6. React Native Reanimated Gestures (`react-native-skills`)
-*   **Performance-Safe Gestures:** Animate elements exclusively using Reanimated's UI thread values:
-    ```typescript
-    import { Gesture, GestureDetector } from 'react-native-gesture-handler';
-    import Animated, { useSharedValue, useAnimatedStyle, withSpring } from 'react-native-reanimated';
-    
-    export function SwipeableCard() {
-      const translationX = useSharedValue(0);
-      
-      const panGesture = Gesture.Pan()
-        .onChange((event) => {
-          translationX.value = event.translationX;
-        })
-        .onEnd(() => {
-          translationX.value = withSpring(0);
-        });
-        
-      const animatedStyle = useAnimatedStyle(() => ({
-        transform: [{ translateX: translationX.value }],
-      }));
-      
-      return (
-        <GestureDetector gesture={panGesture}>
-          <Animated.View style={[animatedStyle, { width: 100, height: 100, backgroundColor: 'blue' }]} />
-        </GestureDetector>
-      );
-    }
-    ```
-
-### 7. WCAG Keyboard Focus Trap (`web-design-guidelines`)
-*   **Focus Trap Hook:** Prevent keyboard focus from leaking outside modal boundaries:
-    ```typescript
-    import { useEffect, useRef } from 'react';
-    
-    export function useFocusTrap() {
-      const elRef = useRef<HTMLDivElement>(null);
-      
-      useEffect(() => {
-        const el = elRef.current;
-        if (!el) return;
-        
-        const focusable = el.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
-        const first = focusable[0] as HTMLElement;
-        const last = focusable[focusable.length - 1] as HTMLElement;
-        
-        const handleKeyDown = (e: KeyboardEvent) => {
-          if (e.key !== 'Tab') return;
-          if (e.shiftKey) {
-            if (document.activeElement === first) {
-              last.focus();
-              e.preventDefault();
-            }
-          } else {
-            if (document.activeElement === last) {
-              first.focus();
-              e.preventDefault();
-            }
-          }
-        };
-        
-        el.addEventListener('keydown', handleKeyDown);
-        return () => el.removeEventListener('keydown', handleKeyDown);
-      }, []);
-      
-      return elRef;
-    }
-    ```
-
----
-
-## Cross-Cutting Concerns
-*   **Frontend:** Chain with `ultimate-frontend-workflow` for full implementation after UX specification.
-*   **Research:** Use `tavily-search`, `perplexity-ask`, and `context7/get-library-docs` for WCAG 2.2 standards, platform HIG guidelines, and UX pattern libraries.
-*   **Testing:** Use `playwright` MCP for E2E usability testing, screenshot capture, and visual regression across breakpoints.
-*   **Memory:** Use `memory` MCP to persist UX audit findings, accessibility issues, and interaction patterns across conversations.
-*   **Documentation:** Use `ultimate-documentation-workflow` and `docx` for formal UX audit reports.
-*   **Presentation:** Use `ckm:slides` for stakeholder-facing UX review presentations.
-*   **Brand:** Reference `Awesome-Design-MD` (all 61 brands) and `ckm:brand` for brand-aligned UX patterns.
-*   **Design Tokens:** Use `ckm:design-system` and `theme-factory` for systematic visual quality across components.
+Report observed usability/accessibility defects with location, concrete user scenario and effect; distinguish normative violations from measured performance findings and optional design suggestions. Provide changed flows, checks actually run, manual/unavailable limits and unresolved recovery behavior. Preserve existing user work and useful design artifacts. Research into standards or unfamiliar platform contracts follows the mandatory full 15-provider workflow; primary sources resolve version conflicts, not majority vote.

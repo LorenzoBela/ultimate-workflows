@@ -1,7 +1,7 @@
 ---
 name: ultimate-code-cleaner
 description: >
-  Flawless 12/10 Master Workflow for AST-guided dead code elimination, unreferenced export pruning,
+  Engineering workflow for AST-guided dead code elimination, unreferenced export pruning,
   circular dependency eradication, architectural boundary enforcement, and safe codebase slimming.
   Integrates Graphify In-Degree analysis, Knip / TypeScript compiler AST diagnostics, Zero-Orphan gates,
   and characterization testing to safely shrink bloated codebases without regressions.
@@ -10,66 +10,8 @@ description: >
 argument-hint: "[target-path | --dry-run | --exports-only | --cycles | --full-purge]"
 ---
 
-<!-- INVARIANT_START:ANTI_AI_SLOP -->
-## 🛑 HARDENED ANTI-AI SLOP MANDATE: NATURAL PROSE & BESPOKE DESIGN CRAFT
-All agent communications, architectural plans, reviews, code comments, and frontend implementations MUST strictly adhere to natural human engineering standards. Both corporate AI prose slop and cookie-cutter "vibecoded" UI slop are strictly banned.
+Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization. Research always requires all 15 prescribed provider inputs.
 
-### 1. Zero Prose & Grammar Slop (Natural Human Voice)
-- **Banned Lexicon:**
-  - *Empty Verbs:* delve, embark, foster, resonate, underscore, leverage, elevate, harness, navigate, empower, illuminate, facilitate, tailor, showcase, unveil.
-  - *Corporate Buzz-Adjectives:* testament, tapestry, beacon, cornerstone, robust, seamless, pivotal, crucial, paramount, cutting-edge, vibrant, bespoke, game-changer, journey, realm, landscape, holistic, comprehensive, multifaceted, versatile, transformative.
-  - *Formulaic Transitions:* furthermore, moreover, in conclusion, it is worth noting, at the end of the day, without further ado, needless to say.
-- **Banned Syntactical Patterns:**
-  - **Zero Sycophancy / Pleasantries:** NEVER start responses with "Certainly!", "Great question!", "I'd be happy to help!", "Awesome!", or "Let's dive in!".
-  - **Zero Summary Outros:** NEVER end answers with a repetitive paragraph restating earlier points using generic corporate filler.
-  - **Zero Formulaic "Rule-of-Three" Bullets:** Do not default to 3-bullet lists where each bullet starts with a bold abstract noun followed by a colon and fluff.
-  - **Zero Hedging:** Do not write "You might want to potentially consider checking...". Write "Check X, or Y crashes."
-- **Natural Voice Standard:** Speak like a systems developer in terminal, Slack, or GitHub issues: blunt, concise, precise, pragmatic. Code and runnable shell commands come first.
-
-### 2. Zero Visual & UI/UX Design Slop (Bespoke Engineering Craft)
-- **Banned Color Clichés:**
-  - BAN default AI Blue-to-Indigo/Purple gradients (`bg-gradient-to-r from-blue-600 to-indigo-700` or violet hues).
-  - BAN colored ambient glowing shadows (`box-shadow` with >= 24px blur matching accent color).
-  - BAN washed-out low-contrast gray text (`text-gray-400` / `text-gray-500` failing WCAG AA 4.5:1).
-  - BAN gradient headline text (`bg-clip-text text-transparent bg-gradient-to-r` on H1s).
-- **Banned Layout & Component Tropes:**
-  - BAN cookie-cutter Bento Grid walls filled with fake stats, empty cards, or generic Lucide icon spam.
-  - BAN centered hero boilerplate with a floating pill above H1 (`"✨ New: [Feature]"`).
-  - BAN unmodified shadcn/ui defaults (`--radius: 0.5rem`, stock button/card exports without brand styling).
-  - BAN tinted circular icon containers (`bg-primary/10 text-primary p-3 rounded-full`).
-  - BAN static terminal window mockups with red/yellow/green dots in the hero.
-  - BAN raw emojis used as icons (`✨`, `🚀`, `⚡`, `🔒`) in production UI markup.
-- **Bespoke Design Standard:**
-  - Commit to an intentional aesthetic: brutalist, high-density telemetry, refined editorial, or precision dark-mode.
-  - High information density (Linear/Stripe standard), micro-borders (`rgba(255,255,255,0.08)`), and tabular numerals (`tabular-nums`).
-  - Every component must implement all 7 states: `Default, Hover, Focus-Visible, Active, Loading (Skeleton), Disabled, Error`.
-<!-- INVARIANT_END:ANTI_AI_SLOP -->
-
-<!-- INVARIANT_START:GRAPHIFY -->
-## 🧠 HARDENED GRAPHIFY KNOWLEDGE ENGINE GATE (AST-FIRST CODE INTELLIGENCE)
-Whenever `graphify-out/graph.json` exists in the repository root, agents MUST interact with the AST knowledge graph. Blind directory traversal and unconstrained multi-file context dumping are strictly banned.
-
-1. **Zero-Blind-Grep Invariant:**
-   - Running unstructured grep (`grep -r`, `Select-String *.*`, `ripgrep` across entire project) to locate callers or symbol references is FORBIDDEN when `graph.json` is present.
-   - Agents must query Graphify first: `graphify query "<symbol_or_concept>"`.
-
-2. **Blast Radius Gate (`graphify explain "<symbol>"`):**
-   - Before modifying, refactoring, or deleting any shared interface, model, route, or function, the agent MUST run `graphify explain "<symbol>"`.
-   - If incoming edge count > 0, every caller surfaced by Graphify MUST be explicitly enumerated in the task DAG or implementation plan before touching code.
-
-3. **Call-Path Fault Tracing (`graphify path "<source>" "<target>" --undirected`):**
-   - When debugging multi-hop failures (e.g. UI -> API -> DB), the agent must run `graphify path` to map the exact shortest call chain between entry point and crash sink before reading source code.
-
-4. **Leiden Community Worktree Partitioning:**
-   - When spawning parallel subagents in `ultimate-multi-agent-invoker`, tasks MUST be partitioned by Leiden community clusters (from `graphify-out/graph.json`).
-   - If two tasks share a God Node (identified in `graphify-out/GRAPH_REPORT.md`), they CANNOT run concurrently without explicit file-level mutex locks.
-
-5. **Subagent Context Clamp (70% Token Reduction):**
-   - Never dump entire raw source files into subagent prompts. Inject only the scoped subgraph from `graphify query "<task_scope>"`.
-
-6. **Post-Commit AST Synchronization (`graphify update .`):**
-   - After completing code modifications or merging Git worktrees, the agent MUST run `graphify update .` (local AST delta update, 2s runtime, 0 API tokens) to maintain graph synchronization.
-<!-- INVARIANT_END:GRAPHIFY -->
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────────────────────────────┐
@@ -101,7 +43,7 @@ npx tsc --noEmit
 graphify update .
 ```
 
-If TypeScript compilation fails, **ABORT DEAD CODE CLEANING IMMEDIATELY**. Existing type errors must be fixed first before pruning unused code.
+Discover the actual language/build/test commands and record baseline failures. If failures prevent proving safe deletion, stop that deletion and report the missing evidence; unrelated pre-existing failures do not authorize broad fixes or silently block independently verified cleanup.
 
 ---
 
@@ -131,17 +73,17 @@ For any candidate dead symbol (e.g. `OldServiceFunction`):
 ```powershell
 graphify explain "OldServiceFunction"
 ```
-- **Rule**: If `Degree == 1` (only contains itself) and incoming edges == 0, mark as **SAFE FOR PRUNING**.
+- **Rule**: Zero incoming edges identify a **candidate requiring corroboration**, never deletion authority. Inspect the root/entry-point manifest, runtime loading and public consumers before deciding.
 - **Exception**: Entry points (e.g., Next.js `GET`, `POST`, `default` page exports, middleware) have in-degree 0 from the file graph because the Next.js runtime router dispatches them dynamically. **NEVER DELETE FRAMEWORK ENTRY POINTS**.
 
 ---
 
 ## 🌀 Phase 3: Circular Dependency Eradication
 
-Circular dependencies (`A ➔ B ➔ C ➔ A`) cause runtime `undefined` imports, bundler de-optimizations, and memory leaks.
+Runtime cycles can cause initialization defects; type-only cycles and safe module cycles are not inherently bugs. Establish a concrete runtime consequence before changing architecture.
 
 ### 3.1 Cycle Detection Protocol
-Run Graphify path traversal to detect loop closures:
+Detect strongly connected components or explicit directed cycles using a supported analyzer. A shortest path between two modules alone does not prove a cycle; the command below is exploratory only:
 ```powershell
 # Trace cycles between suspect architectural hubs
 graphify path "src/app/api/reports/client/data/route.ts" "src/lib/telematics/historical-job-engine.ts"
@@ -200,7 +142,7 @@ Before performing deletions on core modules:
 3. **Run Live Smoke Test**:
    - If live API routes are affected, run the synthetic audit script:
    ```powershell
-   python scratch/audit_all_ranges.py
+   # Run the repository-discovered, authorized smoke check for the affected contract.
    ```
 
 ---
@@ -253,3 +195,11 @@ When completing an `/ultimate-code-cleaner` run, output the standard Cleanliness
 - **Test Suite Status**: 100% passing
 - **Graphify Sync**: Updated (Old: X nodes ➔ New: Y nodes)
 ```
+
+## Entry-point manifest and safe removal contract
+
+Before pruning, enumerate framework/runtime entry points, package exports and external consumers, CLI/build/test scripts, plugins, reflection/DI registrations, dynamic import patterns, side-effect imports, generated registries, conditional platform exports and configuration references. A graph or static analyzer may miss these roots. Use source search, package/framework configuration and runtime or consumer checks to corroborate every candidate. Knip/compiler diagnostics are optional stack-specific inputs, not proof of external unreachability.
+
+Record each proposed deletion, evidence searched, explicit root exclusions, actual callers and uncertainty. Preserve uncertain/public interfaces until a consumer or compatibility check resolves the risk. Use dry-run inventory by default for broad purges; a requested cleanup authorizes only supported removals, not unrelated modernization. Compare baseline and post-change checks, preserve unrelated edits, and inspect the final diff. Graph node/LOC reduction is bookkeeping, not a quality score.
+
+Acceptance fixtures: externally consumed export, dynamically loaded plugin and side-effect registration survive; a truly unused private helper is removable with evidence; runtime-cycle detection reports the complete cycle and distinguishes type-only edges. Report actual tests and unrun checks rather than filling a 100% passing template.

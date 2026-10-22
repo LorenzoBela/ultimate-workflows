@@ -1,7 +1,7 @@
 ---
 name: ultimate-security-audit-workflow
 description: >
-  Flawless 10/10 Master Workflow for automated security vulnerability audits, static code analysis (SAST),
+  Engineering workflow for automated security vulnerability audits, static code analysis (SAST),
   dependency CVE scans, OWASP Top 10 penetration testing vectors, SLSA Level 3 supply chain checks,
   and regulatory compliance (SOC2, GDPR, HIPAA).
   Triggers on "ultimate security audit workflow", "/ultimate-security-audit-workflow",
@@ -9,68 +9,10 @@ description: >
 argument-hint: "[cve-scan | compliance-check | sast-audit | --owasp | --supply-chain]"
 ---
 
-<!-- INVARIANT_START:ANTI_AI_SLOP -->
-## 🛑 HARDENED ANTI-AI SLOP MANDATE: NATURAL PROSE & BESPOKE DESIGN CRAFT
-All agent communications, architectural plans, reviews, code comments, and frontend implementations MUST strictly adhere to natural human engineering standards. Both corporate AI prose slop and cookie-cutter "vibecoded" UI slop are strictly banned.
+Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization. Research always requires all 15 prescribed provider inputs.
 
-### 1. Zero Prose & Grammar Slop (Natural Human Voice)
-- **Banned Lexicon:**
-  - *Empty Verbs:* delve, embark, foster, resonate, underscore, leverage, elevate, harness, navigate, empower, illuminate, facilitate, tailor, showcase, unveil.
-  - *Corporate Buzz-Adjectives:* testament, tapestry, beacon, cornerstone, robust, seamless, pivotal, crucial, paramount, cutting-edge, vibrant, bespoke, game-changer, journey, realm, landscape, holistic, comprehensive, multifaceted, versatile, transformative.
-  - *Formulaic Transitions:* furthermore, moreover, in conclusion, it is worth noting, at the end of the day, without further ado, needless to say.
-- **Banned Syntactical Patterns:**
-  - **Zero Sycophancy / Pleasantries:** NEVER start responses with "Certainly!", "Great question!", "I'd be happy to help!", "Awesome!", or "Let's dive in!".
-  - **Zero Summary Outros:** NEVER end answers with a repetitive paragraph restating earlier points using generic corporate filler.
-  - **Zero Formulaic "Rule-of-Three" Bullets:** Do not default to 3-bullet lists where each bullet starts with a bold abstract noun followed by a colon and fluff.
-  - **Zero Hedging:** Do not write "You might want to potentially consider checking...". Write "Check X, or Y crashes."
-- **Natural Voice Standard:** Speak like a systems developer in terminal, Slack, or GitHub issues: blunt, concise, precise, pragmatic. Code and runnable shell commands come first.
 
-### 2. Zero Visual & UI/UX Design Slop (Bespoke Engineering Craft)
-- **Banned Color Clichés:**
-  - BAN default AI Blue-to-Indigo/Purple gradients (`bg-gradient-to-r from-blue-600 to-indigo-700` or violet hues).
-  - BAN colored ambient glowing shadows (`box-shadow` with >= 24px blur matching accent color).
-  - BAN washed-out low-contrast gray text (`text-gray-400` / `text-gray-500` failing WCAG AA 4.5:1).
-  - BAN gradient headline text (`bg-clip-text text-transparent bg-gradient-to-r` on H1s).
-- **Banned Layout & Component Tropes:**
-  - BAN cookie-cutter Bento Grid walls filled with fake stats, empty cards, or generic Lucide icon spam.
-  - BAN centered hero boilerplate with a floating pill above H1 (`"✨ New: [Feature]"`).
-  - BAN unmodified shadcn/ui defaults (`--radius: 0.5rem`, stock button/card exports without brand styling).
-  - BAN tinted circular icon containers (`bg-primary/10 text-primary p-3 rounded-full`).
-  - BAN static terminal window mockups with red/yellow/green dots in the hero.
-  - BAN raw emojis used as icons (`✨`, `🚀`, `⚡`, `🔒`) in production UI markup.
-- **Bespoke Design Standard:**
-  - Commit to an intentional aesthetic: brutalist, high-density telemetry, refined editorial, or precision dark-mode.
-  - High information density (Linear/Stripe standard), micro-borders (`rgba(255,255,255,0.08)`), and tabular numerals (`tabular-nums`).
-  - Every component must implement all 7 states: `Default, Hover, Focus-Visible, Active, Loading (Skeleton), Disabled, Error`.
-<!-- INVARIANT_END:ANTI_AI_SLOP -->
-
-<!-- INVARIANT_START:GRAPHIFY -->
-## 🧠 HARDENED GRAPHIFY KNOWLEDGE ENGINE GATE (AST-FIRST CODE INTELLIGENCE)
-Whenever `graphify-out/graph.json` exists in the repository root, agents MUST interact with the AST knowledge graph. Blind directory traversal and unconstrained multi-file context dumping are strictly banned.
-
-1. **Zero-Blind-Grep Invariant:**
-   - Running unstructured grep (`grep -r`, `Select-String *.*`, `ripgrep` across entire project) to locate callers or symbol references is FORBIDDEN when `graph.json` is present.
-   - Agents must query Graphify first: `graphify query "<symbol_or_concept>"`.
-
-2. **Blast Radius Gate (`graphify explain "<symbol>"`):**
-   - Before modifying, refactoring, or deleting any shared interface, model, route, or function, the agent MUST run `graphify explain "<symbol>"`.
-   - If incoming edge count > 0, every caller surfaced by Graphify MUST be explicitly enumerated in the task DAG or implementation plan before touching code.
-
-3. **Call-Path Fault Tracing (`graphify path "<source>" "<target>" --undirected`):**
-   - When debugging multi-hop failures (e.g. UI -> API -> DB), the agent must run `graphify path` to map the exact shortest call chain between entry point and crash sink before reading source code.
-
-4. **Leiden Community Worktree Partitioning:**
-   - When spawning parallel subagents in `ultimate-multi-agent-invoker`, tasks MUST be partitioned by Leiden community clusters (from `graphify-out/graph.json`).
-   - If two tasks share a God Node (identified in `graphify-out/GRAPH_REPORT.md`), they CANNOT run concurrently without explicit file-level mutex locks.
-
-5. **Subagent Context Clamp (70% Token Reduction):**
-   - Never dump entire raw source files into subagent prompts. Inject only the scoped subgraph from `graphify query "<task_scope>"`.
-
-6. **Post-Commit AST Synchronization (`graphify update .`):**
-   - After completing code modifications or merging Git worktrees, the agent MUST run `graphify update .` (local AST delta update, 2s runtime, 0 API tokens) to maintain graph synchronization.
-<!-- INVARIANT_END:GRAPHIFY -->
-
-# Ultimate Security Auditing & Compliance Workflow (10/10 Master Engine)
+# Ultimate Security Auditing & Compliance Workflow (Engineering Workflow)
 
 This workflow drives systematic static code analysis (SAST), software composition analysis (SCA / CVEs), automated secrets detection, supply-chain verification (SLSA 3), and regulatory compliance mapping.
 
@@ -103,11 +45,11 @@ This workflow drives systematic static code analysis (SAST), software compositio
 
 ## 🏛️ Iron Laws of Security Auditing
 
-1. **Zero High/Critical CVEs Allowed in Production**: Any dependency with a CVSS score $\ge 7.0$ (High/Critical) is an unconditional blocker.
+1. **Zero High/Critical CVEs Allowed in Production**: Treat severity as a triage input alongside affected version, deployed reachability, known exploitation, mitigations and the project's risk policy; exceptions require a recorded owner, evidence and expiry.
 2. **Deterministic Lockfile Integrity**: All dependencies must be strictly pinned with cryptographic integrity hashes (`package-lock.json`, `pnpm-lock.yaml`).
 3. **AST Source-to-Sink Verification**: Track untrusted input sources (`req.body`, `searchParams`) to dangerous execution sinks (`eval`, `innerHTML`, `exec`, unparameterized queries).
 4. **Automated Pre-Commit Secrets Scanning**: Commits containing API keys, private keys, or passwords must be blocked at pre-commit gates (`gitleaks`).
-5. **Continuous Compliance Governance**: SOC2, GDPR, and HIPAA controls must be represented as automated unit/integration test assertions.
+5. **Continuous Compliance Governance**: Map applicable controls to evidence, owners and verification methods. Automated assertions cover technical subsets; they cannot certify SOC 2, GDPR or HIPAA compliance.
 
 ---
 
@@ -127,7 +69,7 @@ This workflow drives systematic static code analysis (SAST), software compositio
        - Detect raw HTML injection, dynamic code evaluation, and unparameterized database queries.
     2. **Deep History Secrets Detection (GitLeaks / TruffleHog):**
        - Scan entire git history for leaked tokens, private keys, and OAuth client secrets.
-       - If a secret is detected in git history, treat as compromised immediately: rotate credential + rewrite history.
+       - If a secret is detected in git history, treat as compromised immediately: report a redacted finding and coordinate revocation/rotation under the session's authorization. History rewrite is a separate shared-history action requiring explicit scope, collaborator coordination and recovery; an audit does not authorize it.
 
 ### Phase 3: OWASP Top 10 Deep Audit Protocol
 *   **Action:**
@@ -141,6 +83,14 @@ This workflow drives systematic static code analysis (SAST), software compositio
 
 ### Phase 4: Regulatory Compliance Mapping (SOC2, GDPR, HIPAA)
 *   **Action:**
-    1. **GDPR / CCPA:** Verify automated data export (`GET /api/user/export`) and hard deletion cascades (`DELETE /api/user/account`).
+    1. **GDPR / CCPA:** Verify required export/deletion behavior against the data inventory, retention/legal-hold requirements and applicable policy; do not prescribe unconditional hard deletion or invent endpoints.
     2. **SOC 2 Type II:** Verify tamper-proof audit trails for administrative access, role elevation, and security configuration edits.
     3. **HIPAA / PCI-DSS:** Verify PII / cardholder data isolation, tokenization, and encryption key segregation.
+
+## Authorized audit, triage and completion
+
+Preflight records repositories/environments, allowed read-only and active probes, accounts/roles, exclusions and inherited authorization. Start with non-mutating inspection. An audit finding does not authorize credential rotation, history rewrite, dependency upgrade, production request or destructive test. Preserve raw scanner results with secrets redacted; findings include advisory ID, affected/fixed range, deployed exposure, source-to-sink evidence, trigger, impact, mitigating controls and actual verification limits. Scanner severity alone is not exploitability proof.
+
+For SSRF, normalize and validate parsed URLs, permitted schemes/ports, DNS answers (IPv4/IPv6, mapped forms and private/link-local ranges), and every redirect hop. Prevent resolution/rebinding races using a supported transport/egress policy; a hostname allowlist plus one string check is insufficient. Exercise these cases only against authorized disposable targets.
+
+Discover scanner/package versions and map the project's applicable OWASP/ASVS version rather than assuming an abbreviated numbered list is complete. Separate verified vulnerability, plausible candidate, false positive, accepted risk and unavailable check. Preserve secret fingerprints/locations without printing token values; store only necessary evidence with suitable retention/access. Compliance output is a control-evidence gap assessment, never certification.

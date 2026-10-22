@@ -1,75 +1,17 @@
 ---
 name: ultimate-iot-software-workflow
 description: >
-  Flawless 10/10 Master Workflow for IoT cloud backends, MQTT hierarchical namespaces, mutual TLS (mTLS) device auth,
+  Engineering workflow for IoT cloud backends, MQTT hierarchical namespaces, mutual TLS (mTLS) device auth,
   Kafka message decoupling, TimescaleDB/ClickHouse time-series ingestion, and JSON Device Twin synchronization.
   Triggers on "ultimate iot software workflow", "/ultimate-iot-software-workflow", or when
   designing IoT backends, configuring MQTT brokers, or building telemetry ingestion pipelines.
 argument-hint: "[mqtt-topic | device-twin | telemetry-pipeline | --mtls | --timeseries]"
 ---
 
-<!-- INVARIANT_START:ANTI_AI_SLOP -->
-## 🛑 HARDENED ANTI-AI SLOP MANDATE: NATURAL PROSE & BESPOKE DESIGN CRAFT
-All agent communications, architectural plans, reviews, code comments, and frontend implementations MUST strictly adhere to natural human engineering standards. Both corporate AI prose slop and cookie-cutter "vibecoded" UI slop are strictly banned.
+Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization. Research always requires all 15 prescribed provider inputs.
 
-### 1. Zero Prose & Grammar Slop (Natural Human Voice)
-- **Banned Lexicon:**
-  - *Empty Verbs:* delve, embark, foster, resonate, underscore, leverage, elevate, harness, navigate, empower, illuminate, facilitate, tailor, showcase, unveil.
-  - *Corporate Buzz-Adjectives:* testament, tapestry, beacon, cornerstone, robust, seamless, pivotal, crucial, paramount, cutting-edge, vibrant, bespoke, game-changer, journey, realm, landscape, holistic, comprehensive, multifaceted, versatile, transformative.
-  - *Formulaic Transitions:* furthermore, moreover, in conclusion, it is worth noting, at the end of the day, without further ado, needless to say.
-- **Banned Syntactical Patterns:**
-  - **Zero Sycophancy / Pleasantries:** NEVER start responses with "Certainly!", "Great question!", "I'd be happy to help!", "Awesome!", or "Let's dive in!".
-  - **Zero Summary Outros:** NEVER end answers with a repetitive paragraph restating earlier points using generic corporate filler.
-  - **Zero Formulaic "Rule-of-Three" Bullets:** Do not default to 3-bullet lists where each bullet starts with a bold abstract noun followed by a colon and fluff.
-  - **Zero Hedging:** Do not write "You might want to potentially consider checking...". Write "Check X, or Y crashes."
-- **Natural Voice Standard:** Speak like a systems developer in terminal, Slack, or GitHub issues: blunt, concise, precise, pragmatic. Code and runnable shell commands come first.
 
-### 2. Zero Visual & UI/UX Design Slop (Bespoke Engineering Craft)
-- **Banned Color Clichés:**
-  - BAN default AI Blue-to-Indigo/Purple gradients (`bg-gradient-to-r from-blue-600 to-indigo-700` or violet hues).
-  - BAN colored ambient glowing shadows (`box-shadow` with >= 24px blur matching accent color).
-  - BAN washed-out low-contrast gray text (`text-gray-400` / `text-gray-500` failing WCAG AA 4.5:1).
-  - BAN gradient headline text (`bg-clip-text text-transparent bg-gradient-to-r` on H1s).
-- **Banned Layout & Component Tropes:**
-  - BAN cookie-cutter Bento Grid walls filled with fake stats, empty cards, or generic Lucide icon spam.
-  - BAN centered hero boilerplate with a floating pill above H1 (`"✨ New: [Feature]"`).
-  - BAN unmodified shadcn/ui defaults (`--radius: 0.5rem`, stock button/card exports without brand styling).
-  - BAN tinted circular icon containers (`bg-primary/10 text-primary p-3 rounded-full`).
-  - BAN static terminal window mockups with red/yellow/green dots in the hero.
-  - BAN raw emojis used as icons (`✨`, `🚀`, `⚡`, `🔒`) in production UI markup.
-- **Bespoke Design Standard:**
-  - Commit to an intentional aesthetic: brutalist, high-density telemetry, refined editorial, or precision dark-mode.
-  - High information density (Linear/Stripe standard), micro-borders (`rgba(255,255,255,0.08)`), and tabular numerals (`tabular-nums`).
-  - Every component must implement all 7 states: `Default, Hover, Focus-Visible, Active, Loading (Skeleton), Disabled, Error`.
-<!-- INVARIANT_END:ANTI_AI_SLOP -->
-
-<!-- INVARIANT_START:GRAPHIFY -->
-## 🧠 HARDENED GRAPHIFY KNOWLEDGE ENGINE GATE (AST-FIRST CODE INTELLIGENCE)
-Whenever `graphify-out/graph.json` exists in the repository root, agents MUST interact with the AST knowledge graph. Blind directory traversal and unconstrained multi-file context dumping are strictly banned.
-
-1. **Zero-Blind-Grep Invariant:**
-   - Running unstructured grep (`grep -r`, `Select-String *.*`, `ripgrep` across entire project) to locate callers or symbol references is FORBIDDEN when `graph.json` is present.
-   - Agents must query Graphify first: `graphify query "<symbol_or_concept>"`.
-
-2. **Blast Radius Gate (`graphify explain "<symbol>"`):**
-   - Before modifying, refactoring, or deleting any shared interface, model, route, or function, the agent MUST run `graphify explain "<symbol>"`.
-   - If incoming edge count > 0, every caller surfaced by Graphify MUST be explicitly enumerated in the task DAG or implementation plan before touching code.
-
-3. **Call-Path Fault Tracing (`graphify path "<source>" "<target>" --undirected`):**
-   - When debugging multi-hop failures (e.g. UI -> API -> DB), the agent must run `graphify path` to map the exact shortest call chain between entry point and crash sink before reading source code.
-
-4. **Leiden Community Worktree Partitioning:**
-   - When spawning parallel subagents in `ultimate-multi-agent-invoker`, tasks MUST be partitioned by Leiden community clusters (from `graphify-out/graph.json`).
-   - If two tasks share a God Node (identified in `graphify-out/GRAPH_REPORT.md`), they CANNOT run concurrently without explicit file-level mutex locks.
-
-5. **Subagent Context Clamp (70% Token Reduction):**
-   - Never dump entire raw source files into subagent prompts. Inject only the scoped subgraph from `graphify query "<task_scope>"`.
-
-6. **Post-Commit AST Synchronization (`graphify update .`):**
-   - After completing code modifications or merging Git worktrees, the agent MUST run `graphify update .` (local AST delta update, 2s runtime, 0 API tokens) to maintain graph synchronization.
-<!-- INVARIANT_END:GRAPHIFY -->
-
-# Ultimate IoT Cloud & Software Backend Workflow (10/10 Master Engine)
+# Ultimate IoT Cloud & Software Backend Workflow (Engineering Workflow)
 
 This workflow guides the end-to-end design and deployment of IoT backend architectures—covering MQTT namespaces, mutual TLS (mTLS) device credentials, Kafka ingestion, time-series storage (TimescaleDB/ClickHouse), device twins, and staged firmware rollouts.
 
@@ -102,9 +44,9 @@ This workflow guides the end-to-end design and deployment of IoT backend archite
 
 ## 🏛️ Iron Laws of IoT Cloud Backends
 
-1. **Mutual TLS (mTLS) Authentication**: All edge IoT devices connecting to the MQTT/HTTP gateway MUST authenticate using hardware-stored X.509 client certificates.
-2. **Decouple Broker from Database**: Never write directly to relational databases inside MQTT message handlers. Bridge MQTT messages into Kafka/RabbitMQ partitions.
-3. **Protobuf Payloads Over Raw JSON**: Cellular IoT devices must transmit structured binary Protocol Buffers to minimize data costs and latency.
+1. **Mutual TLS (mTLS) Authentication**: Use per-device authenticated identity appropriate to the supported platform; prefer hardware-protected mTLS where available, and document supported provisioning/rotation/revocation and compensating controls where hardware storage is unavailable.
+2. **Decouple Broker from Database**: Keep ingestion bounded and recoverable. Select direct bounded writes, a durable queue or Kafka/RabbitMQ from throughput, loss tolerance and operating requirements; do not add infrastructure without an observed need.
+3. **Protobuf Payloads Over Raw JSON**: Choose Protobuf/CBOR/JSON from measured bandwidth, CPU, evolution and interoperability needs; pin schema/codec versions and maintain backward-compatible decoding.
 4. **Device Twin (Desired vs Reported State)**: Control commands must update the "desired" twin state in the cloud; the device confirms updates by publishing its "reported" state.
 5. **Immutable Remote Override Audit Logs**: Critical commands (such as remote engine killswitches or solenoid locks) MUST be written to an immutable audit ledger before transmission.
 
@@ -156,3 +98,13 @@ interface DeviceTwin {
   version: number;
 }
 ```
+
+## Identity, event and command lifecycle
+
+Bind authenticated device identity to tenant/device topic authorization for BOTH publish and subscribe; a valid certificate alone is insufficient. Provision unique identities, rotate before expiry, support revocation/decommissioning and audit lifecycle changes without logging private keys. Verify broker ACL wildcard behavior, retained-message permissions and session takeover behavior.
+
+Telemetry envelopes include tenant/device identity, stable event ID or sequence/boot epoch, event time, ingest time, schema version and payload bounds. Use tenant-aware storage keys/indexes, deduplication and an explicit late/out-of-order/clock-skew policy. Specify acknowledgement/commit ordering, bounded buffer/backpressure, DLQ retention and replay rules; transport QoS does not by itself provide exactly-once database effects. Schema changes and compression syntax depend on the deployed database/version; example SQL is not a universal migration.
+
+Twin updates use scoped versions/ETags and optimistic concurrency. Commands include authorized tenant/device/action, command ID/idempotency key, issue/expiry time, expected state/version and correlation ID. Device reports acceptance/execution/rejection with observed state; cloud reconciles bounded retries and stale acknowledgements. Reject expired/replayed commands and conflicting stale writes, and define offline desired-state behavior deliberately. Critical physical actions also require independent local interlocks, safe-state policy and suitable human/device authorization; an immutable log is evidence, not a safety mechanism.
+
+Exercise cross-tenant publish/subscribe, credential expiry/revocation, duplicate/out-of-order telemetry, conflicting twins, expired/replayed commands, DB/broker outages, queue overflow and restart replay in disposable environments. Record actual persisted side effects and recovery latency against a declared budget. Staged OTA promotion requires health/error criteria, abort/recovery thresholds and compatible signed device firmware; the historical 5%/25% illustration is not a deployment policy.

@@ -3,73 +3,15 @@ name: ultimate-hardware-design-workflow
 description: Master workflow for schematic entry, high-speed PCB routing, signal integrity, and manufacturing assembly.
 ---
 
-<!-- INVARIANT_START:ANTI_AI_SLOP -->
-## 🛑 HARDENED ANTI-AI SLOP MANDATE: NATURAL PROSE & BESPOKE DESIGN CRAFT
-All agent communications, architectural plans, reviews, code comments, and frontend implementations MUST strictly adhere to natural human engineering standards. Both corporate AI prose slop and cookie-cutter "vibecoded" UI slop are strictly banned.
+Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization. Research always requires all 15 prescribed provider inputs.
 
-### 1. Zero Prose & Grammar Slop (Natural Human Voice)
-- **Banned Lexicon:**
-  - *Empty Verbs:* delve, embark, foster, resonate, underscore, leverage, elevate, harness, navigate, empower, illuminate, facilitate, tailor, showcase, unveil.
-  - *Corporate Buzz-Adjectives:* testament, tapestry, beacon, cornerstone, robust, seamless, pivotal, crucial, paramount, cutting-edge, vibrant, bespoke, game-changer, journey, realm, landscape, holistic, comprehensive, multifaceted, versatile, transformative.
-  - *Formulaic Transitions:* furthermore, moreover, in conclusion, it is worth noting, at the end of the day, without further ado, needless to say.
-- **Banned Syntactical Patterns:**
-  - **Zero Sycophancy / Pleasantries:** NEVER start responses with "Certainly!", "Great question!", "I'd be happy to help!", "Awesome!", or "Let's dive in!".
-  - **Zero Summary Outros:** NEVER end answers with a repetitive paragraph restating earlier points using generic corporate filler.
-  - **Zero Formulaic "Rule-of-Three" Bullets:** Do not default to 3-bullet lists where each bullet starts with a bold abstract noun followed by a colon and fluff.
-  - **Zero Hedging:** Do not write "You might want to potentially consider checking...". Write "Check X, or Y crashes."
-- **Natural Voice Standard:** Speak like a systems developer in terminal, Slack, or GitHub issues: blunt, concise, precise, pragmatic. Code and runnable shell commands come first.
-
-### 2. Zero Visual & UI/UX Design Slop (Bespoke Engineering Craft)
-- **Banned Color Clichés:**
-  - BAN default AI Blue-to-Indigo/Purple gradients (`bg-gradient-to-r from-blue-600 to-indigo-700` or violet hues).
-  - BAN colored ambient glowing shadows (`box-shadow` with >= 24px blur matching accent color).
-  - BAN washed-out low-contrast gray text (`text-gray-400` / `text-gray-500` failing WCAG AA 4.5:1).
-  - BAN gradient headline text (`bg-clip-text text-transparent bg-gradient-to-r` on H1s).
-- **Banned Layout & Component Tropes:**
-  - BAN cookie-cutter Bento Grid walls filled with fake stats, empty cards, or generic Lucide icon spam.
-  - BAN centered hero boilerplate with a floating pill above H1 (`"✨ New: [Feature]"`).
-  - BAN unmodified shadcn/ui defaults (`--radius: 0.5rem`, stock button/card exports without brand styling).
-  - BAN tinted circular icon containers (`bg-primary/10 text-primary p-3 rounded-full`).
-  - BAN static terminal window mockups with red/yellow/green dots in the hero.
-  - BAN raw emojis used as icons (`✨`, `🚀`, `⚡`, `🔒`) in production UI markup.
-- **Bespoke Design Standard:**
-  - Commit to an intentional aesthetic: brutalist, high-density telemetry, refined editorial, or precision dark-mode.
-  - High information density (Linear/Stripe standard), micro-borders (`rgba(255,255,255,0.08)`), and tabular numerals (`tabular-nums`).
-  - Every component must implement all 7 states: `Default, Hover, Focus-Visible, Active, Loading (Skeleton), Disabled, Error`.
-<!-- INVARIANT_END:ANTI_AI_SLOP -->
-
-<!-- INVARIANT_START:GRAPHIFY -->
-## 🧠 HARDENED GRAPHIFY KNOWLEDGE ENGINE GATE (AST-FIRST CODE INTELLIGENCE)
-Whenever `graphify-out/graph.json` exists in the repository root, agents MUST interact with the AST knowledge graph. Blind directory traversal and unconstrained multi-file context dumping are strictly banned.
-
-1. **Zero-Blind-Grep Invariant:**
-   - Running unstructured grep (`grep -r`, `Select-String *.*`, `ripgrep` across entire project) to locate callers or symbol references is FORBIDDEN when `graph.json` is present.
-   - Agents must query Graphify first: `graphify query "<symbol_or_concept>"`.
-
-2. **Blast Radius Gate (`graphify explain "<symbol>"`):**
-   - Before modifying, refactoring, or deleting any shared interface, model, route, or function, the agent MUST run `graphify explain "<symbol>"`.
-   - If incoming edge count > 0, every caller surfaced by Graphify MUST be explicitly enumerated in the task DAG or implementation plan before touching code.
-
-3. **Call-Path Fault Tracing (`graphify path "<source>" "<target>" --undirected`):**
-   - When debugging multi-hop failures (e.g. UI -> API -> DB), the agent must run `graphify path` to map the exact shortest call chain between entry point and crash sink before reading source code.
-
-4. **Leiden Community Worktree Partitioning:**
-   - When spawning parallel subagents in `ultimate-multi-agent-invoker`, tasks MUST be partitioned by Leiden community clusters (from `graphify-out/graph.json`).
-   - If two tasks share a God Node (identified in `graphify-out/GRAPH_REPORT.md`), they CANNOT run concurrently without explicit file-level mutex locks.
-
-5. **Subagent Context Clamp (70% Token Reduction):**
-   - Never dump entire raw source files into subagent prompts. Inject only the scoped subgraph from `graphify query "<task_scope>"`.
-
-6. **Post-Commit AST Synchronization (`graphify update .`):**
-   - After completing code modifications or merging Git worktrees, the agent MUST run `graphify update .` (local AST delta update, 2s runtime, 0 API tokens) to maintain graph synchronization.
-<!-- INVARIANT_END:GRAPHIFY -->
 
 # Ultimate Electronics Hardware Design Workflow
 ## The Hardware Architect's Bible: Hardcore Rules for Automotive & Telematics PCBs
 
 This workflow defines the absolute standards, constraints, and pipelines for designing, simulating, and routing high-reliability electronic hardware. It is written for automotive, industrial, and telematics hardware (such as vehicle tracking devices, fuel level monitors, OBD-II interfaces, and video telematics modules) that must withstand harsh electrical noise, thermal swings, and mechanical vibrations.
 
-It is designed in perfect harmony with the [ultimate-embedded-programming-workflow](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/ultimate-embedded-programming-workflow/SKILL.md). Every hardware choice is mapped directly to a corresponding firmware control constraint.
+It is designed in perfect harmony with the `ultimate-embedded-programming-workflow`. Every hardware choice is mapped directly to a corresponding firmware control constraint.
 
 ---
 
@@ -82,8 +24,8 @@ It is designed in perfect harmony with the [ultimate-embedded-programming-workfl
 5.  **Thou Shalt Cut Out Grounds Under RF Pads:** Remove the ground plane directly below the passive component pads (capacitors/inductors) in the RF matching network to prevent parasitic capacitance from shifting the resonance frequency.
 6.  **Thou Shalt Isolate Cellular and GNSS Antennas:** Place the GNSS antenna and cellular antenna as far apart as possible (minimum 10cm or >20dB isolation) to prevent cellular transmit pulses from desensitizing the GNSS Low Noise Amplifier (LNA).
 7.  **Thou Shalt Clamp External Sensor Lines (ESD Protection):** Wires running along the chassis (like fuel probes or ignition lines) act as antennas for ESD and EMF. Every external input pin on the connector must have a TVS diode (e.g., PESD12VS2UT) and an RC low-pass filter.
-8.  **Thou Shalt Use Split CAN Termination:** When routing CAN bus interfaces (OBD-II / J1939), terminate with a split configuration (two 60-ohm resistors in series with a 4.7nF capacitor to ground from the center tap) to filter out high-frequency common-mode noise.
-9.  **Thou Shalt Dedicate Solid Ground Planes:** Use a minimum of a 4-layer stackup: Signal/Power/Ground/Signal. The Ground layer under RF and high-speed MCU signals must be unbroken.
+8.  **Thou Shalt Use Split CAN Termination:** Determine whether the node is a bus endpoint, stub or pre-terminated host. Only endpoints needing termination receive it; do not add a third termination to a vehicle diagnostic stub. Where appropriate, use a validated split configuration (two 60-ohm resistors in series with a 4.7nF capacitor to ground from the center tap) to filter out high-frequency common-mode noise.
+9.  **Thou Shalt Dedicate Solid Ground Planes:** Select a stackup with a continuous adjacent reference plane for RF/high-speed traces (for example Signal/Ground/Power/Signal). Verify actual fabricator stackup, dielectric/impedance and return paths; layer count alone does not establish integrity.
 10. **Thou Shalt Validate Thermal Vias:** Place thermal vias directly under the exposed pads of power regulators, thermal-relief them, and connect them to solid copper planes on inner and bottom layers to dissipate heat without heatsinks.
 
 ---
@@ -163,7 +105,7 @@ To implement the firmware's low-power modes, the hardware must be able to cut po
           │    Gate controlled by MCU GPIO
           ▼ Emitter / Source (GND)
     ```
-*   When the MCU pin goes LOW, the NMOS turns off, the PMOS gate is pulled to VCC_SYS, and the cellular module is completely powered off (drawing 0mA).
+*   When the MCU pin goes LOW, the NMOS turns off, the PMOS gate is pulled to VCC_SYS, and the cellular module is completely powered off (meeting a measured leakage budget, including GPIO back-power paths).
 
 ---
 
@@ -222,9 +164,9 @@ A telematics tracker must operate even if the main car battery is cut. Integrate
 *   **Thermally Safe Battery Charging:**
     *   Deploy a dedicated charger IC (e.g., MCP73833) with a thermal NTC thermistor input.
     *   Locate the thermistor directly against the battery pouch.
-    *   Configure the IC to cut charging immediately if the battery temperature exceeds 45°C (to prevent swelling and thermal runaway inside closed vehicle dashboards).
+    *   For the selected cell/chemistry, configure hot AND cold charging cutoffs with hysteresis and tolerances from its datasheet; 45°C is only an example Li-ion hot limit (to prevent swelling and thermal runaway inside closed vehicle dashboards).
 *   **Over-discharge & Over-charge Protection:**
-    *   Add a protection IC (e.g., AP9101C) in series with the cell to cut off current if the battery falls below 2.8V (over-discharge) or exceeds 4.25V (over-charge).
+    *   Choose a protection IC variant and thresholds from the exact cell chemistry/datasheet and charger tolerances. The illustrative 2.8V/4.25V Li-ion values are not LiFePO4 limits; do not pair a LiFePO4 cell with a 4.2V Li-ion charger/protection recipe.
 
 ---
 
@@ -303,7 +245,7 @@ Every peripheral schematic connection must adhere to these hardware integration 
 
 Automotive tracking and telemetry modules are frequently exposed to moisture, road salt, dust, and temperature-driven pressure fluctuations:
 
-*   **Silicone Gasket Compression:** Use a molded silicone gasket around the enclosure parting line. Ensure a minimum compression of 30% to prevent ingress.
+*   **Silicone Gasket Compression:** Use a molded silicone gasket around the enclosure parting line. Use the gasket vendor's compression range, tolerance stack and assembly process, then test the claimed ingress class; a generic 30% value does not prove sealing.
 *   **Potting Compounds:** For external sensors (e.g., fuel probe caps), pot the entire terminal cavity with a polyurethane or epoxy potting compound to prevent moisture intrusion.
 *   **Pressure Equalization Venting:**
     *   Thermal cycles inside closed boxes cause internal pressure changes. This pulls moisture in through wire interfaces.
@@ -345,7 +287,7 @@ When the AI agent generates schematics, layout recommendations, or circuit topol
 
 1.  **Transient Protection Mandate:** Every DC power input schematic must include transient clamping (TVS diode) and reverse polarity protection (PMOS or Schottky).
 2.  **Passive Gating:** Always provide NMOS/PMOS load switches for cellular modems and active sensor arrays to enable firmware-controlled low-power cycling.
-3.  **Split CAN Termination:** Standard CAN transceiver layouts must use split termination (60-ohm x2 + capacitor to GND) rather than a single 120-ohm resistor.
+3.  **Split CAN Termination:** Place termination only where required by actual CAN topology and existing terminations; choose split or single termination based on transceiver guidance and measured EMC/edge behavior.
 4.  **No Single Ground Vias for Power:** High-current paths (such as Buck converters and cellular modems) must use multiple stitched vias to Ground to minimize trace impedance.
 5.  **ESD Clamps at Boundaries:** All external communication lines (RS485, digital input pins) must have TVS protection placed directly adjacent to the connector footprint.
 
@@ -357,38 +299,48 @@ This section documents the execution pipeline and indexes all specialized hardwa
 
 ### Phase 1: Schematic Entry, BOM Optimization, & Connector Rigidity
 *   **Active Sub-skills:**
-    *   [hw-design-schematic-capture](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/hw-design-schematic-capture/SKILL.md) — Multi-sheet hierarchical schematic configurations and footprint mappings.
-    *   [hw-design-component-sourcing](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/hw-design-component-sourcing/SKILL.md) — Lifecycles of parts, alternative vendor mapping, and cost optimizations.
-    *   [hw-design-connector-selection](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/hw-design-connector-selection/SKILL.md) — Pitch constraints, current tolerances, locking tabs, and IP-grade waterproofing specs.
-    *   [iot-hw-bom-optimization](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/iot-hw-bom-optimization/SKILL.md) — Standardizing passive component packages (0603/0402) to maximize manufacturing efficiencies.
-    *   [iot-hw-schematic-design](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/iot-hw-schematic-design/SKILL.md) — Strapping pin configurations, ESD array alignments, and MCU power pin decoupling.
+    *   `hw-design-schematic-capture` — Multi-sheet hierarchical schematic configurations and footprint mappings.
+    *   `hw-design-component-sourcing` — Lifecycles of parts, alternative vendor mapping, and cost optimizations.
+    *   `hw-design-connector-selection` — Pitch constraints, current tolerances, locking tabs, and IP-grade waterproofing specs.
+    *   `iot-hw-bom-optimization` — Standardizing passive component packages (0603/0402) to maximize manufacturing efficiencies.
+    *   `iot-hw-schematic-design` — Strapping pin configurations, ESD array alignments, and MCU power pin decoupling.
 *   **Core Standards:** Check footprints against physical data sheets. Generate Netlists and resolve all open floating nodes before proceeding.
 
 ### Phase 2: Power Rails, Battery Charging, & SPICE Analogs
 *   **Active Sub-skills:**
-    *   [hw-design-simulation-spice](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/hw-design-simulation-spice/SKILL.md) — Running SPICE simulations for transient clamping circuits and input LC filters.
-    *   [hw-design-power-integrity](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/hw-design-power-integrity/SKILL.md) — Voltage regulator routing, plane allocations, and decoupling loop paths.
-    *   [hw-design-battery-charging](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/hw-design-battery-charging/SKILL.md) — Battery charger configuration, zener clamping, and thermal NTC cut-off lines.
-*   **Core Standards:** Run simulations for inputs up to 100V. Assert buck converter stability under load transitions from 100mA to 2A.
+    *   `hw-design-simulation-spice` — Running SPICE simulations for transient clamping circuits and input LC filters.
+    *   `hw-design-power-integrity` — Voltage regulator routing, plane allocations, and decoupling loop paths.
+    *   `hw-design-battery-charging` — Battery charger configuration, zener clamping, and thermal NTC cut-off lines.
+*   **Core Standards:** Simulate the specified transient waveform/source impedance/energy and selected BOM ratings; verify regulator stability across the actual load range. 100V and 100mA→2A are examples requiring project qualification.
 
 ### Phase 3: PCB Layout, Impedance Matching, & Signal Integrity
 *   **Active Sub-skills:**
-    *   [hw-design-pcb-routing](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/hw-design-pcb-routing/SKILL.md) — Layer stackups, trace parameters, differential width guides, and ground returns.
-    *   [hw-design-signal-integrity](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/hw-design-signal-integrity/SKILL.md) — Length matching CAN high/low lines, preventing crosstalk, and routing loop area restrictions.
-    *   [hw-design-rf-antenna-matching](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/hw-design-rf-antenna-matching/SKILL.md) — Coplanar waveguide matching, SAW filter designs, and Pi-network component placements.
-    *   [iot-hw-pcb-routing](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/iot-hw-pcb-routing/SKILL.md) — Isolation of RF antennas, routing high-current GSM bursts, and shielding MCU clock oscillators.
+    *   `hw-design-pcb-routing` — Layer stackups, trace parameters, differential width guides, and ground returns.
+    *   `hw-design-signal-integrity` — Length matching CAN high/low lines, preventing crosstalk, and routing loop area restrictions.
+    *   `hw-design-rf-antenna-matching` — Coplanar waveguide matching, SAW filter designs, and Pi-network component placements.
+    *   `iot-hw-pcb-routing` — Isolation of RF antennas, routing high-current GSM bursts, and shielding MCU clock oscillators.
 *   **Core Standards:** Route 50-ohm RF traces on Layer 1 with ground reference plane on Layer 2. Ensure CAN trace skew is under 0.15mm.
 
 ### Phase 4: Mechanical Outlines & Thermal Simulations
 *   **Sub-skills:**
-    *   [hw-design-mechanical-cad](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/hw-design-mechanical-cad/SKILL.md) — Exporting 3D STEP models to CAD to check clearances inside the vehicle OBD-II housings.
-    *   [hw-design-thermal-sim](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/hw-design-thermal-sim/SKILL.md) — Thermal via layout arrays and passive PCB heatsink calculations.
+    *   `hw-design-mechanical-cad` — Exporting 3D STEP models to CAD to check clearances inside the vehicle OBD-II housings.
+    *   `hw-design-thermal-sim` — Thermal via layout arrays and passive PCB heatsink calculations.
 *   **Core Standards:** Position thermal vias directly under the exposed pads of power regulators, thermal-relief them, and connect them to solid copper planes on inner and bottom layers.
 
 ### Phase 5: DFM Checking, Factory QA Testbeds, & EMC Verification
 *   **Sub-skills:**
-    *   [hw-design-manufacturing-dfm](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/hw-design-manufacturing-dfm/SKILL.md) — Fiducials, panelization structures, component orientations, and pick-and-place clearances.
-    *   [hw-design-emc-compliance](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/hw-design-emc-compliance/SKILL.md) — Shielding, common-mode chokes, ground loop avoidance, and automotive CISPR-25 emissions limits.
-    *   [hw-design-physical-prototyping](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/hw-design-physical-prototyping/SKILL.md) — Manual solder stencils, reflow profiles, and rework guidelines.
-    *   [hw-design-testpoint-bed](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/hw-design-testpoint-bed/SKILL.md) — Factory bed-of-nails test fixtures, test point locations, and automated software diagnostics checks.
+    *   `hw-design-manufacturing-dfm` — Fiducials, panelization structures, component orientations, and pick-and-place clearances.
+    *   `hw-design-emc-compliance` — Shielding, common-mode chokes, ground loop avoidance, and automotive CISPR-25 emissions limits.
+    *   `hw-design-physical-prototyping` — Manual solder stencils, reflow profiles, and rework guidelines.
+    *   `hw-design-testpoint-bed` — Factory bed-of-nails test fixtures, test point locations, and automated software diagnostics checks.
 *   **Core Standards:** Perform board clearance checks. Verify all test pads are on the bottom side of the board and exceed 1.0mm in diameter to ensure high probing yield.
+
+## Electrical requirements, BOM traceability and release gates
+
+Start with exact cell chemistry/part, power source and vehicle class, relevant standard edition/test severity, operating/charging temperature, enclosure, bus topology, dimensions and production constraints. Components and numeric values in this workflow are examples requiring verification against current manufacturer datasheets, absolute maxima, derating, pulse energy/source impedance, SOA and tolerances. MCP73833 is a Li-ion/Li-polymer controller family, not a general LiFePO4 prescription. Map cell→charger→protection variant→NTC limits explicitly; include cold-charge inhibition, load sharing and thermal/current derating.
+
+Review fuse/wire/current ratings, reverse/overvoltage/cold crank paths, inrush, regulator stability, TVS worst-case clamp and pulse capability, and load-switch safe state. A nominal 100V transient simulation without source impedance/energy does not establish automotive immunity. Confirm ISO/EMC test definitions against the applicable edition rather than treating historical pulse numbers as universal.
+
+Verify RF ground cutouts and matching networks against the selected module/reference layout, continuous return paths and stackup solver; do not blindly cut ground under every RF pad. Determine CAN termination from endpoint/stub placement and existing vehicle resistance. Thermal vias, stencil/reflow profile, test-pad size, harness colors/gauge and enclosure seals follow part/fabricator/assembly requirements rather than universal fixed values.
+
+Before release record ERC/DRC/BOM/footprint checks, rating/margin calculations, simulations, prototype power/thermal/EMC/signal measurements and independent qualified review as required by product risk. Fixtures must reject incompatible cell/charger combinations, extra CAN termination and broken RF return paths. Host checks and example calculations are not physical qualification evidence; unavailable bench/compliance checks remain explicit release limitations.

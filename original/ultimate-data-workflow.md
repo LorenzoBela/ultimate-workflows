@@ -1,159 +1,85 @@
 ---
 name: ultimate-data-workflow
 description: >
-  Flawless 10/10 Master Workflow for data pipeline engineering, streaming ETL pipelines,
+  Workflow for data pipeline engineering, streaming ETL pipelines,
   backpressure flow control, transactional batch COPY upserts, and Dead-Letter Queue (DLQ) error recovery.
   Triggers on "ultimate data workflow", "/ultimate-data-workflow", or when designing
   batch pipelines, parser scripts, database aggregations, or data transformations.
 argument-hint: "[etl-pipeline | parser-script | database-aggregation | --stream | --batch | --dlq]"
 ---
 
-<!-- INVARIANT_START:ANTI_AI_SLOP -->
-## 🛑 HARDENED ANTI-AI SLOP MANDATE: NATURAL PROSE & BESPOKE DESIGN CRAFT
-All agent communications, architectural plans, reviews, code comments, and frontend implementations MUST strictly adhere to natural human engineering standards. Both corporate AI prose slop and cookie-cutter "vibecoded" UI slop are strictly banned.
+Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization. Research always requires all 15 prescribed provider inputs.
 
-### 1. Zero Prose & Grammar Slop (Natural Human Voice)
-- **Banned Lexicon:**
-  - *Empty Verbs:* delve, embark, foster, resonate, underscore, leverage, elevate, harness, navigate, empower, illuminate, facilitate, tailor, showcase, unveil.
-  - *Corporate Buzz-Adjectives:* testament, tapestry, beacon, cornerstone, robust, seamless, pivotal, crucial, paramount, cutting-edge, vibrant, bespoke, game-changer, journey, realm, landscape, holistic, comprehensive, multifaceted, versatile, transformative.
-  - *Formulaic Transitions:* furthermore, moreover, in conclusion, it is worth noting, at the end of the day, without further ado, needless to say.
-- **Banned Syntactical Patterns:**
-  - **Zero Sycophancy / Pleasantries:** NEVER start responses with "Certainly!", "Great question!", "I'd be happy to help!", "Awesome!", or "Let's dive in!".
-  - **Zero Summary Outros:** NEVER end answers with a repetitive paragraph restating earlier points using generic corporate filler.
-  - **Zero Formulaic "Rule-of-Three" Bullets:** Do not default to 3-bullet lists where each bullet starts with a bold abstract noun followed by a colon and fluff.
-  - **Zero Hedging:** Do not write "You might want to potentially consider checking...". Write "Check X, or Y crashes."
-- **Natural Voice Standard:** Speak like a systems developer in terminal, Slack, or GitHub issues: blunt, concise, precise, pragmatic. Code and runnable shell commands come first.
 
-### 2. Zero Visual & UI/UX Design Slop (Bespoke Engineering Craft)
-- **Banned Color Clichés:**
-  - BAN default AI Blue-to-Indigo/Purple gradients (`bg-gradient-to-r from-blue-600 to-indigo-700` or violet hues).
-  - BAN colored ambient glowing shadows (`box-shadow` with >= 24px blur matching accent color).
-  - BAN washed-out low-contrast gray text (`text-gray-400` / `text-gray-500` failing WCAG AA 4.5:1).
-  - BAN gradient headline text (`bg-clip-text text-transparent bg-gradient-to-r` on H1s).
-- **Banned Layout & Component Tropes:**
-  - BAN cookie-cutter Bento Grid walls filled with fake stats, empty cards, or generic Lucide icon spam.
-  - BAN centered hero boilerplate with a floating pill above H1 (`"✨ New: [Feature]"`).
-  - BAN unmodified shadcn/ui defaults (`--radius: 0.5rem`, stock button/card exports without brand styling).
-  - BAN tinted circular icon containers (`bg-primary/10 text-primary p-3 rounded-full`).
-  - BAN static terminal window mockups with red/yellow/green dots in the hero.
-  - BAN raw emojis used as icons (`✨`, `🚀`, `⚡`, `🔒`) in production UI markup.
-- **Bespoke Design Standard:**
-  - Commit to an intentional aesthetic: brutalist, high-density telemetry, refined editorial, or precision dark-mode.
-  - High information density (Linear/Stripe standard), micro-borders (`rgba(255,255,255,0.08)`), and tabular numerals (`tabular-nums`).
-  - Every component must implement all 7 states: `Default, Hover, Focus-Visible, Active, Loading (Skeleton), Disabled, Error`.
-<!-- INVARIANT_END:ANTI_AI_SLOP -->
+# Ultimate Data Pipeline and ETL Workflow
 
-<!-- INVARIANT_START:GRAPHIFY -->
-## 🧠 HARDENED GRAPHIFY KNOWLEDGE ENGINE GATE (AST-FIRST CODE INTELLIGENCE)
-Whenever `graphify-out/graph.json` exists in the repository root, agents MUST interact with the AST knowledge graph. Blind directory traversal and unconstrained multi-file context dumping are strictly banned.
+## Inputs and invariants
 
-1. **Zero-Blind-Grep Invariant:**
-   - Running unstructured grep (`grep -r`, `Select-String *.*`, `ripgrep` across entire project) to locate callers or symbol references is FORBIDDEN when `graph.json` is present.
-   - Agents must query Graphify first: `graphify query "<symbol_or_concept>"`.
+Record source format/schema/version, source identity, expected size, maximum record bytes, destination constraints, ordering requirements, privacy, throughput target and checkpoint/replay semantics. Preserve chosen storage/transport. Establish a representative baseline and small sample before a full import.
 
-2. **Blast Radius Gate (`graphify explain "<symbol>"`):**
-   - Before modifying, refactoring, or deleting any shared interface, model, route, or function, the agent MUST run `graphify explain "<symbol>"`.
-   - If incoming edge count > 0, every caller surfaced by Graphify MUST be explicitly enumerated in the task DAG or implementation plan before touching code.
+Use bounded streaming readers. A row-count cap alone does not bound memory: configure parser record/field byte limits and downstream batch bytes, concurrency and queue length. Reject or quarantine oversized input before materializing it where the parser supports this. Backpressure must reach the source.
 
-3. **Call-Path Fault Tracing (`graphify path "<source>" "<target>" --undirected`):**
-   - When debugging multi-hop failures (e.g. UI -> API -> DB), the agent must run `graphify path` to map the exact shortest call chain between entry point and crash sink before reading source code.
+## Executable batch sink example
 
-4. **Leiden Community Worktree Partitioning:**
-   - When spawning parallel subagents in `ultimate-multi-agent-invoker`, tasks MUST be partitioned by Leiden community clusters (from `graphify-out/graph.json`).
-   - If two tasks share a God Node (identified in `graphify-out/GRAPH_REPORT.md`), they CANNOT run concurrently without explicit file-level mutex locks.
+JavaScript for Node streams. Input is already parsed records. Configure the upstream parser's byte limit separately. The sink checks serialized record/batch size, forwards rejected flushes to callbacks exactly once, and clears a batch only after successful flush. `flushBatch` must implement the transaction/checkpoint contract below. This sink's JSON sizing is appropriate for JSON-compatible records; use the actual wire encoding for other inputs.
 
-5. **Subagent Context Clamp (70% Token Reduction):**
-   - Never dump entire raw source files into subagent prompts. Inject only the scoped subgraph from `graphify query "<task_scope>"`.
+```javascript
+import { Writable } from 'node:stream';
 
-6. **Post-Commit AST Synchronization (`graphify update .`):**
-   - After completing code modifications or merging Git worktrees, the agent MUST run `graphify update .` (local AST delta update, 2s runtime, 0 API tokens) to maintain graph synchronization.
-<!-- INVARIANT_END:GRAPHIFY -->
-
-# Ultimate Data Pipeline & ETL Workflow (10/10 Master Engine)
-
-This workflow drives streaming data ingestion, bounded memory buffering, backpressure flow control, schema validation, transaction-safe bulk loading (PostgreSQL `COPY` / batch upsert), and Dead-Letter Queue (DLQ) anomaly isolation.
-
-```
-                                      [RAW SOURCE STREAM / BATCH DATA]
-                                                     │
-                          ┌──────────────────────────┴──────────────────────────┐
-                          ▼                                                     ▼
-              [PHASE 1: STREAMING EXTRACTION (E)]                   [PHASE 2: SCHEMA VALIDATION & CLEAN]
-              ├─ Node.js / Python Reactive Streams                  ├─ Zod / Pydantic Row Validation
-              ├─ Bounded Chunk Buffering (10k rows)                 ├─ Outlier Filtering & Normalization
-              └─ Backpressure Ingestion Throttling                  └─ ISO-8601 UTC & Cents Conversion
-                          │
-                          ▼
-        ┌─────────────────────────────────────────────────────────────────────────────┐
-        │                 PHASE 3: DETERMINISTIC BUSINESS TRANSFORMATION (T)          │
-        │  • Pure Functions • Idempotent Key Generation • Vector Embeddings (Upstash) │
-        └──────────────────────────────────────┬──────────────────────────────────────┘
-                                               ▼
-                                  [PHASE 4: TRANSACTIONAL BULK LOAD (L) & DLQ]
-                    ┌──────────────────────────┼──────────────────────────┐
-                    ▼                          ▼                          ▼
-            ┌──────────────┐           ┌──────────────┐           ┌──────────────┐
-            │ 🚀 PG COPY   │           │ 💾 DB TX     │           │ 📭 DEAD-LETT │
-            │ Batch Upsert │           │ All-or-None  │           │ DLQ QStash   │
-            └──────────────┘           └──────────────┘           └──────────────┘
-```
-
----
-
-## 🏛️ Iron Laws of Data Pipeline Engineering
-
-1. **Bounded Memory Invariant**: Never load entire datasets into memory. Use streaming readers (`stream.Transform`, Python generators) with fixed buffer limits ($\le 10,000$ records).
-2. **Backpressure Compliance**: Pipeline consumers must signal upstream producers to pause when ingestion queues reach high-water marks.
-3. **Pure & Deterministic Transformations**: Given identical input rows, transformation logic must produce bit-for-bit identical output rows.
-4. **Idempotent Loading via Upsert**: Bulk database insertions must utilize `ON CONFLICT (natural_key) DO UPDATE` to prevent duplicate record corruption.
-5. **Dead-Letter Queue (DLQ) Quarantine**: Malformed or unparseable records must be routed to a quarantine DLQ (QStash / Kafka DLQ) without crashing the primary pipeline execution.
-
----
-
-## 🔬 The 4-Phase Streaming ETL Pipeline
-
-### Phase 1: Streaming Extraction with Backpressure
-```typescript
-import { createReadStream } from 'fs';
-import { pipeline } from 'stream/promises';
-import { Transform } from 'stream';
-import csvParser from 'csv-parser';
-
-export async function processDataPipeline(filePath: string) {
-  let batch: any[] = [];
-  const BATCH_SIZE = 5000;
-
-  const transformer = new Transform({
+export function createBatchSink({ flushBatch, maxRows = 5000,
+  maxBytes = 4 * 1024 * 1024, maxRecordBytes = 256 * 1024 }) {
+  if (!Number.isInteger(maxRows) || maxRows < 1 ||
+      !(maxBytes > 0 && maxRecordBytes > 0 && maxRecordBytes <= maxBytes)) {
+    throw new RangeError('Invalid batch limits');
+  }
+  let rows = [];
+  let bytes = 0;
+  async function flush() {
+    if (!rows.length) return;
+    await flushBatch(rows);
+    rows = [];
+    bytes = 0;
+  }
+  return new Writable({
     objectMode: true,
-    async transform(chunk, encoding, callback) {
-      batch.push(chunk);
-      if (batch.length >= BATCH_SIZE) {
-        await flushBatch(batch);
-        batch = [];
-      }
-      callback();
+    highWaterMark: 1,
+    write(row, encoding, callback) {
+      (async () => {
+        const json = JSON.stringify(row);
+        if (json === undefined) throw new TypeError('Record must be JSON-compatible');
+        const size = Buffer.byteLength(json);
+        if (size > maxRecordBytes) throw new RangeError('Record too large');
+        if (rows.length && bytes + size > maxBytes) await flush();
+        rows.push(row);
+        bytes += size;
+        if (rows.length >= maxRows || bytes >= maxBytes) await flush();
+      })().then(() => callback(), (error) => callback(error));
     },
-    async flush(callback) {
-      if (batch.length > 0) await flushBatch(batch);
-      callback();
-    }
+    final(callback) {
+      flush().then(() => callback(), (error) => callback(error));
+    },
   });
-
-  await pipeline(createReadStream(filePath), csvParser(), transformer);
 }
 ```
 
-### Phase 2: Transactional Batch Upsert
-```sql
-INSERT INTO transactions (id, user_id, amount_in_cents, status, created_at)
-VALUES 
-  ($1, $2, $3, $4, $5),
-  ($6, $7, $8, $9, $10)
-ON CONFLICT (id) 
-DO UPDATE SET 
-  status = EXCLUDED.status,
-  updated_at = now();
-```
+Use `await pipeline(source, parser, sink, {signal})` from `node:stream/promises` on a supported runtime. Parser and database adapters must support bounded I/O/cancellation. Do not claim constant process memory solely from batch size: object overhead, upstream buffering and individual record allocation also matter.
 
-### Phase 3: Dead-Letter Queue (DLQ) Logging
-- Route rows failing schema validation directly to an isolated table `pipeline_quarantine_dlq` containing `raw_payload`, `error_reason`, `source_file`, and `quarantined_at`.
+## Transform and load contract
+
+1. Validate fields against versioned schema. Normalize timestamps with a documented source timezone; preserve raw values/provenance when necessary. Define decimal precision, currency scale, rounding and overflow handling; do not assume every currency is cents.
+2. Keep transformations deterministic or version external enrichment/model outputs with source data. Define deduplication natural key, source revision and conflict rules. A blind upsert can replay an old state over newer data.
+3. For PostgreSQL, consider COPY into staging then validated merge; direct upsert is appropriate for smaller batches. Include keys, relevant columns and source revision guard; avoid changing business timestamps on identical replay.
+4. Commit the batch mutation and checkpoint atomically when they share a database. For external queues, acknowledge only after durable state and use idempotent replay. State the at-least-once/ordering assumptions; do not promise exactly-once across independent systems.
+5. Handle final partial batch, duplicate keys within a batch, transaction timeout/deadlock, partial source read and schema drift. Bound retries and stop on infrastructure/auth failures rather than sending everything to DLQ.
+
+## Quarantine and recovery
+
+DLQ entries need run/source/offset ID, schema/transform version, safe payload reference, reason, attempt count and timestamps. Restrict access, redact secrets and set retention. Define maximum rejected proportion/count; a broken schema must not silently quarantine an entire import. Replay through the same validation/idempotency rules, recording disposition.
+
+Persist run identity, source checksum/version, checkpoint and processed/loaded/quarantined counts. Resume only if source and transform identity match; otherwise explicitly start/reconcile a new run. Use staging/swap, compensating operations or a tested restore according to data-loss tolerance.
+
+## Evidence
+
+Inject flush rejection and require pipeline rejection without hanging/unhandled rejection. Verify empty source, last partial batch, oversized record, malformed row, DB outage, crash after commit before acknowledgement, replay and out-of-order revisions. Record peak memory under representative input rather than guaranteeing it from row count. No full production import is a test. Return actual row reconciliation, checks/results, checkpoint and remaining recovery limitations.
+
+Source: [Node stream implementer completion/error contract](https://nodejs.org/api/stream.html#transform_transformchunk-encoding-callback).

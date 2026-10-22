@@ -1,139 +1,48 @@
 ---
 name: ultimate-refactoring-workflow
 description: >
-  Flawless 10/10 Master Workflow for refactoring, debt eradication, Strangler Fig migrations,
+  Workflow for refactoring, debt eradication, Strangler Fig migrations,
   Mikado dependency graphs, Characterization / Golden Master safety harnesses, and AST code simplification.
   Triggers on "ultimate refactoring workflow", "/ultimate-refactoring-workflow", or when
   refactoring or restructuring code.
 argument-hint: "[target-component | refactor-goal | --strangler | --mikado | --golden-master]"
 ---
 
-<!-- INVARIANT_START:ANTI_AI_SLOP -->
-## 🛑 HARDENED ANTI-AI SLOP MANDATE: NATURAL PROSE & BESPOKE DESIGN CRAFT
-All agent communications, architectural plans, reviews, code comments, and frontend implementations MUST strictly adhere to natural human engineering standards. Both corporate AI prose slop and cookie-cutter "vibecoded" UI slop are strictly banned.
+Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization. Research always requires all 15 prescribed provider inputs.
 
-### 1. Zero Prose & Grammar Slop (Natural Human Voice)
-- **Banned Lexicon:**
-  - *Empty Verbs:* delve, embark, foster, resonate, underscore, leverage, elevate, harness, navigate, empower, illuminate, facilitate, tailor, showcase, unveil.
-  - *Corporate Buzz-Adjectives:* testament, tapestry, beacon, cornerstone, robust, seamless, pivotal, crucial, paramount, cutting-edge, vibrant, bespoke, game-changer, journey, realm, landscape, holistic, comprehensive, multifaceted, versatile, transformative.
-  - *Formulaic Transitions:* furthermore, moreover, in conclusion, it is worth noting, at the end of the day, without further ado, needless to say.
-- **Banned Syntactical Patterns:**
-  - **Zero Sycophancy / Pleasantries:** NEVER start responses with "Certainly!", "Great question!", "I'd be happy to help!", "Awesome!", or "Let's dive in!".
-  - **Zero Summary Outros:** NEVER end answers with a repetitive paragraph restating earlier points using generic corporate filler.
-  - **Zero Formulaic "Rule-of-Three" Bullets:** Do not default to 3-bullet lists where each bullet starts with a bold abstract noun followed by a colon and fluff.
-  - **Zero Hedging:** Do not write "You might want to potentially consider checking...". Write "Check X, or Y crashes."
-- **Natural Voice Standard:** Speak like a systems developer in terminal, Slack, or GitHub issues: blunt, concise, precise, pragmatic. Code and runnable shell commands come first.
 
-### 2. Zero Visual & UI/UX Design Slop (Bespoke Engineering Craft)
-- **Banned Color Clichés:**
-  - BAN default AI Blue-to-Indigo/Purple gradients (`bg-gradient-to-r from-blue-600 to-indigo-700` or violet hues).
-  - BAN colored ambient glowing shadows (`box-shadow` with >= 24px blur matching accent color).
-  - BAN washed-out low-contrast gray text (`text-gray-400` / `text-gray-500` failing WCAG AA 4.5:1).
-  - BAN gradient headline text (`bg-clip-text text-transparent bg-gradient-to-r` on H1s).
-- **Banned Layout & Component Tropes:**
-  - BAN cookie-cutter Bento Grid walls filled with fake stats, empty cards, or generic Lucide icon spam.
-  - BAN centered hero boilerplate with a floating pill above H1 (`"✨ New: [Feature]"`).
-  - BAN unmodified shadcn/ui defaults (`--radius: 0.5rem`, stock button/card exports without brand styling).
-  - BAN tinted circular icon containers (`bg-primary/10 text-primary p-3 rounded-full`).
-  - BAN static terminal window mockups with red/yellow/green dots in the hero.
-  - BAN raw emojis used as icons (`✨`, `🚀`, `⚡`, `🔒`) in production UI markup.
-- **Bespoke Design Standard:**
-  - Commit to an intentional aesthetic: brutalist, high-density telemetry, refined editorial, or precision dark-mode.
-  - High information density (Linear/Stripe standard), micro-borders (`rgba(255,255,255,0.08)`), and tabular numerals (`tabular-nums`).
-  - Every component must implement all 7 states: `Default, Hover, Focus-Visible, Active, Loading (Skeleton), Disabled, Error`.
-<!-- INVARIANT_END:ANTI_AI_SLOP -->
+# Ultimate Refactoring and Modernization Workflow
 
-<!-- INVARIANT_START:GRAPHIFY -->
-## 🧠 HARDENED GRAPHIFY KNOWLEDGE ENGINE GATE (AST-FIRST CODE INTELLIGENCE)
-Whenever `graphify-out/graph.json` exists in the repository root, agents MUST interact with the AST knowledge graph. Blind directory traversal and unconstrained multi-file context dumping are strictly banned.
+## Inputs and behavioral boundary
 
-1. **Zero-Blind-Grep Invariant:**
-   - Running unstructured grep (`grep -r`, `Select-String *.*`, `ripgrep` across entire project) to locate callers or symbol references is FORBIDDEN when `graph.json` is present.
-   - Agents must query Graphify first: `graphify query "<symbol_or_concept>"`.
+Define pain/goal, interfaces, observable behavior, baseline tests/performance, dynamic/plugin consumers and compatibility. Preserve behavior unless user authorizes a change; separate known-bug fixes from structure. Inspect dirty/staged/untracked baseline and preserve unrelated work.
 
-2. **Blast Radius Gate (`graphify explain "<symbol>"`):**
-   - Before modifying, refactoring, or deleting any shared interface, model, route, or function, the agent MUST run `graphify explain "<symbol>"`.
-   - If incoming edge count > 0, every caller surfaced by Graphify MUST be explicitly enumerated in the task DAG or implementation plan before touching code.
+Scale method to risk: local rename needs caller checks; subsystem replacement may need characterization, dependency plan and incremental routing. Do not require Strangler Fig or large snapshots for every refactor.
 
-3. **Call-Path Fault Tracing (`graphify path "<source>" "<target>" --undirected`):**
-   - When debugging multi-hop failures (e.g. UI -> API -> DB), the agent must run `graphify path` to map the exact shortest call chain between entry point and crash sink before reading source code.
+## Safety harness and impact evidence
 
-4. **Leiden Community Worktree Partitioning:**
-   - When spawning parallel subagents in `ultimate-multi-agent-invoker`, tasks MUST be partitioned by Leiden community clusters (from `graphify-out/graph.json`).
-   - If two tasks share a God Node (identified in `graphify-out/GRAPH_REPORT.md`), they CANNOT run concurrently without explicit file-level mutex locks.
+Capture representative legacy inputs/outputs before editing, including failures/boundaries/effects. Freeze expected fixtures with provenance and redact production data. Normalize only documented nondeterminism; don't conceal meaningful differences. Identify preserved bugs and authorized behavior changes explicitly.
 
-5. **Subagent Context Clamp (70% Token Reduction):**
-   - Never dump entire raw source files into subagent prompts. Inject only the scoped subgraph from `graphify query "<task_scope>"`.
+Combine characterization/differential checks with targeted assertions; snapshots can preserve irrelevant/incorrect behavior. Establish passing baseline and prove detection of a relevant injected regression in an isolated fixture where feasible. Expectations recomputed from already-modified legacy code are not frozen golden baselines.
 
-6. **Post-Commit AST Synchronization (`graphify update .`):**
-   - After completing code modifications or merging Git worktrees, the agent MUST run `graphify update .` (local AST delta update, 2s runtime, 0 API tokens) to maintain graph synchronization.
-<!-- INVARIANT_END:GRAPHIFY -->
+Trace callers, exports, dynamic imports, entrypoints, config, reflection and external clients. Graph metadata can aid analysis but stale/incomplete graphs are not deletion proof. Corroborate source/runtime evidence before removing flags/helpers/public APIs; uncertain reachability stays uncertain.
 
-# Ultimate Refactoring & Architecture Modernization Workflow (10/10 Master Engine)
+## Incremental experiments and scoped rollback
 
-This workflow guides the structured refactoring of legacy codebases, the eradication of technical debt, the application of the Mikado Method and Strangler Fig patterns, and zero-regression Characterization Testing.
+Use a small dependency/Mikado plan when prerequisites matter. Change one isolated part; if it fails, record prerequisite and restore only this task's experiment. `git revert` undoes commits, not arbitrary uncommitted edits. Use isolated worktree/branch or recorded patch with verified ownership; never blanket-reset user work.
 
-```
-                                      [LEGACY COMPONENT / DEBT TARGET]
-                                                     │
-                          ┌──────────────────────────┴──────────────────────────┐
-                          ▼                                                     ▼
-              [PHASE 1: CHARACTERIZATION & GOLDEN HARNESS]          [PHASE 2: MIKADO DEPENDENCY GRAPH]
-              ├─ Snapshot Current Inputs/Outputs                    ├─ Graph Prerequisites (DAG Tree)
-              ├─ Pin Baseline Behavior Tests                        ├─ Revert on Structural Blocker
-              └─ Cyclomatic Complexity Audit (CC <= 10)             └─ Incremental Micro-Refactoring Step
-                          │
-                          ▼
-        ┌─────────────────────────────────────────────────────────────────────────────┐
-        │                 PHASE 3: STRANGLER FIG ARCHITECTURE REPLACEMENT             │
-        │  • Introduce Modern Adapter • Route 1% -> 50% -> 100% Traffic • Decommission│
-        └──────────────────────────────────────┬──────────────────────────────────────┘
-                                               ▼
-                                  [PHASE 4: TOKEN & DESIGN SYSTEM ALIGNMENT]
-                    ┌──────────────────────────┼──────────────────────────┐
-                    ▼                          ▼                          ▼
-            ┌──────────────┐           ┌──────────────┐           ┌──────────────┐
-            │ 🎨 TOKENS    │           │ ✂️ YAGNI PR  │           │ 🎯 0 REGRESS │
-            │ CSS Variables│           │ Delete Dead  │           │ Full Tests Ok│
-            └──────────────┘           └──────────────┘           └──────────────┘
-```
+Solve prerequisites in reviewable increments and rerun behavior checks after meaningful steps. Complexity/nesting metrics are diagnostics, not universal limits. Prefer simpler interfaces with less incidental coupling; measure sensitive paths before speed claims.
 
----
+## Strangler migration when justified
 
-## 🏛️ Iron Laws of Refactoring
+Introduce compatible adapter/router and new implementation alongside legacy. Shadow compare only side-effect-safe work or sandboxed/captured effects; never double-charge/send by replaying production writes to both systems.
 
-1. **Never Refactor Without a Golden Safety Harness**: Untested legacy code must have Characterization Tests (Golden Master snapshots) recorded *before* editing source lines.
-2. **Behavioral Invariance**: Refactoring modifies internal software structure without altering external observable behavior.
-3. **The Mikado Rule**: If a refactoring change breaks existing architecture dependencies, immediately `git revert` and record the missing prerequisite as a child leaf in the Mikado graph.
-4. **Complexity Limit (Cyclomatic Complexity $\le 10$)**: No refactored function may exceed cyclomatic complexity 10 or nesting depth 3.
-5. **Delete Dead Code Aggressively**: Dead feature flags, unused helper classes, and commented-out code blocks must be deleted, not preserved.
+Define routing identity, sufficient sample/observation gates, expected differences, error/latency limits and tested kill switch. Keep mixed revisions/schema/state compatible with expand-contract and resumable backfill. Account for in-flight work, sessions and external effects when routing back. Percent ramps alone do not prove safety.
 
----
+Delete legacy paths after equivalence/usage evidence, client compatibility window and recovery gate. Check flag consumers, operational usage and retained data before declaring dead. Preserve rollback artifacts/config for agreed window.
 
-## 🔬 The 4-Phase Refactoring Pipeline
+## Validation, recovery and evidence
 
-### Phase 1: Characterization Testing (Golden Master)
-```typescript
-// Record baseline behavior of legacy calculation
-test('Characterization Test: PricingEngine returns identical output for 100 sample vectors', () => {
-  const vectors = loadRecordedProductionVectors();
-  for (const input of vectors) {
-    const output = legacyPricingEngine(input);
-    expect(refactoredPricingEngine(input)).toEqual(output);
-  }
-});
-```
+Run frozen corpus, targeted contracts, failures/cancellation and relevant performance checks. Cover dynamic entrypoints/old clients. Verify unrelated edits survive failed experiments. Test mixed versions, resumed backfill and route rollback without duplicate effects/data loss.
 
-### Phase 2: The Mikado Method DAG
-1. Set top-level goal (e.g. "Replace legacy callback payment processor with typed async service").
-2. Try naive edit $\rightarrow$ If compilation or tests fail due to dependency $X$, **revert edit** and add "Decouple dependency $X$" as a sub-leaf.
-3. Solve leaf nodes first in atomic, committed increments.
-
-### Phase 3: Strangler Fig Migration Pattern
-- Wrap legacy component with a Router/Adapter interface.
-- Implement modern engine alongside legacy engine.
-- Gradually route live traffic to the modern engine until the legacy component is completely stranded, then delete the legacy implementation.
-
-### Phase 4: Token & Contract Cleanliness
-- Eliminate ad-hoc magic numbers/colors; bind all visual styles to design tokens (`var(--color-...)`).
-- Verify all TypeScript types compile without `any`.
+Return structure changes, equivalence evidence, authorized differences, actual commands/results and unverified consumers. Compilation alone is not zero regressions. Don't migrate design tokens/framework or reformat unrelated files without need.

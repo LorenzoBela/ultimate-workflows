@@ -1,10 +1,46 @@
-# 🧬 Original Ecosystem Editions (Full Multi-Agent & MCP Integration)
+# Gemini authoring mirror
 
-This folder contains the **original 38 master workflows** with deep links to specialized sub-skills, design analysis manuals, and MCP server bridges.
+38 reviewed workflow entry points with linked, packaged resources. The same mandatory 15-provider research contract applies across editions. Run `python scripts/build.py` from the repository root to regenerate portable exports and bundle hashes.
 
-### Key Characteristics:
-- **Sub-Skill Integration**: Configured to delegate specific sub-tasks to specialized sub-skills (e.g. `ckm:brand`, `ckm:design-system`, `theme-factory`, `superpowers-*`, `ponytail-*`, `caveman-*`).
-- **MCP Server Hooks**: Pre-wired for Model Context Protocol (MCP) servers such as `playwright` (headless browser testing), `context7` (library documentation fetching), `tavily` (deep search & crawling), and `memory` (persistent knowledge graphs).
-- **Ideal For**: Advanced multi-agent frameworks, custom Antigravity agent setups, and environments where specialized sub-agents and MCP tools are pre-configured.
+The authoring source is Gemini; review and verify changes before the separate guarded installation sync. These instructions do not install external provider connections or specialist tools.
 
-For portable adaptations targeting standard IDEs, refer to the **[`../universal/`](../universal/)** folder.
+## Catalog
+
+- [`ultimate-agent-dev-workflow.md`](./ultimate-agent-dev-workflow.md)
+- [`ultimate-agent-workflow.md`](./ultimate-agent-workflow.md)
+- [`ultimate-api-workflow.md`](./ultimate-api-workflow.md)
+- [`ultimate-architecture-workflow.md`](./ultimate-architecture-workflow.md)
+- [`ultimate-automation-workflow.md`](./ultimate-automation-workflow.md)
+- [`ultimate-best-practices-workflow.md`](./ultimate-best-practices-workflow.md)
+- [`ultimate-brainstorm-workflow.md`](./ultimate-brainstorm-workflow.md)
+- [`ultimate-caching-workflow.md`](./ultimate-caching-workflow.md)
+- [`ultimate-code-cleaner.md`](./ultimate-code-cleaner.md)
+- [`ultimate-data-workflow.md`](./ultimate-data-workflow.md)
+- [`ultimate-database-workflow.md`](./ultimate-database-workflow.md)
+- [`ultimate-debugging-workflow.md`](./ultimate-debugging-workflow.md)
+- [`ultimate-deployment-workflow.md`](./ultimate-deployment-workflow.md)
+- [`ultimate-document-intelligence-workflow.md`](./ultimate-document-intelligence-workflow.md)
+- [`ultimate-document-workflow.md`](./ultimate-document-workflow.md)
+- [`ultimate-documentation-workflow.md`](./ultimate-documentation-workflow.md)
+- [`ultimate-embedded-programming-workflow.md`](./ultimate-embedded-programming-workflow.md)
+- [`ultimate-frontend-workflow.md`](./ultimate-frontend-workflow.md)
+- [`ultimate-fullstack-workflow.md`](./ultimate-fullstack-workflow.md)
+- [`ultimate-git-workflow.md`](./ultimate-git-workflow.md)
+- [`ultimate-graphify-workflow.md`](./ultimate-graphify-workflow.md)
+- [`ultimate-hardware-design-workflow.md`](./ultimate-hardware-design-workflow.md)
+- [`ultimate-iot-hardware-workflow.md`](./ultimate-iot-hardware-workflow.md)
+- [`ultimate-iot-software-workflow.md`](./ultimate-iot-software-workflow.md)
+- [`ultimate-monorepo-workflow.md`](./ultimate-monorepo-workflow.md)
+- [`ultimate-multi-agent-invoker.md`](./ultimate-multi-agent-invoker.md)
+- [`ultimate-natural-english-workflow.md`](./ultimate-natural-english-workflow.md)
+- [`ultimate-notebooklm-workflow.md`](./ultimate-notebooklm-workflow.md)
+- [`ultimate-planning-workflow.md`](./ultimate-planning-workflow.md)
+- [`ultimate-project-workflow.md`](./ultimate-project-workflow.md)
+- [`ultimate-refactoring-workflow.md`](./ultimate-refactoring-workflow.md)
+- [`ultimate-research-workflow.md`](./ultimate-research-workflow.md)
+- [`ultimate-review-workflow.md`](./ultimate-review-workflow.md)
+- [`ultimate-security-audit-workflow.md`](./ultimate-security-audit-workflow.md)
+- [`ultimate-security-workflow.md`](./ultimate-security-workflow.md)
+- [`ultimate-serverless-workflow.md`](./ultimate-serverless-workflow.md)
+- [`ultimate-testing-workflow.md`](./ultimate-testing-workflow.md)
+- [`ultimate-ux-workflow.md`](./ultimate-ux-workflow.md)

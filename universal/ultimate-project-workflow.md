@@ -1,138 +1,41 @@
 ---
 name: ultimate-project-workflow
 description: >
-  Master workflow for agile project management, scope definition, sprint tracking,
-  and walkthrough reporting.
-  Coordinates task.md checklists, milestone prioritization, blocker resolution,
-  and walkthrough.md generation.
-  Triggers on "ultimate project workflow", "/ultimate-project-workflow", or when scoping
-  requirements, creating task lists, or documenting final deliverables.
-argument-hint: "[task-scoping | sprint-tracking | walkthrough-report]"
+  Manage a requested project from accepted requirements through milestones, durable task states, blockers and verified deliverables. Use for multi-step project coordination and resumable progress tracking.
+argument-hint: "[scope | milestones | progress | delivery]"
 ---
 
-<!-- INVARIANT_START:ANTI_AI_SLOP -->
-## 🛑 HARDENED ANTI-AI SLOP MANDATE: NATURAL PROSE & BESPOKE DESIGN CRAFT
-All agent communications, architectural plans, reviews, code comments, and frontend implementations MUST strictly adhere to natural human engineering standards. Both corporate AI prose slop and cookie-cutter "vibecoded" UI slop are strictly banned.
+Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization. Research always requires all 15 prescribed provider inputs.
 
-### 1. Zero Prose & Grammar Slop (Natural Human Voice)
-- **Banned Lexicon:**
-  - *Empty Verbs:* delve, embark, foster, resonate, underscore, leverage, elevate, harness, navigate, empower, illuminate, facilitate, tailor, showcase, unveil.
-  - *Corporate Buzz-Adjectives:* testament, tapestry, beacon, cornerstone, robust, seamless, pivotal, crucial, paramount, cutting-edge, vibrant, bespoke, game-changer, journey, realm, landscape, holistic, comprehensive, multifaceted, versatile, transformative.
-  - *Formulaic Transitions:* furthermore, moreover, in conclusion, it is worth noting, at the end of the day, without further ado, needless to say.
-- **Banned Syntactical Patterns:**
-  - **Zero Sycophancy / Pleasantries:** NEVER start responses with "Certainly!", "Great question!", "I'd be happy to help!", "Awesome!", or "Let's dive in!".
-  - **Zero Summary Outros:** NEVER end answers with a repetitive paragraph restating earlier points using generic corporate filler.
-  - **Zero Formulaic "Rule-of-Three" Bullets:** Do not default to 3-bullet lists where each bullet starts with a bold abstract noun followed by a colon and fluff.
-  - **Zero Hedging:** Do not write "You might want to potentially consider checking...". Write "Check X, or Y crashes."
-- **Natural Voice Standard:** Speak like a systems developer in terminal, Slack, or GitHub issues: blunt, concise, precise, pragmatic. Code and runnable shell commands come first.
 
-### 2. Zero Visual & UI/UX Design Slop (Bespoke Engineering Craft)
-- **Banned Color Clichés:**
-  - BAN default AI Blue-to-Indigo/Purple gradients (`bg-gradient-to-r from-blue-600 to-indigo-700` or violet hues).
-  - BAN colored ambient glowing shadows (`box-shadow` with >= 24px blur matching accent color).
-  - BAN washed-out low-contrast gray text (`text-gray-400` / `text-gray-500` failing WCAG AA 4.5:1).
-  - BAN gradient headline text (`bg-clip-text text-transparent bg-gradient-to-r` on H1s).
-- **Banned Layout & Component Tropes:**
-  - BAN cookie-cutter Bento Grid walls filled with fake stats, empty cards, or generic Lucide icon spam.
-  - BAN centered hero boilerplate with a floating pill above H1 (`"✨ New: [Feature]"`).
-  - BAN unmodified shadcn/ui defaults (`--radius: 0.5rem`, stock button/card exports without brand styling).
-  - BAN tinted circular icon containers (`bg-primary/10 text-primary p-3 rounded-full`).
-  - BAN static terminal window mockups with red/yellow/green dots in the hero.
-  - BAN raw emojis used as icons (`✨`, `🚀`, `⚡`, `🔒`) in production UI markup.
-- **Bespoke Design Standard:**
-  - Commit to an intentional aesthetic: brutalist, high-density telemetry, refined editorial, or precision dark-mode.
-  - High information density (Linear/Stripe standard), micro-borders (`rgba(255,255,255,0.08)`), and tabular numerals (`tabular-nums`).
-  - Every component must implement all 7 states: `Default, Hover, Focus-Visible, Active, Loading (Skeleton), Disabled, Error`.
-<!-- INVARIANT_END:ANTI_AI_SLOP -->
+# Project execution and milestone tracking
 
-<!-- INVARIANT_START:GRAPHIFY -->
-## 🧠 HARDENED GRAPHIFY KNOWLEDGE ENGINE GATE (AST-FIRST CODE INTELLIGENCE)
-Whenever `graphify-out/graph.json` exists in the repository root, agents MUST interact with the AST knowledge graph. Blind directory traversal and unconstrained multi-file context dumping are strictly banned.
+Use for a requested multi-step project through verified deliverables. Use the host's task state or a repository-local ledger rather than assuming a particular IDE's appDataDir. Do not turn a single routine fix into a sprint process.
 
-1. **Zero-Blind-Grep Invariant:**
-   - Running unstructured grep (`grep -r`, `Select-String *.*`, `ripgrep` across entire project) to locate callers or symbol references is FORBIDDEN when `graph.json` is present.
-   - Agents must query Graphify first: `graphify query "<symbol_or_concept>"`.
+## Inputs and scope
 
-2. **Blast Radius Gate (`graphify explain "<symbol>"`):**
-   - Before modifying, refactoring, or deleting any shared interface, model, route, or function, the agent MUST run `graphify explain "<symbol>"`.
-   - If incoming edge count > 0, every caller surfaced by Graphify MUST be explicitly enumerated in the task DAG or implementation plan before touching code.
+Capture objective, users, constraints, accepted requirements, non-goals, authorization, current repository state, dependencies and acceptance criteria. Clarify only missing information that materially blocks decisions; continue independent work. Existing authorization persists and does not authorize unrelated releases or external communication.
 
-3. **Call-Path Fault Tracing (`graphify path "<source>" "<target>" --undirected`):**
-   - When debugging multi-hop failures (e.g. UI -> API -> DB), the agent must run `graphify path` to map the exact shortest call chain between entry point and crash sink before reading source code.
+## Milestones
 
-4. **Leiden Community Worktree Partitioning:**
-   - When spawning parallel subagents in `ultimate-multi-agent-invoker`, tasks MUST be partitioned by Leiden community clusters (from `graphify-out/graph.json`).
-   - If two tasks share a God Node (identified in `graphify-out/GRAPH_REPORT.md`), they CANNOT run concurrently without explicit file-level mutex locks.
+Group useful increments with an observable user outcome. Apply Must/Should/Could/Won't prioritization when helpful; record why scope is deferred. Identify critical dependencies, owners, external inputs, available resources and risks. Estimates are estimates. Prefer coherent tasks to mandatory 2–10 minute subdivisions.
 
-5. **Subagent Context Clamp (70% Token Reduction):**
-   - Never dump entire raw source files into subagent prompts. Inject only the scoped subgraph from `graphify query "<task_scope>"`.
+## Portable task ledger
 
-6. **Post-Commit AST Synchronization (`graphify update .`):**
-   - After completing code modifications or merging Git worktrees, the agent MUST run `graphify update .` (local AST delta update, 2s runtime, 0 API tokens) to maintain graph synchronization.
-<!-- INVARIANT_END:GRAPHIFY -->
+For each task retain stable ID, owner, status, dependencies, owned paths/resources, acceptance criterion, evidence reference, blocker/next action and updated timestamp. Use `pending`, `running`, `blocked`, `failed`, `cancelled`, `complete` distinctly; do not mark a blocked task complete to clear the checklist.
 
-# Ultimate Project & Task Management Workflow
+Record scope decisions separately with who/what authorized the change and affected tasks. Preserve the original goal unless the user changes it. New messages normally steer active work; a status question does not cancel it.
 
-This workflow drives systematic feature scoping, sprint milestone tracking, blocker resolution, and complete walkthrough reporting to ensure deliverables are clear, prioritized, and fully verified.
+## Execution and recovery
 
----
+- Run ready work within actual host capabilities. Delegate only when authorized and keep writer ownership explicit.
+- Update the ledger at meaningful transitions. Batch checks suited to changed behavior; repeating the entire suite after every wording edit is unnecessary.
+- Capture failures with reproducible context and actual output. Distinguish baseline failure, new regression, unavailable dependency and flaky result.
+- When interrupted, preserve checkpoint, dirty/index state, useful artifacts and uncertain side effects. On resume verify scope/revision/resources, reconcile outstanding actions and continue unfinished work.
+- Replan affected downstream tasks when a dependency fails. Keep a concrete blocker and next action; do not endlessly retry unavailable services.
 
-## The 4-Phase Project Pipeline
+## Verification and delivery
 
-### Phase 1: Requirements Scoping & User Stories
-*   **Sub-skills:** `superpowers-brainstorm`, `concise-planning`, `sequential-thinking/sequentialthinking`
-*   **Action:**
-    1. Define the project scope and end goal. List primary constraints, business dependencies, and target audience needs.
-    2. Write clear user stories (`As a <role>, I want <feature>, so that <benefit>`).
-    3. Establish explicit acceptance criteria for each story before beginning development.
-    4. Use `superpowers-brainstorm` for divergent requirement exploration and `concise-planning` for atomic task generation.
-    5. Use `sequentialthinking` to trace dependencies between user stories and identify critical path items.
+Map each accepted requirement to actual evidence: test result, inspected artifact, screenshot or documented manual check as appropriate. An unchecked task, fabricated screenshot or print-only adapter is not completion evidence. A mock does not prove production behavior.
 
-### Phase 2: Milestone Prioritization (MoSCoW)
-*   **Sub-skills:** `kaizen`, `ponytail`, `superpowers-plan`
-*   **Action:**
-    1. Group tasks into logical, incremental milestones (Milestone 1, 2, 3).
-    2. Prioritize tasks using the MoSCoW framework:
-       *   **Must Have:** Critical tasks that form the Minimum Viable Product (MVP).
-       *   **Should Have:** Important but non-blocking tasks.
-       *   **Could Have:** Nice-to-have features or polish items.
-       *   **Won't Have:** Tasks deferred to future sprints.
-    3. Document dependencies between tasks to identify potential blockers early.
-    4. Apply `ponytail` YAGNI to ruthlessly prune "Won't Have" items and `kaizen` for continuous scope refinement.
-    5. Use `superpowers-plan` for breaking milestones into small, verifiable atomic steps.
-
-### Phase 3: Task Checklist Execution (task.md)
-*   **Sub-skills:** `lint-and-validate`, `superpowers-tdd`, `systematic-debugging`
-*   **Action:**
-    1. Create a dynamic task checklist file at `<appDataDir>/brain/<conversation-id>/task.md` to track execution progress.
-    2. Enforce the standard planning-mode notation:
-       *   `[ ]` Unstarted task.
-       *   `[/]` In-progress task.
-       *   `[x]` Completed task.
-    3. Update `task.md` continuously at the start and completion of each development task. Keep items atomic (2–10 minutes).
-    4. Run `lint-and-validate` after completing each task item.
-    5. Apply `superpowers-tdd` for test-driven development on critical path items.
-    6. Use `systematic-debugging` for resolving blockers encountered during execution.
-
-### Phase 4: Walkthrough & Deliverables Verification
-*   **Sub-skills:** `superpowers-review`, `caveman-review`, `ckm:slides`, `docx`
-*   **MCP Tools:** `playwright`, `memory`
-*   **Action:**
-    1. Conduct a final integration pass against the established acceptance criteria.
-    2. Create or update the `walkthrough.md` artifact at `<appDataDir>/brain/<conversation-id>/walkthrough.md` to present results.
-    3. Structure the walkthrough to summarize:
-       *   **Core Changes:** Exact files modified and new files created.
-       *   **Test Results:** Commands run and their outcomes.
-       *   **UI/UX Verification:** Embedded screenshots or screen recordings showcasing interface changes.
-    4. Use `playwright` MCP for capturing browser screenshots and recording UI verification videos.
-    5. Use `superpowers-review` and `caveman-review` for terse, severity-rated final code audit.
-    6. Use `ckm:slides` for stakeholder presentation decks and `docx` for formal deliverable documents.
-    7. Persist project outcomes and lessons learned to `memory` graph for cross-conversation recall.
-
----
-
-## Cross-Cutting Concerns
-*   **Research:** Use `tavily-search` and `perplexity-ask` for project management methodology research.
-*   **Brand:** Use `ckm:brand` for aligning project deliverables with brand guidelines.
-*   **Deployment:** Use `ultimate-deployment-workflow` for release engineering integration.
-*   **Documentation:** Use `ultimate-documentation-workflow` for maintaining project READMEs and API specs.
+Write a concise walkthrough only when it helps the handoff: user-visible outcomes, changed artifacts, actual checks, remaining limits and recovery/resume instructions. Use real absolute artifact paths in the host response. Persist optional external memory only when available and authorized; a local ledger must remain usable without that connector. Commit, release or send messages only within established scope.

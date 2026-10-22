@@ -1,18 +1,18 @@
-# ⚡ Ultimate Workflows: 38 Production-Grade AI Agent Workflows
+# ⚡ Ultimate Workflows: 38 AI Engineering Workflows
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
 [![Workflows: 38](https://img.shields.io/badge/Workflows-38%20Total-brightgreen.svg)](./universal/)
 [![Compatibility](https://img.shields.io/badge/Supports-Codex%20%7C%20Cursor%20%7C%20Claude%20Code%20(CC)%20%7C%20Antigravity%20(AGY)%20%7C%20Windsurf%20%7C%20Cline%20%7C%20VS%20Code-orange.svg)](#-one-line-installers)
 
-A battle-tested suite of **38 master engineering workflows** crafted for autonomous AI agents, coding assistants, and pair-programming environments.
+A suite of **38 engineering workflows** crafted for autonomous AI agents, coding assistants, and pair-programming environments.
 
-Eliminate generic "AI slop", vague pseudocode, and brittle architectures. Every workflow enforces mathematical precision, design tokens, anti-slop rulesheets, step-by-step phased execution pipelines, and deterministic verification gates.
+Workflow instructions cover scoped execution, domain-specific decisions, evidence, failure recovery, and verification. Runnable examples have targeted checks; device, production-service, visual, and live-provider results require their own evidence.
 
 ---
 
 ## ⚡ One-Line Installers (Instant Setup)
 
-Install into **any current project repository** in seconds:
+Install into your current project repository. Commands replace matching workflow files and bundle resources; updates refuse conflicting local customizations:
 
 ### Codex (desktop app, CLI, and IDE extension)
 
@@ -22,7 +22,7 @@ Install into **any current project repository** in seconds:
 npx github:LorenzoBela/ultimate-workflows codex
 ```
 
-The command installs all 38 universal workflows into the current project. It creates one folder per skill, preserving the workflow's `name` and `description`:
+The command installs all 38 universal workflows and their linked resources into the current project. It creates one folder per skill, preserving the workflow's `name` and `description`:
 
 ```text
 your-project/
@@ -49,7 +49,7 @@ Use $ultimate-debugging-workflow to investigate why login fails after a refresh.
 
 For an explicit parallel run, request `$ultimate-multi-agent-invoker` with an approved plan. Installing these files supplies workflow instructions; it does not install the external tools, other skills, or MCP connections referenced by a workflow.
 
-**Updating:** rerun the install command from the same project. It replaces matching `ultimate-*/SKILL.md` files, so save any local customizations first. Commit `.agents/skills/` if teammates should use the same workflows. Avoid installing duplicate copies at both project and user scope.
+**Updating:** rerun the install command from the same project. It updates files matching their recorded installation hashes. Modified or unowned conflicting files cause an error before any files are written; back up and reconcile them first. Commit `.agents/skills/` if teammates should use the same workflows. Avoid installing duplicate copies at both project and user scope.
 
 **Already cloned this repository?** Run the installer from your target project's terminal using the path to the clone:
 
@@ -57,7 +57,7 @@ For an explicit parallel run, request `$ultimate-multi-agent-invoker` with an ap
 node /path/to/ultimate-workflows/scripts/install.js codex
 ```
 
-Without Node.js, the clone also includes native installers. Run either command from the target project, replacing the example path with your clone's location:
+The clone also includes PowerShell and Bash entry points; both use the same Node.js installer. Run either command from the target project, replacing the example path with your clone's location:
 
 ```powershell
 & 'C:\path\to\ultimate-workflows\scripts\install.ps1' -Target codex
@@ -75,24 +75,24 @@ bash /path/to/ultimate-workflows/scripts/install.sh codex
 npx github:LorenzoBela/ultimate-workflows cursor
 
 # Bash (macOS / Linux)
-curl -fsSL https://raw.githubusercontent.com/LorenzoBela/ultimate-workflows/main/scripts/install.sh | bash -s cursor
+bash /path/to/ultimate-workflows/scripts/install.sh cursor
 
 # PowerShell (Windows)
-irm https://raw.githubusercontent.com/LorenzoBela/ultimate-workflows/main/scripts/install.ps1 | iex; Install-Cursor
+& 'C:\path\to\ultimate-workflows\scripts\install.ps1' -Target cursor
 ```
 
 ---
 
-### 🟣 Claude Code (`.claude/skills/`)
+### 🟣 Claude Code (`.claude/skills/<name>/SKILL.md`)
 ```bash
 # Node / npx
 npx github:LorenzoBela/ultimate-workflows claude
 
 # Bash (macOS / Linux)
-curl -fsSL https://raw.githubusercontent.com/LorenzoBela/ultimate-workflows/main/scripts/install.sh | bash -s claude
+bash /path/to/ultimate-workflows/scripts/install.sh claude
 
 # PowerShell (Windows)
-irm https://raw.githubusercontent.com/LorenzoBela/ultimate-workflows/main/scripts/install.ps1 | iex; Install-Claude
+& 'C:\path\to\ultimate-workflows\scripts\install.ps1' -Target claude
 ```
 
 ---
@@ -103,10 +103,10 @@ irm https://raw.githubusercontent.com/LorenzoBela/ultimate-workflows/main/script
 npx github:LorenzoBela/ultimate-workflows agy
 
 # Bash (macOS / Linux)
-curl -fsSL https://raw.githubusercontent.com/LorenzoBela/ultimate-workflows/main/scripts/install.sh | bash -s agy
+bash /path/to/ultimate-workflows/scripts/install.sh agy
 
 # PowerShell (Windows)
-irm https://raw.githubusercontent.com/LorenzoBela/ultimate-workflows/main/scripts/install.ps1 | iex; Install-AGY
+& 'C:\path\to\ultimate-workflows\scripts\install.ps1' -Target agy
 ```
 
 ---
@@ -117,10 +117,10 @@ irm https://raw.githubusercontent.com/LorenzoBela/ultimate-workflows/main/script
 npx github:LorenzoBela/ultimate-workflows windsurf
 
 # Bash (macOS / Linux)
-curl -fsSL https://raw.githubusercontent.com/LorenzoBela/ultimate-workflows/main/scripts/install.sh | bash -s windsurf
+bash /path/to/ultimate-workflows/scripts/install.sh windsurf
 
 # PowerShell (Windows)
-irm https://raw.githubusercontent.com/LorenzoBela/ultimate-workflows/main/scripts/install.ps1 | iex; Install-Windsurf
+& 'C:\path\to\ultimate-workflows\scripts\install.ps1' -Target windsurf
 ```
 
 ---
@@ -131,10 +131,10 @@ irm https://raw.githubusercontent.com/LorenzoBela/ultimate-workflows/main/script
 npx github:LorenzoBela/ultimate-workflows cline
 
 # Bash (macOS / Linux)
-curl -fsSL https://raw.githubusercontent.com/LorenzoBela/ultimate-workflows/main/scripts/install.sh | bash -s cline
+bash /path/to/ultimate-workflows/scripts/install.sh cline
 
 # PowerShell (Windows)
-irm https://raw.githubusercontent.com/LorenzoBela/ultimate-workflows/main/scripts/install.ps1 | iex; Install-Cline
+& 'C:\path\to\ultimate-workflows\scripts\install.ps1' -Target cline
 ```
 
 ---
@@ -145,10 +145,10 @@ irm https://raw.githubusercontent.com/LorenzoBela/ultimate-workflows/main/script
 npx github:LorenzoBela/ultimate-workflows copilot
 
 # Bash (macOS / Linux)
-curl -fsSL https://raw.githubusercontent.com/LorenzoBela/ultimate-workflows/main/scripts/install.sh | bash -s copilot
+bash /path/to/ultimate-workflows/scripts/install.sh copilot
 
 # PowerShell (Windows)
-irm https://raw.githubusercontent.com/LorenzoBela/ultimate-workflows/main/scripts/install.ps1 | iex; Install-Copilot
+& 'C:\path\to\ultimate-workflows\scripts\install.ps1' -Target copilot
 ```
 
 ---
@@ -176,7 +176,7 @@ Includes Codex's `.agents/skills/<name>/SKILL.md` folders alongside the other ID
   - [6. Quality Assurance, Security, Operations & Debugging](#6-quality-assurance-security-operations--debugging)
   - [7. UX, Automation & Document Intelligence](#7-ux-automation--document-intelligence)
 - [Workflow Chaining & Pipelines](#-workflow-chaining--pipelines)
-- [Anti-Slop Engineering Rules](#-anti-slop-engineering-rules)
+- [Shared quality rules](#shared-quality-rules)
 - [License](#-license)
 
 ---
@@ -196,7 +196,7 @@ Standard AI code generation often suffers from "vibecoding": generic UI defaults
 
 ## 📦 Two Editions: Universal vs. Original
 
-The `original/` edition mirrors the 38 `ultimate-*` skills installed in Gemini. The `universal/` edition includes the same updates while retaining its existing portability adaptations for multi-agent execution, planning, research, and review. Both editions include Gemini's shared prose/design and Graphify gates; Graphify integration requires the Graphify CLI when a knowledge graph is present.
+The `original/` edition is the review surface for Gemini-authored workflow updates. `scripts/build.py` exports the same reviewed instructions and required resources to `universal/`, recording each bundle in `workflow-manifest.json`. Host installations use discoverable skill bundles or flat rule files with adjacent resources. Shared execution rules load from a linked reference. Research's mandatory 15-provider coverage is identical across editions.
 
 ```text
 ultimate-workflows/
@@ -206,12 +206,12 @@ ultimate-workflows/
 └── README.md     # Documentation & quickstart index
 ```
 
-| Feature | `universal/` (Portable) | `original/` (Ecosystem) |
-| :--- | :---: | :---: |
-| **External Dependencies** | Some workflows require specialized skills or CLIs; Graphify gates apply when a graph is present | Requires ecosystem sub-skills, CLIs, and MCPs |
-| **Tool Execution** | Standard CLI (`grep`, `npm`, `vitest`, `git`) | MCP Tools (`memory`, `playwright`, `tavily`) |
-| **Sub-Skill References** | Embedded guidance plus specialized skill references | Linked to ecosystem skills |
-| **IDE / Agent Portability** | Supported IDEs with required workflow tools configured | Best for custom Antigravity/MCP agents |
+| Edition | Contents | Role |
+|---|---|---|
+| `original/` | Reviewed instructions and resources | Gemini authoring mirror and review surface |
+| `universal/` | Deterministic export of the reviewed bundles | Input to all three installers |
+| Installed skill bundle | `SKILL.md` plus linked resources | Codex and Claude Code discovery |
+| Installed rule file | Markdown/MDC plus adjacent resources | Cursor, Antigravity, Windsurf, Cline and Copilot |
 
 ---
 
@@ -221,10 +221,10 @@ ultimate-workflows/
 
 | Workflow | Universal File | Summary |
 | :--- | :---: | :--- |
-| **Multi-Agent Invoker** | [`ultimate-multi-agent-invoker.md`](./universal/ultimate-multi-agent-invoker.md) | Master swarm orchestrator: dynamic DAG fan-out, ponytail-caveman compression, and DRAMA trust-chain recovery. |
-| **Agent Development** | [`ultimate-agent-dev-workflow.md`](./universal/ultimate-agent-dev-workflow.md) | Architecting custom autonomous agents, runtime API hooks, MCP integrations, and memory lifecycles. |
-| **Agent Orchestration** | [`ultimate-agent-workflow.md`](./universal/ultimate-agent-workflow.md) | Subagent spawning, prompt caching optimization, context pruning, and multi-agent coordination. |
-| **NotebookLM Research** | [`ultimate-notebooklm-workflow.md`](./universal/ultimate-notebooklm-workflow.md) | Document ingestion, synthesis, deep source research, and structured audio/briefing preparation. |
+| **Multi-Agent Invoker** | [`ultimate-multi-agent-invoker.md`](./universal/ultimate-multi-agent-invoker.md) | Use process exit status and structured verification; retain raw logs; remove forced cleanup defaults; enforce ownership/dirty-state checks; connect budgets to actual runtime usage and persist task states. |
+| **Agent Development** | [`ultimate-agent-dev-workflow.md`](./universal/ultimate-agent-dev-workflow.md) | Provider-preserving adapters, schema validation, canonical path boundaries, real execution budgets and side-effect control. |
+| **Agent Orchestration** | [`ultimate-agent-workflow.md`](./universal/ultimate-agent-workflow.md) | Durable handoffs and versioned memory; configurable deadlines; preserve user artifacts. |
+| **NotebookLM Research** | [`ultimate-notebooklm-workflow.md`](./universal/ultimate-notebooklm-workflow.md) | Verify actual connector contracts; source provenance; authorized corpus updates and bounded jobs. |
 
 ---
 
@@ -232,11 +232,11 @@ ultimate-workflows/
 
 | Workflow | Universal File | Summary |
 | :--- | :---: | :--- |
-| **Graphify Code Intelligence** | [`ultimate-graphify-workflow.md`](./universal/ultimate-graphify-workflow.md) | Knowledge graph navigation, impact analysis, call paths, and graph maintenance. |
-| **System Architecture** | [`ultimate-architecture-workflow.md`](./universal/ultimate-architecture-workflow.md) | Domain-Driven Design (DDD), Mermaid architecture diagrams, ADR creation, and boundary specs. |
-| **Brainstorming & Scoping** | [`ultimate-brainstorm-workflow.md`](./universal/ultimate-brainstorm-workflow.md) | Structured technical brainstorming, trade-off matrix evaluation, constraint mapping, and scope bounding. |
-| **Implementation Planning** | [`ultimate-planning-workflow.md`](./universal/ultimate-planning-workflow.md) | Atomic step-by-step task breakdown, dependency sequencing, rollback plans, and verification plans. |
-| **Project & Sprint Tracking** | [`ultimate-project-workflow.md`](./universal/ultimate-project-workflow.md) | Milestone delivery, task checklist tracking, blockers resolution, and stakeholder walkthroughs. |
+| **Graphify Code Intelligence** | [`ultimate-graphify-workflow.md`](./universal/ultimate-graphify-workflow.md) | Source-content freshness, extractor version, uncertain/dynamic edges and reachability corroboration. |
+| **System Architecture** | [`ultimate-architecture-workflow.md`](./universal/ultimate-architecture-workflow.md) | Proportionate boundaries; monolith baseline; complete outbox, deduplication and evolution guidance when applicable. |
+| **Brainstorming & Scoping** | [`ultimate-brainstorm-workflow.md`](./universal/ultimate-brainstorm-workflow.md) | Include incremental/do-nothing baselines; separate evidence from estimated scores; test sensitivity to assumptions. |
+| **Implementation Planning** | [`ultimate-planning-workflow.md`](./universal/ultimate-planning-workflow.md) | Consequence-based planning, explicit assumptions and acceptance criteria, realistic platform constraints and recovery. |
+| **Project & Sprint Tracking** | [`ultimate-project-workflow.md`](./universal/ultimate-project-workflow.md) | Portable task ledger with stable IDs, owners, blockers, scope decisions and evidence links. |
 
 ---
 
@@ -244,11 +244,11 @@ ultimate-workflows/
 
 | Workflow | Universal File | Summary |
 | :--- | :---: | :--- |
-| **API Engineering** | [`ultimate-api-workflow.md`](./universal/ultimate-api-workflow.md) | REST, GraphQL, gRPC design, Protobuf contracts, API gateways, rate limiting, and versioning. |
-| **Frontend Engineering** | [`ultimate-frontend-workflow.md`](./universal/ultimate-frontend-workflow.md) | High-fidelity UI systems, CSS tokens, 60fps animations, RSC boundaries, and 50 anti-slop rules. |
-| **Fullstack Development** | [`ultimate-fullstack-workflow.md`](./universal/ultimate-fullstack-workflow.md) | End-to-end stack architecture, type-safe RPC/REST boundaries, auth middleware, and state sync. |
-| **Serverless Platforms** | [`ultimate-serverless-workflow.md`](./universal/ultimate-serverless-workflow.md) | Edge Functions, serverless databases (Supabase/Firebase/Prisma), and Row-Level Security (RLS). |
-| **Monorepo Architecture** | [`ultimate-monorepo-workflow.md`](./universal/ultimate-monorepo-workflow.md) | Turborepo/Nx workspaces, shared package linking, build caching, and semantic release pipelines. |
+| **API Engineering** | [`ultimate-api-workflow.md`](./universal/ultimate-api-workflow.md) | Request-scoped authorized loaders; explicit ordering and missing-item handling; operation-specific idempotency and concurrency rules. |
+| **Frontend Engineering** | [`ultimate-frontend-workflow.md`](./universal/ultimate-frontend-workflow.md) | Framework-aware boundaries, consistent performance metrics, accessible interaction and existing brand preservation. |
+| **Fullstack Development** | [`ultimate-fullstack-workflow.md`](./universal/ultimate-fullstack-workflow.md) | Stack-aware vertical slices, transactional idempotency, concurrent/offline conflicts and schema compatibility. |
+| **Serverless Platforms** | [`ultimate-serverless-workflow.md`](./universal/ultimate-serverless-workflow.md) | Actual provider limits, production-safe migrations, trusted claims and event redelivery handling. |
+| **Monorepo Architecture** | [`ultimate-monorepo-workflow.md`](./universal/ultimate-monorepo-workflow.md) | Correct cache inputs, workspace boundaries, consumer tarball checks and resumable release manifests. |
 
 ---
 
@@ -256,9 +256,9 @@ ultimate-workflows/
 
 | Workflow | Universal File | Summary |
 | :--- | :---: | :--- |
-| **Caching Architectures** | [`ultimate-caching-workflow.md`](./universal/ultimate-caching-workflow.md) | Multi-tier cache invalidation (Redis, HTTP, in-memory), TTL strategies, stale-while-revalidate. |
-| **Data Pipelines & ETL** | [`ultimate-data-workflow.md`](./universal/ultimate-data-workflow.md) | Batch/stream ETL pipelines, data extraction, cleansing, schema transformations, and validation. |
-| **Database Engineering** | [`ultimate-database-workflow.md`](./universal/ultimate-database-workflow.md) | Schema normalization, index design (B-tree, GIN, BRIN), EXPLAIN ANALYZE query optimization, and migrations. |
+| **Caching Architectures** | [`ultimate-caching-workflow.md`](./universal/ultimate-caching-workflow.md) | Unique lock ownership and atomic conditional release; bounded waits and cancellation; documented stale/fallback policy and tenant key scope. |
+| **Data Pipelines & ETL** | [`ultimate-data-workflow.md`](./universal/ultimate-data-workflow.md) | Correct stream error forwarding, byte/record bounds, transactional checkpoints and replay. |
+| **Database Engineering** | [`ultimate-database-workflow.md`](./universal/ultimate-database-workflow.md) | Guard executing diagnostics; remove blanket scan/index heuristics; identify actual blockers; define migration compatibility and restoration evidence. |
 
 ---
 
@@ -266,10 +266,10 @@ ultimate-workflows/
 
 | Workflow | Universal File | Summary |
 | :--- | :---: | :--- |
-| **Embedded Programming** | [`ultimate-embedded-programming-workflow.md`](./universal/ultimate-embedded-programming-workflow.md) | Bare-metal registers, RTOS multi-threading, ISR prioritization, and low-power sleep modes. |
-| **Hardware PCB Design** | [`ultimate-hardware-design-workflow.md`](./universal/ultimate-hardware-design-workflow.md) | Schematic capture, high-speed differential routing, impedance matching, EMC compliance, and DFM. |
-| **IoT Hardware & Firmware** | [`ultimate-iot-hardware-workflow.md`](./universal/ultimate-iot-hardware-workflow.md) | Secure boot, flash encryption, OTA dual-partition rollback, memory safety, and hardware watchdogs. |
-| **IoT Software & Cloud** | [`ultimate-iot-software-workflow.md`](./universal/ultimate-iot-software-workflow.md) | MQTT topic namespaces, mTLS device authentication, high-throughput telemetry ingestion, and device twins. |
+| **Embedded Programming** | [`ultimate-embedded-programming-workflow.md`](./universal/ultimate-embedded-programming-workflow.md) | Safe byte decoding, supported atomics/queues, target-specific timing and watchdog verification. |
+| **Hardware PCB Design** | [`ultimate-hardware-design-workflow.md`](./universal/ultimate-hardware-design-workflow.md) | Chemistry/BOM-specific charging/protection, topology-specific termination, stackup and rating checks. |
+| **IoT Hardware & Firmware** | [`ultimate-iot-hardware-workflow.md`](./universal/ultimate-iot-hardware-workflow.md) | Inactive-partition updates, real image signatures, configured rollback and health acknowledgement. |
+| **IoT Software & Cloud** | [`ultimate-iot-software-workflow.md`](./universal/ultimate-iot-software-workflow.md) | Scoped identity lifecycle, telemetry deduplication, ordered/versioned state and safe command replay handling. |
 
 ---
 
@@ -277,16 +277,16 @@ ultimate-workflows/
 
 | Workflow | Universal File | Summary |
 | :--- | :---: | :--- |
-| **Engineering Best Practices** | [`ultimate-best-practices-workflow.md`](./universal/ultimate-best-practices-workflow.md) | Universal code standards, DRY/KISS enforcement, error contracts, and 130 core architectural rules. |
-| **Systematic Debugging** | [`ultimate-debugging-workflow.md`](./universal/ultimate-debugging-workflow.md) | Multi-agent diagnostic swarm (`cavecrew`), Turn 1 subagent dispatch, Google SRE incident mitigation, and TDD regression fix. |
-| **Production Deployment** | [`ultimate-deployment-workflow.md`](./universal/ultimate-deployment-workflow.md) | CI/CD pipelines, containerization (Docker), zero-downtime blue/green rollouts, and health check gates. |
-| **Git & Release Operations** | [`ultimate-git-workflow.md`](./universal/ultimate-git-workflow.md) | Atomic conventional commits, clean branching strategies, pre-commit validation, and release tags. |
-| **Code Cleanup** | [`ultimate-code-cleaner.md`](./universal/ultimate-code-cleaner.md) | AST-guided dead code, unused export, and dependency cleanup with verification gates. |
-| **Code Refactoring** | [`ultimate-refactoring-workflow.md`](./universal/ultimate-refactoring-workflow.md) | Systematic technical debt elimination, dead-code removal, modular decomposition, and safety regressions. |
-| **Code Review Standards** | [`ultimate-review-workflow.md`](./universal/ultimate-review-workflow.md) | Severity-tiered code audits (Blocker, Major, Minor, Nit) with concrete actionable diff recommendations. |
-| **Security Auditing (SAST)** | [`ultimate-security-audit-workflow.md`](./universal/ultimate-security-audit-workflow.md) | Static vulnerability scans, OWASP Top 10 auditing, dependency CVE scans, and compliance checking. |
-| **Application Security** | [`ultimate-security-workflow.md`](./universal/ultimate-security-workflow.md) | Input sanitization, auth/authz separation, CORS hardening, CSRF defense, rate-limiting, and secrets hygiene. |
-| **Automated Testing & QA** | [`ultimate-testing-workflow.md`](./universal/ultimate-testing-workflow.md) | Test-Driven Development (TDD), unit, integration, and E2E browser test automation with high coverage. |
+| **Engineering Best Practices** | [`ultimate-best-practices-workflow.md`](./universal/ultimate-best-practices-workflow.md) | Framework/version routing and workload-based performance checks. |
+| **Systematic Debugging** | [`ultimate-debugging-workflow.md`](./universal/ultimate-debugging-workflow.md) | Correct bisect return codes and shell visibility; restore checkout on errors; require actual reproduction and verification commands; label or replace print-only orchestration. |
+| **Production Deployment** | [`ultimate-deployment-workflow.md`](./universal/ultimate-deployment-workflow.md) | Immutable release identity, bounded probes/draining, compatible schema and tested recovery. |
+| **Git & Release Operations** | [`ultimate-git-workflow.md`](./universal/ultimate-git-workflow.md) | Preserve dirty/index state; scoped staging; shared-history safeguards and repository-native checks. |
+| **Code Cleanup** | [`ultimate-code-cleaner.md`](./universal/ultimate-code-cleaner.md) | Entry-point manifest, dynamic consumers, source/runtime corroboration and actual cycle detection. |
+| **Code Refactoring** | [`ultimate-refactoring-workflow.md`](./universal/ultimate-refactoring-workflow.md) | Frozen characterization corpus, dynamic caller checks, scoped experiment recovery and safe shadow comparisons. |
+| **Code Review Standards** | [`ultimate-review-workflow.md`](./universal/ultimate-review-workflow.md) | Risk precedence, validated analysis rules, evidence-preserving inspection and realistic false-positive checks. |
+| **Security Auditing (SAST)** | [`ultimate-security-audit-workflow.md`](./universal/ultimate-security-audit-workflow.md) | Scope-aware probes, exposure/reachability triage, redacted findings and authorized remediation boundaries. |
+| **Application Security** | [`ultimate-security-workflow.md`](./universal/ultimate-security-workflow.md) | Context-aware authentication/CSRF, object authorization and provider-specific webhook verification. |
+| **Automated Testing & QA** | [`ultimate-testing-workflow.md`](./universal/ultimate-testing-workflow.md) | Replace pooled raw transaction examples with scoped transaction clients or isolated per-worker resources; verify cleanup independently; distinguish baseline failures and flakes. |
 
 ---
 
@@ -294,19 +294,19 @@ ultimate-workflows/
 
 | Workflow | Universal File | Summary |
 | :--- | :---: | :--- |
-| **Scripting & Automation** | [`ultimate-automation-workflow.md`](./universal/ultimate-automation-workflow.md) | Developer CLI utilities, cron runners, build task automations, and cross-platform shell scripts. |
-| **Document Intelligence** | [`ultimate-document-intelligence-workflow.md`](./universal/ultimate-document-intelligence-workflow.md) | Parsing, OCR scraping, semantic table extraction from PDF, DOCX, XLSX, and scanned documents. |
-| **Document Engineering** | [`ultimate-document-workflow.md`](./universal/ultimate-document-workflow.md) | Programmatic DOCX generation, XML styling, tracked changes auditing, and PDF conversions. |
-| **Natural English** | [`ultimate-natural-english-workflow.md`](./universal/ultimate-natural-english-workflow.md) | Clear prose, natural tone, and removal of formulaic language. |
-| **Technical Documentation** | [`ultimate-documentation-workflow.md`](./universal/ultimate-documentation-workflow.md) | Developer READMEs, OpenAPI/Swagger specifications, Architecture Decision Records (ADRs), and user guides. |
-| **Deep Research Strategy** | [`ultimate-research-workflow.md`](./universal/ultimate-research-workflow.md) | Pentadeca-Engine (15/15) parallel search, 5 strategic clusters, deep passage quotes, and 15-way consensus matrix. |
-| **User Experience (UX) Audit** | [`ultimate-ux-workflow.md`](./universal/ultimate-ux-workflow.md) | Usability heuristics, micro-interaction reviews, WCAG 2.2 accessibility verification, and UX polish. |
+| **Scripting & Automation** | [`ultimate-automation-workflow.md`](./universal/ultimate-automation-workflow.md) | Apply the same lock fix; scope destructive targets regardless of object count; await async command actions; define interruption/startup recovery. |
+| **Document Intelligence** | [`ultimate-document-intelligence-workflow.md`](./universal/ultimate-document-intelligence-workflow.md) | Parser contracts, layout-aware OCR, resource limits and source-coordinate provenance. |
+| **Document Engineering** | [`ultimate-document-workflow.md`](./universal/ultimate-document-workflow.md) | Tool discovery, OOXML preservation, accurate revision attribution and rendered-page inspection. |
+| **Natural English** | [`ultimate-natural-english-workflow.md`](./universal/ultimate-natural-english-workflow.md) | Semantic preservation and calibrated uncertainty instead of mechanical word bans. |
+| **Technical Documentation** | [`ultimate-documentation-workflow.md`](./universal/ultimate-documentation-workflow.md) | Correct OpenAPI operations, parameters, responses and schema references; fix nested fences; validate quickstart examples and attribution. |
+| **Deep Research Strategy** | [`ultimate-research-workflow.md`](./universal/ultimate-research-workflow.md) | Mandatory 15-engine inputs, checkpointed collection, source deduplication, claim-level consensus, and disagreement review. |
+| **User Experience (UX) Audit** | [`ultimate-ux-workflow.md`](./universal/ultimate-ux-workflow.md) | Correct standards versus design targets, current scanner scope, manual accessibility and focus lifecycle checks. |
 
 ---
 
 ## 🔄 Workflow Chaining & Pipelines
 
-Workflows can be chained seamlessly to execute end-to-end engineering lifecycles:
+Select relevant stages for the actual scope. These example chains do not authorize unrelated refactoring, production mutations, uploads, or releases:
 
 ### Example A: Building a New Feature
 ```text
@@ -340,18 +340,59 @@ ultimate-git-workflow (Conventional commit)
 
 ---
 
-## 🛡️ Anti-Slop Engineering Rules
+## Shared quality rules
 
-All 38 workflows enforce strict quality gates against generic AI-generated code:
-
-- **No AI Default Palettes:** Forbids unstyled indigo-blue gradients, washed-out grey body text, and generic purple accents.
-- **No Untracked Typographic Scales:** Mandates optical letter-spacing, `text-wrap: balance` on headlines, and explicit line-heights.
-- **Explicit Component State Matrices:** Requires 7 states for every interactive component: `Default`, `Hover`, `Focus-Visible`, `Active`, `Loading (Skeleton)`, `Disabled`, and `Error`.
-- **Zero CLS & Pre-Allocated Layouts:** Prohibits layout-shifting spinners in favor of pixel-matched skeleton loaders.
-- **Security-First Defaults:** Input validation at boundaries, least-privilege defaults, and zero hardcoded secrets.
+The workflows share scoped execution and evidence guidance. They preserve user
+work, distinguish observed results from assumptions, report unavailable checks,
+and define recovery for partial failures. Design rules apply to the requested
+interface and existing brand; prose rules preserve facts and uncertainty.
+Graph guidance accounts for freshness and incomplete dynamic reachability.
+Research always retains all 15 required provider inputs.
 
 ---
 
 ## 📄 License
 
 Distributed under the [MIT License](./LICENSE). Free for personal, commercial, and enterprise open-source use.
+
+## Mandatory 15-engine research
+
+Every research invocation requires substantive inputs from Tavily, Context7, You.com,
+Exa, Jina, SERPdive, Linkup, Parallel Search, SerpApi, GitHub, Firecrawl, Crawleo,
+Bright Data, Apify, and Brave Search. Configure their actual tools before running.
+An unavailable/failed/empty input means **incomplete consensus**, not success with a
+smaller subset. Rich per-engine prompts and the existing 100-word neural/LLM query
+floor remain. Duplicate articles do not become independent corroboration because
+several engines found them. A complete collection may still report unresolved
+claim disagreements.
+
+The packaged `research_state.py` helper records provider attempts, evidence and
+claim matrices locally. It makes no provider calls, cannot authenticate submitted
+records, and does not establish truth. Its tests use explicitly synthetic inputs.
+
+## Validation and migration (v3)
+
+```sh
+python -m pip install -r requirements-dev.txt
+python scripts/build.py
+npm test
+```
+
+The build exports 38 bundles and SHA-256 provenance; validation checks metadata,
+resource links and edition parity. Tests cover checkpoint/consensus behavior,
+corrected examples where executable, and isolated installer/update behavior.
+See [verification status](docs/verification.md) for executed and unrun checks.
+
+Version 3 installs Claude Code into `.claude/skills/<name>/SKILL.md`; older flat
+`.claude/skills/ultimate-*.md` copies are retained to protect customizations. Inspect
+and reconcile those legacy copies manually if they cause duplicate discovery.
+Codex's directory layout is unchanged, with bundled resources now included. Bash/PowerShell entry points require Node.js 18+ and a full clone: a downloaded installer alone has no
+adjacent workflow files. Node.js 18+ supports the Node installer; Python 3.11+ runs
+the development helpers/tests. External providers and specialist tools are separate.
+
+Gemini/Codex user-level synchronization is a separate guarded operation using
+`scripts/sync-installed.py` and a private baseline manifest. Dry run is default;
+changed local files are rejected for reconciliation. No user configuration,
+credentials, other skills, or UI metadata are overwritten.
+
+All installer entry points use one guarded writer and record owned hashes in `.ultimate-workflows-install.sha256`. Keep this receipt to enable safe updates. A v2 installation without a receipt must be backed up/reconciled if its existing files differ; no force-overwrite shortcut is provided. Existing directory/symlink destinations are rejected.

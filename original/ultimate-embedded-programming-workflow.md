@@ -3,85 +3,27 @@ name: ultimate-embedded-programming-workflow
 description: Master workflow for bare-metal registers, RTOS scheduling, interrupt handling, and exception fault diagnostics.
 ---
 
-<!-- INVARIANT_START:ANTI_AI_SLOP -->
-## 🛑 HARDENED ANTI-AI SLOP MANDATE: NATURAL PROSE & BESPOKE DESIGN CRAFT
-All agent communications, architectural plans, reviews, code comments, and frontend implementations MUST strictly adhere to natural human engineering standards. Both corporate AI prose slop and cookie-cutter "vibecoded" UI slop are strictly banned.
+Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization. Research always requires all 15 prescribed provider inputs.
 
-### 1. Zero Prose & Grammar Slop (Natural Human Voice)
-- **Banned Lexicon:**
-  - *Empty Verbs:* delve, embark, foster, resonate, underscore, leverage, elevate, harness, navigate, empower, illuminate, facilitate, tailor, showcase, unveil.
-  - *Corporate Buzz-Adjectives:* testament, tapestry, beacon, cornerstone, robust, seamless, pivotal, crucial, paramount, cutting-edge, vibrant, bespoke, game-changer, journey, realm, landscape, holistic, comprehensive, multifaceted, versatile, transformative.
-  - *Formulaic Transitions:* furthermore, moreover, in conclusion, it is worth noting, at the end of the day, without further ado, needless to say.
-- **Banned Syntactical Patterns:**
-  - **Zero Sycophancy / Pleasantries:** NEVER start responses with "Certainly!", "Great question!", "I'd be happy to help!", "Awesome!", or "Let's dive in!".
-  - **Zero Summary Outros:** NEVER end answers with a repetitive paragraph restating earlier points using generic corporate filler.
-  - **Zero Formulaic "Rule-of-Three" Bullets:** Do not default to 3-bullet lists where each bullet starts with a bold abstract noun followed by a colon and fluff.
-  - **Zero Hedging:** Do not write "You might want to potentially consider checking...". Write "Check X, or Y crashes."
-- **Natural Voice Standard:** Speak like a systems developer in terminal, Slack, or GitHub issues: blunt, concise, precise, pragmatic. Code and runnable shell commands come first.
-
-### 2. Zero Visual & UI/UX Design Slop (Bespoke Engineering Craft)
-- **Banned Color Clichés:**
-  - BAN default AI Blue-to-Indigo/Purple gradients (`bg-gradient-to-r from-blue-600 to-indigo-700` or violet hues).
-  - BAN colored ambient glowing shadows (`box-shadow` with >= 24px blur matching accent color).
-  - BAN washed-out low-contrast gray text (`text-gray-400` / `text-gray-500` failing WCAG AA 4.5:1).
-  - BAN gradient headline text (`bg-clip-text text-transparent bg-gradient-to-r` on H1s).
-- **Banned Layout & Component Tropes:**
-  - BAN cookie-cutter Bento Grid walls filled with fake stats, empty cards, or generic Lucide icon spam.
-  - BAN centered hero boilerplate with a floating pill above H1 (`"✨ New: [Feature]"`).
-  - BAN unmodified shadcn/ui defaults (`--radius: 0.5rem`, stock button/card exports without brand styling).
-  - BAN tinted circular icon containers (`bg-primary/10 text-primary p-3 rounded-full`).
-  - BAN static terminal window mockups with red/yellow/green dots in the hero.
-  - BAN raw emojis used as icons (`✨`, `🚀`, `⚡`, `🔒`) in production UI markup.
-- **Bespoke Design Standard:**
-  - Commit to an intentional aesthetic: brutalist, high-density telemetry, refined editorial, or precision dark-mode.
-  - High information density (Linear/Stripe standard), micro-borders (`rgba(255,255,255,0.08)`), and tabular numerals (`tabular-nums`).
-  - Every component must implement all 7 states: `Default, Hover, Focus-Visible, Active, Loading (Skeleton), Disabled, Error`.
-<!-- INVARIANT_END:ANTI_AI_SLOP -->
-
-<!-- INVARIANT_START:GRAPHIFY -->
-## 🧠 HARDENED GRAPHIFY KNOWLEDGE ENGINE GATE (AST-FIRST CODE INTELLIGENCE)
-Whenever `graphify-out/graph.json` exists in the repository root, agents MUST interact with the AST knowledge graph. Blind directory traversal and unconstrained multi-file context dumping are strictly banned.
-
-1. **Zero-Blind-Grep Invariant:**
-   - Running unstructured grep (`grep -r`, `Select-String *.*`, `ripgrep` across entire project) to locate callers or symbol references is FORBIDDEN when `graph.json` is present.
-   - Agents must query Graphify first: `graphify query "<symbol_or_concept>"`.
-
-2. **Blast Radius Gate (`graphify explain "<symbol>"`):**
-   - Before modifying, refactoring, or deleting any shared interface, model, route, or function, the agent MUST run `graphify explain "<symbol>"`.
-   - If incoming edge count > 0, every caller surfaced by Graphify MUST be explicitly enumerated in the task DAG or implementation plan before touching code.
-
-3. **Call-Path Fault Tracing (`graphify path "<source>" "<target>" --undirected`):**
-   - When debugging multi-hop failures (e.g. UI -> API -> DB), the agent must run `graphify path` to map the exact shortest call chain between entry point and crash sink before reading source code.
-
-4. **Leiden Community Worktree Partitioning:**
-   - When spawning parallel subagents in `ultimate-multi-agent-invoker`, tasks MUST be partitioned by Leiden community clusters (from `graphify-out/graph.json`).
-   - If two tasks share a God Node (identified in `graphify-out/GRAPH_REPORT.md`), they CANNOT run concurrently without explicit file-level mutex locks.
-
-5. **Subagent Context Clamp (70% Token Reduction):**
-   - Never dump entire raw source files into subagent prompts. Inject only the scoped subgraph from `graphify query "<task_scope>"`.
-
-6. **Post-Commit AST Synchronization (`graphify update .`):**
-   - After completing code modifications or merging Git worktrees, the agent MUST run `graphify update .` (local AST delta update, 2s runtime, 0 API tokens) to maintain graph synchronization.
-<!-- INVARIANT_END:GRAPHIFY -->
 
 # Ultimate Embedded Systems Programming Workflow
 ## The Architect's Bible: Hardcore Rules for Production-Grade C & C++ Firmware
 
 This workflow defines the absolute standards, constraints, and pipelines for writing C and C++ firmware. It is written for critical, long-running systems (such as medical devices, automotive modules, aerospace guidance, or remote smart box controllers) where a single crash, memory leak, or register corruption is a catastrophic system failure.
 
-It is designed in perfect harmony with the [ultimate-hardware-design-workflow](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/ultimate-hardware-design-workflow/SKILL.md). Every firmware choice is mapped directly to a corresponding hardware constraint.
+It is designed in perfect harmony with the `ultimate-hardware-design-workflow`. Every firmware choice is mapped directly to a corresponding hardware constraint.
 
 ---
 
 ## 1. The Ten Commandments of Embedded Firmware (C & C++)
 
-1.  **Thou Shalt Commit to the Zero-Heap Invariant:** The heap is thy enemy. No dynamic memory allocation (`malloc`, `free`, `realloc`, `new`, `delete`) after initialization. All structures must have static or stack-based lifetimes.
-2.  **Thou Shalt Block No Execution Threads:** Blocking is a design failure. Never use blocking delay functions in the main thread. All timing must be managed asynchronously using non-blocking state machines and monotonic hardware clocks (`millis()` / `micros()`).
+1.  **Bounded Memory:** Use static allocation/pools where real-time determinism requires them; elsewhere document dynamic allocation ownership, limits, failures and measured fragmentation. Respect the selected SDK lifecycle rather than banning required APIs.
+2.  **Scheduler-Aware Timing:** Cooperative event loops use bounded nonblocking state machines and monotonic deadlines. Dedicated RTOS tasks may use bounded waits that yield; select SDK primitives and verify deadlines/cancellation.
 3.  **Thou Shalt Design for Physical Fail-Safe Boundaries:** If the MCU freezes, the hardware must not catch fire. Configure watchdogs to force resets, and use hard-coded thermal limits to cut power to high-current actuators (e.g., solenoids, heaters) after a fixed duration.
-4.  **Thou Shalt Treat Interrupts (ISRs) as Sacred:** Keep ISRs under 10 microseconds. Do not call slow library functions, print to serial, or allocate memory inside an ISR. Clear the interrupt flag immediately, queue the event, and defer processing to an RTOS task.
-5.  **Thou Shalt Enforce Strong Type Safety:** Ban raw `int` and `long` types. Use explicit-width types (`uint8_t`, `int32_t`, `uintptr_t`) from `<stdint.h>`. Enforce strict enum validations to prevent implicit integer casting.
-6.  **Thou Shalt Compile with Hardened Flags & Static Analyzers:** Compile out dynamic features. Disable Exceptions (`-fno-exceptions`) and RTTI (`-fno-rtti`) for C++. Enforce stack protector checks (`-fstack-protector-strong`) and static analysis gates (`cppcheck`, `clang-tidy`, MISRA C validation).
-7.  **Thou Shalt Pack and Align Structures Deliberately:** Structures mapped to communication buses (CAN, SPI, UART) must be packed explicitly using `__attribute__((packed))` or `#pragma pack(push, 1)`. Manually pad fields to prevent alignment fault exceptions on 32-bit registers.
+4.  **Thou Shalt Treat Interrupts (ISRs) as Sacred:** Set and measure an ISR/WCET budget for the selected MCU, clock, interrupt priorities and deadlines; 10 microseconds is an illustrative target, not a platform guarantee. Do not call slow library functions, print to serial, or allocate memory inside an ISR. Clear the interrupt flag immediately, queue the event, and defer processing to an RTOS task.
+5.  **Thou Shalt Enforce Strong Type Safety:** Use `size_t` for sizes, SDK-required types at API boundaries and explicit-width types for protocols/registers; prefer explicit-width types (`uint8_t`, `int32_t`, `uintptr_t`) from `<stdint.h>`. Enforce strict enum validations to prevent implicit integer casting.
+6.  **Thou Shalt Compile with Hardened Flags & Static Analyzers:** Choose supported compiler flags and C++ exception/RTTI policy from the product/toolchain and library ABI. Enable supported warnings, stack protection and relevant static analysis; record applicable MISRA profile/deviations rather than claiming conformance from a flag.
+7.  **Thou Shalt Pack and Align Structures Deliberately:** Do not use native struct layout as a wire protocol. Decode/encode bounded bytes with explicit endianness and field ranges; packed structures can create unaligned accesses and compiler/lifetime issues. Verify peripheral register alignment against the datasheet.
 8.  **Thou Shalt Maintain Cache Coherency during DMA:** When transferring data via DMA on MCUs with L1 caches, always execute clean operations before transmitting and invalidations after receiving.
 9.  **Thou Shalt Abstract the Hardware Layers:** Decouple application logic from physical pins. Put all drivers behind clean Hardware Abstraction Layers (HAL) so code can be unit-tested on host PCs using mocks.
 10. **Thou Shalt Instrument for Post-Mortem Diagnostics:** Configure exception handlers to catch `HardFault`, `MemManage`, and `BusFault` crashes. Extract the Program Counter (PC) and Link Register (LR) context and write them to non-volatile backup registers before resetting.
@@ -104,7 +46,7 @@ When writing pure C firmware, follow these strict directives to guarantee memory
         ```c
         void send_data(const uint8_t *const buffer, const size_t length);
         ```
-    *   Declare registers and pointers to DMA buffers as volatile to prevent compiler optimization sweeps.
+    *   Use the vendor register access types and the documented DMA/cache ownership protocol. Volatile does not provide inter-thread atomicity, memory ordering or DMA cache coherence.
 *   **The Inline Function Mandate:**
     *   Banish complex macro functions (`#define MULTIPLY(a,b) a*b`) due to double-evaluation and precedence bugs.
     *   Use `static inline` functions to ensure full type checking by the compiler:
@@ -125,7 +67,7 @@ For fleet management, GPS tracking, and telemetry solutions (such as iNAV platfo
 
 *   **Zero-Allocation NMEA & Binary GPS Parsing:**
     *   Never use string parsing functions that allocate memory on the heap. Use pointer offsets and `sscanf` for ASCII sentences.
-    *   For binary GPS protocols (e.g., UBX, Concox/Jimi protocol frames), cast read buffers to packed structures after verifying header synchronization bytes and CRC checksums.
+    *   For binary GPS protocols (e.g., UBX, Concox/Jimi protocol frames), validate frame length/header/checksum, then decode fields with bounded byte operations and explicit endianness; do not cast arbitrary receive buffers to packed typed objects.
 *   **Moving Average Fuel Level Calibration:**
     *   Capacitive fuel sensor data is highly noisy due to vehicle motion. Apply an **Exponentially Weighted Moving Average (EWMA)** filter to raw analog/RS485 reads:
         ```c
@@ -213,7 +155,7 @@ bool extract_field(const char* csv, char delimiter, size_t targetIndex, char* ou
         if (currentIndex == targetIndex) {
             size_t len = end ? (size_t)(end - start) : strlen(start);
             if (len >= outMaxLen) {
-                len = outMaxLen - 1;
+                return false; // truncation is an error; do not report a partial field as success
             }
             memcpy(outBuffer, start, len);
             outBuffer[len] = '\0';
@@ -236,38 +178,37 @@ Mutexes introduce latency and priority inversion risks. When passing data betwee
 ### Single-Producer Single-Consumer (SPSC) Queue in C
 For serial UART buffers, CAN frame queues, or ADC samples:
 ```c
-#define QUEUE_SIZE 64 // Must be a power of 2
-
+// Illustrative C11 single-producer/single-consumer queue.
+// Require lock-free atomics on the ACTUAL target before use in an ISR.
+#include <stdatomic.h>
+#include <stdbool.h>
+#include <stddef.h>
+#include <stdint.h>
+#define QUEUE_SIZE 64u
+_Static_assert((QUEUE_SIZE & (QUEUE_SIZE - 1u)) == 0u, "power of two required");
 typedef struct {
     uint8_t buffer[QUEUE_SIZE];
-    volatile size_t writeIndex;
-    volatile size_t readIndex;
+    _Atomic unsigned write_index;
+    _Atomic unsigned read_index;
 } spsc_queue_t;
-
-static inline void queue_init(spsc_queue_t *const q) {
-    q->writeIndex = 0;
-    q->readIndex = 0;
+static inline void queue_init(spsc_queue_t *q) {
+    atomic_init(&q->write_index, 0u);
+    atomic_init(&q->read_index, 0u);
 }
-
-static inline bool queue_push(spsc_queue_t *const q, const uint8_t item) {
-    size_t currentWrite = q->writeIndex;
-    size_t currentRead = q->readIndex;
-    if ((currentWrite - currentRead) == QUEUE_SIZE) return false; // Full
-    
-    q->buffer[currentWrite & (QUEUE_SIZE - 1)] = item;
-    __sync_synchronize(); // Compiler/Hardware memory barrier
-    q->writeIndex = currentWrite + 1;
+static inline bool queue_push(spsc_queue_t *q, uint8_t value) {
+    unsigned w = atomic_load_explicit(&q->write_index, memory_order_relaxed);
+    unsigned next = (w + 1u) & (QUEUE_SIZE - 1u);
+    if (next == atomic_load_explicit(&q->read_index, memory_order_acquire)) return false;
+    q->buffer[w] = value;
+    atomic_store_explicit(&q->write_index, next, memory_order_release);
     return true;
 }
-
-static inline bool queue_pop(spsc_queue_t *const q, uint8_t *const item) {
-    size_t currentRead = q->readIndex;
-    size_t currentWrite = q->writeIndex;
-    if (currentRead == currentWrite) return false; // Empty
-    
-    *item = q->buffer[currentRead & (QUEUE_SIZE - 1)];
-    __sync_synchronize(); // Compiler/Hardware memory barrier
-    q->readIndex = currentRead + 1;
+static inline bool queue_pop(spsc_queue_t *q, uint8_t *value) {
+    if (!value) return false;
+    unsigned r = atomic_load_explicit(&q->read_index, memory_order_relaxed);
+    if (r == atomic_load_explicit(&q->write_index, memory_order_acquire)) return false;
+    *value = q->buffer[r];
+    atomic_store_explicit(&q->read_index, (r + 1u) & (QUEUE_SIZE - 1u), memory_order_release);
     return true;
 }
 ```
@@ -338,7 +279,7 @@ To guarantee cross-platform compilation and physical hardware execution stabilit
     adc_oneshot_new_unit(&init_config, &adc_handle);
     ```
 2.  **LEDC PWM Gating:** Always zero-initialize the configuration structs (e.g. `ledc_timer_config_t timer_conf = {0};`) to prevent random register corruption and panics.
-3.  **FreeRTOS Watchdog Management:** High-performance loops (such as cellular GPRS loops) must yield control using `vTaskDelay()` or call `esp_task_wdt_reset()` to prevent triggering the task watchdog.
+3.  **FreeRTOS Watchdog Management:** High-performance loops (such as cellular GPRS loops) must yield according to scheduler/idle-task requirements and feed subscribed watchdogs only after health progress; resetting one task watchdog does not substitute for yielding or prove other tasks are healthy.
 
 ### C. Arduino Rules (ATmega2560)
 1.  **Hardware Serial Gating:** Banish the `SoftwareSerial` library. For high-speed telemetry outputs, utilize the secondary hardware UARTS (`Serial1`, `Serial2`, or `Serial3` pins).
@@ -382,9 +323,9 @@ Every peripheral driver must follow these expert C/C++ firmware integration stan
 
 When the AI agent generates C or C++ firmware code for the user, it **MUST** enforce the following constraints:
 
-1.  **Heap Ban:** Never use `new`, `malloc`, `std::string`, `String`, or dynamic arrays in generated examples. Use `char[]` arrays, `snprintf`, and compile-time template/macro bounds.
-2.  **No Blocking loops:** Ensure `loop()` or scheduling runs are cooperative and use `millis()` timing markers.
-3.  **Type Safety:** Declare numeric values with explicit-width integer types (`uint16_t`, `int32_t`) from `<stdint.h>`.
+1.  **Memory bounds:** Match the selected memory policy; use bounded arrays/pools for real-time paths and explicit ownership/failure handling where SDK-supported dynamic allocation is necessary.
+2.  **Timing:** Keep cooperative loops responsive; use bounded yielding RTOS waits where appropriate instead of forcing millis() scheduling on all targets.
+3.  **Type Safety:** Use explicit-width protocol/register types, size_t for object sizes and SDK-defined types at their interfaces.
 4.  **Compiler Checks:** Enable all warnings (`-Wall -Wextra -Werror`).
 5.  **Safe Pointers:** Never perform raw arithmetic offsets on pointers; use indexed buffers. Validate pointers against `NULL` before use.
 
@@ -396,59 +337,78 @@ This section documents the execution pipeline and indexes all specialized firmwa
 
 ### Phase 1: Register Initialization, Linker Scripts, & Boot Safety
 *   **Active Sub-skills:**
-    *   [embedded-fw-bare-metal](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/embedded-fw-bare-metal/SKILL.md) — Vector tables, BSS/DATA segment setups, and startup code.
-    *   [embedded-fw-hal-abstraction](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/embedded-fw-hal-abstraction/SKILL.md) — Isolating physical pin configuration behind standard API interfaces.
-    *   [embedded-fw-bootloaders](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/embedded-fw-bootloaders/SKILL.md) — Safe partition swapping, golden image fallbacks, and RSA signature verification.
-    *   [iot-fw-flash-encryption](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/iot-fw-flash-encryption/SKILL.md) — Enabling hardware encryption keys and securing the JTAG boot security registers.
-    *   [iot-sw-device-provisioning](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/iot-sw-device-provisioning/SKILL.md) — Injecting private client certificates and UUID parameters in factory stages.
+    *   `embedded-fw-bare-metal` — Vector tables, BSS/DATA segment setups, and startup code.
+    *   `embedded-fw-hal-abstraction` — Isolating physical pin configuration behind standard API interfaces.
+    *   `embedded-fw-bootloaders` — Safe partition swapping, golden image fallbacks, and RSA signature verification.
+    *   `iot-fw-flash-encryption` — Enabling hardware encryption keys and securing the JTAG boot security registers.
+    *   `iot-sw-device-provisioning` — Injecting private client certificates and UUID parameters in factory stages.
 
 ### Phase 2: Compiler Optimization, RTOS Scheduling, & State Persistence
 *   **Active Sub-skills:**
-    *   [embedded-fw-compiler-tuning](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/embedded-fw-compiler-tuning/SKILL.md) — Flash size optimization (`-Os`, `-ffunction-sections`, `-fdata-sections`).
-    *   [embedded-fw-rtos-scheduling](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/embedded-fw-rtos-scheduling/SKILL.md) — Queue parameters, scheduling ticks, and thread priority setups.
-    *   [embedded-fw-state-persist](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/embedded-fw-state-persist/SKILL.md) — Wear-leveled parameters storage using LittleFS/SPIFFS libraries.
-    *   [iot-fw-no-block-loop](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/iot-fw-no-block-loop/SKILL.md) — Cooperative multitasking logic without CPU stalling loops.
-    *   [iot-fw-power-management](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/iot-fw-power-management/SKILL.md) — Sleep modes execution, RTC alarms configuration, and clock gating controls.
+    *   `embedded-fw-compiler-tuning` — Flash size optimization (`-Os`, `-ffunction-sections`, `-fdata-sections`).
+    *   `embedded-fw-rtos-scheduling` — Queue parameters, scheduling ticks, and thread priority setups.
+    *   `embedded-fw-state-persist` — Wear-leveled parameters storage using LittleFS/SPIFFS libraries.
+    *   `iot-fw-no-block-loop` — Cooperative multitasking logic without CPU stalling loops.
+    *   `iot-fw-power-management` — Sleep modes execution, RTC alarms configuration, and clock gating controls.
 
 ### Phase 3: Peripheral Drivers, Interrupt Service Routines, & Filtering
 *   **Active Sub-skills:**
-    *   [embedded-fw-comm-protocols](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/embedded-fw-comm-protocols/SKILL.md) — Configuring UART, SPI (DMA), and CAN baud rates.
-    *   [embedded-fw-interrupt-handling](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/embedded-fw-interrupt-handling/SKILL.md) — Routing ISR execution blocks in RAM (`IRAM_ATTR`) and prioritizing interrupts.
-    *   [embedded-fw-sensor-filters](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/embedded-fw-sensor-filters/SKILL.md) — Fixed-point EWMA and digital filtering for analog telemetry.
-    *   [iot-fw-peripheral-drivers](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/iot-fw-peripheral-drivers/SKILL.md) — Low-level RS485, RFID, Modbus sensor, and MDVR serial protocols.
-    *   [iot-sw-edge-analytics](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/iot-sw-edge-analytics/SKILL.md) — Processing GPS coordinates and sensor logs locally before server upload.
-    *   [iot-sw-geolocation-tracking](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/iot-sw-geolocation-tracking/SKILL.md) — Cleaning GPS coordinates, tracking azimuth changes, and local geofence audits.
+    *   `embedded-fw-comm-protocols` — Configuring UART, SPI (DMA), and CAN baud rates.
+    *   `embedded-fw-interrupt-handling` — Routing ISR execution blocks in RAM (`IRAM_ATTR`) and prioritizing interrupts.
+    *   `embedded-fw-sensor-filters` — Fixed-point EWMA and digital filtering for analog telemetry.
+    *   `iot-fw-peripheral-drivers` — Low-level RS485, RFID, Modbus sensor, and MDVR serial protocols.
+    *   `iot-sw-edge-analytics` — Processing GPS coordinates and sensor logs locally before server upload.
+    *   `iot-sw-geolocation-tracking` — Cleaning GPS coordinates, tracking azimuth changes, and local geofence audits.
 
 ### Phase 4: Stability, Watchdog Resiliency, & Memory Audits
 *   **Active Sub-skills:**
-    *   [embedded-fw-watchdog-resilience](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/embedded-fw-watchdog-resilience/SKILL.md) — Configuring independent hardware watchdogs (IWDG) and window limits.
-    *   [embedded-fw-memory-allocation](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/embedded-fw-memory-allocation/SKILL.md) — Declaring static memory buffers and avoiding dynamic heap fragmentation.
-    *   [embedded-fw-low-power-states](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/embedded-fw-low-power-states/SKILL.md) — Transitioning core power domains during main voltage loss.
-    *   [iot-fw-watchdog-timers](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/iot-fw-watchdog-timers/SKILL.md) — Feeding watchdogs across RTOS tasks.
-    *   [iot-fw-connection-resilience](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/iot-fw-connection-resilience/SKILL.md) — Exponential backoff strategies for cellular GPRS network drops.
-    *   [iot-fw-thermal-protection](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/iot-fw-thermal-protection/SKILL.md) — Monitoring battery temperature and disabling charging states under vehicle heat.
-    *   [iot-fw-memory-safety](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/iot-fw-memory-safety/SKILL.md) — Safe buffer bounds and preventing pointer leaks.
+    *   `embedded-fw-watchdog-resilience` — Configuring independent hardware watchdogs (IWDG) and window limits.
+    *   `embedded-fw-memory-allocation` — Declaring static memory buffers and avoiding dynamic heap fragmentation.
+    *   `embedded-fw-low-power-states` — Transitioning core power domains during main voltage loss.
+    *   `iot-fw-watchdog-timers` — Feeding watchdogs across RTOS tasks.
+    *   `iot-fw-connection-resilience` — Exponential backoff strategies for cellular GPRS network drops.
+    *   `iot-fw-thermal-protection` — Monitoring battery temperature and disabling charging states under vehicle heat.
+    *   `iot-fw-memory-safety` — Safe buffer bounds and preventing pointer leaks.
 
 ### Phase 5: Simulation, Profiling, & HardFault Diagnostics
 *   **Active Sub-skills:**
-    *   [embedded-fw-unit-testing](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/embedded-fw-unit-testing/SKILL.md) — Using mocks (like Unity) to run tests on host developer desktops.
-    *   [embedded-fw-profiling-metrics](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/embedded-fw-profiling-metrics/SKILL.md) — Measuring thread execution times with SEGGER SystemView.
-    *   [embedded-fw-diagnostics-faults](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/embedded-fw-diagnostics-faults/SKILL.md) — Setting custom HardFault handlers and decoding PC/LR registers.
-    *   [iot-fw-hil-simulation](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/iot-fw-hil-simulation/SKILL.md) — Simulating GPS NMEA feeds and cellular tower responses on test benches.
-    *   [iot-fw-debugging-jtag](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/iot-fw-debugging-jtag/SKILL.md) — GDB debugging, hardware breakpoints, and stack tracing.
-    *   [iot-fw-led-signaling](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/iot-fw-led-signaling/SKILL.md) — Communicating states (cellular, GPS, error codes) using LED blink patterns.
+    *   `embedded-fw-unit-testing` — Using mocks (like Unity) to run tests on host developer desktops.
+    *   `embedded-fw-profiling-metrics` — Measuring thread execution times with SEGGER SystemView.
+    *   `embedded-fw-diagnostics-faults` — Setting custom HardFault handlers and decoding PC/LR registers.
+    *   `iot-fw-hil-simulation` — Simulating GPS NMEA feeds and cellular tower responses on test benches.
+    *   `iot-fw-debugging-jtag` — GDB debugging, hardware breakpoints, and stack tracing.
+    *   `iot-fw-led-signaling` — Communicating states (cellular, GPS, error codes) using LED blink patterns.
 
 ### Phase 6: Cloud Connection, MQTT, & Telemetry Ingestion
 *   **Active Sub-skills:**
-    *   [iot-sw-mqtt-topic-design](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/iot-sw-mqtt-topic-design/SKILL.md) — Structured MQTT topic schemas (`boxes/{mac}/telemetry`).
-    *   [iot-sw-mqtt-broker-config](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/iot-sw-mqtt-broker-config/SKILL.md) — SSL/TLS setup and authentication layers on the broker.
-    *   [iot-sw-mtls-device-auth](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/iot-sw-mtls-device-auth/SKILL.md) — Mutual TLS device authentication using X.509 client certificates.
-    *   [iot-sw-data-payload-protobuf](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/iot-sw-data-payload-protobuf/SKILL.md) — Packing payloads using Protobuf to minimize GPRS cellular data.
-    *   [iot-sw-telemetry-ingestion](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/iot-sw-telemetry-ingestion/SKILL.md) — Structuring message queues (RabbitMQ/Kafka) to decouple GPRS decoders from databases.
-    *   [iot-sw-time-series-storage](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/iot-sw-time-series-storage/SKILL.md) — Ingesting tracking coordinates into databases like TimescaleDB/ClickHouse.
-    *   [iot-sw-realtime-telemetry-ui](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/iot-sw-realtime-telemetry-ui/SKILL.md) — Streaming coordinates to tracking maps via WebSockets.
-    *   [iot-sw-device-twin-state](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/iot-sw-device-twin-state/SKILL.md) — Managing states (locking/unlocking) between cloud database and device.
-    *   [iot-sw-ota-server-mgmt](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/iot-sw-ota-server-mgmt/SKILL.md) — Scheduling staged rollouts and managing firmware binaries.
-    *   [iot-sw-rate-limiting-devices](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/iot-sw-rate-limiting-devices/SKILL.md) — Protecting servers from high-frequency cellular spamming.
-    *   [iot-sw-anomaly-detection](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/iot-sw-anomaly-detection/SKILL.md) — Alerting on drops in GPS tracking updates or voltage fluctuations.
-    *   [iot-sw-audit-log-actions](file:///C:/Users/Lorenzo%20Bela/.gemini/config/skills/iot-sw-audit-log-actions/SKILL.md) — Logging remote device overrides (like ignition cut-off commands) into database ledgers.
+    *   `iot-sw-mqtt-topic-design` — Structured MQTT topic schemas (`boxes/{mac}/telemetry`).
+    *   `iot-sw-mqtt-broker-config` — SSL/TLS setup and authentication layers on the broker.
+    *   `iot-sw-mtls-device-auth` — Mutual TLS device authentication using X.509 client certificates.
+    *   `iot-sw-data-payload-protobuf` — Packing payloads using Protobuf to minimize GPRS cellular data.
+    *   `iot-sw-telemetry-ingestion` — Structuring message queues (RabbitMQ/Kafka) to decouple GPRS decoders from databases.
+    *   `iot-sw-time-series-storage` — Ingesting tracking coordinates into databases like TimescaleDB/ClickHouse.
+    *   `iot-sw-realtime-telemetry-ui` — Streaming coordinates to tracking maps via WebSockets.
+    *   `iot-sw-device-twin-state` — Managing states (locking/unlocking) between cloud database and device.
+    *   `iot-sw-ota-server-mgmt` — Scheduling staged rollouts and managing firmware binaries.
+    *   `iot-sw-rate-limiting-devices` — Protecting servers from high-frequency cellular spamming.
+    *   `iot-sw-anomaly-detection` — Alerting on drops in GPS tracking updates or voltage fluctuations.
+    *   `iot-sw-audit-log-actions` — Logging remote device overrides (like ignition cut-off commands) into database ledgers.
+
+## Bounded wire decoding and target gates
+
+Illustrative C11 little-endian field decoder (compile/fuzz before use in a specific protocol):
+
+```c
+static inline bool decode_u32_le(const uint8_t *bytes, size_t length, uint32_t *out) {
+    if (!bytes || !out || length < 4u) return false;
+    *out = (uint32_t)bytes[0] | ((uint32_t)bytes[1] << 8) |
+           ((uint32_t)bytes[2] << 16) | ((uint32_t)bytes[3] << 24);
+    return true;
+}
+```
+
+Validate remaining length BEFORE offsets, protocol maximum length, endianness, signed/range semantics, CRC and authentication where required; checksum is not adversarial authentication. Raw packed structs above illustrate fields only, not permission to transmit native memory. Parser buffers need explicit bounds; sscanf must have widths and checked conversions and cannot assume a terminated input frame.
+
+The SPSC queue reserves one slot (capacity QUEUE_SIZE-1), has exactly one producer/consumer, and must not be reinitialized while active. Confirm atomic_is_lock_free and generated instructions for the actual CPU/compiler/ABI; reject ISR usage when atomics may take locks, and prefer supported RTOS FromISR APIs when appropriate. Host queue stress/ThreadSanitizer tests do not prove target interrupt timing. Exercise full/empty/wraparound/order and publish memory ownership explicitly.
+
+Select allocation, blocking RTOS waits, exceptions/RTTI, compiler flags, cache/DMA maintenance, fault-handler frame format and stack budgets from the target SDK and product safety profile. A bounded blocking wait in a dedicated task may be correct; do not force Arduino millis scheduling onto every RTOS. Fault handlers must handle invalid/extended stacks and avoid recursive faulting, unsafe flash writes or printing. Verify safe actuator shutdown, brownout/reboot loop recovery, RAM/stack high-water, watchdog starvation and firmware update recovery on target/HIL. Never claim medical/automotive certification or physical safety from a host compile or generic policy.
