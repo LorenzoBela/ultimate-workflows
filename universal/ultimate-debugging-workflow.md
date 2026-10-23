@@ -8,6 +8,18 @@ Apply the [shared execution and evidence contract](resources/ultimate-shared/exe
 
 # Debugging workflow
 
+This is the repair stage of **Research → Plan → Plan Review → Invoke → Debug when needed → Final Code Review**. Apply the [connected quality guide](resources/ultimate-quality/guide.md). Receive a finding linked to its task, requirement/decision, failing check receipt, actual inputs and exact integrated revision/content hashes. Standalone debugging may establish this minimal context from the observed defect; it does not fabricate an already-reviewed implementation plan.
+
+## Hypothesis ledger, design feedback and independent closure
+
+Assign stable hypothesis and experiment IDs. Keep competing explanations, their predicted observations and a check that could refute each. Select the safest bounded experiment that distinguishes causes rather than simply retesting the leading guess. Retain unsuccessful attempts, counterevidence and nondeterministic trial conditions/results. Missing required target/infrastructure is blocked, not a fabricated reproduction or repeated repair.
+
+Classify the supported cause as an implementation defect within the current plan or a design-level failure of an assumption/interface/decision. For design-level failures, link counterevidence to affected planning records, stop dependent dispatch, revise the plan and renew its semantic-hash-bound plan review. An ordinary expected implementation edit does not invalidate the semantic plan; an incompatible contract or broken consequential assumption does. Preserve unrelated valid tasks/evidence.
+
+A repair experiment/change consumes one of the default **three repair attempts per task**; read-only diagnosis does not. Final-review repairs additionally obey the run's **three final-review repair rounds**, under existing time/cost budgets. Limits can be explicitly configured before the run but never silently expanded. On exhaustion retain the patch, receipts, rejected hypotheses and next discriminating action; report blocked for affected work.
+
+A builder's repair claim becomes **resolved-unverified**. After integration, rerun the original failing check, protected adjacent behavior, affected dependencies and mandatory integration checks against the new exact integrated revision and relevant content hashes. An independent verifier/reviewer, given original criteria/raw evidence before builder conclusions, establishes **verified-fixed** or reopens/blocks the finding. Do not self-close through a success field. Pre-fix evidence and a worker-local branch do not establish post-fix integrated correctness.
+
 Use for an observed error, regression, hang, leak, performance defect or intermittent failure. Inputs: reported versus expected behavior, affected revision/environment, reproduction material, available tests/logs, current user edits and authorized scope. Do not turn a diagnosis into an unrelated rewrite or assume production-change authority. Missing reproduction or target access is a stated limitation; useful read-only progress can continue.
 
 ## 1. Triage and containment

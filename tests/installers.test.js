@@ -35,6 +35,12 @@ test('Codex installs complete bundles and updates only owned files', t => {
   }
   assert.equal(fs.readFileSync(notes, 'utf8'), 'retain user notes');
   assert.ok(fs.existsSync(path.join(cwd, '.agents/skills/ultimate-research-workflow/resources/ultimate-research-workflow/research_state.py')));
+  for (const name of ['research-workflow', 'planning-workflow', 'multi-agent-invoker', 'debugging-workflow', 'review-workflow']) {
+    const dir = path.join(cwd, '.agents/skills', 'ultimate-' + name, 'resources');
+    assert.ok(fs.existsSync(path.join(dir, 'ultimate-quality/casebook.py')));
+    assert.ok(fs.existsSync(path.join(dir, 'ultimate-quality/guide.md')));
+    assert.ok(fs.existsSync(path.join(dir, 'ultimate-research-workflow/research_state.py')));
+  }
   assert.ok(!fs.existsSync(path.join(cwd, '.cursor')));
 });
 

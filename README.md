@@ -47,7 +47,7 @@ Use $ultimate-planning-workflow to plan email sign-in for this project.
 Use $ultimate-debugging-workflow to investigate why login fails after a refresh.
 ```
 
-For an explicit parallel run, request `$ultimate-multi-agent-invoker` with an approved plan. Installing these files supplies workflow instructions; it does not install the external tools, other skills, or MCP connections referenced by a workflow.
+For an explicit parallel run, request `$ultimate-multi-agent-invoker` with a current technically ready plan review. Existing user authorization still governs execution. Installing these files supplies workflow instructions; it does not install the external tools, other skills, or MCP connections referenced by a workflow.
 
 **Updating:** rerun the install command from the same project. It updates files matching their recorded installation hashes. Modified or unowned conflicting files cause an error before any files are written; back up and reconcile them first. Commit `.agents/skills/` if teammates should use the same workflows. Avoid installing duplicate copies at both project and user scope.
 
@@ -188,8 +188,8 @@ Standard AI code generation often suffers from "vibecoding": generic UI defaults
 **Ultimate Workflows solve this by embedding production-grade senior engineering constraints directly into the agent's context window:**
 
 1. **Phased Execution Pipelines:** Every workflow guides the agent through structured phases (Research → Architecture → Implementation → Validation → Review).
-2. **Iron Laws & Non-Negotiables:** Hard constraints (e.g., WCAG 2.2 AA accessibility, Core Web Vitals $p75$, zero Cumulative Layout Shift, zero hardcoded colors).
-3. **Anti-Slop Rulesheets:** Explicit blacklists of common AI code tells and boilerplate antipatterns.
+2. **Applicable quality targets:** Accessibility requirements, measured performance budgets, existing brand rules and meaningful verification suited to the task.
+3. **Concrete quality guidance:** Avoid unsupported boilerplate, preserve established conventions and justify decisions with evidence.
 4. **Actionable Checklists:** Concrete pre-flight verification items before declaring code done.
 
 ---
@@ -370,7 +370,33 @@ The packaged `research_state.py` helper records provider attempts, evidence and
 claim matrices locally. It makes no provider calls, cannot authenticate submitted
 records, and does not establish truth. Its tests use explicitly synthetic inputs.
 
-## Validation and migration (v3)
+## Connected quality routine (v4)
+
+Use **Research → Plan → Plan Review → Invoke → Debug when needed → Final Code
+Review**. The same five workflow names now share a local
+[casebook and usage guide](original/resources/ultimate-quality/guide.md):
+
+- Research keeps all 15 substantive provider inputs and adds question coverage,
+  disconfirmation and separate collection, evidence and decision-readiness states.
+- Planning connects evidence to requirements, decisions, tasks and meaningful checks.
+- Review supports plan and code modes with `ready`, `needs_revision` and `blocked`
+  gates. Plan review follows the semantic plan; code review follows exact code state.
+- Invoker checks prerequisites, assigns ownership and requires independent evidence
+  before integration and closure.
+- Debugger records competing hypotheses and distinguishing experiments, then verifies
+  the fix and protected behavior. Design defects return to planning.
+
+Repair defaults are three attempts per task and three final-review repair rounds.
+The helper records actual check exits and artifacts; it does not authenticate
+people/provider calls, grant authorization or prove semantic correctness. Existing
+research checkpoints remain readable; without new bound coverage they are
+`not_assessed` for decision readiness, even when collection and consensus are complete.
+
+The [v4 evaluation corpus](evaluations/v4/README.md) provides 70 cases and explicit
+oracles. Local fixture tests establish contract behavior. Comparative quality gains
+remain unmeasured until actual baseline/candidate runs and independent grading exist.
+
+## Validation and migration
 
 ```sh
 python -m pip install -r requirements-dev.txt
@@ -381,7 +407,8 @@ npm test
 The build exports 38 bundles and SHA-256 provenance; validation checks metadata,
 resource links and edition parity. Tests cover checkpoint/consensus behavior,
 corrected examples where executable, and isolated installer/update behavior.
-See [verification status](docs/verification.md) for executed and unrun checks.
+See [v4 verification status](docs/verification-v4.md) and the
+[v3 evidence record](docs/verification.md) for executed and unrun checks.
 
 Version 3 installs Claude Code into `.claude/skills/<name>/SKILL.md`; older flat
 `.claude/skills/ultimate-*.md` copies are retained to protect customizations. Inspect

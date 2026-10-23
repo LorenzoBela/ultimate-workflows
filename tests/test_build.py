@@ -55,3 +55,20 @@ class BuildTests(unittest.TestCase):
     def test_parent_traversal_is_rejected(self):
         with self.assertRaises(ValueError):
             build.guard(self.root / "universal/../../outside")
+
+    def test_crlf_source_cannot_publish_hashes_that_git_would_change(self):
+        self.resource.write_bytes(b"contract\r\n")
+        with self.assertRaisesRegex(ValueError, "LF"):
+            build.build()
+        self.assertFalse((self.root / "workflow-manifest.json").exists())
+
+    def test_quality_resources_are_in_only_the_five_selected_bundles(self):
+        for i, name in enumerate(sorted(build.QUALITY_WORKFLOWS)):
+            (self.root / f"original/ultimate-fixture-{i}.md").rename(self.root / f"original/{name}.md")
+        quality = self.root / "original/resources/ultimate-quality/casebook.py"
+        quality.parent.mkdir(parents=True)
+        quality.write_text("fixture helper")
+        manifest = build.build()
+        for name, item in manifest["workflows"].items():
+            self.assertEqual("resources/ultimate-quality/casebook.py" in item["files"],
+                             name in build.QUALITY_WORKFLOWS)

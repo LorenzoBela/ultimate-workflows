@@ -71,7 +71,10 @@
     },
     "ultimate-debugging-workflow": {
       "files": {
-        "SKILL.md": "0c2a20a64c153ad8c5b25073c12929268052af04c3335ccad81c8576bb689d54",
+        "SKILL.md": "7a1d648cfd97d1634dc20695408fb39f208315a819419479a23eeb1511af29ac",
+        "resources/ultimate-quality/casebook.py": "8c591dcea0091d240885afddaf46c274dddbdadf218379c0eb00980d753dea29",
+        "resources/ultimate-quality/guide.md": "72a48d45f407fc590dc0906ac016227f951cd5c069cb05ab46d67e6a35358291",
+        "resources/ultimate-research-workflow/research_state.py": "db53184cc9e10619abc1b0d6768b904bf784ce4b383ce2f995e93617810c3403",
         "resources/ultimate-shared/execution-contract.md": "2464a6b5255a65946f011227379023241a7e326395cab3b6d4d53768e15d163b"
       }
     },
@@ -155,7 +158,10 @@
     },
     "ultimate-multi-agent-invoker": {
       "files": {
-        "SKILL.md": "f33e6f5cf9cbb3ce87b8fdab73e1e5c73fcbafa895bd5e378f0a3da8b7c186fa",
+        "SKILL.md": "1bb43983cd7a868293417421d7a9ac8073bfa405041348e844cec2bec7bee502",
+        "resources/ultimate-quality/casebook.py": "8c591dcea0091d240885afddaf46c274dddbdadf218379c0eb00980d753dea29",
+        "resources/ultimate-quality/guide.md": "72a48d45f407fc590dc0906ac016227f951cd5c069cb05ab46d67e6a35358291",
+        "resources/ultimate-research-workflow/research_state.py": "db53184cc9e10619abc1b0d6768b904bf784ce4b383ce2f995e93617810c3403",
         "resources/ultimate-shared/execution-contract.md": "2464a6b5255a65946f011227379023241a7e326395cab3b6d4d53768e15d163b"
       }
     },
@@ -173,7 +179,10 @@
     },
     "ultimate-planning-workflow": {
       "files": {
-        "SKILL.md": "6c1dab463066bf9c89903e1b6daf2e525999bbd79b093951c7c736ac0bf02a10",
+        "SKILL.md": "16c42ee67baeb4201cfc1c20d4fb3664785a0465854d327327bf93c6cc7cfd32",
+        "resources/ultimate-quality/casebook.py": "8c591dcea0091d240885afddaf46c274dddbdadf218379c0eb00980d753dea29",
+        "resources/ultimate-quality/guide.md": "72a48d45f407fc590dc0906ac016227f951cd5c069cb05ab46d67e6a35358291",
+        "resources/ultimate-research-workflow/research_state.py": "db53184cc9e10619abc1b0d6768b904bf784ce4b383ce2f995e93617810c3403",
         "resources/ultimate-shared/execution-contract.md": "2464a6b5255a65946f011227379023241a7e326395cab3b6d4d53768e15d163b"
       }
     },
@@ -191,14 +200,19 @@
     },
     "ultimate-research-workflow": {
       "files": {
-        "SKILL.md": "2c10915f3a6f440ae71d042c411f25451ffaf2dc330ba51cfd3a790c2446e6d9",
-        "resources/ultimate-research-workflow/research_state.py": "69b473737d0a31c5afda2265f77116efa27ae7e337287ed40ff4dc9779eaa854",
+        "SKILL.md": "6f4bc3785c447432949a578ecc48e45f3945d9532eb49f69aa30bb68fe71e8c3",
+        "resources/ultimate-quality/casebook.py": "8c591dcea0091d240885afddaf46c274dddbdadf218379c0eb00980d753dea29",
+        "resources/ultimate-quality/guide.md": "72a48d45f407fc590dc0906ac016227f951cd5c069cb05ab46d67e6a35358291",
+        "resources/ultimate-research-workflow/research_state.py": "db53184cc9e10619abc1b0d6768b904bf784ce4b383ce2f995e93617810c3403",
         "resources/ultimate-shared/execution-contract.md": "2464a6b5255a65946f011227379023241a7e326395cab3b6d4d53768e15d163b"
       }
     },
     "ultimate-review-workflow": {
       "files": {
-        "SKILL.md": "23fe9c6a89018913b4707d35c51893cccb0520524dcc4dce27a0288270c5bc0f",
+        "SKILL.md": "8299569b8b0befc2700385a827f818f3d44942df5ec421f91473f55798bd0b04",
+        "resources/ultimate-quality/casebook.py": "8c591dcea0091d240885afddaf46c274dddbdadf218379c0eb00980d753dea29",
+        "resources/ultimate-quality/guide.md": "72a48d45f407fc590dc0906ac016227f951cd5c069cb05ab46d67e6a35358291",
+        "resources/ultimate-research-workflow/research_state.py": "db53184cc9e10619abc1b0d6768b904bf784ce4b383ce2f995e93617810c3403",
         "resources/ultimate-shared/execution-contract.md": "2464a6b5255a65946f011227379023241a7e326395cab3b6d4d53768e15d163b"
       }
     },

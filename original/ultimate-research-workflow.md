@@ -10,6 +10,16 @@ Apply the [shared execution and evidence contract](resources/ultimate-shared/exe
 
 # Mandatory 15-engine research and claim consensus
 
+This is the research stage of **Research → Plan → Plan Review → Invoke → Debug when needed → Final Code Review**. Use the [connected quality guide](resources/ultimate-quality/guide.md) for linked IDs, version-bound handoffs and readiness gates. The existing provider ledger remains authoritative for provider-state bookkeeping; the casebook links its claims/artifacts rather than creating a competing collection ledger.
+
+Before dispatch, assign stable question IDs and distinguish material questions needed for decisions from useful background. Link each question to the relevant requirement/decision and define what evidence could answer it. Give providers factual context and independent initial inquiries without presenting a favored solution or prior engines' summaries as established truth. Preserve that initial pass before targeted follow-ups. Distinct provider capabilities need suitable source targets/questions, not identical filler.
+
+Actively seek disconfirming evidence for consequential hypotheses: conditions where the contract fails, incompatible versions, safe counterexamples and authoritative contradictory sources. Follow up material disagreement by checking original source lineage, dates/platforms, precise passages and safe experiments. A provider's answer is not independent corroboration when it repeats the same underlying source. Record missing or contested answers rather than smoothing them into agreement.
+
+At handoff expose three separate assessments: **collection completeness** (all 15 substantive inputs), **evidence coverage** (supported/contested/unknown answers by required question), and **decision readiness** (sufficient applicable evidence or an explicitly accepted bounded tradeoff for the intended decision). Complete collection or a valid claim matrix never alone implies ready decisions. Mark consequential unknowns/unavailable required evidence as blocked for dependent decisions while preserving collected work. A structure-valid field cannot certify semantic truth.
+
+Link source-backed claim IDs and versions into planning decisions. Include retrieval time, source/version applicability and raw artifact locations; if evidence changes, invalidate only dependent claims/decisions and associated reviews. Legacy checkpoints retain their original status and schema meaning; do not reinterpret an old consensus boolean as newly established question coverage/readiness. Existing query floors below remain binding.
+
 Use for technical research, document mining, API/dependency checks and source-based decisions. Every invocation requires substantive, task-relevant inputs from **all 15 providers** below. No quick mode, host adaptation, unavailable provider, fallback or failed attempt reduces this requirement. A missing, empty or irrelevant input means **incomplete research**. Collect useful evidence and report gaps honestly rather than fabricating coverage or waiting forever.
 
 ## Required provider roster
@@ -103,6 +113,7 @@ Supported operations (substitute actual files/question; these are command templa
 python resources/ultimate-research-workflow/research_state.py init --run-dir RUN_DIR --question QUESTION --registry REGISTRY_JSON
 python resources/ultimate-research-workflow/research_state.py record --run-dir RUN_DIR --provider PROVIDER_ID --input RESULT_JSON
 python resources/ultimate-research-workflow/research_state.py report --run-dir RUN_DIR --claims CLAIMS_JSON
+python resources/ultimate-research-workflow/research_state.py report --run-dir RUN_DIR --claims CLAIMS_JSON --coverage COVERAGE_JSON --require-ready
 ```
 
 Registry JSON is a dictionary of **all 15 exact IDs** from the roster, each containing `tool` and `query`. Retain full arguments in the run's dispatch registry alongside these fields when needed. The helper enforces You.com 150, Exa 100, Linkup 200, Parallel 100 and Jina 80 word floors. Review must additionally enforce relevance, meaningful context and evidence quality; repeated filler does not meet the substantive prompting requirement.
@@ -113,9 +124,20 @@ Claims JSON is a list of objects containing `id`, `text`, `positions` keyed by a
 
 The helper's incomplete exit code is **2**. Check the actual process status; never convert an incomplete report into a pass. Structural success cannot establish source independence, authorized execution, semantic support or absence of prompt injection; inspect those separately.
 
+## Question coverage and decision-readiness contract
+
+The backward-compatible report without coverage preserves its legacy `collection_complete`/`consensus_complete` meaning. For decision handoff use `report --claims CLAIMS_JSON --coverage COVERAGE_JSON --require-ready`; it additionally reports `evidence_sufficient`, `decision_ready`, `readiness_status` (`not_assessed`, `blocked`, `needs_revision`, `ready`) and `coverage_errors`. Legacy checkpoints without coverage are **not_assessed**, not newly ready. The Python interface is `summarize(run_dir, claims=None, coverage=None)`; this remains local bookkeeping, not a live provider client or truth oracle.
+
+Coverage JSON binds to three current fingerprints: `scope_sha256` from the provider run; `claims_sha256`, the SHA-256 of canonical claims JSON serialized with `sort_keys=True`, `separators=(',', ':')`, `ensure_ascii=False`, encoded UTF-8; and required `evidence_sha256` copied from the current report. The latter is the canonical digest of the latest received provider records, not just their URLs. The report always exposes it; changed evidence at the same URL invalidates old coverage, and missing/mismatched evidence binding requires reassessment (`needs_revision`). Never reuse the old assessment by updating a hash without reviewing the changed evidence. Coverage contains nonempty `questions` and `decisions` lists:
+
+- Question: `id`, `required` boolean, `status` (`answered`, `contested`, `unknown`), referenced claim IDs in `claims`, `freshness` with `status` (`current`, `stale`, `unknown`) and `rationale`, plus `disconfirmation` with `query`, `outcome` and recorded source URLs in `sources`.
+- Decision: `id`, referenced question IDs in `questions`, and evidence-based `rationale`.
+
+Required questions need an answered state with cited support, applicable current evidence and documented disconfirmation; unresolved referenced claims prevent readiness. Unknown required questions are blocked. Review actual support and source lineage before assigning statuses: a typed `answered` field cannot create evidence. A high-consequence bounded tradeoff must be explicit in planning and reassessed in plan review; it cannot trick the helper into claiming missing mandatory evidence exists. Preserve both helper result and narrative limits in the linked casebook.
+
 ## 5. Completion and final reporting
 
-Complete collection/consensus requires **15/15 substantive inputs plus a reviewed claim-source matrix**. The result may legitimately retain uncertainty/disagreement. The answer must not label missing providers, empty results, attempted calls or generated placeholders as received inputs.
+Complete collection requires **15/15 substantive inputs**; the legacy structural consensus assessment additionally requires a reviewed claim-source matrix. Decision readiness separately requires reviewed question coverage and applicable evidence; never equate these dimensions. The result may legitimately retain uncertainty/disagreement. The answer must not label missing providers, empty results, attempted calls or generated placeholders as received inputs.
 
 Deliver question/scope and versions, provider coverage/status, traceable claim matrix, deduplicated source provenance, conclusions supported by evidence, unresolved conflicts/limits, actual reproducible checks and run/checkpoint location. For incomplete research include collected evidence, missing providers, reason and next action. Do not claim “zero hallucination,” guaranteed comprehensive coverage, a universal success score, or measured uplift without observed evidence.
 

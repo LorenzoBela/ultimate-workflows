@@ -3,7 +3,7 @@
 
 init --run-dir DIR --question TEXT --registry FILE
 record --run-dir DIR --provider NAME --input FILE
-report --run-dir DIR [--claims FILE]
+report --run-dir DIR [--claims FILE --coverage FILE --require-ready]
 
 Provider results supplied to this tool must come from actual provider calls.
 Synthetic fixtures validate bookkeeping only and never prove live coverage.
@@ -141,7 +141,103 @@ def record(run_dir, provider, result):
         lock.unlink(missing_ok=True)
 
 
-def summarize(run_dir, claims=None):
+def claims_digest(claims):
+    return hashlib.sha256(json.dumps(claims, sort_keys=True, separators=(",", ":"),
+                                    ensure_ascii=False).encode("utf-8")).hexdigest()
+
+
+def readiness(config, claims, coverage, matrix_valid, received, unresolved, source_sets):
+    """Validate submitted coverage, not the truth of human evidence assessments."""
+    result = {"evidence_sufficient": False, "decision_ready": False,
+              "readiness_status": "not_assessed", "coverage_errors": []}
+    if coverage is None:
+        return result
+    errors = result["coverage_errors"]
+    blocked = len(received) != 15
+    try:
+        if not isinstance(coverage, dict):
+            raise ValueError("coverage must be an object")
+        if coverage.get("scope_sha256") != config["scope_sha256"]:
+            raise ValueError("coverage scope is stale")
+        if coverage.get("claims_sha256") != claims_digest(claims):
+            raise ValueError("coverage claims digest is stale")
+        if coverage.get("evidence_sha256") != claims_digest(received):
+            raise ValueError("coverage provider evidence digest is stale")
+        if not matrix_valid:
+            raise ValueError("coverage requires a valid claim matrix")
+        by_claim = {c["id"]: c for c in claims}
+        questions = coverage.get("questions")
+        if not isinstance(questions, list) or not questions:
+            raise ValueError("coverage requires nonempty questions")
+        seen, required = set(), set()
+        recorded_urls = set().union(*source_sets.values()) if source_sets else set()
+        for question in questions:
+            identifier = required_text(question.get("id"), "question.id")
+            if identifier in seen:
+                raise ValueError("duplicate question ID")
+            seen.add(identifier)
+            if not isinstance(question.get("required"), bool):
+                raise ValueError("question.required must be boolean")
+            status = question.get("status")
+            if status not in {"answered", "contested", "unknown"}:
+                raise ValueError("invalid question status")
+            refs = question.get("claims")
+            if not isinstance(refs, list) or any(not isinstance(c, str) or c not in by_claim for c in refs):
+                raise ValueError("question references missing claims")
+            freshness = question.get("freshness", {})
+            if freshness.get("status") not in {"current", "stale", "unknown"}:
+                raise ValueError("invalid freshness assessment")
+            required_text(freshness.get("rationale"), "freshness.rationale")
+            challenge = question.get("disconfirmation", {})
+            required_text(challenge.get("query"), "disconfirmation.query")
+            required_text(challenge.get("outcome"), "disconfirmation.outcome")
+            urls = challenge.get("sources")
+            if not isinstance(urls, list) or any(canonical_url(u) not in recorded_urls for u in urls):
+                raise ValueError("disconfirmation references unrecorded sources")
+            if question["required"]:
+                required.add(identifier)
+                if status == "unknown" or freshness["status"] == "unknown":
+                    blocked = True
+                if status != "answered" or freshness["status"] != "current" or not refs or not urls:
+                    errors.append(f"{identifier}: required evidence is incomplete")
+                for ref in refs:
+                    if ref in unresolved or not any(p["stance"] == "support" for p in by_claim[ref]["positions"].values()):
+                        errors.append(f"{identifier}: claim {ref} lacks resolved supporting evidence")
+        if not required:
+            raise ValueError("at least one required question is needed")
+        result["evidence_sufficient"] = not blocked and not errors
+        decisions = coverage.get("decisions")
+        if not isinstance(decisions, list) or not decisions:
+            raise ValueError("coverage requires nonempty decisions")
+        decision_ids, used = set(), set()
+        for decision in decisions:
+            identifier = required_text(decision.get("id"), "decision.id")
+            if identifier in decision_ids:
+                raise ValueError("duplicate decision ID")
+            decision_ids.add(identifier)
+            required_text(decision.get("rationale"), "decision.rationale")
+            refs = decision.get("questions")
+            if not isinstance(refs, list) or not refs or any(not isinstance(q, str) or q not in seen for q in refs):
+                raise ValueError("decision references missing questions")
+            used.update(refs)
+            # Optional questions become material once a decision depends on them.
+            for q in questions:
+                if q["id"] in refs and not q["required"]:
+                    if q["status"] != "answered" or q["freshness"]["status"] != "current" or not q["claims"]:
+                        errors.append(f"{q['id']}: decision depends on insufficient optional evidence")
+                    if any(c in unresolved or not any(p["stance"] == "support" for p in by_claim[c]["positions"].values()) for c in q["claims"]):
+                        errors.append(f"{q['id']}: decision depends on unresolved claims")
+        if not required.issubset(used):
+            errors.append("required questions must trace to a decision")
+    except (ValueError, TypeError, AttributeError, KeyError) as exc:
+        errors.append(str(exc))
+    ready = not blocked and not errors
+    result.update(decision_ready=ready,
+                  readiness_status="blocked" if blocked else "ready" if ready else "needs_revision")
+    return result
+
+
+def summarize(run_dir, claims=None, coverage=None):
     run_dir = Path(run_dir)
     config = load_config(run_dir)
     received, statuses, source_sets, identity_links = {}, {}, {}, {}
@@ -213,8 +309,9 @@ def summarize(run_dir, claims=None):
                 except (ValueError, TypeError, AttributeError) as exc:
                     errors.append(f"claim {claim.get('id', '?') if isinstance(claim, dict) else '?'}: {exc}")
             matrix_valid = not errors
-    return {
+    report = {
         "scope_sha256": config["scope_sha256"], "received_count": len(received),
+        "evidence_sha256": claims_digest(received),
         "required_count": 15, "collection_complete": len(received) == 15,
         "consensus_complete": len(received) == 15 and matrix_valid,
         "matrix_valid": matrix_valid, "matrix_errors": errors,
@@ -223,6 +320,8 @@ def summarize(run_dir, claims=None):
         "unresolved_claims": unresolved,
         "limitation": "Bookkeeping validates submitted records; it cannot authenticate provider calls or prove truth. Content hashes only help identify exact copies, not all syndication.",
     }
+    report.update(readiness(config, claims, coverage, matrix_valid, received, unresolved, source_sets))
+    return report
 
 
 def main():
@@ -234,6 +333,8 @@ def main():
     parser.add_argument("--provider", choices=PROVIDERS)
     parser.add_argument("--input")
     parser.add_argument("--claims")
+    parser.add_argument("--coverage")
+    parser.add_argument("--require-ready", action="store_true")
     args = parser.parse_args()
     try:
         if args.command == "init":
@@ -246,10 +347,12 @@ def main():
             record(args.run_dir, args.provider, read_json(args.input))
             result = summarize(args.run_dir)
         else:
-            result = summarize(args.run_dir, read_json(args.claims) if args.claims else None)
+            result = summarize(args.run_dir, read_json(args.claims) if args.claims else None,
+                               read_json(args.coverage) if args.coverage else None)
         print(json.dumps(result, ensure_ascii=False, indent=2))
         # Report incompleteness explicitly in both machine-readable fields and exit status.
-        if args.command == "report" and not result["consensus_complete"]:
+        if args.command == "report" and (not result["consensus_complete"] or
+                                         (args.require_ready and not result["decision_ready"])):
             raise SystemExit(2)
     except (ValueError, KeyError, TypeError, OSError) as exc:
         parser.exit(1, f"research-state: {exc}\n")

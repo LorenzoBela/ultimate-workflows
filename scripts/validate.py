@@ -3,6 +3,7 @@
 import hashlib
 import json
 from pathlib import Path
+import posixpath
 import re
 import yaml
 
@@ -23,6 +24,13 @@ for name, entry in manifest["workflows"].items():
         for edition in ["original", "universal"]:
             path = ROOT / edition / (f"{name}.md" if relative == "SKILL.md" else relative)
             assert hashlib.sha256(path.read_bytes()).hexdigest() == expected, str(path)
+        if relative.endswith(".md"):
+            document = source if relative == "SKILL.md" else ROOT / "original" / relative
+            for link in re.findall(r"\]\(([^)\s]+)\)", document.read_text(encoding="utf-8-sig")):
+                if link.startswith(("https:", "http:", "#", "mailto:")):
+                    continue
+                target = posixpath.normpath(posixpath.join(posixpath.dirname(relative), link.split("#")[0]))
+                assert target in entry["files"], (name, relative, "unbundled link", link)
     for link in re.findall(r"\]\(([^)\s]+)\)", text):
         if link.startswith(("https:", "http:", "#", "mailto:")):
             continue

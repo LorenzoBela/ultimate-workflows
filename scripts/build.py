@@ -8,6 +8,9 @@ import stat
 import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
+QUALITY_WORKFLOWS = {f"ultimate-{name}" for name in (
+    "research-workflow", "planning-workflow", "multi-agent-invoker",
+    "debugging-workflow", "review-workflow")}
 
 def guard(path):
     path = Path(path).absolute()
@@ -33,6 +36,12 @@ def atomic(path, data):
     try: os.replace(temporary, path)
     finally: temporary.unlink(missing_ok=True)
 
+def source_bytes(path):
+    value = guard(path).read_bytes()
+    if path.suffix in {".md", ".py", ".json", ".js", ".txt", ".yaml", ".yml", ".sh", ".ps1"} and b"\r\n" in value:
+        raise ValueError(f"Source must use LF to match committed bundle hashes: {path}")
+    return value
+
 def build():
     original, universal = ROOT / "original", ROOT / "universal"
     guard(original); guard(universal)
@@ -43,17 +52,21 @@ def build():
     manifest={"schema_version":1,"authoring_source":"Gemini workflow skills","required_research_inputs":15,"workflows":{}}
     outputs={}
     for source in sources:
-        data=guard(source).read_bytes()
+        data=source_bytes(source)
         outputs[guard(universal/source.name)]=data
         hashes={"SKILL.md":hashlib.sha256(data).hexdigest()}
-        for group in ["ultimate-shared",source.stem]:
+        groups = ["ultimate-shared", source.stem]
+        if source.stem in QUALITY_WORKFLOWS:
+            groups.extend(["ultimate-quality", "ultimate-research-workflow"])
+        groups = list(dict.fromkeys(groups))
+        for group in groups:
             folder=guard(original/"resources"/group)
             if not folder.is_dir(): continue
             for resource in sorted(folder.rglob("*")):
                 guard(resource)
                 if not resource.is_file() or "__pycache__" in resource.parts or resource.suffix==".pyc": continue
                 relative=resource.relative_to(original)
-                value=resource.read_bytes()
+                value=source_bytes(resource)
                 outputs[guard(universal/relative)]=value
                 hashes[relative.as_posix()]=hashlib.sha256(value).hexdigest()
         manifest["workflows"][source.stem]={"files":hashes}

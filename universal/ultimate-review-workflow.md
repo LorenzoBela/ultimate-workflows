@@ -1,12 +1,48 @@
 ---
 name: ultimate-review-workflow
-description: Review code changes for actionable correctness, security, performance and compatibility defects using concrete triggers, caller contracts and verification evidence. Adapts depth to risk, preserves raw diff evidence and avoids manufactured findings or automatic writes.
-argument-hint: "[diff | branch | pull-request | --sarif]"
+description: Review a versioned implementation plan or actual integrated code in explicit plan/code modes. Return ready, needs_revision or blocked using consequence-based findings, semantic plan hashes, exact code revisions and independent repair verification. Preserve raw evidence and avoid manufactured findings or automatic writes.
+argument-hint: "[plan | code | plan-file | diff | branch | pull-request | --sarif]"
 ---
 
 Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve established authorization. Research requires all 15 prescribed provider inputs.
 
-# Code review workflow
+# Plan review and code review
+
+This skill supplies two distinct review stages of **Research → Plan → Plan Review → Invoke → Debug when needed → Final Code Review**. Apply the [connected quality guide](resources/ultimate-quality/guide.md) for IDs, version binding, severity and repair transitions. Select explicit **plan** mode for a proposed specification/task graph and **code** mode for a diff or integrated implementation. Infer the mode from the supplied artifact when clear; ask only if both targets remain plausible after inspection. Both modes are read-only unless implementation is separately authorized.
+
+## Shared severity, verdict and version contract
+
+Return exactly one typed verdict: **`ready`**, **`needs_revision`** or **`blocked`**, with precedence **blocked > needs_revision > ready**. Bind it to run/scope, mode, reviewed record IDs, semantic plan hash, relevant input/evidence versions and, in code mode, exact integrated revision plus relevant uncommitted content hashes. Record observed/inferred/unrun/unavailable limitations separately. A structurally valid record cannot prove semantic correctness.
+
+- **P0:** concrete risk of destructive/unauthorized execution, lost work/data, fabricated verification or violating a mandatory user requirement.
+- **P1:** material correctness/feasibility gap, unsupported consequential assumption, incompatible interface/dependency or acceptance check incapable of establishing a required outcome.
+- **P2/P3:** nonblocking or low-consequence issue with specific rationale and useful follow-up ownership.
+
+**Ready** requires current fingerprints, hard requirements mapped to feasible tasks/checks, specified material interfaces/dependencies/recovery, no unresolved actionable P0/P1 and no high-consequence unknown. In final code review it additionally requires mandatory current-revision outcome checks and independent finding closure. **Needs_revision** means a remediable internal consequential gap can be resolved using available evidence/authority. **Blocked** means missing essential capability/evidence/authority, an uninferable consequential user tradeoff or exhausted repair budget. Name the exact gap and next action. P2/P3 follow-ups remain visible without becoming invented blockers.
+
+Technical readiness does not authorize deployment/publishing, widen scope or require repeated user approval for already-authorized implementation. Only seek a genuine missing decision or authority. Risk acceptance names the specific risk/mitigation/scope; it cannot waive a hard requirement, replace one of the 15 research inputs or turn an unrun check into a pass.
+
+## Plan mode — before dependent invocation
+
+Review the actual structured plan and linked research/evidence, not just persuasive prose. Establish its semantic hash from canonical requirements, assumptions, decisions, interfaces, tasks and acceptance checks. Verify the chain **question/claim → requirement/assumption → decision/interface → task → check**, with stable IDs and record revisions. A Markdown reformat does not change semantics; a consequential contract/assumption/check change does.
+
+Check feasibility against the actual repository, stack and available tools/capabilities. Inspect hard requirement coverage, critical unanswered questions, source applicability/freshness, evidence supporting consequential assumptions and experiments that could falsify them. Fifteen provider inputs are collection coverage, not proof of decision readiness. A consequence depends on evidence, not how many engines repeat it.
+
+Challenge dependency order, ownership/shared resources, interface compatibility, concurrency/idempotency, failure/retry/cancellation, rollout/recovery and whether each mandatory check has a meaningful outcome oracle. Consider a safe alternative or counterexample before treating a stylistic preference as a defect. Do not manufacture a plan flaw because a different architecture is fashionable.
+
+Return version-bound findings plus exactly one verdict. `needs_revision` returns affected records to planning and another review; `blocked` identifies the missing external decision/capability/evidence. Do not dispatch dependent implementation until a current `ready` result exists. Expected implementation edits and accepted prerequisite outputs advance state without invalidating an unchanged plan. Invalidate affected reviews when requirements, assumptions, decisions, interfaces or checks change; unrelated repository changes alone do not invalidate all work.
+
+## Code mode — integrated behavior and final closure
+
+The code-review procedure below applies to actual changed behavior. In the connected routine, compare the integrated implementation with the current ready plan's hard requirements/acceptance criteria and linked decisions. For a standalone requested review, inspect the supplied diff without inventing prior planning/research completion; state that boundary explicitly.
+
+Discover candidate defects first, then skeptically validate preconditions, reachability, consequence and safe counterexamples. Give an independent verifier original evidence/acceptance criteria before the builder's claims. Bind check results/findings to the exact integrated revision/content hashes; a pre-fix pass or builder-local branch cannot establish final correctness.
+
+A proposed repair is **resolved-unverified** until an independent actor verifies the original failure, protected adjacent behavior and affected integration contracts at the new revision. Final review may establish **verified-fixed**, **non-actionable-with-reason** or **blocked**, with actual evidence; builders cannot self-close a finding by changing a label. Design-level discoveries return affected planning records to planning and plan review before dependent work resumes.
+
+New actionable findings enter the same debugger/repair loop. Default bounds are **three repair attempts per task** and **three final-review repair rounds per run**, also under established time/cost limits; read-only diagnosis is not an attempt, and missing infrastructure is blocked. Limits may be configured explicitly before a run but never expanded silently. Exhaustion preserves evidence and blocks affected dependencies with the next discriminating action. Complete only with current final review, satisfied mandatory checks and no actionable P0/P1 remaining.
+
+## Code-review procedure
 
 Use for a requested diff, PR or bounded engineering audit. Inputs: base/head revision, intended behavior, changed paths, applicable repository rules and relevant tests. Review is read-only unless fixes or external posting are separately authorized. Suggestions, test sketches and machine exports do not grant permission to modify files, approve, merge or run state-changing probes.
 

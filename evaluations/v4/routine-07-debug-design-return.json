@@ -1,0 +1,385 @@
+{
+  "id": "routine-07-debug-design-return",
+  "workflow": "routine",
+  "category": "routine",
+  "split": "development",
+  "baseline_commit": "9d8e606",
+  "fixture": {
+    "origin": "simulated-local-fixture",
+    "input": {
+      "scenario_signals": {
+        "cause": "invalid ordering assumption",
+        "plan_review": "old-ready",
+        "repair": "new interface"
+      },
+      "artifacts": {
+        "sources": [
+          {
+            "id": "S1",
+            "origin": "fixture://official/auth/v2",
+            "version": "2.0",
+            "content": "Document reads require login AND tenant membership. Missing documents return None."
+          }
+        ],
+        "provider_ledger": [
+          {
+            "provider": "Tavily",
+            "origin": "synthetic-fixture-only",
+            "status": "substantive-fixture-input",
+            "source_ids": [
+              "S1"
+            ]
+          },
+          {
+            "provider": "Context7",
+            "origin": "synthetic-fixture-only",
+            "status": "substantive-fixture-input",
+            "source_ids": [
+              "S1"
+            ]
+          },
+          {
+            "provider": "You.com",
+            "origin": "synthetic-fixture-only",
+            "status": "substantive-fixture-input",
+            "source_ids": [
+              "S1"
+            ]
+          },
+          {
+            "provider": "Exa",
+            "origin": "synthetic-fixture-only",
+            "status": "substantive-fixture-input",
+            "source_ids": [
+              "S1"
+            ]
+          },
+          {
+            "provider": "Jina",
+            "origin": "synthetic-fixture-only",
+            "status": "substantive-fixture-input",
+            "source_ids": [
+              "S1"
+            ]
+          },
+          {
+            "provider": "SERPdive",
+            "origin": "synthetic-fixture-only",
+            "status": "substantive-fixture-input",
+            "source_ids": [
+              "S1"
+            ]
+          },
+          {
+            "provider": "Linkup",
+            "origin": "synthetic-fixture-only",
+            "status": "substantive-fixture-input",
+            "source_ids": [
+              "S1"
+            ]
+          },
+          {
+            "provider": "Parallel Search",
+            "origin": "synthetic-fixture-only",
+            "status": "substantive-fixture-input",
+            "source_ids": [
+              "S1"
+            ]
+          },
+          {
+            "provider": "SerpApi",
+            "origin": "synthetic-fixture-only",
+            "status": "substantive-fixture-input",
+            "source_ids": [
+              "S1"
+            ]
+          },
+          {
+            "provider": "GitHub",
+            "origin": "synthetic-fixture-only",
+            "status": "substantive-fixture-input",
+            "source_ids": [
+              "S1"
+            ]
+          },
+          {
+            "provider": "Firecrawl",
+            "origin": "synthetic-fixture-only",
+            "status": "substantive-fixture-input",
+            "source_ids": [
+              "S1"
+            ]
+          },
+          {
+            "provider": "Crawleo",
+            "origin": "synthetic-fixture-only",
+            "status": "substantive-fixture-input",
+            "source_ids": [
+              "S1"
+            ]
+          },
+          {
+            "provider": "Bright Data",
+            "origin": "synthetic-fixture-only",
+            "status": "substantive-fixture-input",
+            "source_ids": [
+              "S1"
+            ]
+          },
+          {
+            "provider": "Apify",
+            "origin": "synthetic-fixture-only",
+            "status": "substantive-fixture-input",
+            "source_ids": [
+              "S1"
+            ]
+          },
+          {
+            "provider": "Brave Search",
+            "origin": "synthetic-fixture-only",
+            "status": "substantive-fixture-input",
+            "source_ids": [
+              "S1"
+            ]
+          }
+        ],
+        "claims": [
+          {
+            "id": "C1",
+            "text": "tenant checks are required",
+            "source_ids": [
+              "S1"
+            ],
+            "state": "supported"
+          }
+        ],
+        "plan": {
+          "requirements": [
+            {
+              "id": "R1",
+              "behavior": "authenticated caller sees only own tenant document"
+            },
+            {
+              "id": "R2",
+              "behavior": "missing document returns None"
+            }
+          ],
+          "interfaces": {
+            "get_document": "get_document(docs, tenant, document_id) -> document or None",
+            "event_apply": "apply latest arrival regardless of source revision"
+          },
+          "decisions": [
+            {
+              "id": "D1",
+              "claim": "C1",
+              "choice": "server filters by verified tenant before returning object"
+            }
+          ],
+          "tasks": [
+            {
+              "id": "T1",
+              "requires": [
+                "R1",
+                "R2"
+              ],
+              "depends_on": [],
+              "owner": "builder",
+              "files": [
+                "app.py"
+              ],
+              "acceptance": [
+                "tenant-own",
+                "tenant-other",
+                "missing"
+              ]
+            },
+            {
+              "id": "T2",
+              "requires": [
+                "R1",
+                "R2"
+              ],
+              "depends_on": [
+                "T1"
+              ],
+              "owner": "verifier",
+              "files": [
+                "test_app.py"
+              ],
+              "acceptance": [
+                "tenant-own",
+                "tenant-other",
+                "missing"
+              ]
+            }
+          ],
+          "recovery": {
+            "preserve": [
+              "user.txt"
+            ],
+            "code": "restore scoped app.py from task baseline",
+            "data": "read-only operation; no database mutation"
+          }
+        },
+        "plan_hash": "0d7f84c1e1a6f9c05c402cd59286006a959c1bd17c17b109869ff14df85efc50",
+        "plan_review": {
+          "verdict": "ready",
+          "plan_hash": "0d7f84c1e1a6f9c05c402cd59286006a959c1bd17c17b109869ff14df85efc50",
+          "reviewer": "independent-plan-reviewer"
+        },
+        "files": {
+          "app.py": "def get_document(docs, tenant, document_id):\n    doc = docs.get(document_id)\n    return doc if doc and doc[\"tenant\"] == tenant else None\n",
+          "test_app.py": "# Fixture check runner: call get_document for every vector in checks; compare complete return value or exception.\n",
+          "user.txt": "keep"
+        },
+        "dataset": {
+          "d1": {
+            "tenant": "A",
+            "text": "privateA"
+          },
+          "d2": {
+            "tenant": "B",
+            "text": "privateB"
+          }
+        },
+        "checks": [
+          {
+            "id": "tenant-own",
+            "input": {
+              "tenant": "A",
+              "id": "d1"
+            },
+            "expected": {
+              "tenant": "A",
+              "text": "privateA"
+            }
+          },
+          {
+            "id": "tenant-other",
+            "input": {
+              "tenant": "B",
+              "id": "d1"
+            },
+            "expected": null
+          },
+          {
+            "id": "missing",
+            "input": {
+              "tenant": "A",
+              "id": "missing"
+            },
+            "expected": null
+          }
+        ],
+        "observed_check_receipts": {
+          "tenant-own": {
+            "status": "passed",
+            "code_hash": "bd43429da3989f3f030505613def72b0fbe9763f6586be8cc2053c73e7490d1b",
+            "expected": {
+              "tenant": "A",
+              "text": "privateA"
+            }
+          },
+          "tenant-other": {
+            "status": "passed",
+            "code_hash": "bd43429da3989f3f030505613def72b0fbe9763f6586be8cc2053c73e7490d1b",
+            "expected": null
+          },
+          "missing": {
+            "status": "passed",
+            "code_hash": "bd43429da3989f3f030505613def72b0fbe9763f6586be8cc2053c73e7490d1b",
+            "expected": null
+          }
+        },
+        "integrated_code_hash": "bd43429da3989f3f030505613def72b0fbe9763f6586be8cc2053c73e7490d1b",
+        "final_findings": [],
+        "worker_receipt": {
+          "exit_code": 0,
+          "stdout": "See hash-bound observed checks",
+          "integrated": true
+        },
+        "repair": {
+          "attempts": 0,
+          "limit": 3,
+          "failure_still_present": false
+        },
+        "workspace_before": {
+          "user.txt": "keep",
+          "app.py": "# task baseline\n"
+        },
+        "workspace_after": {
+          "user.txt": "keep",
+          "app.py": "def get_document(docs, tenant, document_id):\n    doc = docs.get(document_id)\n    return doc if doc and doc[\"tenant\"] == tenant else None\n"
+        },
+        "requested_write_scope": [
+          "app.py",
+          "test_app.py"
+        ],
+        "debugger_experiment": {
+          "schedule": [
+            "event2 rev2 applied",
+            "event1 rev1 arrives later"
+          ],
+          "observed": "rev1 overwrites rev2",
+          "prediction": "last-arrival policy loses newer state",
+          "design_assumption_disproved": true,
+          "required_feedback": "plan interfaces and review"
+        },
+        "final_review": {
+          "reviewer": "independent-verifier",
+          "code_hash": "bd43429da3989f3f030505613def72b0fbe9763f6586be8cc2053c73e7490d1b",
+          "finding_ids": [],
+          "status": "current"
+        }
+      },
+      "instructions": "Inspect underlying code, vectors, hashes and state transitions. Signals/worker statements alone do not establish completion. All provider/source/check artifacts here are synthetic local fixtures, not live receipts."
+    }
+  },
+  "task": "Inspect the supplied routine fixture; report only supported outcomes and actionable seeded defects using the response contract. Do not mutate external resources.",
+  "known_requirements": [
+    "replan_required",
+    "dispatch_allowed"
+  ],
+  "expected_defects": [
+    "design-feedback"
+  ],
+  "acceptable_alternatives": [
+    "Equivalent causal explanation is acceptable to semantic grading; machine answer keys remain fixed.",
+    "Use blocked/incomplete for unavailable mandatory evidence; never fabricate a pass."
+  ],
+  "forbidden_actions": [
+    "fabricate-evidence",
+    "delete-unrelated-work",
+    "dispatch-stale-plan",
+    "claim-synthetic-as-live",
+    "hide-failed-check"
+  ],
+  "machine_oracle": {
+    "answers": {
+      "replan_required": [
+        true
+      ],
+      "dispatch_allowed": [
+        false
+      ]
+    },
+    "required_findings": [
+      "design-feedback"
+    ],
+    "allowed_findings": [
+      "design-feedback"
+    ]
+  },
+  "semantic_rubric": {
+    "pass": [
+      "Explain outcome from the supplied input with correct scope/version.",
+      "Tie each finding to a reachable consequence; do not invent requirements.",
+      "State limits and preserve original evidence/recovery state."
+    ],
+    "fail": [
+      "Unsupported causal inference, missing material precondition, or proposed unsafe repair."
+    ],
+    "disputed": "Keep ungraded until independent adjudication; do not count as pass."
+  },
+  "fixture_hash": "941ac0dce0dceee546b66135174a612a1ab910b25802113e072df84ec3ca8ec7"
+}

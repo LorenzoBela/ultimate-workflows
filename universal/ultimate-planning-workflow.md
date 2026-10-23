@@ -10,6 +10,20 @@ Apply the [shared execution and evidence contract](resources/ultimate-shared/exe
 
 # Technical planning and implementation specifications
 
+This is the planning stage of **Research → Plan → Plan Review → Invoke → Debug when needed → Final Code Review**. Apply the [connected quality guide](resources/ultimate-quality/guide.md). Planning produces a versioned proposal; `ultimate-review-workflow` in **plan** mode evaluates technical readiness before the invoker dispatches its dependent implementation. This is not a new human approval ceremony and does not revoke inherited implementation authorization.
+
+## Versioned plan and evidence-linked decisions
+
+Use one run/casebook and stable IDs. Trace **question → claim/evidence → requirement/assumption → decision/interface → task → acceptance check**. For each hard requirement name the concrete behavior, relevant evidence and at least one feasible task/check. Compare incremental/no-change and realistic alternatives where the decision is open. Source consensus without applicable decision evidence is insufficient.
+
+For every consequential assumption record its support, uncertainty, failure consequence, owner and a discriminating experiment. Stress-test unavailable dependencies, concurrency/resource conflicts, compatibility/deploy ordering, partial failure and recovery. A test oracle must establish the required outcome—an exit-zero script or printed “verified” is not enough. Separate mandatory checks from optional exploration, and record required tools/capabilities honestly.
+
+Compute the semantic `plan_hash` from canonical structured requirements, assumptions, decisions, interfaces, tasks and acceptance checks. A Markdown reformat does not change that fingerprint. Plan review binds to the current hash, scope and relevant evidence/input versions; changed requirements/assumptions/contracts/checks invalidate affected readiness. Expected implementation edits and accepted prerequisite outputs advance task state without invalidating an unchanged plan. Unrelated repository changes alone do not restart planning.
+
+Submit a coherent plan for a `ready`, `needs_revision` or `blocked` verdict, using the precise P0/P1 consequences and precedence in the guide. A remediable internal gap returns here for revision and another plan review. Missing essential evidence/capability, genuine uninferable tradeoff or insufficient authority is blocked with its next action. Seek user decisions only for those real gaps; never ask again for already-established authorization.
+
+Design-level debugger feedback reopens the linked assumptions/decisions/tasks: preserve experiments, revise the affected records and recovery/check contracts, recompute the semantic hash and renew plan review before dependent dispatch. Preserve unrelated ready work. A risk acceptance records the actual bounded tradeoff/mitigation and cannot waive a hard requirement, missing provider or unrun check.
+
 Use for substantial feature plans, migrations and risky changes. Match planning depth to consequences, uncertainty and reversibility, rather than file count. Preserve existing authorization; do not require a second approval just because a plan artifact exists. The mandatory research contract below is unchanged by planning depth.
 
 ## Inputs and evidence
@@ -47,7 +61,7 @@ Each task records:
 | Recovery | How to preserve user work and recover data/config; limitations |
 | Evidence | Actual result/artifact after execution, initially pending |
 
-Run only ready tasks within host concurrency/resource limits. Stop dependent work when a prerequisite fails; persist the failure and replan the affected subgraph. Independent tasks may continue if safe. Builders run their own meaningful checks; independent review is additional risk-based evidence.
+Dispatch only tasks from a current technically ready plan review, with valid prerequisites, within host concurrency/resource limits. Stop dependent work when a prerequisite fails; persist the failure and replan the affected subgraph. Independent tasks may continue if safe. Builders run their own meaningful checks; independent review is additional risk-based evidence.
 
 ## 4. Brownfield experiments and recovery
 

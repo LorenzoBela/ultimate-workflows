@@ -10,7 +10,23 @@ Apply the [shared execution and evidence contract](resources/ultimate-shared/exe
 
 # Multi-agent execution and integration
 
-Use for explicitly requested or otherwise authorized parallel work. Preserve inherited user authorization; a separate plan-approval ritual is not required for already-authorized work. Do not spawn more workers than the host supports, or imply the prompt itself enforces isolation, budget limits or permissions.
+This is the invocation stage of **Research → Plan → Plan Review → Invoke → Debug when needed → Final Code Review**. Apply the [connected quality guide](resources/ultimate-quality/guide.md) and require the current plan-review verdict **ready** before dispatch. Readiness is technical assessment, not a second user-approval request. Preserve existing implementation authorization and do not expand it into deployment/publishing.
+
+## Current-plan dispatch and closed repair contract
+
+Before each dispatch, verify the semantic plan hash, scope and relevant evidence/input versions against its ready plan review, plus actual prerequisite outputs and owned resources. Expected implementation edits/accepted dependency outputs do not invalidate an unchanged plan. Material contract/assumption changes do. Do not use a ready result bound only by document name or an old code revision.
+
+Each minimal packet carries run/task ID, current plan hash, linked requirement/decision/interface/check IDs and revisions, prerequisite artifact/version hashes, expected code base, owner/files/resources, constraints, acceptance oracle, bounds and recovery. Attach original evidence/criteria; do not copy an entire conversation or imply tool APIs exist because a role name appears here. Distinguish proposed check definitions from actual command receipts.
+
+A failing task/check creates an open finding linked to observed inputs, requirement/decision and exact code revision/content hashes. Stop its affected descendants; independent safe tasks may continue. Assign one repair owner and enter `ultimate-debugging-workflow`. Debugger retains hypotheses/experiments/counterevidence. Design-level feedback returns affected decisions/tasks to planning and plan review before dependent work resumes; ordinary authorized repairs can proceed within the unchanged ready plan.
+
+Repair claims are **resolved-unverified**, not closed. Integrate the actual patch, then rerun the original failing check, affected contracts/protected behavior and required integration checks on that exact integrated revision, with relevant dirty-file hashes. Give an independent verifier the original evidence and acceptance criteria before the builder's conclusions. Only independent current-revision verification establishes **verified-fixed**; a builder's local green statement or self-authored success field cannot close a finding.
+
+Default bounds: **three repair attempts per task** and **three final-review repair rounds per run**, also subject to established time/cost budgets. An attempt starts when a repair experiment/change executes; read-only diagnosis does not consume it. Required infrastructure unavailable becomes blocked, not repeated attempted repairs. Configure different limits explicitly before the run and never silently expand them. On exhaustion preserve work/checkpoints and block affected dependencies with the next discriminating action.
+
+After integration invoke `ultimate-review-workflow` in **code** mode on the actual integrated revision. Its actionable findings enter the same repair loop. Complete only with current final review, all mandatory requirements/checks satisfied and no actionable P0/P1 finding remaining. Missing mandatory checks are incomplete/blocked; optional unrun checks are not passing.
+
+Use for explicitly requested or otherwise authorized parallel work. Preserve inherited user authorization; a technical current-plan review is required for this connected routine, while a repeated user approval is not required for already-authorized work. Do not spawn more workers than the host supports, or imply the prompt itself enforces isolation, budget limits or permissions.
 
 ## Inputs and ownership
 
@@ -27,7 +43,7 @@ while unfinished tasks exist:
   observe cancellation, deadlines and actual aggregate budget
   classify finished workers from their real result/check evidence
   mark descendants of failed prerequisites blocked
-  dispatch only ready tasks within host/resource limits
+  dispatch only tasks from a current ready plan review with valid prerequisites within host/resource limits
   preserve checkpoints and uncertain side-effect receipts
   stop with explicit incomplete state if no safe progress remains
 

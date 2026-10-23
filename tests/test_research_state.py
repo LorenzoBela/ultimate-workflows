@@ -138,6 +138,91 @@ class ResearchTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             state.summarize(self.directory)
 
+    def coverage(self, claims):
+        return {"scope_sha256": state.load_config(self.directory)["scope_sha256"],
+                "evidence_sha256": state.summarize(self.directory)["evidence_sha256"],
+                "claims_sha256": state.claims_digest(claims),
+                "questions": [{"id": "q1", "required": True, "status": "answered",
+                    "claims": ["c1"], "freshness": {"status": "current", "rationale": "Fixture version matches"},
+                    "disconfirmation": {"query": "Find contrary evidence", "outcome": "Fixture inspected",
+                                         "sources": ["https://example.org/evidence"]}}],
+                "decisions": [{"id": "d1", "questions": ["q1"], "rationale": "Fixture decision"}]}
+
+    def test_legacy_consensus_does_not_imply_readiness(self):
+        self.receive_all()
+        report = state.summarize(self.directory, self.claims())
+        self.assertTrue(report["consensus_complete"])
+        self.assertFalse(report["decision_ready"])
+        self.assertEqual(report["readiness_status"], "not_assessed")
+
+    def test_bound_coverage_can_be_structurally_ready(self):
+        self.receive_all()
+        claims = self.claims()
+        self.assertTrue(state.summarize(self.directory, claims, self.coverage(claims))["decision_ready"])
+
+    def test_missing_or_stale_required_evidence_cannot_pass(self):
+        self.receive_all()
+        claims = self.claims()
+        for field, value in [("status", "unknown"), ("status", "contested"), ("claims", [])]:
+            coverage = self.coverage(claims)
+            coverage["questions"][0][field] = value
+            report = state.summarize(self.directory, claims, coverage)
+            self.assertFalse(report["decision_ready"])
+            if value == "unknown": self.assertEqual(report["readiness_status"], "blocked")
+        coverage = self.coverage(claims)
+        coverage["questions"][0]["freshness"]["status"] = "stale"
+        self.assertFalse(state.summarize(self.directory, claims, coverage)["decision_ready"])
+
+    def test_changed_claims_or_scope_invalidates_coverage(self):
+        self.receive_all()
+        claims = self.claims()
+        coverage = self.coverage(claims)
+        claims[0]["text"] = "Changed conclusion"
+        self.assertFalse(state.summarize(self.directory, claims, coverage)["decision_ready"])
+        coverage = self.coverage(claims)
+        coverage["scope_sha256"] = "other"
+        self.assertFalse(state.summarize(self.directory, claims, coverage)["decision_ready"])
+
+    def test_new_provider_evidence_at_same_url_invalidates_coverage(self):
+        self.receive_all()
+        claims = self.claims()
+        coverage = self.coverage(claims)
+        changed = self.result()
+        changed["sources"][0]["evidence"] = "New version contradicts the old evidence"
+        state.record(self.directory, "brave", changed)
+        report = state.summarize(self.directory, claims, coverage)
+        self.assertTrue(report["consensus_complete"])
+        self.assertFalse(report["decision_ready"])
+        self.assertIn("coverage provider evidence digest is stale", report["coverage_errors"])
+
+    def test_unresolved_or_all_insufficient_claims_cannot_support_decisions(self):
+        self.receive_all()
+        claims = self.claims()
+        claims[0]["positions"]["brave"]["stance"] = "contradict"
+        claims[0]["review"]["disagreement"] = "unresolved"
+        self.assertFalse(state.summarize(self.directory, claims, self.coverage(claims))["decision_ready"])
+        for position in claims[0]["positions"].values(): position["stance"] = "insufficient"
+        self.assertFalse(state.summarize(self.directory, claims, self.coverage(claims))["decision_ready"])
+
+    def test_coverage_requires_real_references_and_disconfirmation(self):
+        self.receive_all()
+        claims = self.claims()
+        for modify in [lambda c: c["questions"][0].update(claims=["invented"]),
+                       lambda c: c["decisions"][0].update(questions=["invented"]),
+                       lambda c: c["questions"][0]["disconfirmation"].update(sources=[]),
+                       lambda c: c["questions"][0]["disconfirmation"].update(sources=["https://fake.example/"])]:
+            coverage = self.coverage(claims)
+            modify(coverage)
+            self.assertFalse(state.summarize(self.directory, claims, coverage)["decision_ready"])
+
+    def test_require_ready_cli_does_not_pass_legacy_checkpoint(self):
+        self.receive_all()
+        path = self.directory / "claims.json"
+        path.write_text(json.dumps(self.claims()))
+        result = subprocess.run([sys.executable, str(HELPER), "report", "--run-dir", str(self.directory),
+                                 "--claims", str(path), "--require-ready"], capture_output=True, text=True)
+        self.assertEqual(result.returncode, 2)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -1,5 +1,15 @@
 # Behavioral benchmark protocol
 
+The v4 upgrade adds a separate [70-case corpus and result contract](../evaluations/v4/README.md)
+for research, planning, invoker, debugging, review and their connected routine.
+It freezes baseline `9d8e606`, separates 58 development and 12 held-out cases,
+and compares three actual repetitions per case/edition/available host. The result
+consumer checks artifacts, comparability and per-workflow regressions; it does not
+execute agents or providers. Synthetic calibration cannot pass the behavioral
+acceptance gate. No measured v4 quality improvement is claimed without those runs.
+
+The older broad corpus below remains a specification set for the other workflows.
+
 `evaluations/scenarios.json` defines 152 base evaluation specifications, four for
 each of 38 workflows. These are authored task/oracle specifications, **not executed
 benchmark results or a ready-made environment**. Bind each to a realistic domain

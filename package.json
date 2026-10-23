@@ -1,6 +1,6 @@
 {
   "name": "ultimate-workflows",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "38 Master AI Agent Workflows for Codex, Cursor, Claude Code, Windsurf, Cline, Copilot, and Antigravity.",
   "main": "scripts/install.js",
   "bin": {
