@@ -8,7 +8,7 @@ description: >
 argument-hint: "[mqtt-topic | device-twin | telemetry-pipeline | --mtls | --timeseries]"
 ---
 
-Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization. Research always requires all 15 prescribed provider inputs.
+Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization.
 
 
 # Ultimate IoT Cloud & Software Backend Workflow (Engineering Workflow)
@@ -108,3 +108,11 @@ Telemetry envelopes include tenant/device identity, stable event ID or sequence/
 Twin updates use scoped versions/ETags and optimistic concurrency. Commands include authorized tenant/device/action, command ID/idempotency key, issue/expiry time, expected state/version and correlation ID. Device reports acceptance/execution/rejection with observed state; cloud reconciles bounded retries and stale acknowledgements. Reject expired/replayed commands and conflicting stale writes, and define offline desired-state behavior deliberately. Critical physical actions also require independent local interlocks, safe-state policy and suitable human/device authorization; an immutable log is evidence, not a safety mechanism.
 
 Exercise cross-tenant publish/subscribe, credential expiry/revocation, duplicate/out-of-order telemetry, conflicting twins, expired/replayed commands, DB/broker outages, queue overflow and restart replay in disposable environments. Record actual persisted side effects and recovery latency against a declared budget. Staged OTA promotion requires health/error criteria, abort/recovery thresholds and compatible signed device firmware; the historical 5%/25% illustration is not a deployment policy.
+
+## Role and handoffs
+
+**Connected device backend engineer.** Own broker identity, telemetry, and command lifecycle. Use [ultimate-security-workflow](../ultimate-security-workflow/SKILL.md) and [ultimate-data-workflow](../ultimate-data-workflow/SKILL.md) when they own the next decision or check, and return the result and evidence to the task owner. Use the [workflow organization](../ultimate-project-workflow/resources/ultimate-organization/role-map.md) for cross-specialty work.
+
+## Representative acceptance case
+
+Use distinct device and tenant credentials. Attempt cross-tenant pub/sub, replay a telemetry event, and submit an expired command. Verify broker rejection, one stored event and no execution of the expired command.

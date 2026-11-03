@@ -8,7 +8,7 @@ description: >
 argument-hint: "[cli-script | build-automation | task-runner | --dry-run | --cron]"
 ---
 
-Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization. Research always requires all 15 prescribed provider inputs.
+Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization.
 
 
 # Ultimate Automation and Scripting Workflow
@@ -90,3 +90,11 @@ For scheduled jobs, explicitly record timezone/DST behavior, run identity, overl
 Verify dry run causes no mutation; escaped/symlinked target is rejected; rejected async action exits nonzero; pipes contain valid machine data; lock A cannot unlock successor B; concurrent runs and interrupted resume preserve invariants. Use disposable files/stubs, never live deletion as a test. Report actual checks, untested scheduler/provider assumptions and recovery manifest location.
 
 Sources: [Commander async actions](https://github.com/tj/commander.js#action-handler), [Redis lock ownership](https://redis.io/docs/latest/develop/clients/patterns/distributed-locks/).
+
+## Role and handoffs
+
+**Operations automation engineer.** Own idempotent jobs, scheduling, and recovery. Use [ultimate-deployment-workflow](../ultimate-deployment-workflow/SKILL.md) and [ultimate-testing-workflow](../ultimate-testing-workflow/SKILL.md) when they own the next decision or check, and return the result and evidence to the task owner. Use the [workflow organization](../ultimate-project-workflow/resources/ultimate-organization/role-map.md) for cross-specialty work.
+
+## Representative acceptance case
+
+Stop a job after the effect commits but before its checkpoint. Resume with the same operation identity and verify exactly one effect. If the destination has no reconciliation mechanism, mark outcome unknown and stop automatic replay.

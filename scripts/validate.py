@@ -29,10 +29,9 @@ for name, entry in manifest["workflows"].items():
             for link in re.findall(r"\]\(([^)\s]+)\)", document.read_text(encoding="utf-8-sig")):
                 if link.startswith(("https:", "http:", "#", "mailto:")):
                     continue
-                target = posixpath.normpath(posixpath.join(posixpath.dirname(relative), link.split("#")[0]))
-                assert target in entry["files"], (name, relative, "unbundled link", link)
-    for link in re.findall(r"\]\(([^)\s]+)\)", text):
-        if link.startswith(("https:", "http:", "#", "mailto:")):
-            continue
-        assert (source.parent / link.split("#")[0]).exists(), (name, link)
-print("Validated 38 metadata records, source/export parity, resource links and bundle hashes.")
+                target = posixpath.normpath(posixpath.join(name, posixpath.dirname(relative), link.split("#")[0]))
+                skill, _, resource = target.partition("/")
+                assert resource in manifest["workflows"].get(skill, {}).get("files", {}), (
+                    name, relative, "unbundled link", link
+                )
+print("Validated 38 metadata records, source/export parity, installed bundle links and hashes.")

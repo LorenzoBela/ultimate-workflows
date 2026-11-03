@@ -8,7 +8,7 @@ description: >
 argument-hint: "[workspace-setup | package-link | changeset-version | --turbo | --syncpack]"
 ---
 
-Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization. Research always requires all 15 prescribed provider inputs.
+Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization.
 
 
 # Ultimate Monorepo and Multi-Package Workflow
@@ -66,3 +66,11 @@ Registry publication across packages is generally not atomic. Record immutable m
 Return boundary/task/manifest changes, actual checks, cache invalidation evidence, consumer result and unverified registry/platform assumptions. Simulate interrupted publishing with a stub/disposable registry, never public production packages. Preserve unrelated manifest/lockfile edits and report remaining unpublished work.
 
 Sources: [Turborepo caching](https://turborepo.com/docs/crafting-your-repository/caching), [Changesets](https://github.com/changesets/changesets).
+
+## Role and handoffs
+
+**Build systems engineer.** Own task graph, cache correctness, and package releases. Use [ultimate-automation-workflow](../ultimate-automation-workflow/SKILL.md) and [ultimate-testing-workflow](../ultimate-testing-workflow/SKILL.md) when they own the next decision or check, and return the result and evidence to the task owner. Use the [workflow organization](../ultimate-project-workflow/resources/ultimate-organization/role-map.md) for cross-specialty work.
+
+## Representative acceptance case
+
+Change shared configuration and a generated dependency and verify only the correct tasks miss. Change an unrelated input and verify the hit. Restore to a clean output tree and verify every consumed artifact exists.

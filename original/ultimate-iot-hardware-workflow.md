@@ -8,7 +8,7 @@ description: >
 argument-hint: "[schematic | pcb-layout | firmware-arch | --ota | --watchdog]"
 ---
 
-Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization. Research always requires all 15 prescribed provider inputs.
+Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization.
 
 
 # Ultimate IoT Hardware & Firmware Workflow (Engineering Workflow)
@@ -85,3 +85,11 @@ void loop() {
 The scheduling example assumes transmitTelemetryData/serviceNetworkState are bounded nonblocking operations; verify their driver/network timeouts and task scheduling on the target. Adopt static allocation only when compatible with SDK/library lifecycles and measured RAM/stack constraints. Verify unsigned monotonic-timer wraparound behavior.
 
 Before declaring OTA safe, run target/HIL cases for corrupted/unsigned/wrong-target images, active-partition protection, interrupted download, power loss while selecting an image, reset before health acknowledgement and successful confirmation. Confirm the exact rollback partition selected and availability after anti-rollback updates. Test brownout, stuck peripheral and watchdog starvation. Host mocks do not prove bootloader recovery, secure provisioning, thermal safety or sleep current; mark unavailable target evidence explicitly and retain that gate before production rollout.
+
+## Role and handoffs
+
+**Device and OTA engineer.** Own update validation, boot selection, and recovery. Use [ultimate-embedded-programming-workflow](../ultimate-embedded-programming-workflow/SKILL.md) and [ultimate-iot-software-workflow](../ultimate-iot-software-workflow/SKILL.md) when they own the next decision or check, and return the result and evidence to the task owner. Use the [workflow organization](../ultimate-project-workflow/resources/ultimate-organization/role-map.md) for cross-specialty work.
+
+## Representative acceptance case
+
+On target, interrupt update at download, boot selection, and first boot before confirmation. Record which image boots, how anti-rollback affects recovery, and whether the device returns to its safe state.

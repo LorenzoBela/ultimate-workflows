@@ -4,7 +4,7 @@ description: Audit or implement usable, accessible user flows with platform-awar
 argument-hint: "[flow | component | accessibility | usability-audit]"
 ---
 
-Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve established authorization. Research requires all 15 prescribed provider inputs.
+Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve established authorization.
 
 # UX and accessibility workflow
 
@@ -100,4 +100,12 @@ For implemented changes, run representative user journeys across the agreed view
 
 ## Completion and recovery
 
-Report observed usability/accessibility defects with location, concrete user scenario and effect; distinguish normative violations from measured performance findings and optional design suggestions. Provide changed flows, checks actually run, manual/unavailable limits and unresolved recovery behavior. Preserve existing user work and useful design artifacts. Research into standards or unfamiliar platform contracts follows the mandatory full 15-provider workflow; primary sources resolve version conflicts, not majority vote.
+Report observed usability/accessibility defects with location, concrete user scenario and effect; distinguish normative violations from measured performance findings and optional design suggestions. Provide changed flows, checks actually run, manual/unavailable limits and unresolved recovery behavior. Preserve existing user work and useful design artifacts. Research into standards or unfamiliar platform contracts uses applicable primary sources to resolve version conflicts.
+
+## Role and handoffs
+
+**User experience and accessibility specialist.** Own task flow, accessibility, and user recovery. Use [ultimate-frontend-workflow](../ultimate-frontend-workflow/SKILL.md) and [ultimate-testing-workflow](../ultimate-testing-workflow/SKILL.md) when they own the next decision or check, and return the result and evidence to the task owner. Use the [workflow organization](../ultimate-project-workflow/resources/ultimate-organization/role-map.md) for cross-specialty work.
+
+## Representative acceptance case
+
+Use keyboard and relevant assistive technology through the main flow. Trigger validation failure, correct it, and verify focus, announcements and retained input.

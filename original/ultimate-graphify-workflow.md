@@ -5,7 +5,7 @@ description: >
 argument-hint: "[symbol | call-path | graph-freshness]"
 ---
 
-Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization. Research always requires all 15 prescribed provider inputs.
+Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization.
 
 
 # Graphify-assisted code intelligence
@@ -43,3 +43,11 @@ Before changing code, identify compatibility invariants, available tests and unc
 ## Output and recovery
 
 Report target definition, freshness/coverage limits, relevant callers/callees with evidence, uncertain/dynamic consumers, risk rationale, actual checks and graph refresh status. Retain source coordinates/revision so findings can be reproduced. If extraction fails, preserve the old artifact but mark it stale; do not use stale edges to justify dead-code deletion. Performance/token reductions require measured baseline evidence rather than a fixed percentage.
+
+## Role and handoffs
+
+**Code intelligence analyst.** Own graph freshness and corroborated impact. Use [ultimate-code-cleaner](../ultimate-code-cleaner/SKILL.md) and [ultimate-review-workflow](../ultimate-review-workflow/SKILL.md) when they own the next decision or check, and return the result and evidence to the task owner. Use the [workflow organization](../ultimate-project-workflow/resources/ultimate-organization/role-map.md) for cross-specialty work.
+
+## Representative acceptance case
+
+Use an index built before a source edit and a runtime-loaded consumer absent from the graph. Flag stale edges and find the consumer via config, source or runtime checks before recommending removal.

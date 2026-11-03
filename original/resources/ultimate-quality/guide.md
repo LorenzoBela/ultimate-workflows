@@ -1,6 +1,6 @@
 # Connected quality routine
 
-Use one task-owned casebook to connect **Research → Plan → Plan Review → Invoke → Debug when needed → Final Code Review**. This upgrades the existing skills and local evidence bookkeeping; it is not an autonomous agent runtime, authorization service, paid API service or truth oracle. Apply existing user scope, stack, authorization and available tool contracts throughout. Local planning/review can use existing evidence without initiating new external research. When external research is invoked, all 15 prescribed inputs and rich-query floors remain mandatory.
+Use one task-owned casebook to connect **Research → Plan → Plan Review → Invoke → Debug when needed → Final Code Review**. This upgrades the existing skills and local evidence bookkeeping; it is not an autonomous agent runtime, authorization service, paid API service or truth oracle. Apply existing user scope, stack, authorization and available tool contracts throughout. Local planning/review can use existing evidence without initiating new external research. When external research is needed, select focused lookup, comparative research or an explicitly requested full run.
 
 ## Ownership and linked evidence
 
@@ -20,7 +20,7 @@ Code reviews, findings, checks and closure evidence bind to the **exact integrat
 
 ## Research output has three separate questions
 
-1. **Collection completeness:** Did all 15 providers actually supply substantive, task-relevant input? Failed/empty/irrelevant/unavailable calls do not count.
+1. **Collection completeness:** Did the requested sources or providers supply substantive, task-relevant input? Failed/empty/irrelevant/unavailable calls do not count.
 2. **Evidence coverage:** For every required question, which applicable claims/sources support, contest or leave its answer unknown? Check original source lineage, dates/versions, independence and disconfirmation. Fifteen engines repeating one old source do not establish 15 corroborations.
 3. **Decision readiness:** Are the evidence needed for the next material decisions sufficiently supported, or is there an explicit bounded tradeoff within the user's established requirements? Complete collection may coexist with weak coverage and unready decisions.
 
@@ -67,7 +67,7 @@ Complete only with current final review, satisfied mandatory requirements/checks
 
 Use atomic serialized casebook updates with conflict detection and actual artifact hashes; preserve old checkpoints and superseded findings rather than rewriting history. A timeout or lost worker does not erase uncertain external effects. Inspect and reconcile them before retrying. This guide does not promise a runtime lock, tool permission boundary or semantic evaluator simply because it describes one.
 
-Structural helper tests, simulated/recorded-provider fixtures and live end-to-end runs are separate evidence categories. A released workflow/helper may have behavioral benchmarking pending; do not claim quality gates or measured uplift from schema tests. Research live evaluation needs all 15 actual substantive inputs; unavailable access remains incomplete. Preserve the grading baseline, expected defects/safe alternatives, forbidden actions and observed results for any evaluation.
+Structural helper tests, simulated/recorded-provider fixtures and live end-to-end runs are separate evidence categories. A released workflow/helper may have behavioral benchmarking pending; do not claim quality gates or measured uplift from schema tests. Live research evaluation follows the selected mode. A full run needs all 15 substantive inputs. Preserve the grading baseline, expected defects/safe alternatives, forbidden actions and observed results for any evaluation.
 
 ## Local casebook CLI and typed records
 

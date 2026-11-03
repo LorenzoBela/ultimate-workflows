@@ -5,14 +5,18 @@ description: >
 argument-hint: "[task-scope | plan-file | integration]"
 ---
 
-Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization. Research always requires all 15 prescribed provider inputs.
+Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization.
 
 
 # Multi-agent execution and integration
 
-This is the invocation stage of **Research → Plan → Plan Review → Invoke → Debug when needed → Final Code Review**. Apply the [connected quality guide](resources/ultimate-quality/guide.md) and require the current plan-review verdict **ready** before dispatch. Readiness is technical assessment, not a second user-approval request. Preserve existing implementation authorization and do not expand it into deployment/publishing.
+## Choose the dispatch path
 
-## Current-plan dispatch and closed repair contract
+For authorized, bounded read-only delegation, give each agent a question, relevant context, scope, time budget and expected evidence. Confirm the host can launch it. Inspect returned claims against source or artifacts and keep integration with the parent. Shared read-only access is sufficient when the workers have no conflicting effects.
+
+Use the [connected quality guide](resources/ultimate-quality/guide.md) and the current-plan checks below for dependent implementation, concurrent writers, or an existing connected run. Before dispatch verify a current technically ready plan, prerequisite results and actual workspace/resource isolation or serialized ownership. Confirm permissions and budgets through the host.
+
+## Connected routine only: current-plan dispatch and closed repair
 
 Before each dispatch, verify the semantic plan hash, scope and relevant evidence/input versions against its ready plan review, plus actual prerequisite outputs and owned resources. Expected implementation edits/accepted dependency outputs do not invalidate an unchanged plan. Material contract/assumption changes do. Do not use a ready result bound only by document name or an old code revision.
 
@@ -57,7 +61,7 @@ for accepted writer results in dependency order:
 
 Do not mechanically union imports/types/routes and call it a semantic merge: ordering, registration collisions and incompatible contracts can break despite a clean text merge. Use language-aware tools only when available and validate the final behavior. Builders run their own checks; an independent reviewer is additional evidence for consequential changes, not a prohibition on self-testing. Do not allocate standby guardians/verifiers universally when actual capacity and risk do not justify them.
 
-## Process verification example
+## Optional process verification example
 
 The following dependency-free Python example runs modest local verification commands without a shell and preserves raw output in the returned result. Success comes from process status, never substring matching. For large/untrusted outputs use the host's bounded streaming/log artifact facility; this small example buffers output and does not provide that facility. Check arguments/output for secrets before persistence.
 
@@ -112,7 +116,7 @@ def summarize_check(result, limit=1000):
 
 Exit zero proves only that command succeeded. Confirm it exercised the required assertion/behavior; a script that merely prints “verified” cannot establish a feature works. Record test selection, baseline failures and actual assertion counts when exposed. On cancellation stop owned subprocesses through the host's supported process-tree controls; a timeout on a parent process alone may leave children alive.
 
-## Actual usage and budgets
+## Usage and budgets for measured runs
 
 Use configurable limits justified by user cost/time constraints; no fixed 50k-token, 12k/minute or depth-two threshold is universally safe. Include retries, failed calls and descendants. Discover whether input/output/cached/thinking usage and money are actually exposed; record unavailable fields as unknown.
 
@@ -157,7 +161,7 @@ class UsageBudget:
 
 This class is for a single serialized accounting owner. Concurrent workers must send usage to that owner or use a transaction/lock; each worker's private counter cannot enforce an aggregate limit. Persist counts, trips and window timestamps in durable task state for restart; the in-memory example does not provide persistence. Wall-clock deadlines, money, recursion and tool-call limits are separate controls to implement in the actual runtime.
 
-## Safe worktree teardown example
+## Optional teardown example for owned worktrees
 
 Provision worktrees only within the authorized repository, using unique recorded paths/branches. Capture their ownership when created. Never default to `remove --force`, `branch -D`, or hard reset. Preserve failed work and raw logs until diagnosis/handoff is complete.
 
@@ -202,3 +206,11 @@ This example assumes a trusted local filesystem during the check/remove sequence
 ## Completion and recovery
 
 Return task statuses, integrated revisions, changed artifacts, real verification evidence, observed usage and unavailable metrics, retained failed work and next actions. If a dependency, quota or provider remains missing, report incomplete. Do not claim token reductions, conflict-elimination percentages, guaranteed recovery or runtime support without measured, reproducible evidence. Push/deploy only when authorized.
+
+## Role and handoffs
+
+**Staffing and integration lead.** Own authorized dispatch and shared-resource conflicts. Use [ultimate-review-workflow](../ultimate-review-workflow/SKILL.md) and [ultimate-agent-workflow](../ultimate-agent-workflow/SKILL.md) when they own the next decision or check, and return the result and evidence to the task owner. Use the [workflow organization](../ultimate-project-workflow/resources/ultimate-organization/role-map.md) for cross-specialty work.
+
+## Representative acceptance case
+
+Use a compact brief for a read-only investigation. For conflicting writers, prove isolation or serialize access to shared files, ports and data. Integrate and verify the actual result.

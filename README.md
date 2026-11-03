@@ -196,7 +196,7 @@ Standard AI code generation often suffers from "vibecoding": generic UI defaults
 
 ## 📦 Two Editions: Universal vs. Original
 
-The `original/` edition is the review surface for Gemini-authored workflow updates. `scripts/build.py` exports the same reviewed instructions and required resources to `universal/`, recording each bundle in `workflow-manifest.json`. Host installations use discoverable skill bundles or flat rule files with adjacent resources. Shared execution rules load from a linked reference. Research's mandatory 15-provider coverage is identical across editions.
+The `original/` edition is the review surface for Gemini-authored workflow updates. `scripts/build.py` exports the same reviewed instructions and required resources to `universal/`, recording each bundle in `workflow-manifest.json`. Host installations use discoverable skill bundles or flat rule files with adjacent resources. Shared execution rules load from a linked reference. Focused, comparative, and explicit full research modes are identical across editions.
 
 ```text
 ultimate-workflows/
@@ -299,7 +299,7 @@ ultimate-workflows/
 | **Document Engineering** | [`ultimate-document-workflow.md`](./universal/ultimate-document-workflow.md) | Tool discovery, OOXML preservation, accurate revision attribution and rendered-page inspection. |
 | **Natural English** | [`ultimate-natural-english-workflow.md`](./universal/ultimate-natural-english-workflow.md) | Semantic preservation and calibrated uncertainty instead of mechanical word bans. |
 | **Technical Documentation** | [`ultimate-documentation-workflow.md`](./universal/ultimate-documentation-workflow.md) | Correct OpenAPI operations, parameters, responses and schema references; fix nested fences; validate quickstart examples and attribution. |
-| **Deep Research Strategy** | [`ultimate-research-workflow.md`](./universal/ultimate-research-workflow.md) | Mandatory 15-engine inputs, checkpointed collection, source deduplication, claim-level consensus, and disagreement review. |
+| **Deep Research Strategy** | [`ultimate-research-workflow.md`](./universal/ultimate-research-workflow.md) | Focused lookup, comparative research, explicit full runs, checkpointed collection, source deduplication, claim-level consensus, and disagreement review. |
 | **User Experience (UX) Audit** | [`ultimate-ux-workflow.md`](./universal/ultimate-ux-workflow.md) | Correct standards versus design targets, current scanner scope, manual accessibility and focus lifecycle checks. |
 
 ---
@@ -347,7 +347,7 @@ work, distinguish observed results from assumptions, report unavailable checks,
 and define recovery for partial failures. Design rules apply to the requested
 interface and existing brand; prose rules preserve facts and uncertainty.
 Graph guidance accounts for freshness and incomplete dynamic reachability.
-Research always retains all 15 required provider inputs.
+Explicit full research retains the 15-provider roster.
 
 ---
 
@@ -355,14 +355,13 @@ Research always retains all 15 required provider inputs.
 
 Distributed under the [MIT License](./LICENSE). Free for personal, commercial, and enterprise open-source use.
 
-## Mandatory 15-engine research
+## Research modes
 
-Every research invocation requires substantive inputs from Tavily, Context7, You.com,
+Focused lookup can use one applicable authoritative source. Comparative research tracks material claims and counterevidence. Explicit full runs require substantive inputs from Tavily, Context7, You.com,
 Exa, Jina, SERPdive, Linkup, Parallel Search, SerpApi, GitHub, Firecrawl, Crawleo,
 Bright Data, Apify, and Brave Search. Configure their actual tools before running.
 An unavailable/failed/empty input means **incomplete consensus**, not success with a
-smaller subset. Rich per-engine prompts and the existing 100-word neural/LLM query
-floor remain. Duplicate articles do not become independent corroboration because
+smaller subset. Explicit full runs retain provider-specific query floors. Focused and comparative modes have no word floors. Duplicate articles do not become independent corroboration because
 several engines found them. A complete collection may still report unresolved
 claim disagreements.
 
@@ -370,13 +369,14 @@ The packaged `research_state.py` helper records provider attempts, evidence and
 claim matrices locally. It makes no provider calls, cannot authenticate submitted
 records, and does not establish truth. Its tests use explicitly synthetic inputs.
 
-## Connected quality routine (v4)
+## Start with the project orchestrator
 
-Use **Research → Plan → Plan Review → Invoke → Debug when needed → Final Code
-Review**. The same five workflow names now share a local
+Invoke [Ultimate Project Workflow](original/ultimate-project-workflow.md) with the outcome you want. It selects specialists across all 38 roles and chooses a direct, coordinated, or production route. On hosts with supported worker tools, it can dispatch authorized independent tasks in parallel and verify the integrated result. Its specialist links resolve in an installed bundle.
+
+For production work, the connected routine is **Research when needed → Plan → Plan Review → Invoke → Debug when needed → Final Code Review**. The five quality workflows share a local
 [casebook and usage guide](original/resources/ultimate-quality/guide.md):
 
-- Research keeps all 15 substantive provider inputs and adds question coverage,
+- Research tracks mode-specific collection and adds question coverage,
   disconfirmation and separate collection, evidence and decision-readiness states.
 - Planning connects evidence to requirements, decisions, tasks and meaningful checks.
 - Review supports plan and code modes with `ready`, `needs_revision` and `blocked`

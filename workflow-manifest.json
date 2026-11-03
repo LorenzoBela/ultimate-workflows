@@ -1,249 +1,250 @@
 {
   "authoring_source": "Gemini workflow skills",
-  "required_research_inputs": 15,
+  "full_research_provider_count": 15,
   "schema_version": 1,
   "workflows": {
     "ultimate-agent-dev-workflow": {
       "files": {
-        "SKILL.md": "ea033cf6c72b4462b4bef7f93294969c6fbbfb7cce8f61ccd0a113276b43054a",
-        "resources/ultimate-shared/execution-contract.md": "2464a6b5255a65946f011227379023241a7e326395cab3b6d4d53768e15d163b"
+        "SKILL.md": "ed2114cc4424636a8e74fef2e2497134e116bf66df56034ccf21d91a149eeda2",
+        "resources/ultimate-shared/execution-contract.md": "a1811701e6e683b7bf15fcaa6ed0e928e508316817117216f3d45e49251d6b82"
       }
     },
     "ultimate-agent-workflow": {
       "files": {
-        "SKILL.md": "4bbd87ff3646426af037dca805144545d0f36a7250654c4ae918172259f94bd9",
-        "resources/ultimate-shared/execution-contract.md": "2464a6b5255a65946f011227379023241a7e326395cab3b6d4d53768e15d163b"
+        "SKILL.md": "4c637ff12cf51c1f26d1e2a9987a3d262765642b30afb0849eb7cf6416808495",
+        "resources/ultimate-shared/execution-contract.md": "a1811701e6e683b7bf15fcaa6ed0e928e508316817117216f3d45e49251d6b82"
       }
     },
     "ultimate-api-workflow": {
       "files": {
-        "SKILL.md": "cc1a13049d2accc88a73eda2161f1ea71f13c6ba59f978a0c99ee277bb53b2bc",
-        "resources/ultimate-shared/execution-contract.md": "2464a6b5255a65946f011227379023241a7e326395cab3b6d4d53768e15d163b"
+        "SKILL.md": "2d8473357669f703194c2fa44bd107e418955be992f37a77733ac0a225783b0f",
+        "resources/ultimate-shared/execution-contract.md": "a1811701e6e683b7bf15fcaa6ed0e928e508316817117216f3d45e49251d6b82"
       }
     },
     "ultimate-architecture-workflow": {
       "files": {
-        "SKILL.md": "497ca8443e81f009f127cef6361a0334640ce48e93395585a5d9b5b0fe192ad4",
-        "resources/ultimate-shared/execution-contract.md": "2464a6b5255a65946f011227379023241a7e326395cab3b6d4d53768e15d163b"
+        "SKILL.md": "d85e79545a5f892817631508009e3447e03d86a056dc71147851647be42f5d08",
+        "resources/ultimate-shared/execution-contract.md": "a1811701e6e683b7bf15fcaa6ed0e928e508316817117216f3d45e49251d6b82"
       }
     },
     "ultimate-automation-workflow": {
       "files": {
-        "SKILL.md": "e66b26cab521570c1f13a248afde1a4d780b794025cc839ae126f9e3e6914e7f",
-        "resources/ultimate-shared/execution-contract.md": "2464a6b5255a65946f011227379023241a7e326395cab3b6d4d53768e15d163b"
+        "SKILL.md": "cf60ed67337c27c19ef17e797d483d9ee6a5c71bc77d2e380ce92c43e7978d57",
+        "resources/ultimate-shared/execution-contract.md": "a1811701e6e683b7bf15fcaa6ed0e928e508316817117216f3d45e49251d6b82"
       }
     },
     "ultimate-best-practices-workflow": {
       "files": {
-        "SKILL.md": "2d11d9df4f0a4c35696b89e7ee0300b9024c2dce38a4e4e8f573e73d1efd5906",
-        "resources/ultimate-shared/execution-contract.md": "2464a6b5255a65946f011227379023241a7e326395cab3b6d4d53768e15d163b"
+        "SKILL.md": "f5fe7fad8689b5de00eae12e23c255e9dc4b5db1abbd94e744884f97619b8b95",
+        "resources/ultimate-shared/execution-contract.md": "a1811701e6e683b7bf15fcaa6ed0e928e508316817117216f3d45e49251d6b82"
       }
     },
     "ultimate-brainstorm-workflow": {
       "files": {
-        "SKILL.md": "94a9bf0ee1a42d30875a6f66ef8d65ddce81e0c07dddbd88d1a2512f672a4f7d",
-        "resources/ultimate-shared/execution-contract.md": "2464a6b5255a65946f011227379023241a7e326395cab3b6d4d53768e15d163b"
+        "SKILL.md": "787bf442e226e3b4de5b9cb0e0e9e76bba90001bd6eb80a2afc86799006fa07d",
+        "resources/ultimate-shared/execution-contract.md": "a1811701e6e683b7bf15fcaa6ed0e928e508316817117216f3d45e49251d6b82"
       }
     },
     "ultimate-caching-workflow": {
       "files": {
-        "SKILL.md": "0a5a977114d34b2dee0eca02b20cef2a39953950f534b69747b89d6c88e87f09",
-        "resources/ultimate-shared/execution-contract.md": "2464a6b5255a65946f011227379023241a7e326395cab3b6d4d53768e15d163b"
+        "SKILL.md": "48eee97c678786059b81580e920f9872de0c48a0dea04bae13f85a1f46e39414",
+        "resources/ultimate-shared/execution-contract.md": "a1811701e6e683b7bf15fcaa6ed0e928e508316817117216f3d45e49251d6b82"
       }
     },
     "ultimate-code-cleaner": {
       "files": {
-        "SKILL.md": "4edf6ec09ee39e18eff127405b60d148d8e408b7ad5ecf8d98f9efb0feae5acf",
-        "resources/ultimate-shared/execution-contract.md": "2464a6b5255a65946f011227379023241a7e326395cab3b6d4d53768e15d163b"
+        "SKILL.md": "5e99154adf10247e8382d8c44ad9f6251f7f71aba934a9bae6d6318edc053a20",
+        "resources/ultimate-shared/execution-contract.md": "a1811701e6e683b7bf15fcaa6ed0e928e508316817117216f3d45e49251d6b82"
       }
     },
     "ultimate-data-workflow": {
       "files": {
-        "SKILL.md": "8c30b9156c5e9379bb42a320bc1313b4f794babd33ac09656100c419e0aefd36",
-        "resources/ultimate-shared/execution-contract.md": "2464a6b5255a65946f011227379023241a7e326395cab3b6d4d53768e15d163b"
+        "SKILL.md": "3f550c19f26e4235f08da2f07f83832930ad15415556f5245cd47574bb7eedd5",
+        "resources/ultimate-shared/execution-contract.md": "a1811701e6e683b7bf15fcaa6ed0e928e508316817117216f3d45e49251d6b82"
       }
     },
     "ultimate-database-workflow": {
       "files": {
-        "SKILL.md": "90515c83be632ac8700c2bbef69d130436f5fbfa08fa23eb7114b7e15119cd29",
-        "resources/ultimate-shared/execution-contract.md": "2464a6b5255a65946f011227379023241a7e326395cab3b6d4d53768e15d163b"
+        "SKILL.md": "9db7cfdf3c752e3c5956280c7ba1b3b55f8b87d804d258a9c8fb6a9b29ef1a15",
+        "resources/ultimate-shared/execution-contract.md": "a1811701e6e683b7bf15fcaa6ed0e928e508316817117216f3d45e49251d6b82"
       }
     },
     "ultimate-debugging-workflow": {
       "files": {
-        "SKILL.md": "7a1d648cfd97d1634dc20695408fb39f208315a819419479a23eeb1511af29ac",
+        "SKILL.md": "f66895856ca6fb751998216dce987a582a4388b328a351de2f24e2e8458c3b5d",
         "resources/ultimate-quality/casebook.py": "8c591dcea0091d240885afddaf46c274dddbdadf218379c0eb00980d753dea29",
-        "resources/ultimate-quality/guide.md": "72a48d45f407fc590dc0906ac016227f951cd5c069cb05ab46d67e6a35358291",
-        "resources/ultimate-research-workflow/research_state.py": "db53184cc9e10619abc1b0d6768b904bf784ce4b383ce2f995e93617810c3403",
-        "resources/ultimate-shared/execution-contract.md": "2464a6b5255a65946f011227379023241a7e326395cab3b6d4d53768e15d163b"
+        "resources/ultimate-quality/guide.md": "4c063b561dfdc4c73d5ff2eaba93b4cf838fc36be63af3b963df7cdb0b3ac7e1",
+        "resources/ultimate-research-workflow/research_state.py": "ddbff8d029719b0f3b73a0d9c026db0720f312f0679b11012f7012432daebe48",
+        "resources/ultimate-shared/execution-contract.md": "a1811701e6e683b7bf15fcaa6ed0e928e508316817117216f3d45e49251d6b82"
       }
     },
     "ultimate-deployment-workflow": {
       "files": {
-        "SKILL.md": "4c6864dfbe3156bcbf12b96baa28528443049b1fb0a7e7425114dee917abe1dc",
-        "resources/ultimate-shared/execution-contract.md": "2464a6b5255a65946f011227379023241a7e326395cab3b6d4d53768e15d163b"
+        "SKILL.md": "360efe05a21f2378afc186b9d4b44227ee77d8cb7ccb7a67005c82afbac03228",
+        "resources/ultimate-shared/execution-contract.md": "a1811701e6e683b7bf15fcaa6ed0e928e508316817117216f3d45e49251d6b82"
       }
     },
     "ultimate-document-intelligence-workflow": {
       "files": {
-        "SKILL.md": "dc78e6cd5ccb87ddc0f174b45f11f2dffbe5cd47f17ae34bd25a7d0601b4a2d0",
-        "resources/ultimate-shared/execution-contract.md": "2464a6b5255a65946f011227379023241a7e326395cab3b6d4d53768e15d163b"
+        "SKILL.md": "13bbf5fdf28ded24d76abd2c669158d4177409baf7da41ab27587428fe1a66af",
+        "resources/ultimate-shared/execution-contract.md": "a1811701e6e683b7bf15fcaa6ed0e928e508316817117216f3d45e49251d6b82"
       }
     },
     "ultimate-document-workflow": {
       "files": {
-        "SKILL.md": "739ec3972f6387f0c2739af1ef82559e7245b48ff5f34e87678efec6aee09d5a",
-        "resources/ultimate-shared/execution-contract.md": "2464a6b5255a65946f011227379023241a7e326395cab3b6d4d53768e15d163b"
+        "SKILL.md": "c1aced606eb6ab55fc04c72bdcc08e004f34aa7f32093f1c01cc5dcd385fb231",
+        "resources/ultimate-shared/execution-contract.md": "a1811701e6e683b7bf15fcaa6ed0e928e508316817117216f3d45e49251d6b82"
       }
     },
     "ultimate-documentation-workflow": {
       "files": {
-        "SKILL.md": "914cb7d07e857e0498f2a58f35bb23dfda2f1a317ad5ad54049bb005d273d62f",
-        "resources/ultimate-shared/execution-contract.md": "2464a6b5255a65946f011227379023241a7e326395cab3b6d4d53768e15d163b"
+        "SKILL.md": "bbb0c5716ed5f921084f4a9d4a42e157be50957c60e53909381c3882166099b9",
+        "resources/ultimate-shared/execution-contract.md": "a1811701e6e683b7bf15fcaa6ed0e928e508316817117216f3d45e49251d6b82"
       }
     },
     "ultimate-embedded-programming-workflow": {
       "files": {
-        "SKILL.md": "6397d608cfd2c658ec9181baed824d1a0d381c7cd7f281d12590770ef5bceaf0",
-        "resources/ultimate-shared/execution-contract.md": "2464a6b5255a65946f011227379023241a7e326395cab3b6d4d53768e15d163b"
+        "SKILL.md": "4e6830cefda774b6a4a71c991c45d9314ac82fc65cc8d85c6479e2de56ff27de",
+        "resources/ultimate-shared/execution-contract.md": "a1811701e6e683b7bf15fcaa6ed0e928e508316817117216f3d45e49251d6b82"
       }
     },
     "ultimate-frontend-workflow": {
       "files": {
-        "SKILL.md": "e7ec6a0f584642ab4c13f204ba59d9c5167a9721d5c4f2ec9935a58a718a776a",
-        "resources/ultimate-shared/execution-contract.md": "2464a6b5255a65946f011227379023241a7e326395cab3b6d4d53768e15d163b"
+        "SKILL.md": "a71118bd1fca46ee552022e2cc89d8ef0ad0d5c82bd343faafddc511e424b51f",
+        "resources/ultimate-shared/execution-contract.md": "a1811701e6e683b7bf15fcaa6ed0e928e508316817117216f3d45e49251d6b82"
       }
     },
     "ultimate-fullstack-workflow": {
       "files": {
-        "SKILL.md": "7296f3f6d66654b114f42a459e42d0ded2f9518e890d82a00dd9aaa376368504",
-        "resources/ultimate-shared/execution-contract.md": "2464a6b5255a65946f011227379023241a7e326395cab3b6d4d53768e15d163b"
+        "SKILL.md": "a361b905bf81cde79b0941f6218387afa446ef7291704d2f7815d2b0c7ed0ee5",
+        "resources/ultimate-shared/execution-contract.md": "a1811701e6e683b7bf15fcaa6ed0e928e508316817117216f3d45e49251d6b82"
       }
     },
     "ultimate-git-workflow": {
       "files": {
-        "SKILL.md": "9d0fe264cbd7ff4806f6119cc212bfdb6703c645176014283c6a4b10a67f7db7",
-        "resources/ultimate-shared/execution-contract.md": "2464a6b5255a65946f011227379023241a7e326395cab3b6d4d53768e15d163b"
+        "SKILL.md": "f2ad1f94a0891275750b3bc1d43b38d162b27e6e2dc872e4dc926612e3878506",
+        "resources/ultimate-shared/execution-contract.md": "a1811701e6e683b7bf15fcaa6ed0e928e508316817117216f3d45e49251d6b82"
       }
     },
     "ultimate-graphify-workflow": {
       "files": {
-        "SKILL.md": "34485a63ce121e45583ca3fc21aced495da05810c8a37a1962fcb5565d9e9eb1",
-        "resources/ultimate-shared/execution-contract.md": "2464a6b5255a65946f011227379023241a7e326395cab3b6d4d53768e15d163b"
+        "SKILL.md": "55d0762393bf7e551fed4a6a9430910e6cba137baad8501f2b679139558d2ab9",
+        "resources/ultimate-shared/execution-contract.md": "a1811701e6e683b7bf15fcaa6ed0e928e508316817117216f3d45e49251d6b82"
       }
     },
     "ultimate-hardware-design-workflow": {
       "files": {
-        "SKILL.md": "a9545c53d49c6421b463cb84a9203e491ace5e3a773426bfe1a9c4472373b1b2",
-        "resources/ultimate-shared/execution-contract.md": "2464a6b5255a65946f011227379023241a7e326395cab3b6d4d53768e15d163b"
+        "SKILL.md": "206ec6322bb7ba2617cb5c1734a80d802c58741a49adfd0483789065f6912795",
+        "resources/ultimate-shared/execution-contract.md": "a1811701e6e683b7bf15fcaa6ed0e928e508316817117216f3d45e49251d6b82"
       }
     },
     "ultimate-iot-hardware-workflow": {
       "files": {
-        "SKILL.md": "6ccc70b5646a30b880a822e6db2670d8e130de26511a8fd971f6e11f8b9c79d7",
-        "resources/ultimate-shared/execution-contract.md": "2464a6b5255a65946f011227379023241a7e326395cab3b6d4d53768e15d163b"
+        "SKILL.md": "67427132b5e5f26552c8e2ad59d720a3494021e07157a859d80ad0f959e45703",
+        "resources/ultimate-shared/execution-contract.md": "a1811701e6e683b7bf15fcaa6ed0e928e508316817117216f3d45e49251d6b82"
       }
     },
     "ultimate-iot-software-workflow": {
       "files": {
-        "SKILL.md": "f8565168380aa9f3bf8a54e330a11a94102a6c27ef15039f689567f68ed0a63a",
-        "resources/ultimate-shared/execution-contract.md": "2464a6b5255a65946f011227379023241a7e326395cab3b6d4d53768e15d163b"
+        "SKILL.md": "9062c63a4c7fbb346298e24b9a96efd7591ae814ae6e813fa45833db0698097f",
+        "resources/ultimate-shared/execution-contract.md": "a1811701e6e683b7bf15fcaa6ed0e928e508316817117216f3d45e49251d6b82"
       }
     },
     "ultimate-monorepo-workflow": {
       "files": {
-        "SKILL.md": "d4e177c4f40f3a5ad700f4c6fbfa8db2bbf93511dd5f01e7bebc4f10913dc34d",
-        "resources/ultimate-shared/execution-contract.md": "2464a6b5255a65946f011227379023241a7e326395cab3b6d4d53768e15d163b"
+        "SKILL.md": "aee52233eb2b82bb4deeb94224ed1a2c3378c01a5aab413c4fe5b70d4802a045",
+        "resources/ultimate-shared/execution-contract.md": "a1811701e6e683b7bf15fcaa6ed0e928e508316817117216f3d45e49251d6b82"
       }
     },
     "ultimate-multi-agent-invoker": {
       "files": {
-        "SKILL.md": "1bb43983cd7a868293417421d7a9ac8073bfa405041348e844cec2bec7bee502",
+        "SKILL.md": "69040a5ff575eeef5a70b7b8ad555b4635b8533848a3031d698a92cd6e6643fb",
         "resources/ultimate-quality/casebook.py": "8c591dcea0091d240885afddaf46c274dddbdadf218379c0eb00980d753dea29",
-        "resources/ultimate-quality/guide.md": "72a48d45f407fc590dc0906ac016227f951cd5c069cb05ab46d67e6a35358291",
-        "resources/ultimate-research-workflow/research_state.py": "db53184cc9e10619abc1b0d6768b904bf784ce4b383ce2f995e93617810c3403",
-        "resources/ultimate-shared/execution-contract.md": "2464a6b5255a65946f011227379023241a7e326395cab3b6d4d53768e15d163b"
+        "resources/ultimate-quality/guide.md": "4c063b561dfdc4c73d5ff2eaba93b4cf838fc36be63af3b963df7cdb0b3ac7e1",
+        "resources/ultimate-research-workflow/research_state.py": "ddbff8d029719b0f3b73a0d9c026db0720f312f0679b11012f7012432daebe48",
+        "resources/ultimate-shared/execution-contract.md": "a1811701e6e683b7bf15fcaa6ed0e928e508316817117216f3d45e49251d6b82"
       }
     },
     "ultimate-natural-english-workflow": {
       "files": {
-        "SKILL.md": "132d02f358287aab01de384244347d7aaa8d6fe7e95df4e48a1057bf00d296a2",
-        "resources/ultimate-shared/execution-contract.md": "2464a6b5255a65946f011227379023241a7e326395cab3b6d4d53768e15d163b"
+        "SKILL.md": "c8c82c85545ce0dfd5edfee55f6b9cb7fc2f27a57587b168e11032790035d181",
+        "resources/ultimate-shared/execution-contract.md": "a1811701e6e683b7bf15fcaa6ed0e928e508316817117216f3d45e49251d6b82"
       }
     },
     "ultimate-notebooklm-workflow": {
       "files": {
-        "SKILL.md": "4731bfd368d0de0f7f3bc2e1b92362743fe7354792589dd8b276d4265bf4d593",
-        "resources/ultimate-shared/execution-contract.md": "2464a6b5255a65946f011227379023241a7e326395cab3b6d4d53768e15d163b"
+        "SKILL.md": "4fa674b09fec345cc423aa9c87dee73bbf36e1254d509c0a0a40393af539c3e1",
+        "resources/ultimate-shared/execution-contract.md": "a1811701e6e683b7bf15fcaa6ed0e928e508316817117216f3d45e49251d6b82"
       }
     },
     "ultimate-planning-workflow": {
       "files": {
-        "SKILL.md": "16c42ee67baeb4201cfc1c20d4fb3664785a0465854d327327bf93c6cc7cfd32",
+        "SKILL.md": "e8ba59229b4dcff68bad9425dc5f67f31f2679367aa263febcd00b60b9c22708",
         "resources/ultimate-quality/casebook.py": "8c591dcea0091d240885afddaf46c274dddbdadf218379c0eb00980d753dea29",
-        "resources/ultimate-quality/guide.md": "72a48d45f407fc590dc0906ac016227f951cd5c069cb05ab46d67e6a35358291",
-        "resources/ultimate-research-workflow/research_state.py": "db53184cc9e10619abc1b0d6768b904bf784ce4b383ce2f995e93617810c3403",
-        "resources/ultimate-shared/execution-contract.md": "2464a6b5255a65946f011227379023241a7e326395cab3b6d4d53768e15d163b"
+        "resources/ultimate-quality/guide.md": "4c063b561dfdc4c73d5ff2eaba93b4cf838fc36be63af3b963df7cdb0b3ac7e1",
+        "resources/ultimate-research-workflow/research_state.py": "ddbff8d029719b0f3b73a0d9c026db0720f312f0679b11012f7012432daebe48",
+        "resources/ultimate-shared/execution-contract.md": "a1811701e6e683b7bf15fcaa6ed0e928e508316817117216f3d45e49251d6b82"
       }
     },
     "ultimate-project-workflow": {
       "files": {
-        "SKILL.md": "92c5fdecdbba900bdcd4f2eb2e9d76a4b9cb1eaf68284954067c9cbd0297d8d7",
-        "resources/ultimate-shared/execution-contract.md": "2464a6b5255a65946f011227379023241a7e326395cab3b6d4d53768e15d163b"
+        "SKILL.md": "3ff0abfeb0908b6d1f4d7a2ba8a9253f54cdd414e71f0544ccdbf9113d00f05e",
+        "resources/ultimate-organization/role-map.md": "8406c22918828c5ac3adca2c265af6aa99dcd16003e8ea483f737afc5cd9ab6e",
+        "resources/ultimate-shared/execution-contract.md": "a1811701e6e683b7bf15fcaa6ed0e928e508316817117216f3d45e49251d6b82"
       }
     },
     "ultimate-refactoring-workflow": {
       "files": {
-        "SKILL.md": "665d18645437813d9832a9fb876df7e223e5816df05eace8f313f7c25e40d425",
-        "resources/ultimate-shared/execution-contract.md": "2464a6b5255a65946f011227379023241a7e326395cab3b6d4d53768e15d163b"
+        "SKILL.md": "e4d9a02207d577ba30ca37f34f94c8e403df188b1b62f24fefe72d4e68cdce60",
+        "resources/ultimate-shared/execution-contract.md": "a1811701e6e683b7bf15fcaa6ed0e928e508316817117216f3d45e49251d6b82"
       }
     },
     "ultimate-research-workflow": {
       "files": {
-        "SKILL.md": "6f4bc3785c447432949a578ecc48e45f3945d9532eb49f69aa30bb68fe71e8c3",
+        "SKILL.md": "9ae6a317d15018e96f7a261dc7075cc5e2596f662bd80db195920281d43329ab",
         "resources/ultimate-quality/casebook.py": "8c591dcea0091d240885afddaf46c274dddbdadf218379c0eb00980d753dea29",
-        "resources/ultimate-quality/guide.md": "72a48d45f407fc590dc0906ac016227f951cd5c069cb05ab46d67e6a35358291",
-        "resources/ultimate-research-workflow/research_state.py": "db53184cc9e10619abc1b0d6768b904bf784ce4b383ce2f995e93617810c3403",
-        "resources/ultimate-shared/execution-contract.md": "2464a6b5255a65946f011227379023241a7e326395cab3b6d4d53768e15d163b"
+        "resources/ultimate-quality/guide.md": "4c063b561dfdc4c73d5ff2eaba93b4cf838fc36be63af3b963df7cdb0b3ac7e1",
+        "resources/ultimate-research-workflow/research_state.py": "ddbff8d029719b0f3b73a0d9c026db0720f312f0679b11012f7012432daebe48",
+        "resources/ultimate-shared/execution-contract.md": "a1811701e6e683b7bf15fcaa6ed0e928e508316817117216f3d45e49251d6b82"
       }
     },
     "ultimate-review-workflow": {
       "files": {
-        "SKILL.md": "8299569b8b0befc2700385a827f818f3d44942df5ec421f91473f55798bd0b04",
+        "SKILL.md": "e9b01a9415a52913cd03bba6fea5f27e9abb12bf5b76075026515376f34f9ef6",
         "resources/ultimate-quality/casebook.py": "8c591dcea0091d240885afddaf46c274dddbdadf218379c0eb00980d753dea29",
-        "resources/ultimate-quality/guide.md": "72a48d45f407fc590dc0906ac016227f951cd5c069cb05ab46d67e6a35358291",
-        "resources/ultimate-research-workflow/research_state.py": "db53184cc9e10619abc1b0d6768b904bf784ce4b383ce2f995e93617810c3403",
-        "resources/ultimate-shared/execution-contract.md": "2464a6b5255a65946f011227379023241a7e326395cab3b6d4d53768e15d163b"
+        "resources/ultimate-quality/guide.md": "4c063b561dfdc4c73d5ff2eaba93b4cf838fc36be63af3b963df7cdb0b3ac7e1",
+        "resources/ultimate-research-workflow/research_state.py": "ddbff8d029719b0f3b73a0d9c026db0720f312f0679b11012f7012432daebe48",
+        "resources/ultimate-shared/execution-contract.md": "a1811701e6e683b7bf15fcaa6ed0e928e508316817117216f3d45e49251d6b82"
       }
     },
     "ultimate-security-audit-workflow": {
       "files": {
-        "SKILL.md": "51c0c8bdb1448a9443b330a5b15d739bc5864db184889ef4082b86fa82b5d07e",
-        "resources/ultimate-shared/execution-contract.md": "2464a6b5255a65946f011227379023241a7e326395cab3b6d4d53768e15d163b"
+        "SKILL.md": "e0172d97559fdac89d0b2b15992d8eae964659335e88aeaa156ec4f86d941af8",
+        "resources/ultimate-shared/execution-contract.md": "a1811701e6e683b7bf15fcaa6ed0e928e508316817117216f3d45e49251d6b82"
       }
     },
     "ultimate-security-workflow": {
       "files": {
-        "SKILL.md": "54a0fea645ae6b8d740dda4c14c3fd038d2cc67ac90606b4d8f43df793745cb9",
-        "resources/ultimate-shared/execution-contract.md": "2464a6b5255a65946f011227379023241a7e326395cab3b6d4d53768e15d163b"
+        "SKILL.md": "076f5073c94373a7398b39229f111e42d1f586c7e40b6578deb976f99deb3b4a",
+        "resources/ultimate-shared/execution-contract.md": "a1811701e6e683b7bf15fcaa6ed0e928e508316817117216f3d45e49251d6b82"
       }
     },
     "ultimate-serverless-workflow": {
       "files": {
-        "SKILL.md": "148aa113a79b2d45e2feab3e37152c021125b6287ec06337a4eb74d87a3f7f81",
-        "resources/ultimate-shared/execution-contract.md": "2464a6b5255a65946f011227379023241a7e326395cab3b6d4d53768e15d163b"
+        "SKILL.md": "35ce0d70ce261a1ef26c03e33c3d1353b2aec2a6e2d779cbed10d46a3e7ac7b6",
+        "resources/ultimate-shared/execution-contract.md": "a1811701e6e683b7bf15fcaa6ed0e928e508316817117216f3d45e49251d6b82"
       }
     },
     "ultimate-testing-workflow": {
       "files": {
-        "SKILL.md": "edfa9a945e93440922de9b243932629129925aed05ad1902f3db536ad589e3e9",
-        "resources/ultimate-shared/execution-contract.md": "2464a6b5255a65946f011227379023241a7e326395cab3b6d4d53768e15d163b"
+        "SKILL.md": "7fc4f48e787276874d86c855c24e8cf75a09028a7a4406a5f8ebc96e1a4a7dde",
+        "resources/ultimate-shared/execution-contract.md": "a1811701e6e683b7bf15fcaa6ed0e928e508316817117216f3d45e49251d6b82"
       }
     },
     "ultimate-ux-workflow": {
       "files": {
-        "SKILL.md": "8cedfa3b89e8232d52998ca98ae14c54fc3e1a94d1f3007208d54b0c9dd4aab5",
-        "resources/ultimate-shared/execution-contract.md": "2464a6b5255a65946f011227379023241a7e326395cab3b6d4d53768e15d163b"
+        "SKILL.md": "aeeed8e73c44874bec8276e161c97daf8cde94e33e31947447920e791db5caf5",
+        "resources/ultimate-shared/execution-contract.md": "a1811701e6e683b7bf15fcaa6ed0e928e508316817117216f3d45e49251d6b82"
       }
     }
   }

@@ -1,11 +1,11 @@
 ---
 name: ultimate-planning-workflow
 description: >
-  Create technical specifications, implementation plans, dependency maps and recovery strategies proportional to risk. Use for substantial planning or migrations; preserve mandatory 15-engine coverage whenever research is invoked.
+  Create technical specifications, implementation plans, dependency maps and recovery strategies proportional to risk. Use for substantial planning or migrations.
 argument-hint: "[feature | migration | refactor | design-doc]"
 ---
 
-Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization. Research always requires all 15 prescribed provider inputs.
+Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization.
 
 
 # Technical planning and implementation specifications
@@ -24,11 +24,11 @@ Submit a coherent plan for a `ready`, `needs_revision` or `blocked` verdict, usi
 
 Design-level debugger feedback reopens the linked assumptions/decisions/tasks: preserve experiments, revise the affected records and recovery/check contracts, recompute the semantic hash and renew plan review before dependent dispatch. Preserve unrelated ready work. A risk acceptance records the actual bounded tradeoff/mitigation and cannot waive a hard requirement, missing provider or unrun check.
 
-Use for substantial feature plans, migrations and risky changes. Match planning depth to consequences, uncertainty and reversibility, rather than file count. Preserve existing authorization; do not require a second approval just because a plan artifact exists. The mandatory research contract below is unchanged by planning depth.
+Use for substantial feature plans, migrations and risky changes. Match planning depth to consequences, uncertainty and reversibility, rather than file count. Preserve existing authorization; do not require a second approval just because a plan artifact exists.
 
 ## Inputs and evidence
 
-Read the actual implementation, manifests, tests and relevant requirements. Record goal, non-goals, current behavior, proposed behavior, constraints, assumptions, affected users/data, repository state and acceptance criteria. Unknowns remain explicit. For technical research invoked by this plan, use `ultimate-research-workflow`: all 15 substantive provider inputs and rich per-engine context remain mandatory. Missing providers mean incomplete research, never a reduced-engine substitute.
+Read the actual implementation, manifests, tests and relevant requirements. Record goal, non-goals, current behavior, proposed behavior, constraints, assumptions, affected users/data, repository state and acceptance criteria. Unknowns remain explicit. For technical research invoked by this plan, use `ultimate-research-workflow` at the depth appropriate to the decision.
 
 Choose an artifact suited to the decision: concise task checklist, feature specification, design doc, RFC for cross-team consensus, or ADR for a durable architectural choice. Avoid creating all of them by default.
 
@@ -81,3 +81,11 @@ For compatible schema evolution:
 Record credible risks with likelihood/impact confidence, owner, mitigation and observable trigger. High-consequence failures require mitigation even when a multiplied risk score is small. Select staging, feature flag, canary and recovery strategy based on the actual system; avoid mandatory infrastructure purchases or fixed rollout percentages.
 
 Final plan includes acceptance evidence to collect, dependencies/unresolved decisions, rollout/recovery procedure and task status. Distinguish proposed checks from actual passes. Update the plan when scope changes and preserve decisions already accepted by the user.
+
+## Role and handoffs
+
+**Delivery planner.** Own requirements, dependencies, and acceptance. Use [ultimate-architecture-workflow](../ultimate-architecture-workflow/SKILL.md) and [ultimate-review-workflow](../ultimate-review-workflow/SKILL.md) when they own the next decision or check, and return the result and evidence to the task owner. Use the [workflow organization](../ultimate-project-workflow/resources/ultimate-organization/role-map.md) for cross-specialty work.
+
+## Representative acceptance case
+
+Plan a reversible edit with a short checklist. For a migration, invalidate a data assumption and check that only affected decisions, tasks and readiness records reopen.

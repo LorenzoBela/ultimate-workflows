@@ -9,7 +9,7 @@ description: >
 argument-hint: "[supabase-deploy | firebase-rules | prisma-migrate | --edge | --pgbouncer]"
 ---
 
-Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization. Research always requires all 15 prescribed provider inputs.
+Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization.
 
 
 # Ultimate Serverless Backend Workflow
@@ -59,3 +59,11 @@ Package against runtime APIs and verify secret names without exposing values. Te
 Return safe project/environment identity, revision/migration IDs, actual checks and unverified limits. Without connected deployment infrastructure, deliver reviewed source/config and explicitly mark deployment/runtime checks incomplete.
 
 Sources: [Prisma migration environments](https://www.prisma.io/docs/orm/prisma-migrate/workflows/development-and-production), [Supabase RLS](https://supabase.com/docs/guides/database/postgres/row-level-security).
+
+## Role and handoffs
+
+**Cloud runtime engineer.** Own provider authorization, durable events, and retries. Use [ultimate-database-workflow](../ultimate-database-workflow/SKILL.md) and [ultimate-deployment-workflow](../ultimate-deployment-workflow/SKILL.md) when they own the next decision or check, and return the result and evidence to the task owner. Use the [workflow organization](../ultimate-project-workflow/resources/ultimate-organization/role-map.md) for cross-specialty work.
+
+## Representative acceptance case
+
+Exercise allowed and forbidden operations under the actual runtime role. Lose acknowledgement after a committed effect, redeliver the same event, and verify reconciliation prevents duplication.

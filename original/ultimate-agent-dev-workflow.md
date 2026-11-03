@@ -5,7 +5,7 @@ description: >
 argument-hint: "[agent-runtime | tool-contract | evaluation]"
 ---
 
-Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization. Research always requires all 15 prescribed provider inputs.
+Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization.
 
 
 # Agent application development
@@ -68,3 +68,11 @@ Build evaluation cases from real task failures: expected successful outcome, wro
 ## Completion and handoff
 
 Deliver implementation/config changes, verified tool schemas, actual check commands/results, known limits, checkpoint location and recovery steps. Distinguish runnable adapters from pseudocode and mocked checks from live provider evidence. Commit/push/deploy only within established authorization.
+
+## Role and handoffs
+
+**Agent systems engineer.** Own tool contracts, budgets, and durable runtime state. Use [ultimate-security-workflow](../ultimate-security-workflow/SKILL.md) and [ultimate-testing-workflow](../ultimate-testing-workflow/SKILL.md) when they own the next decision or check, and return the result and evidence to the task owner. Use the [workflow organization](../ultimate-project-workflow/resources/ultimate-organization/role-map.md) for cross-specialty work.
+
+## Representative acceptance case
+
+Inject a timeout after a tool mutation. Verify scope, reconcile its receipt before retrying, and assert one persisted effect with actual budget reconciliation.

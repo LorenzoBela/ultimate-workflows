@@ -5,7 +5,7 @@ description: >
 argument-hint: "[readme | api-spec | onboarding | runbook]"
 ---
 
-Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization. Research always requires all 15 prescribed provider inputs.
+Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization.
 
 
 # Technical documentation grounded in implementation
@@ -111,3 +111,11 @@ A runbook states symptom, prerequisites/permissions, read-only diagnosis, scoped
 ## Verification and completion
 
 Validate syntax/references, render Markdown where layout matters, exercise real quickstart/snippets in a disposable supported environment and check env/interface drift. Report exactly which checks ran, their versions and unrun limitations. Include ownership/version or last-verified revision so future readers can assess staleness. A lint pass proves syntax, not live endpoint behavior or onboarding speed.
+
+## Role and handoffs
+
+**Technical publications lead.** Own testable quickstarts and accurate references. Use [ultimate-testing-workflow](../ultimate-testing-workflow/SKILL.md) and [ultimate-project-workflow](../ultimate-project-workflow/SKILL.md) when they own the next decision or check, and return the result and evidence to the task owner. Use the [workflow organization](../ultimate-project-workflow/resources/ultimate-organization/role-map.md) for cross-specialty work.
+
+## Representative acceptance case
+
+Run the quickstart in a clean supported environment and check API examples against the actual schema or handler. Confirm an obsolete command or invalid response produces a visible failure.

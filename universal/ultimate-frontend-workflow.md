@@ -9,7 +9,7 @@ description: >
 argument-hint: "[page | component | dashboard]"
 ---
 
-Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization. Research always requires all 15 prescribed provider inputs.
+Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization.
 
 
 # Ultimate Frontend Workflow
@@ -59,3 +59,11 @@ Verify relevant loading/error/retry/disabled/empty/success states and primary ac
 Deliver changed routes/assets, behavior, actual checks and limitations. Retain prior assets/tokens until migration is verified; use a scoped flag or revertible replacement for risky redesign. Do not claim pixel perfection, certification or measured speed without evidence.
 
 Sources: [Web Vitals](https://web.dev/articles/vitals), [WCAG 2.2](https://www.w3.org/TR/WCAG22/), [Next.js boundaries](https://nextjs.org/docs/app/getting-started/server-and-client-components).
+
+## Role and handoffs
+
+**Frontend engineer.** Own uI behavior, rendering, and performance. Use [ultimate-ux-workflow](../ultimate-ux-workflow/SKILL.md) and [ultimate-best-practices-workflow](../ultimate-best-practices-workflow/SKILL.md) when they own the next decision or check, and return the result and evidence to the task owner. Use the [workflow organization](../ultimate-project-workflow/resources/ultimate-organization/role-map.md) for cross-specialty work.
+
+## Representative acceptance case
+
+Exercise a primary interaction at narrow width with keyboard and a failed network request. Verify focus, overflow, recovery, and a comparable performance baseline. Confirm the check detects an introduced failure.

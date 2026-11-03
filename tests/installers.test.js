@@ -56,8 +56,21 @@ test('all-target install retains resource links and uses discoverable Claude bun
       assert.ok(fs.existsSync(path.join(cwd, folder, 'resources/ultimate-shared/execution-contract.md')));
     }
   }
+  const roleMap = 'resources/ultimate-organization/role-map.md';
+  for (const [folder, extension] of [['.agent/workflows', 'md'], ['.cursor/rules', 'mdc']]) {
+    const dir = path.join(cwd, folder);
+    const map = fs.readFileSync(path.join(dir, roleMap), 'utf8');
+    const peer = 'ultimate-multi-agent-invoker.' + extension;
+    assert.ok(map.includes('](../../' + peer + ')'));
+    assert.ok(fs.existsSync(path.join(dir, peer)));
+    const project = fs.readFileSync(path.join(dir, 'ultimate-project-workflow.' + extension), 'utf8');
+    assert.ok(project.includes('](' + peer + ')'));
+  }
   for (const file of ['.windsurfrules', '.clinerules', '.github/copilot-instructions.md']) {
-    assert.equal((fs.readFileSync(path.join(cwd, file), 'utf8').match(/<!-- Workflow:/g) || []).length, 38);
+    const combined = fs.readFileSync(path.join(cwd, file), 'utf8');
+    assert.equal((combined.match(/<!-- Workflow:/g) || []).length, 38);
+    assert.ok(combined.includes('](#ultimate-multi-agent-invoker)'));
+    assert.ok(combined.includes('<a id="ultimate-multi-agent-invoker"></a>'));
     assert.ok(fs.existsSync(path.join(cwd, path.dirname(file), 'resources/ultimate-shared/execution-contract.md')));
   }
 });

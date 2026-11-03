@@ -21,7 +21,7 @@ class ResearchTests(unittest.TestCase):
         self.directory = Path(self.temp.name)
         self.registry = {name: {"tool": f"fixture_{name}", "query": " ".join(["context"] * 200)}
                          for name in state.PROVIDERS}
-        state.initialize(self.directory, "Synthetic checkpoint contract fixture", self.registry)
+        state.initialize(self.directory, "Synthetic checkpoint contract fixture", self.registry, "full")
 
     def result(self, url="https://example.org/evidence?utm_source=fixture"):
         return {"status": "received", "observed_at": "2026-10-22T12:00:00+08:00",
@@ -38,6 +38,16 @@ class ResearchTests(unittest.TestCase):
                                       "sources": ["https://example.org/evidence"]}
                                for name in state.PROVIDERS},
                  "review": {"conclusion": "Fixture only", "reasoning": "All inputs inspected"}}]
+
+    def test_focused_lookup_accepts_one_short_query(self):
+        folder = self.directory / "focused"
+        state.initialize(folder, "Which version?", {"exa": {"tool": "docs", "query": "API version"}})
+        state.record(folder, "exa", self.result())
+        claims = self.claims()
+        claims[0]["positions"] = {"exa": claims[0]["positions"]["exa"]}
+        report = state.summarize(folder, claims)
+        self.assertEqual(report["mode"], "focused")
+        self.assertTrue(report["consensus_complete"])
 
     def test_fourteen_inputs_cannot_complete(self):
         for name in state.PROVIDERS[:-1]:
@@ -92,7 +102,7 @@ class ResearchTests(unittest.TestCase):
 
     def test_scope_cannot_be_silently_reinitialized(self):
         with self.assertRaises(FileExistsError):
-            state.initialize(self.directory, "Different scope", self.registry)
+            state.initialize(self.directory, "Different scope", self.registry, "full")
 
     def test_stale_provider_and_concurrent_same_provider_lock_are_rejected(self):
         state.record(self.directory, "you", self.result())
@@ -112,7 +122,7 @@ class ResearchTests(unittest.TestCase):
             if change == "missing": del registry["brave"]
             else: registry["you"]["query"] = "short query"
             with self.assertRaises(ValueError):
-                state.initialize(self.directory / change, "Fixture", registry)
+                state.initialize(self.directory / change, "Fixture", registry, "full")
 
     def test_received_needs_evidence_and_timestamp(self):
         for change in ["sources", "observed_at", "artifact"]:

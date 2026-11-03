@@ -4,13 +4,17 @@ description: Diagnose reproducible defects, regressions and intermittent inciden
 argument-hint: "[symptom | error | regression-range | incident]"
 ---
 
-Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve established authorization. Research requires all 15 prescribed provider inputs.
+Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve established authorization.
 
 # Debugging workflow
 
-This is the repair stage of **Research → Plan → Plan Review → Invoke → Debug when needed → Final Code Review**. Apply the [connected quality guide](resources/ultimate-quality/guide.md). Receive a finding linked to its task, requirement/decision, failing check receipt, actual inputs and exact integrated revision/content hashes. Standalone debugging may establish this minimal context from the observed defect; it does not fabricate an already-reviewed implementation plan.
+## Choose the depth
 
-## Hypothesis ledger, design feedback and independent closure
+For a routine fix, reproduce the symptom on baseline, isolate the cause, make the smallest repair, and rerun the failing case plus relevant neighboring behavior. Record the cause, actual results and any unrun check. If baseline reproduction is unavailable, distinguish the evidence that remains from a verified before/after result.
+
+Use the connected repair procedure below for consequential changes or when the work already follows the [connected quality guide](resources/ultimate-quality/guide.md). It adds evidence IDs, design feedback and independent closure. Local triage, bisection and verification apply at either depth.
+
+## Connected routine only: hypothesis ledger, design feedback and independent closure
 
 Assign stable hypothesis and experiment IDs. Keep competing explanations, their predicted observations and a check that could refute each. Select the safest bounded experiment that distinguishes causes rather than simply retesting the leading guess. Retain unsuccessful attempts, counterevidence and nondeterministic trial conditions/results. Missing required target/infrastructure is blocked, not a fabricated reproduction or repeated repair.
 
@@ -37,9 +41,9 @@ Record runtime/library versions, configuration differences, exact error, timesta
 
 When statistical localization is appropriate, collect **per-test** coverage for passing and failing tests; aggregate coverage alone cannot calculate Ochiai. For element e, score `ef / sqrt((ef+nf)*(ef+ep))`, where ef/ep count failing/passing tests executing it and nf failing tests not executing it. Handle a zero denominator. Treat ranking as correlation, keep source links and expand beyond the initial candidates when evidence disagrees. AST slicing and keyword relevance help navigation, not causal proof.
 
-## 3. Mandatory research coverage when researching
+## 3. Resolve evidence gaps
 
-Use the research workflow's engine-specific prompts and current tool schemas for Tavily, Context7, You.com, Exa, Jina, SERPdive, Linkup, Parallel Search, SerpApi, GitHub, Firecrawl, Crawleo, Bright Data, Apify and Brave Search. All 15 substantive task-relevant inputs are required. Failed/empty/irrelevant/unavailable calls do not count. Preserve provider checkpoints, primary evidence and conflicts; missing inputs leave research incomplete. Do not invent a workaround, substitute a provider or reduce query-context requirements to fill the matrix.
+Use the applicable primary source for a narrow API or version question. Compare sources and test conflicting assumptions when a consequential design choice depends on them. Report unresolved evidence gaps.
 
 ## 4. Regression bisection
 
@@ -95,3 +99,11 @@ Integrate only the owned patch into the requested branch with supported reposito
 ## Completion and recovery
 
 Report baseline symptom, supported cause/invariant, changed files, exact checks/results and unresolved limits. Material incidents receive a blameless timeline and evidence-supported prevention actions; do not manufacture five organizational causes. Persist useful redacted lessons only to an available authorized notes mechanism. If unresolved, preserve reproduction, hypotheses, checkpoints, owned artifacts and next discriminating test. Do not claim physical/production recovery from host-only verification.
+
+## Role and handoffs
+
+**Incident investigator.** Own reproduction, cause, and minimal repairs. Use [ultimate-testing-workflow](../ultimate-testing-workflow/SKILL.md) and [ultimate-planning-workflow](../ultimate-planning-workflow/SKILL.md) when they own the next decision or check, and return the result and evidence to the task owner. Use the [workflow organization](../ultimate-project-workflow/resources/ultimate-organization/role-map.md) for cross-specialty work.
+
+## Representative acceptance case
+
+Reproduce the failing symptom, distinguish a competing cause with a bounded experiment, and rerun protected neighbors. Route a disproved design assumption back to planning.

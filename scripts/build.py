@@ -49,13 +49,15 @@ def build():
     if len(sources)!=38: raise ValueError(f"Expected 38 workflows; found {len(sources)}")
     manifest_path=guard(ROOT / "workflow-manifest.json")
     previous=json.loads(manifest_path.read_text(encoding="utf-8")) if manifest_path.exists() else {"workflows":{}}
-    manifest={"schema_version":1,"authoring_source":"Gemini workflow skills","required_research_inputs":15,"workflows":{}}
+    manifest={"schema_version":1,"authoring_source":"Gemini workflow skills","full_research_provider_count":15,"workflows":{}}
     outputs={}
     for source in sources:
         data=source_bytes(source)
         outputs[guard(universal/source.name)]=data
         hashes={"SKILL.md":hashlib.sha256(data).hexdigest()}
         groups = ["ultimate-shared", source.stem]
+        if source.stem == "ultimate-project-workflow":
+            groups.append("ultimate-organization")
         if source.stem in QUALITY_WORKFLOWS:
             groups.extend(["ultimate-quality", "ultimate-research-workflow"])
         groups = list(dict.fromkeys(groups))

@@ -5,7 +5,7 @@ description: >
 argument-hint: "[notebook | source-query | studio-artifact]"
 ---
 
-Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization. Research always requires all 15 prescribed provider inputs.
+Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization.
 
 
 # NotebookLM sources and grounded research
@@ -38,7 +38,7 @@ Ask the actual notebook query capability with explicit source scope and requeste
 
 Require material claims to map to source ID/title/version, citation location and supported text. Inspect citations against actual source content. Distinguish exact quotation from paraphrase and respect quotation limits. Citation presence alone does not establish the claim is supported.
 
-For source-only questions, report missing evidence explicitly and offer the needed source/next action without silently expanding the corpus. If external research is authorized, follow `ultimate-research-workflow` with all 15 substantive provider inputs and the rich query floors. Keep external findings distinct from notebook evidence, resolve contradictions and ingest only authorized, reviewed additions. Missing engine input remains incomplete research.
+For source-only questions, report missing evidence explicitly and offer the needed source/next action without silently expanding the corpus. If external research is authorized, follow `ultimate-research-workflow` at the depth the question requires. Keep external findings distinct from notebook evidence, resolve contradictions and ingest only authorized, reviewed additions.
 
 ## 4. Studio artifacts
 
@@ -49,3 +49,11 @@ Generate audio, guides or other assets only when requested. Discover supported a
 Return grounded answer/artifact, source provenance, real citation evidence, indexing/generation status, actual checks and known gaps. Retain source/job manifest and next action for interrupted work. Store only relevant non-sensitive summaries locally or in optional memory with authorization, source versions and uncertainty intact.
 
 Acceptance scenarios: source-only missing-data question causes zero uploads; duplicate ingestion is detected; wrong account is caught before mutation; timeout resumes the same job; stale citation is flagged; malformed or unsupported tool schema fails before execution. A mock client cannot prove a live account or NotebookLM output was verified.
+
+## Role and handoffs
+
+**Source library specialist.** Own ingestion, indexing, and grounded answers. Use [ultimate-research-workflow](../ultimate-research-workflow/SKILL.md) and [ultimate-document-intelligence-workflow](../ultimate-document-intelligence-workflow/SKILL.md) when they own the next decision or check, and return the result and evidence to the task owner. Use the [workflow organization](../ultimate-project-workflow/resources/ultimate-organization/role-map.md) for cross-specialty work.
+
+## Representative acceptance case
+
+Simulate timeout after accepted ingestion. Resume using the original job ID, check source version, and verify no duplicate upload. Separate unsupported claims from notebook-backed answers.

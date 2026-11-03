@@ -10,7 +10,7 @@ description: >
 argument-hint: "[api-spec | database-schema | fullstack-feature | --monolith | --microservices]"
 ---
 
-Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization. Research always requires all 15 prescribed provider inputs.
+Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization.
 
 
 # Ultimate Fullstack Integration Workflow
@@ -51,3 +51,11 @@ Add offline storage only when needed; define conflict resolution, ordering, dele
 Run a meaningful end-to-end slice with disposable persistence where available: happy path, unauthenticated/cross-tenant access, invalid input, concurrent writes, duplicate retry and dependency timeout. Test optimistic rollback and applicable offline/reconnect conflicts. Verify old/new revisions coexist during migration and injected partial failure resumes/reconciles.
 
 Report contract/schema/UI changes, actual build/test results, migration/recovery order and unverified provider assumptions. Keep compatible flag/route rollback while accounting for committed data. TypeScript success alone does not prove tenant isolation or duplicate-effect safety.
+
+## Role and handoffs
+
+**Application integration engineer.** Own uI-to-data behavior and partial failure. Use [ultimate-api-workflow](../ultimate-api-workflow/SKILL.md) and [ultimate-testing-workflow](../ultimate-testing-workflow/SKILL.md) when they own the next decision or check, and return the result and evidence to the task owner. Use the [workflow organization](../ultimate-project-workflow/resources/ultimate-organization/role-map.md) for cross-specialty work.
+
+## Representative acceptance case
+
+Send a cross-tenant mutation and verify no persisted effect. Interrupt an authorized mutation after commit, retry it, and check that one result exists and the UI reconciles to it.

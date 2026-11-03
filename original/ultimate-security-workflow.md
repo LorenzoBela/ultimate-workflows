@@ -9,7 +9,7 @@ description: >
 argument-hint: "[security-audit | auth-flow | rls-policy | --hardening | --zero-trust]"
 ---
 
-Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization. Research always requires all 15 prescribed provider inputs.
+Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization.
 
 
 # Ultimate Application Security Workflow
@@ -59,3 +59,11 @@ Run focused negative cases in authorized disposable environments: cross-tenant/o
 Return control/threat mapping, actual results and unresolved risks without certification claims. Keep tested rollback/rotation/revocation path and migration compatibility. Escalate only concrete unresolved decisions while preserving authorized scope.
 
 Sources: [OWASP CSRF](https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html), [OWASP authorization](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html), [Stripe signature verification](https://docs.stripe.com/webhooks/signature).
+
+## Role and handoffs
+
+**Application security engineer.** Own threat controls and negative authorization cases. Use [ultimate-security-audit-workflow](../ultimate-security-audit-workflow/SKILL.md) and [ultimate-testing-workflow](../ultimate-testing-workflow/SKILL.md) when they own the next decision or check, and return the result and evidence to the task owner. Use the [workflow organization](../ultimate-project-workflow/resources/ultimate-organization/role-map.md) for cross-specialty work.
+
+## Representative acceptance case
+
+Test forged and legitimate duplicate webhooks and cross-tenant access. Verify forgery has no side effect, replay has one effect, and authorization holds through the actual runtime role.

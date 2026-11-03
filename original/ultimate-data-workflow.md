@@ -8,7 +8,7 @@ description: >
 argument-hint: "[etl-pipeline | parser-script | database-aggregation | --stream | --batch | --dlq]"
 ---
 
-Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization. Research always requires all 15 prescribed provider inputs.
+Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization.
 
 
 # Ultimate Data Pipeline and ETL Workflow
@@ -83,3 +83,11 @@ Persist run identity, source checksum/version, checkpoint and processed/loaded/q
 Inject flush rejection and require pipeline rejection without hanging/unhandled rejection. Verify empty source, last partial batch, oversized record, malformed row, DB outage, crash after commit before acknowledgement, replay and out-of-order revisions. Record peak memory under representative input rather than guaranteeing it from row count. No full production import is a test. Return actual row reconciliation, checks/results, checkpoint and remaining recovery limitations.
 
 Source: [Node stream implementer completion/error contract](https://nodejs.org/api/stream.html#transform_transformchunk-encoding-callback).
+
+## Role and handoffs
+
+**Data pipeline engineer.** Own ingestion, reconciliation, and replay. Use [ultimate-database-workflow](../ultimate-database-workflow/SKILL.md) and [ultimate-testing-workflow](../ultimate-testing-workflow/SKILL.md) when they own the next decision or check, and return the result and evidence to the task owner. Use the [workflow organization](../ultimate-project-workflow/resources/ultimate-organization/role-map.md) for cross-specialty work.
+
+## Representative acceptance case
+
+Interrupt after a batch commit and before acknowledgement. Replay the same source identity and reconcile persisted, rejected, and pending counts without duplicate logical rows.

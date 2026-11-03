@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Local evidence bookkeeping, not a search client or a truth verifier.
 
-init --run-dir DIR --question TEXT --registry FILE
+init --run-dir DIR --question TEXT --registry FILE [--mode focused|comparative|full]
 record --run-dir DIR --provider NAME --input FILE
 report --run-dir DIR [--claims FILE --coverage FILE --require-ready]
 
@@ -24,6 +24,7 @@ PROVIDERS = (
     "apify", "brave",
 )
 QUERY_WORD_FLOORS = {"you": 150, "exa": 100, "linkup": 200, "parallel": 100, "jina": 80}
+MODES = ("focused", "comparative", "full")
 STATUSES = {"received", "empty", "failed", "unavailable", "cancelled"}
 
 
@@ -56,6 +57,9 @@ def load_config(run_dir):
     actual = hashlib.sha256(json.dumps(payload, sort_keys=True).encode("utf-8")).hexdigest()
     if actual != config.get("scope_sha256"):
         raise ValueError("Run scope/registry changed; initialize a new run directory")
+    version = config.get("schema_version")
+    if version != 1 and (version != 2 or config.get("mode") not in MODES):
+        raise ValueError("unsupported research run schema or mode")
     return config
 
 
@@ -70,21 +74,29 @@ def canonical_url(value):
                        urlencode(sorted(query)), ""))
 
 
-def initialize(run_dir, question, registry):
+def initialize(run_dir, question, registry, mode="focused"):
     required_text(question, "question")
-    if not isinstance(registry, dict) or set(registry) != set(PROVIDERS):
-        raise ValueError("registry must contain exactly the 15 required provider IDs")
+    if mode not in MODES:
+        raise ValueError("unknown research mode")
+    if not isinstance(registry, dict) or not registry:
+        raise ValueError("registry must contain at least one provider entry")
+    if mode == "full" and set(registry) != set(PROVIDERS):
+        raise ValueError("full mode requires exactly the 15 prescribed provider IDs")
+    if any(not isinstance(name, str) or not re.fullmatch(r"[a-z0-9][a-z0-9_-]{0,63}", name)
+           or name in {"run", "con", "prn", "aux", "nul"}
+           or re.fullmatch(r"(?:com|lpt)[0-9]", name) for name in registry):
+        raise ValueError("invalid or reserved provider ID")
     for name, item in registry.items():
         if not isinstance(item, dict):
             raise ValueError(f"{name} registry entry must be an object")
         required_text(item.get("tool"), f"{name}.tool")
         query = required_text(item.get("query"), f"{name}.query")
-        if name in QUERY_WORD_FLOORS and len(query.split()) < QUERY_WORD_FLOORS[name]:
+        if mode == "full" and name in QUERY_WORD_FLOORS and len(query.split()) < QUERY_WORD_FLOORS[name]:
             raise ValueError(f"{name} requires at least {QUERY_WORD_FLOORS[name]} query words")
     run_dir = Path(run_dir)
     run_dir.mkdir(parents=True, exist_ok=True)
     # Exclusive creation prevents silently reusing a checkpoint for a different scope.
-    config = {"schema_version": 1, "question": question, "registry": registry}
+    config = {"schema_version": 2, "mode": mode, "question": question, "registry": registry}
     config["scope_sha256"] = hashlib.sha256(
         json.dumps(config, sort_keys=True).encode("utf-8")).hexdigest()
     with (run_dir / "run.json").open("x", encoding="utf-8") as stream:
@@ -122,10 +134,10 @@ def validate_result(result):
 
 
 def record(run_dir, provider, result):
-    if provider not in PROVIDERS:
-        raise ValueError("unknown provider")
     run_dir = Path(run_dir)
     config = load_config(run_dir)
+    if provider not in config["registry"]:
+        raise ValueError("provider is not registered for this run")
     validate_result(result)
     # Per-provider files allow independent providers to finish concurrently.
     # Concurrent updates to the same provider fail rather than dropping an attempt.
@@ -153,7 +165,8 @@ def readiness(config, claims, coverage, matrix_valid, received, unresolved, sour
     if coverage is None:
         return result
     errors = result["coverage_errors"]
-    blocked = len(received) != 15
+    mode = config.get("mode", "full")
+    blocked = not received or (mode == "full" and set(received) != set(config["registry"]))
     try:
         if not isinstance(coverage, dict):
             raise ValueError("coverage must be an object")
@@ -189,16 +202,17 @@ def readiness(config, claims, coverage, matrix_valid, received, unresolved, sour
                 raise ValueError("invalid freshness assessment")
             required_text(freshness.get("rationale"), "freshness.rationale")
             challenge = question.get("disconfirmation", {})
-            required_text(challenge.get("query"), "disconfirmation.query")
-            required_text(challenge.get("outcome"), "disconfirmation.outcome")
-            urls = challenge.get("sources")
+            if mode != "focused" or challenge:
+                required_text(challenge.get("query"), "disconfirmation.query")
+                required_text(challenge.get("outcome"), "disconfirmation.outcome")
+            urls = challenge.get("sources", [] if mode != "full" else None)
             if not isinstance(urls, list) or any(canonical_url(u) not in recorded_urls for u in urls):
                 raise ValueError("disconfirmation references unrecorded sources")
             if question["required"]:
                 required.add(identifier)
                 if status == "unknown" or freshness["status"] == "unknown":
                     blocked = True
-                if status != "answered" or freshness["status"] != "current" or not refs or not urls:
+                if status != "answered" or freshness["status"] != "current" or not refs or (mode == "full" and not urls):
                     errors.append(f"{identifier}: required evidence is incomplete")
                 for ref in refs:
                     if ref in unresolved or not any(p["stance"] == "support" for p in by_claim[ref]["positions"].values()):
@@ -246,7 +260,9 @@ def summarize(run_dir, claims=None, coverage=None):
         while identity_links[item] != item:
             item = identity_links[item]
         return item
-    for provider in PROVIDERS:
+    mode = config.get("mode", "full")
+    providers = PROVIDERS if mode == "full" else tuple(config["registry"])
+    for provider in providers:
         path = run_dir / f"{provider}.json"
         if not path.exists():
             statuses[provider] = "pending"
@@ -266,6 +282,7 @@ def summarize(run_dir, claims=None, coverage=None):
                 if s.get("content_sha256"):
                     digest = "sha256:" + s["content_sha256"]
                     identity_links[find(url)] = find(digest)
+    required_positions = set(providers if mode == "full" else received)
     matrix_valid, errors, unresolved = False, [], []
     if claims is not None:
         if not isinstance(claims, list) or not claims:
@@ -280,8 +297,8 @@ def summarize(run_dir, claims=None, coverage=None):
                     seen.add(identifier)
                     required_text(claim.get("text"), "claim.text")
                     positions = claim.get("positions")
-                    if not isinstance(positions, dict) or set(positions) != set(PROVIDERS):
-                        raise ValueError("each claim needs all 15 provider positions")
+                    if not isinstance(positions, dict) or not required_positions or set(positions) != required_positions:
+                        raise ValueError("claim positions must match the required received inputs for this mode")
                     stances = set()
                     for name, position in positions.items():
                         if name not in received:
@@ -309,13 +326,16 @@ def summarize(run_dir, claims=None, coverage=None):
                 except (ValueError, TypeError, AttributeError) as exc:
                     errors.append(f"claim {claim.get('id', '?') if isinstance(claim, dict) else '?'}: {exc}")
             matrix_valid = not errors
+    collection_complete = len(received) == len(providers)
     report = {
+        "mode": mode,
         "scope_sha256": config["scope_sha256"], "received_count": len(received),
         "evidence_sha256": claims_digest(received),
-        "required_count": 15, "collection_complete": len(received) == 15,
-        "consensus_complete": len(received) == 15 and matrix_valid,
+        "required_count": len(providers) if mode == "full" else 0,
+        "planned_count": len(providers), "collection_complete": collection_complete,
+        "consensus_complete": matrix_valid and (collection_complete if mode == "full" else not unresolved),
         "matrix_valid": matrix_valid, "matrix_errors": errors,
-        "statuses": statuses, "missing": [p for p in PROVIDERS if p not in received],
+        "statuses": statuses, "missing": [p for p in providers if p not in received],
         "unique_source_identities": len({find(key) for key in identity_links}),
         "unresolved_claims": unresolved,
         "limitation": "Bookkeeping validates submitted records; it cannot authenticate provider calls or prove truth. Content hashes only help identify exact copies, not all syndication.",
@@ -330,7 +350,8 @@ def main():
     parser.add_argument("--run-dir", required=True)
     parser.add_argument("--question")
     parser.add_argument("--registry")
-    parser.add_argument("--provider", choices=PROVIDERS)
+    parser.add_argument("--mode", choices=MODES, default="focused")
+    parser.add_argument("--provider")
     parser.add_argument("--input")
     parser.add_argument("--claims")
     parser.add_argument("--coverage")
@@ -340,7 +361,7 @@ def main():
         if args.command == "init":
             if not args.question or not args.registry:
                 parser.error("init requires --question and --registry")
-            result = initialize(args.run_dir, args.question, read_json(args.registry))
+            result = initialize(args.run_dir, args.question, read_json(args.registry), args.mode)
         elif args.command == "record":
             if not args.provider or not args.input:
                 parser.error("record requires --provider and --input")

@@ -9,8 +9,10 @@ or assessing completion. This contract does not grant authority for new actions.
 - Discover installed tools and exact schemas before using them. Do not invent tool
   calls, SDK methods, worker launches, or measurements. Record unavailable required
   capabilities and use supported fallbacks only when they preserve the requirements.
-- Research requires substantive inputs from all 15 prescribed engines. Missing or
-  failed inputs mean incomplete consensus; no host adapter or depth mode may waive it.
+- Match research depth to the question and its consequences. Use applicable primary
+  evidence for focused lookups and seek independent corroboration or counterevidence
+  for material comparisons. Require the full provider roster only for an explicitly
+  requested full run. Report missing required evidence and provider coverage separately.
 - Match planning and verification to consequence and reversibility. Delegate only
   within established authorization and supported runtime capabilities. Give workers
   bounded ownership and integrate/test their actual outputs.

@@ -5,7 +5,7 @@ description: >
 argument-hint: "[text | target-file | tone]"
 ---
 
-Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization. Research always requires all 15 prescribed provider inputs.
+Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization.
 
 
 # Natural English with meaning preserved
@@ -43,3 +43,11 @@ Words such as “robust,” “facilitate” or “moreover” are not inherentl
 ## Completion
 
 Deliver usable text in the requested format. Mention material ambiguity outside the artifact if it affects meaning. For file edits preserve unrelated content and inspect the diff; for a high-consequence document have an appropriate reviewer verify substantive meaning. No claim of human authorship or guaranteed AI-detection evasion is implied.
+
+## Role and handoffs
+
+**Editorial specialist.** Own clarity and fidelity to protected facts. Use [ultimate-documentation-workflow](../ultimate-documentation-workflow/SKILL.md) and [ultimate-project-workflow](../ultimate-project-workflow/SKILL.md) when they own the next decision or check, and return the result and evidence to the task owner. Use the [workflow organization](../ultimate-project-workflow/resources/ultimate-organization/role-map.md) for cross-specialty work.
+
+## Representative acceptance case
+
+Rewrite a passage with numbers, quotations, identifiers and an uncertain finding. Compare protected spans and claim strength. A smoother rewrite that turns possibility into certainty fails.

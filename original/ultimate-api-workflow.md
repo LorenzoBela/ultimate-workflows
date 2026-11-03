@@ -8,7 +8,7 @@ description: >
 argument-hint: "[graphql-schema | grpc-proto | gateway-config | --versioning | --protobuf]"
 ---
 
-Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization. Research always requires all 15 prescribed provider inputs.
+Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization.
 
 
 # Ultimate API Design and Gateway Workflow
@@ -62,3 +62,11 @@ Exercise unauthorized/cross-tenant access, malformed and oversized requests, can
 Report contract/version diff, actual commands/results, query count baseline, idempotency storage boundary and untested deployment assumptions. Roll out compatible handlers first, monitor client failures, and retain a route/version rollback that remains compatible with committed data. Infrastructure-backed checks require a disposable environment; illustrative designs are not verified deployments.
 
 Sources: [DataLoader](https://github.com/graphql/dataloader#caching-per-request), [HTTP Problem Details](https://www.rfc-editor.org/rfc/rfc9457), [Protobuf compatibility](https://protobuf.dev/programming-guides/proto3/#updating).
+
+## Role and handoffs
+
+**API contract engineer.** Own compatibility, authorization, and retry semantics. Use [ultimate-database-workflow](../ultimate-database-workflow/SKILL.md) and [ultimate-fullstack-workflow](../ultimate-fullstack-workflow/SKILL.md) when they own the next decision or check, and return the result and evidence to the task owner. Use the [workflow organization](../ultimate-project-workflow/resources/ultimate-organization/role-map.md) for cross-specialty work.
+
+## Representative acceptance case
+
+Run a representative old client against the changed contract and overlap duplicate mutations. Verify compatibility and one persisted effect, including payload-mismatch rejection.

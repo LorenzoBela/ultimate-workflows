@@ -8,7 +8,7 @@ description: >
 argument-hint: "[commit-message | branch-name | --stacked | --rebase | --push]"
 ---
 
-Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization. Research always requires all 15 prescribed provider inputs.
+Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization.
 
 
 # Ultimate Git and Release Workflow
@@ -42,3 +42,11 @@ Release/tag/publication needs authorized scope and compatible data/recovery plan
 ## Completion evidence
 
 Report branch/commit/remote status from actual commands, relevant checks and remaining local changes. Verify unrelated content and staged state survived. Test preservation/conflict recovery in disposable repos when modifying automation; never use the user's dirty repo as a destructive fixture. Claim pushed/signed/clean only when observed.
+
+## Role and handoffs
+
+**Source-control steward.** Own repository state and safe integration. Use [ultimate-review-workflow](../ultimate-review-workflow/SKILL.md) and [ultimate-deployment-workflow](../ultimate-deployment-workflow/SKILL.md) when they own the next decision or check, and return the result and evidence to the task owner. Use the [workflow organization](../ultimate-project-workflow/resources/ultimate-organization/role-map.md) for cross-specialty work.
+
+## Representative acceptance case
+
+Start with separate staged, unstaged and untracked user edits. Integrate a scoped change and verify each unrelated change survives with its original staging state.

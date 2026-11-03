@@ -5,7 +5,7 @@ description: >
 argument-hint: "[system-boundary | event-flow | adr]"
 ---
 
-Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization. Research always requires all 15 prescribed provider inputs.
+Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization.
 
 
 # System architecture and domain boundaries
@@ -14,7 +14,7 @@ Use for architecture decisions, domain models and event flows. Start from the ac
 
 ## Inputs
 
-Record business outcome, current implementation and topology, deployment/runtime constraints, data ownership, authorization boundaries, availability/latency/recovery needs, workload evidence and migration limits. Separate measured facts from estimates. When research is invoked, the research workflow's all-15 substantive inputs and rich query floors remain mandatory.
+Record business outcome, current implementation and topology, deployment/runtime constraints, data ownership, authorization boundaries, availability/latency/recovery needs, workload evidence and migration limits. Separate measured facts from estimates. Use focused evidence for a narrow technical question and comparative research for a material design decision.
 
 ## 1. Boundaries and decisions
 
@@ -69,3 +69,11 @@ Record a lasting choice in an ADR: context, constraints, options/evidence, decis
 Plan compatible rollout, data backfill/reconciliation, mixed-version operation and recovery. Rehearse risky restoration or forward repair in a disposable environment. Preserve user work and never run destructive production experiments as architecture discovery.
 
 Complete with diagrams/contracts relevant to the scope, decision evidence, actual checks, unresolved risks and migration/recovery ownership. Mark unrun runtime/load/production checks explicitly.
+
+## Role and handoffs
+
+**Systems architect.** Own boundaries, consistency, and operating costs. Use [ultimate-fullstack-workflow](../ultimate-fullstack-workflow/SKILL.md) and [ultimate-planning-workflow](../ultimate-planning-workflow/SKILL.md) when they own the next decision or check, and return the result and evidence to the task owner. Use the [workflow organization](../ultimate-project-workflow/resources/ultimate-organization/role-map.md) for cross-specialty work.
+
+## Representative acceptance case
+
+Compare a local transaction with a remote boundary using workload, recovery and ownership. State the measurable condition that would change the decision and rerun with that condition changed.

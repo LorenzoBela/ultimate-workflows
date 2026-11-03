@@ -4,7 +4,7 @@ description: Review a versioned implementation plan or actual integrated code in
 argument-hint: "[plan | code | plan-file | diff | branch | pull-request | --sarif]"
 ---
 
-Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve established authorization. Research requires all 15 prescribed provider inputs.
+Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve established authorization.
 
 # Plan review and code review
 
@@ -20,13 +20,13 @@ Return exactly one typed verdict: **`ready`**, **`needs_revision`** or **`blocke
 
 **Ready** requires current fingerprints, hard requirements mapped to feasible tasks/checks, specified material interfaces/dependencies/recovery, no unresolved actionable P0/P1 and no high-consequence unknown. In final code review it additionally requires mandatory current-revision outcome checks and independent finding closure. **Needs_revision** means a remediable internal consequential gap can be resolved using available evidence/authority. **Blocked** means missing essential capability/evidence/authority, an uninferable consequential user tradeoff or exhausted repair budget. Name the exact gap and next action. P2/P3 follow-ups remain visible without becoming invented blockers.
 
-Technical readiness does not authorize deployment/publishing, widen scope or require repeated user approval for already-authorized implementation. Only seek a genuine missing decision or authority. Risk acceptance names the specific risk/mitigation/scope; it cannot waive a hard requirement, replace one of the 15 research inputs or turn an unrun check into a pass.
+Technical readiness does not authorize deployment/publishing, widen scope or require repeated user approval for already-authorized implementation. Only seek a genuine missing decision or authority. Risk acceptance names the specific risk/mitigation/scope; it cannot waive a hard requirement, replace an explicitly required source or provider or turn an unrun check into a pass.
 
 ## Plan mode — before dependent invocation
 
 Review the actual structured plan and linked research/evidence, not just persuasive prose. Establish its semantic hash from canonical requirements, assumptions, decisions, interfaces, tasks and acceptance checks. Verify the chain **question/claim → requirement/assumption → decision/interface → task → check**, with stable IDs and record revisions. A Markdown reformat does not change semantics; a consequential contract/assumption/check change does.
 
-Check feasibility against the actual repository, stack and available tools/capabilities. Inspect hard requirement coverage, critical unanswered questions, source applicability/freshness, evidence supporting consequential assumptions and experiments that could falsify them. Fifteen provider inputs are collection coverage, not proof of decision readiness. A consequence depends on evidence, not how many engines repeat it.
+Check feasibility against the actual repository, stack and available tools/capabilities. Inspect hard requirement coverage, critical unanswered questions, source applicability/freshness, evidence supporting consequential assumptions and experiments that could falsify them. Collection coverage alone does not establish decision readiness. A consequence depends on evidence, not how many engines repeat it.
 
 Challenge dependency order, ownership/shared resources, interface compatibility, concurrency/idempotency, failure/retry/cancellation, rollout/recovery and whether each mandatory check has a meaningful outcome oracle. Consider a safe alternative or counterexample before treating a stylistic preference as a defect. Do not manufacture a plan flaw because a different architecture is fashionable.
 
@@ -101,3 +101,11 @@ If no actionable defects are found, say so with the review scope and limits. Do 
 SARIF output must use the selected schema, stable actual rule IDs, real repo-relative locations and fingerprints derived from current evidence; validate before delivery. Do not export illustrative findings as results or claim a test suite ran because a template was generated. Suggested patches need the actual API/context and remain unapplied in a read-only review.
 
 Preserve raw evidence, selected revisions and commands for a resumed review. If source changes while reviewing, record the new head and revisit affected findings; do not report locations from a stale diff as current. An interrupted review returns completed scope, unresolved candidates and remaining checks without claiming completion.
+
+## Role and handoffs
+
+**Independent quality reviewer.** Own consequence-based findings and current evidence. Use [ultimate-debugging-workflow](../ultimate-debugging-workflow/SKILL.md) and [ultimate-project-workflow](../ultimate-project-workflow/SKILL.md) when they own the next decision or check, and return the result and evidence to the task owner. Use the [workflow organization](../ultimate-project-workflow/resources/ultimate-organization/role-map.md) for cross-specialty work.
+
+## Representative acceptance case
+
+Give the reviewer a stale passing receipt and a current regression. Verify the stale evidence cannot close the finding and that the report names trigger, impact and required recheck.

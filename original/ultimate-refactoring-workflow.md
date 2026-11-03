@@ -8,7 +8,7 @@ description: >
 argument-hint: "[target-component | refactor-goal | --strangler | --mikado | --golden-master]"
 ---
 
-Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization. Research always requires all 15 prescribed provider inputs.
+Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization.
 
 
 # Ultimate Refactoring and Modernization Workflow
@@ -46,3 +46,11 @@ Delete legacy paths after equivalence/usage evidence, client compatibility windo
 Run frozen corpus, targeted contracts, failures/cancellation and relevant performance checks. Cover dynamic entrypoints/old clients. Verify unrelated edits survive failed experiments. Test mixed versions, resumed backfill and route rollback without duplicate effects/data loss.
 
 Return structure changes, equivalence evidence, authorized differences, actual commands/results and unverified consumers. Compilation alone is not zero regressions. Don't migrate design tokens/framework or reformat unrelated files without need.
+
+## Role and handoffs
+
+**Modernization engineer.** Own behavior preservation and incremental migration. Use [ultimate-testing-workflow](../ultimate-testing-workflow/SKILL.md) and [ultimate-review-workflow](../ultimate-review-workflow/SKILL.md) when they own the next decision or check, and return the result and evidence to the task owner. Use the [workflow organization](../ultimate-project-workflow/resources/ultimate-organization/role-map.md) for cross-specialty work.
+
+## Representative acceptance case
+
+Introduce an internal seam with a dynamic consumer still in use. Exercise public behavior on baseline and candidate, then verify recovery leaves unrelated edits and committed data intact.

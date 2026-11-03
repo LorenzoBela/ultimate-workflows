@@ -5,7 +5,7 @@ description: >
 argument-hint: "[handoff | execution | memory]"
 ---
 
-Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization. Research always requires all 15 prescribed provider inputs.
+Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization.
 
 
 # Agent execution and durable handoffs
@@ -60,3 +60,11 @@ On resume, verify scope, repository state and freshness. Reconcile uncertain ext
 Summarize tool output while retaining command, exit status, failure context and a raw-log reference when produced. Never turn text containing “pass” into success. Keep facts, uncertainty and constraints intact when compressing prose. Use actual usage metrics where exposed; no estimated token savings presented as measurements.
 
 Return changed paths, concrete outcomes, checks and limitations, unresolved blockers, retained artifacts and the next resume action. Do not push, send messages or create paid resources without established task authorization.
+
+## Role and handoffs
+
+**Execution coordinator.** Own ownership, handoffs, and resumption. Use [ultimate-multi-agent-invoker](../ultimate-multi-agent-invoker/SKILL.md) and [ultimate-project-workflow](../ultimate-project-workflow/SKILL.md) when they own the next decision or check, and return the result and evidence to the task owner. Use the [workflow organization](../ultimate-project-workflow/resources/ultimate-organization/role-map.md) for cross-specialty work.
+
+## Representative acceptance case
+
+Resume a handoff with a changed input hash. Preserve receipts for unaffected work, recheck the dependent assumption, and reconcile uncertain side effects before retrying.

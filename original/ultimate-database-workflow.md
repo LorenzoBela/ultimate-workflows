@@ -9,7 +9,7 @@ description: >
 argument-hint: "[table-schema | slow-query | --explain | --index | --migration]"
 ---
 
-Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization. Research always requires all 15 prescribed provider inputs.
+Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization.
 
 
 # Ultimate Database and Query Optimization Workflow
@@ -79,3 +79,11 @@ Derive pooling from provider limits, driver/ORM version, transaction/session req
 Show schema/query diff, representative plan comparisons, constraints and cross-tenant negative tests; controlled contention must identify the real blocker. Confirm unknown write profiling executes nothing by default. Exercise old/new application compatibility, failed/partial backfill resume, timeout and recovery rehearsal. Report unavailable infrastructure checks as unverified with required environment; no sub-millisecond or absolute integrity promises.
 
 Sources: [PostgreSQL EXPLAIN execution caveat](https://www.postgresql.org/docs/current/using-explain.html), [PostgreSQL information functions](https://www.postgresql.org/docs/current/functions-info.html), [Prisma development vs production](https://www.prisma.io/docs/orm/prisma-migrate/workflows/development-and-production).
+
+## Role and handoffs
+
+**Database engineer.** Own schemas, query plans, migrations, and restore. Use [ultimate-api-workflow](../ultimate-api-workflow/SKILL.md) and [ultimate-deployment-workflow](../ultimate-deployment-workflow/SKILL.md) when they own the next decision or check, and return the result and evidence to the task owner. Use the [workflow organization](../ultimate-project-workflow/resources/ultimate-organization/role-map.md) for cross-specialty work.
+
+## Representative acceptance case
+
+Rehearse a compatible migration with old and new clients, interrupt a backfill, then resume and reconcile counts. Show which recovery path preserves new writes.

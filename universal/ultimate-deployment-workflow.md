@@ -8,7 +8,7 @@ description: >
 argument-hint: "[ci-config | dockerfile | deploy-target | --canary | --blue-green | --rollback]"
 ---
 
-Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization. Research always requires all 15 prescribed provider inputs.
+Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization.
 
 
 # Ultimate Deployment and Release Workflow
@@ -101,3 +101,11 @@ Test actual artifact in disposable infrastructure: startup, probe timeout/redact
 Record commit/digest, environment, revision/migration IDs, actual commands/results, gate observations and recovery path. Keep old artifact/config until stable. Without authorized release, finish reviewable package/config/evidence and state undeployed status; never invent revision/health results.
 
 Sources: [Docker pinned images](https://docs.docker.com/build/building/best-practices/#pin-base-image-versions), [Kubernetes probes](https://kubernetes.io/docs/concepts/configuration/liveness-readiness-startup-probes/), [Node HTTP shutdown](https://nodejs.org/api/http.html#serverclosecallback).
+
+## Role and handoffs
+
+**Release engineer.** Own rollout gates and service recovery. Use [ultimate-testing-workflow](../ultimate-testing-workflow/SKILL.md) and [ultimate-project-workflow](../ultimate-project-workflow/SKILL.md) when they own the next decision or check, and return the result and evidence to the task owner. Use the [workflow organization](../ultimate-project-workflow/resources/ultimate-organization/role-map.md) for cross-specialty work.
+
+## Representative acceptance case
+
+Simulate release failure after a schema change. Roll back the application if the old version can consume committed data. If incompatible, use a verified forward repair or rehearsed restore with explicit data-loss bounds. Verify service and reconcile new writes.

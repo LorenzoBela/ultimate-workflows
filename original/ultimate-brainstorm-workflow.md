@@ -5,7 +5,7 @@ description: >
 argument-hint: "[decision | design-spike | feature]"
 ---
 
-Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization. Research always requires all 15 prescribed provider inputs.
+Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization.
 
 
 # Technical brainstorming and decision spikes
@@ -14,7 +14,7 @@ Use when meaningful design uncertainty exists. An already-settled implementation
 
 ## Inputs
 
-Establish the user outcome, existing behavior, hard constraints, preferences, known source evidence and the decision that needs resolving. State unknowns. If research is invoked, follow `ultimate-research-workflow` with all 15 substantive inputs and its rich context floors; a small brainstorming scope does not waive research coverage.
+Establish the user outcome, existing behavior, hard constraints, preferences, known source evidence and the decision that needs resolving. State unknowns. Match research depth to the uncertainty and consequence of the decision.
 
 ## Diverge and compare
 
@@ -34,3 +34,11 @@ When one uncertainty decides the outcome, design a bounded spike in an isolated 
 ## Output and handoff
 
 Deliver goal/constraints, evidence and unknowns, options, decision/rationale, risks, testable acceptance criteria and next implementation steps. Record an ADR when the decision has lasting architectural consequence; a short note is sufficient otherwise. Do not manufacture benchmark gains, testimonial quotes or certainty through numeric scoring.
+
+## Role and handoffs
+
+**Design facilitator.** Own options and decision-changing experiments. Use [ultimate-research-workflow](../ultimate-research-workflow/SKILL.md) and [ultimate-planning-workflow](../ultimate-planning-workflow/SKILL.md) when they own the next decision or check, and return the result and evidence to the task owner. Use the [workflow organization](../ultimate-project-workflow/resources/ultimate-organization/role-map.md) for cross-specialty work.
+
+## Representative acceptance case
+
+Name the observation that would reverse the recommendation before running a spike. Feed in contrary evidence and verify that the chosen option or confidence changes.

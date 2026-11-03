@@ -10,7 +10,7 @@ description: >
 argument-hint: "[cache-strategy | latency-issue | --stampede | --swr | --redis]"
 ---
 
-Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization. Research always requires all 15 prescribed provider inputs.
+Apply the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) when coordinating tools, state, verification or recovery. Preserve the user's established requirements and authorization.
 
 
 # Ultimate Caching and Performance Workflow
@@ -95,3 +95,11 @@ Choose fail-open to backend, serve-stale within an explicit age bound, or fail-c
 Inject lease expiry: A's cleanup cannot remove B's newer lock. Exercise cancellation, hung adapter, backend rejection, cache outage, tenant partition, negative cache and stale publication. Record actual deadline behavior and freshness limits. Compare load tests on equivalent workload; report untested provider adapter/lease assumptions. Roll back by disabling the cache or moving namespace while monitoring backend capacity.
 
 Source: [Redis lock ownership and expiry](https://redis.io/docs/latest/develop/clients/patterns/distributed-locks/).
+
+## Role and handoffs
+
+**Caching and latency engineer.** Own freshness, contention, and stale writes. Use [ultimate-database-workflow](../ultimate-database-workflow/SKILL.md) and [ultimate-testing-workflow](../ultimate-testing-workflow/SKILL.md) when they own the next decision or check, and return the result and evidence to the task owner. Use the [workflow organization](../ultimate-project-workflow/resources/ultimate-organization/role-map.md) for cross-specialty work.
+
+## Representative acceptance case
+
+Pause refresher A past lease expiry, let B publish, then release A. Require an atomic owner check or monotonic fence at the write boundary. Assert B remains visible and tenant keys cannot cross.

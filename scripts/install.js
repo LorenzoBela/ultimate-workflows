@@ -16,10 +16,26 @@ const manifest = JSON.parse(fs.readFileSync(path.join(root,'workflow-manifest.js
 const outputs = new Map();
 const receiptPath = path.join(cwd, '.ultimate-workflows-install.sha256');
 function add(relative, content) { outputs.set(relative.replaceAll('\\','/'), Buffer.from(content)); }
-function resources(destination, name) {
+function resources(destination, name, extension, combinedFile) {
   const names=name?[name]:files.map(f=>f.slice(0,-3));
   for(const skill of names) for(const relative of Object.keys(manifest.workflows[skill].files))
-    if(relative!=='SKILL.md') add(path.join(destination,relative),fs.readFileSync(path.join(source,relative)));
+    if(relative!=='SKILL.md') {
+      const content=fs.readFileSync(path.join(source,relative));
+      add(path.join(destination,relative), !name && relative.endsWith('/role-map.md')
+        ? flatLinks(content.toString('utf8'), extension, combinedFile)
+        : content);
+    }
+}
+// Flat hosts keep workflow files adjacent to a shared resources directory.
+function flatLinks(text, extension, combinedFile) {
+  return text
+    .replace(/\]\(((?:\.\.\/){1,3})(ultimate-[a-z0-9-]+)\/SKILL\.md\)/g,
+             (_, parents, name) => {
+               const fromMap = parents === '../../../';
+               const target = combinedFile ? (fromMap ? combinedFile : '') + '#' + name : name + '.' + extension;
+               return '](' + (fromMap ? '../../' : '') + target + ')';
+             })
+    .replace(/\]\(\.\.\/ultimate-[a-z0-9-]+\/(resources\/[^)]+)\)/g, ']($1)');
 }
 function plan(kind) {
   if (kind==='codex' || kind==='claude') {
@@ -32,16 +48,19 @@ function plan(kind) {
   } else if (kind==='cursor' || kind==='agy') {
     const dest=kind==='cursor'?'.cursor/rules':'.agent/workflows';
     for (const file of files) {
-      const text=fs.readFileSync(path.join(source,file),'utf8');
+      const text=flatLinks(fs.readFileSync(path.join(source,file),'utf8'), kind==='cursor' ? 'mdc' : 'md');
       add(path.join(dest,kind==='cursor'?file.slice(0,-3)+'.mdc':file), kind==='cursor'
         ? `---\ndescription: ${file.slice(0,-3)}\nglobs: '*'\nalwaysApply: false\n---\n\n${text.replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n*/,'')}`:text);
     }
-    resources(dest);
+    resources(dest, undefined, kind==='cursor' ? 'mdc' : 'md');
   } else {
     const output={windsurf:'.windsurfrules',cline:'.clinerules',copilot:'.github/copilot-instructions.md'}[kind];
     let combined='# Ultimate Workflows\n\n';
-    for (const file of files) combined+=`\n<!-- Workflow: ${file} -->\n${fs.readFileSync(path.join(source,file),'utf8')}\n`;
-    add(output,combined); resources(path.dirname(output));
+    for (const file of files) {
+      combined+='\n<!-- Workflow: ' + file + ' -->\n<a id="' + file.slice(0,-3) + '"></a>\n' +
+        flatLinks(fs.readFileSync(path.join(source,file),'utf8'), undefined, path.basename(output)) + '\n';
+    }
+    add(output,combined); resources(path.dirname(output), undefined, undefined, path.basename(output));
   }
 }
 function guard(relative) {
