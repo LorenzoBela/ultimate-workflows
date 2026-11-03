@@ -12,6 +12,13 @@ Apply the [shared execution and evidence contract](resources/ultimate-shared/exe
 
 When invoked with a task, act as its accountable delivery owner. Infer the expected outcome from the user's request, choose and load the relevant specialist instructions, and carry the task through the applicable gates. A user can invoke this workflow alone. Return a plan only when the user requests planning as the deliverable or execution genuinely requires a missing decision or capability.
 
+## Lead the outcome
+
+- Establish who benefits, what changes for them, and what observable result is sufficient. Distinguish requirements from preferences and implementation guesses. Reuse established decisions and revisit them only when the scope, evidence, or consequences change.
+- Own the recommendation. Compare realistic options by user impact, reversibility, delivery cost, and ongoing operational burden when the choice is material. Default to a reversible choice that fits the user's constraints. Ask for a decision only when a material tradeoff, authority, or requirement cannot be inferred. Present the concrete decision and your recommendation, and continue independent work.
+- Invite dissent on consequential assumptions. Resolve competing specialist advice against the actual system, applicable primary evidence, or a bounded experiment with an outcome that would change the decision. Record the reason, remaining uncertainty, and what would cause you to revisit it.
+- Protect the critical path. Prioritize work that removes a consequential unknown or unblocks a verified increment. Limit parallel work to what the parent can integrate and verify. Surface a changed risk, blocker, or forecast when it affects the user's decision.
+
 ## Gate 1 — Intake and route
 
 Capture the requested outcome, hard constraints, available environment, established authorization, known risks and observable acceptance checks. Select the smallest route that covers the consequences. When several apply, use the highest applicable route.
@@ -22,7 +29,7 @@ Capture the requested outcome, hard constraints, available environment, establis
 | Coordinated | Multiple deliverables, dependencies, or specialties need sequencing. | Identify owners and dependencies → record plan and checks → execute ready tasks → verify the integrated outcome → deliver. |
 | Production | An implementation can materially affect production data, access control, service availability, physical safety, or compatibility across independently deployed consumers, or the user requests the formal route. | Establish evidence and risk → version plan and recovery criteria → obtain current technical plan review → execute ready work → verify actual integrated behavior and review → release only if authorized and gates pass → deliver or retain the blocker. |
 
-Announce the selected route and its reason for coordinated or production work. Reclassify if new evidence materially changes consequences. A plan review is a technical gate. Existing user authorization continues to apply. For a plan-only request, complete and verify the plan as the deliverable without dispatching implementation.
+Inspect current artifacts, repository state, runtime capabilities, and relevant baseline behavior before committing to a consequential approach. For coordinated or production work, state the route, why it applies, and the next decision or checkpoint. Reclassify if new evidence materially changes consequences. A plan review is a technical gate. Existing user authorization continues to apply. For a plan-only request, complete and verify the plan as the deliverable without dispatching implementation.
 
 ## Gate 2 — Select and brief the specialists
 
@@ -42,9 +49,9 @@ For each handoff, carry the objective, owner, scope and permissions, prerequisit
 
 Use the [multi-agent invoker](../ultimate-multi-agent-invoker/SKILL.md) when delegation is authorized, the host exposes a supported worker tool, and there are independent tasks whose value justifies the coordination. Parallelize independent investigation, checks or isolated implementation. Keep dependent work in prerequisite order. A single skill invocation can apply specialist instructions sequentially.
 
-1. Check actual worker availability and concurrency. Keep the run within host limits and the user's cost and time budget.
+1. Check actual worker availability and concurrency. Compare the likely critical-path gain with briefing, waiting, and integration cost. Assign independent work first. Preserve capacity for integration and checks, and stay within established cost and time limits.
 2. Give each worker a distinct objective, relevant specialist instructions, explicit read/write ownership, prerequisites, expected artifacts, acceptance check and stop condition. Share read-only resources where safe. Isolate concurrent writers or serialize contested files, ports, data and external effects.
-3. Launch through the actual host worker tool and record the returned worker ID. Wait for a concrete result, blocker or deadline. Treat worker claims as provisional until the parent inspects the artifacts.
+3. Launch through the actual host worker tool and record the returned worker ID. On a missed checkpoint, inspect actual status and blockers. Unblock, reassign, or cancel within the agreed bounds, and account for any uncertain effects before a replacement starts. Treat worker claims as provisional until the parent inspects the artifacts.
 4. Integrate in dependency order and rerun the affected checks on the integrated result. Use an eligible independent reviewer where required. The parent owns the final result and recovery.
 
 When delegation is unavailable or the work is tightly coupled, continue sequentially if the checks allow it. A sequential self-check does not fulfill a required independent review.
@@ -57,13 +64,9 @@ When delegation is unavailable or the work is tightly coupled, continue sequenti
 - Before an authorized release, confirm target, current approval scope, acceptance evidence, recovery and required independent checks. For pending release authority, deliver the verified artifact and identify the specific action still requiring authorization.
 - Close the task with the observable result, checks actually run, unresolved limits and any needed recovery state. A required unrun check keeps the affected outcome pending or blocked. Stop the routing loop when the outcome is verified or a concrete blocker remains.
 
-## Inputs and scope
-
-Capture objective, users, constraints, accepted requirements, non-goals, authorization, current repository state, dependencies and acceptance criteria. Clarify only missing information that materially blocks decisions; continue independent work. Existing authorization persists and does not authorize unrelated releases or external communication.
-
 ## Milestones
 
-Group useful increments with an observable user outcome. Apply Must/Should/Could/Won't prioritization when helpful; record why scope is deferred. Identify critical dependencies, owners, external inputs, available resources and risks. Estimates are estimates. Prefer coherent tasks to mandatory 2–10 minute subdivisions.
+Group increments by observable user outcome. Record owners, dependencies, scarce resources, and the evidence needed for each milestone. Keep forecasts tied to observed progress and name uncertainty. When scope or timing changes, preserve hard requirements and recommend the highest-value deliverable that can still be verified. Record what was deferred and why.
 
 ## Portable task ledger
 
@@ -71,25 +74,27 @@ For each task retain stable ID, owner, status, dependencies, owned paths/resourc
 
 Record scope decisions separately with who/what authorized the change and affected tasks. Preserve the original goal unless the user changes it. New messages normally steer active work; a status question does not cancel it.
 
-## Execution and recovery
+## Steer and resume
 
-- Run ready work within actual host capabilities. Delegate only when authorized and keep writer ownership explicit.
-- Update the ledger at meaningful transitions. Batch checks suited to changed behavior; repeating the entire suite after every wording edit is unnecessary.
-- Capture failures with reproducible context and actual output. Distinguish baseline failure, new regression, unavailable dependency and flaky result.
-- When interrupted, preserve checkpoint, dirty/index state, useful artifacts and uncertain side effects. On resume verify scope/revision/resources, reconcile outstanding actions and continue unfinished work.
-- Replan affected downstream tasks when a dependency fails. Keep a concrete blocker and next action; do not endlessly retry unavailable services.
+- When requirements change, identify affected decisions, artifacts, tasks and gates. Stop only the affected work, retain its evidence, and continue independent work. Use an updated plan review for material production changes.
+- During an incident, separate containment, diagnosis and permanent repair. Within existing authority, favor a reversible containment step with an observable health signal. Before retrying an uncertain mutation, reconcile the destination and the original operation receipt. Preserve the timeline and evidence.
+- On interruption, keep the checkpoint, dirty/index state, useful artifacts and outstanding effects. On resume recheck current inputs, authority and receipts before continuing. Report the next owner and action for anything that remains blocked.
 
 ## Verification and delivery
 
 Map each accepted requirement to actual evidence: test result, inspected artifact, screenshot or documented manual check as appropriate. An unchecked task, fabricated screenshot or print-only adapter is not completion evidence. A mock does not prove production behavior.
 
-Write a concise walkthrough only when it helps the handoff: user-visible outcomes, changed artifacts, actual checks, remaining limits and recovery/resume instructions. Use real absolute artifact paths in the host response. Persist optional external memory only when available and authorized; a local ledger must remain usable without that connector. Commit, release or send messages only within established scope.
+For release decisions, distinguish verified deliverable, approved release, executed release, and observed post-release health. Before rollout, agree on the health signal, stop condition, recovery owner, and compatible rollback or forward repair. After an authorized rollout, verify actual target health and affected behavior before claiming success.
+
+Write a concise handoff: user-visible outcomes, changed artifacts, actual checks, remaining limits and recovery/resume instructions. Use real absolute artifact paths in the host response. Persist optional external memory only when available and authorized; a local ledger must remain usable without that connector. Commit, release or send messages only within established scope.
 
 ## Role and handoffs
 
 **Portfolio lead.** Own milestones, priorities, and blockers. Use [ultimate-planning-workflow](../ultimate-planning-workflow/SKILL.md) and [ultimate-agent-workflow](../ultimate-agent-workflow/SKILL.md) when they own the next decision or check, and return the result and evidence to the task owner. Use the [workflow organization](resources/ultimate-organization/role-map.md) for cross-specialty work.
 
 ## Representative acceptance cases
+
+Use the [leadership scenarios](resources/ultimate-project-workflow/leadership-scenarios.md) to evaluate prioritization, disagreement, incident decisions, and supervision.
 
 - **Direct.** An authorized, reversible copy edit routes to Natural English, checks protected facts, and returns the revised text with no implementation plan or independent reviewer.
 - **Coordinated.** A UI/API change routes to the relevant specialists, verifies the integrated mutation, and sends a reproducible regression to Debugging without reopening unaffected work.

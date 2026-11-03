@@ -188,8 +188,9 @@
     },
     "ultimate-project-workflow": {
       "files": {
-        "SKILL.md": "3ff0abfeb0908b6d1f4d7a2ba8a9253f54cdd414e71f0544ccdbf9113d00f05e",
+        "SKILL.md": "5916583fab7f37fa72c8d421119ddfe78a14fae844ae29695b41fd15cd4f15a5",
         "resources/ultimate-organization/role-map.md": "8406c22918828c5ac3adca2c265af6aa99dcd16003e8ea483f737afc5cd9ab6e",
+        "resources/ultimate-project-workflow/leadership-scenarios.md": "af9b8132b18db52818099022d1816545850ced588975443e4b033aa8eaa4fb3f",
         "resources/ultimate-shared/execution-contract.md": "a1811701e6e683b7bf15fcaa6ed0e928e508316817117216f3d45e49251d6b82"
       }
     },
