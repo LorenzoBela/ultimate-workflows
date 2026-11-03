@@ -82,12 +82,10 @@ Group increments by observable user outcome. Record owners, dependencies, scarce
 
 ## Portable task ledger
 
-For coordinated work that needs a checkpoint, store one three-line JSON object per task. Keep the keys stable and use IDs or paths for evidence. Use the connected casebook when required in Production and reference its records instead of duplicating them.
+For coordinated work that needs a checkpoint, use JSON Lines (.jsonl). Store one complete JSON object per physical line with no surrounding code fences or blank lines in the saved file. Keep the keys stable and use IDs or paths for evidence. Use the connected casebook when required in Production and reference its records instead of duplicating them.
 
 ```json
-{"id":"T2","owner":"API","status":"blocked","updated_at":"2026-11-03T10:00:00+08:00",
- "depends_on":["T1"],"scope":["api/invoice.py"],"acceptance":"C2 duplicate retry creates one result",
- "evidence":["R7"],"blocker":"C2 still fails","next":"API owner inspects persisted effects","repairs":{"C2":2}}
+{"id":"T2","owner":"API","status":"blocked","updated_at":"2026-11-03T10:00:00+08:00","depends_on":["T1"],"scope":["api/invoice.py"],"acceptance":"C2 duplicate retry creates one result","evidence":["R7"],"blocker":"C2 still fails","next":"API owner inspects persisted effects","repairs":{"C2":2}}
 ```
 
 Use pending, running, blocked, failed, cancelled, and complete distinctly. Use empty arrays or objects for no dependencies, evidence, or repairs, and null for no blocker or next action. Keep check IDs and repair counts across resumes. Mark complete only with evidence.
