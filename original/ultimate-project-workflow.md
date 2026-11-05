@@ -35,7 +35,13 @@ Load references when they change the next action.
 - **Direct:** Skip the role map, shared execution reference, and production guide. Use the applicable specialist from the host catalog. Read only its main instructions and references needed for the task or check. Reassess the route if risk or ownership changes.
 - **Coordinated or Production:** Load the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) for cross-task execution and recovery. Use the [workflow organization](resources/ultimate-organization/role-map.md) when ownership or a handoff is unclear. Load the connected quality guide at the production gate.
 
-Select each specialist by the outcome it owns and read its actual SKILL.md before applying it. Give each deliverable one accountable owner. Add a specialist only when it owns a distinct check, decision, or artifact.
+### Adapt the team to the work
+
+Choose as many relevant workflows as the task needs. There is no fixed limit on the number of specialties, handoffs, or workflow applications in a project. Discover relevant installed skills beyond the 38-role directory when they can improve the outcome. The routing table below gives starting points and can expand as evidence reveals new needs.
+
+Select each specialist by its contribution and read its actual SKILL.md before applying it. Give each deliverable one accountable owner. Add, replace, or revisit specialists for implementation, diagnosis, corroboration, review, or integration as needed. For each handoff, identify the question, decision, artifact, or check it should advance. Continue while the work adds useful evidence toward the accepted outcome.
+
+Load instructions progressively and retain concise results so a larger team remains manageable. Host concurrency limits control how many workers run at once. Schedule additional work in later waves. Preserve established authority, explicit user budgets, independent verification, and the repair limits below.
 
 | Need | Route |
 |---|---|

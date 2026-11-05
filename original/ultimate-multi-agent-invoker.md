@@ -32,6 +32,10 @@ After integration invoke `ultimate-review-workflow` in **code** mode on the actu
 
 Use for explicitly requested or otherwise authorized parallel work. Preserve inherited user authorization; a technical current-plan review is required for this connected routine, while a repeated user approval is not required for already-authorized work. Do not spawn more workers than the host supports, or imply the prompt itself enforces isolation, budget limits or permissions.
 
+## Adaptive team size
+
+Select and apply as many relevant specialist workflows as the accepted outcome requires, including relevant installed skills outside the role map. Revisit a specialist when new evidence or an unmet requirement calls for its judgment. Size the active worker set to actual host concurrency, shared resources and established budgets. Queue ready work in later waves rather than treating the concurrent worker limit as a limit on the total team. Track each contribution and keep integration with the parent. Existing authorization, review gates and repair budgets continue to apply.
+
 ## Inputs and ownership
 
 Record objective, accepted constraints, dependencies, base revision, existing dirty/index state, supported agent APIs, concurrency, write ownership and task/aggregate budgets. Check whether agents share files, environment, database, ports or secrets. Read-only investigations may share a workspace. Give concurrent writers actual isolated workspaces when supported, or a verified ownership/serialization scheme appropriate to the host. Do not pretend a worktree isolates databases or external side effects.

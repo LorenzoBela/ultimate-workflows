@@ -158,7 +158,7 @@
     },
     "ultimate-multi-agent-invoker": {
       "files": {
-        "SKILL.md": "69040a5ff575eeef5a70b7b8ad555b4635b8533848a3031d698a92cd6e6643fb",
+        "SKILL.md": "539ef341146f012037709e80da852eacab087b5bad946f9bdd767a152c4a01c0",
         "resources/ultimate-quality/casebook.py": "8c591dcea0091d240885afddaf46c274dddbdadf218379c0eb00980d753dea29",
         "resources/ultimate-quality/guide.md": "4c063b561dfdc4c73d5ff2eaba93b4cf838fc36be63af3b963df7cdb0b3ac7e1",
         "resources/ultimate-research-workflow/research_state.py": "ddbff8d029719b0f3b73a0d9c026db0720f312f0679b11012f7012432daebe48",
@@ -188,7 +188,7 @@
     },
     "ultimate-project-workflow": {
       "files": {
-        "SKILL.md": "2ab95e00567427655bd8eb6fa5bc75736988799983dde8b3e0e25330fb9595d2",
+        "SKILL.md": "4e54276496bf0fcd19f46f394cebd477799f2a8f2694f30354b7c3a38a097110",
         "resources/ultimate-organization/role-map.md": "8406c22918828c5ac3adca2c265af6aa99dcd16003e8ea483f737afc5cd9ab6e",
         "resources/ultimate-project-workflow/leadership-scenarios.md": "af9b8132b18db52818099022d1816545850ced588975443e4b033aa8eaa4fb3f",
         "resources/ultimate-shared/execution-contract.md": "a1811701e6e683b7bf15fcaa6ed0e928e508316817117216f3d45e49251d6b82"
