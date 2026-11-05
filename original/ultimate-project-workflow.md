@@ -35,6 +35,17 @@ Load references when they change the next action.
 - **Direct:** Skip the role map, shared execution reference, and production guide. Use the applicable specialist from the host catalog. Read only its main instructions and references needed for the task or check. Reassess the route if risk or ownership changes.
 - **Coordinated or Production:** Load the [shared execution and evidence contract](resources/ultimate-shared/execution-contract.md) for cross-task execution and recovery. Use the [workflow organization](resources/ultimate-organization/role-map.md) when ownership or a handoff is unclear. Load the connected quality guide at the production gate.
 
+### Required capability check
+
+Before each material decision, implementation stage, or verification step, match the need to the tools and skills currently exposed by the host. Start with the visible catalog and already verified capabilities. If a capability is uncertain, use supported tool discovery with a targeted query and inspect the actual schema. For a clear Direct task, the visible catalog and the selected specialist are enough. Expand discovery when the task exposes a new need.
+
+- **Choose and use:** Use an applicable available capability when it can establish the required fact, perform the authorized operation, or verify the result. Prefer the user's requested method. Otherwise choose by access, output fidelity, reliability, privacy, latency, and cost. Prefer a suitable first-party connector or domain API for connected data, the project runner for code checks, and browser or device tools for observable interaction behavior.
+- **Check the result:** Inspect returned artifacts, actual state, and errors. Distinguish discovered, usable, successfully executed, and outcome verified. A tool in the catalog may still lack access or target support. Treat its output as evidence to assess against the acceptance check.
+- **Escalate intelligently:** When a tool fails, evidence conflicts, or a check is unavailable, discover a supported equivalent before declaring a capability blocker. Switch only when the alternative preserves scope, semantics, and authorization. Record consequential tradeoffs, unavailable checks, and the next action.
+- **Stay focused:** Each call must answer a question, advance an authorized action, or verify an outcome. Reuse current evidence and load skills progressively. An additional call is justified by a new need or unresolved uncertainty. Preserve the existing budgets, retry accounting, permissions, and release gates.
+
+For coordinated and production work, keep a short capability note with the material need, chosen tool or skill, actual result or limitation, and fallback when relevant. Link it from the existing task record instead of creating another ledger.
+
 ### Adapt the team to the work
 
 Choose as many relevant workflows as the task needs. There is no fixed limit on the number of specialties, handoffs, or workflow applications in a project. Discover relevant installed skills beyond the 38-role directory when they can improve the outcome. The routing table below gives starting points and can expand as evidence reveals new needs.
