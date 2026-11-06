@@ -23,6 +23,23 @@ class BuildTests(unittest.TestCase):
         self.resource.parent.mkdir(parents=True)
         self.resource.write_text("source contract")
 
+    def test_new_workflow_is_exported_without_a_hardcoded_count_limit(self):
+        build.build()
+        source = self.root / "original/ultimate-notion-workflow.md"
+        source.write_text("new workflow", encoding="utf-8")
+        manifest = build.build()
+        self.assertEqual(len(manifest["workflows"]), 39)
+        self.assertEqual((self.root / "universal/ultimate-notion-workflow.md").read_bytes(), source.read_bytes())
+
+    def test_missing_published_source_blocks_export_without_losing_bundle(self):
+        build.build()
+        source = self.root / "original/ultimate-fixture-0.md"
+        previous = (self.root / "universal/ultimate-fixture-0.md").read_bytes()
+        source.unlink()
+        with self.assertRaisesRegex(ValueError, "sources are missing"):
+            build.build()
+        self.assertEqual((self.root / "universal/ultimate-fixture-0.md").read_bytes(), previous)
+
     def test_obsolete_owned_resource_is_removed_and_repeat_is_deterministic(self):
         build.build()
         self.resource.unlink()

@@ -1,10 +1,10 @@
-# ⚡ Ultimate Workflows: 38 AI Engineering Workflows
+# ⚡ Ultimate Workflows: 39 AI Engineering Workflows
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
-[![Workflows: 38](https://img.shields.io/badge/Workflows-38%20Total-brightgreen.svg)](./universal/)
+[![Workflows: 39](https://img.shields.io/badge/Workflows-39%20Total-brightgreen.svg)](./universal/)
 [![Compatibility](https://img.shields.io/badge/Supports-Codex%20%7C%20Cursor%20%7C%20Claude%20Code%20(CC)%20%7C%20Antigravity%20(AGY)%20%7C%20Windsurf%20%7C%20Cline%20%7C%20VS%20Code-orange.svg)](#-one-line-installers)
 
-A suite of **38 engineering workflows** crafted for autonomous AI agents, coding assistants, and pair-programming environments.
+A suite of **39 engineering workflows** crafted for autonomous AI agents, coding assistants, and pair-programming environments.
 
 Workflow instructions cover scoped execution, domain-specific decisions, evidence, failure recovery, and verification. Runnable examples have targeted checks; device, production-service, visual, and live-provider results require their own evidence.
 
@@ -22,7 +22,7 @@ Install into your current project repository. Commands replace matching workflow
 npx github:LorenzoBela/ultimate-workflows codex
 ```
 
-The command installs all 38 universal workflows and their linked resources into the current project. It creates one folder per skill, preserving the workflow's `name` and `description`:
+The command installs all 39 universal workflows and their linked resources into the current project. It creates one folder per skill, preserving the workflow's `name` and `description`:
 
 ```text
 your-project/
@@ -167,7 +167,7 @@ Includes Codex's `.agents/skills/<name>/SKILL.md` folders alongside the other ID
 - [Codex setup and usage](#codex-desktop-app-cli-and-ide-extension)
 - [What Are Ultimate Workflows?](#-what-are-ultimate-workflows)
 - [Two Editions: Universal vs. Original](#-two-editions-universal-vs-original)
-- [Complete 38-Workflow Catalog](#-complete-38-workflow-catalog)
+- [Complete 39-Workflow Catalog](#-complete-39-workflow-catalog)
   - [1. AI & Autonomous Agent Engineering](#1-ai--autonomous-agent-engineering)
   - [2. System Architecture & Technical Planning](#2-system-architecture--technical-planning)
   - [3. Fullstack & Application Engineering](#3-fullstack--application-engineering)
@@ -215,7 +215,7 @@ ultimate-workflows/
 
 ---
 
-## 📚 Complete 38-Workflow Catalog
+## 📚 Complete 39-Workflow Catalog
 
 ### 1. AI & Autonomous Agent Engineering
 
@@ -371,7 +371,7 @@ records, and does not establish truth. Its tests use explicitly synthetic inputs
 
 ## Start with the project orchestrator
 
-Invoke [Ultimate Project Workflow](original/ultimate-project-workflow.md) with the outcome you want. It selects specialists across all 38 roles and chooses a direct, coordinated, or production route. On hosts with supported worker tools, it can dispatch authorized independent tasks in parallel and verify the integrated result. Its specialist links resolve in an installed bundle.
+Invoke [Ultimate Project Workflow](original/ultimate-project-workflow.md) with the outcome you want. It selects specialists across all 39 roles and chooses a direct, coordinated, or production route. On hosts with supported worker tools, it can dispatch authorized independent tasks in parallel and verify the integrated result. Its specialist links resolve in an installed bundle.
 
 For production work, the connected routine is **Research when needed → Plan → Plan Review → Invoke → Debug when needed → Final Code Review**. The five quality workflows share a local
 [casebook and usage guide](original/resources/ultimate-quality/guide.md):
@@ -404,7 +404,7 @@ python scripts/build.py
 npm test
 ```
 
-The build exports 38 bundles and SHA-256 provenance; validation checks metadata,
+The build exports 39 bundles and SHA-256 provenance; validation checks metadata,
 resource links and edition parity. Tests cover checkpoint/consensus behavior,
 corrected examples where executable, and isolated installer/update behavior.
 See [v4 verification status](docs/verification-v4.md) and the
@@ -437,3 +437,7 @@ The project orchestrator requires Notion tracking for project work. It resolves 
 Use the bundled read-only resolver to inspect project identity and binding. Private project and collection IDs stay outside this repository. Existing projects and record IDs are reused. A new or ambiguous project needs a validated binding before implementation.
 
 If Notion is unavailable, new implementation, release and full completion remain blocked while read-only diagnosis and recovery checkpointing can continue. Pending writes must be reconciled before progress resumes. This behavior requires actual connector access on the current host; installing the skill does not install a background sync service or grant Notion credentials.
+
+## Ultimate Notion Workflow
+
+[Ultimate Notion Workflow](original/ultimate-notion-workflow.md) is the project-tracking specialist. The project orchestrator must hand it project resolution, plan/task progress, blockers, verification and delivery updates. It uses the shared private project binding and the current host's connected tools. You can invoke it directly to bind a project, update progress, reconcile pending writes or close tracked work.

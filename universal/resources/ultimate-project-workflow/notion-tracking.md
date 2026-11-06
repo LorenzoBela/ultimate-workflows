@@ -1,6 +1,6 @@
 # Strict Notion project tracking
 
-Apply on every invocation of the project orchestrator that plans, implements, reviews or changes project work. This is the user's chosen tracking policy. Read-only discovery needed to establish tracking can proceed before a binding exists.
+The [Notion specialist](../../../ultimate-notion-workflow/SKILL.md) owns this procedure. Apply on every invocation of the project orchestrator that plans, implements, reviews or changes project work. This is the user's chosen tracking policy. Read-only discovery needed to establish tracking can proceed before a binding exists.
 
 ## Resolve the current project
 

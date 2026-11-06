@@ -91,8 +91,8 @@ function atomic(relative,data) {
 }
 try {
   if (!targets.includes(target) && target!=='all') throw new Error(`Unknown target: ${input}`);
-  if (files.length!==38) throw new Error('Package must contain 38 workflows');
-  if (Object.keys(manifest.workflows).length!==38) throw new Error('Incomplete bundle manifest');
+  if (!files.length || files.length!==Object.keys(manifest.workflows).length)
+    throw new Error('Workflow inventory does not match the bundle manifest');
   for(const file of files) {
     const name=file.slice(0,-3);
     if(!manifest.workflows[name]) throw new Error(`Missing bundle manifest: ${name}`);

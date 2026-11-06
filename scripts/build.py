@@ -46,9 +46,12 @@ def build():
     original, universal = ROOT / "original", ROOT / "universal"
     guard(original); guard(universal)
     sources=sorted(original.glob("ultimate-*.md"))
-    if len(sources)!=38: raise ValueError(f"Expected 38 workflows; found {len(sources)}")
+    if not sources: raise ValueError("No workflow sources found")
     manifest_path=guard(ROOT / "workflow-manifest.json")
     previous=json.loads(manifest_path.read_text(encoding="utf-8")) if manifest_path.exists() else {"workflows":{}}
+    missing = set(previous["workflows"]) - {source.stem for source in sources}
+    if missing:
+        raise ValueError(f"Previously published workflow sources are missing: {sorted(missing)}")
     manifest={"schema_version":1,"authoring_source":"Gemini workflow skills","full_research_provider_count":15,"workflows":{}}
     outputs={}
     for source in sources:

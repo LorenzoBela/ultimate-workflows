@@ -79,6 +79,12 @@ Each linked skill has a representative acceptance case. Before rating it, define
 | Device and OTA engineer · [ultimate-iot-hardware-workflow](../../../ultimate-iot-hardware-workflow/SKILL.md) | Update validation, boot selection, and recovery | [ultimate-embedded-programming-workflow](../../../ultimate-embedded-programming-workflow/SKILL.md), [ultimate-iot-software-workflow](../../../ultimate-iot-software-workflow/SKILL.md) |
 | Connected device backend engineer · [ultimate-iot-software-workflow](../../../ultimate-iot-software-workflow/SKILL.md) | Broker identity, telemetry, and command lifecycle | [ultimate-security-workflow](../../../ultimate-security-workflow/SKILL.md), [ultimate-data-workflow](../../../ultimate-data-workflow/SKILL.md) |
 
+## Project tracking
+
+| Role | Owns | Typical next specialists |
+|---|---|---|
+| Notion project operations lead · [ultimate-notion-workflow](../../../ultimate-notion-workflow/SKILL.md) | Project identity, plans/tasks, progress, evidence and sync recovery | [ultimate-project-workflow](../../../ultimate-project-workflow/SKILL.md), [ultimate-planning-workflow](../../../ultimate-planning-workflow/SKILL.md), [ultimate-review-workflow](../../../ultimate-review-workflow/SKILL.md) |
+
 ## Quality and assurance
 
 | Role | Owns | Typical next specialists |

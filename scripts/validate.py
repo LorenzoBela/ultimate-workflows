@@ -9,7 +9,11 @@ import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
 manifest = json.loads((ROOT / "workflow-manifest.json").read_text(encoding="utf-8"))
-assert len(manifest["workflows"]) == 38
+workflow_names = set(manifest["workflows"])
+assert workflow_names, "Empty workflow manifest"
+for edition in ("original", "universal"):
+    actual = {p.stem for p in (ROOT / edition).glob("ultimate-*.md")}
+    assert actual == workflow_names, (edition, "workflow inventory mismatch")
 for name, entry in manifest["workflows"].items():
     source = ROOT / "original" / f"{name}.md"
     text = source.read_text(encoding="utf-8-sig")
@@ -34,4 +38,4 @@ for name, entry in manifest["workflows"].items():
                 assert resource in manifest["workflows"].get(skill, {}).get("files", {}), (
                     name, relative, "unbundled link", link
                 )
-print("Validated 38 metadata records, source/export parity, installed bundle links and hashes.")
+print(f"Validated {len(workflow_names)} metadata records, source/export parity, installed bundle links and hashes.")

@@ -35,7 +35,7 @@ Revalidate affected checks when scope, inputs, authority or capabilities change 
 
 ## Mandatory Notion tracking
 
-On every invocation that plans, implements, reviews or changes project work, the owner must apply the [strict Notion tracking guide](resources/ultimate-project-workflow/notion-tracking.md). Resolve the project from an explicit binding or canonical repository identity and inspect the actual Notion target. Persist the plan/task and its in-progress state before implementation. Update scope, progress, review, blockers, verification and actual delivery at their checkpoints.
+On every invocation that plans, implements, reviews or changes project work, the owner must use [Ultimate Notion Workflow](../ultimate-notion-workflow/SKILL.md) and its [strict tracking guide](resources/ultimate-project-workflow/notion-tracking.md). The Notion specialist owns identity resolution and tracking updates; the project owner remains accountable for the overall result. Resolve the project from an explicit binding or canonical repository identity and inspect the actual Notion target. Persist the plan/task and its in-progress state before implementation. Update scope, progress, review, blockers, verification and actual delivery at their checkpoints.
 
 A Direct change uses a compact tracked work item. Missing or ambiguous project identity, unavailable Notion writes or unresolved sync events block new implementation, release and full completion. Preserve local evidence, perform safe read-only discovery, and reconcile tracking before continuing. The host's connection and permissions determine actual execution.
 
@@ -73,7 +73,7 @@ For coordinated and production work, keep a short capability note with the mater
 
 ### Adapt the team to the work
 
-Choose as many relevant workflows as the task needs. There is no fixed limit on the number of specialties, handoffs, or workflow applications in a project. Discover relevant installed skills beyond the 38-role directory when they can improve the outcome. The routing table below gives starting points and can expand as evidence reveals new needs.
+Choose as many relevant workflows as the task needs. There is no fixed limit on the number of specialties, handoffs, or workflow applications in a project. Discover relevant installed skills beyond the bundled role directory when they can improve the outcome. The routing table below gives starting points and can expand as evidence reveals new needs.
 
 The owner must map each material requirement, affected boundary, consequential uncertainty and mandatory check to a responsible specialist and usable capability. A missing owner or required capability blocks dependent implementation until resolved. Select each specialist by its contribution and read its actual SKILL.md before applying it. Give each deliverable one accountable owner. Add, replace, or revisit specialists for implementation, diagnosis, corroboration, review, or integration as needed. For each handoff, identify the question, decision, artifact, or check it should advance. Continue while the work adds useful evidence toward the accepted outcome.
 

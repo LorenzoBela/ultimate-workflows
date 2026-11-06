@@ -27,7 +27,7 @@ test('Codex installs complete bundles and updates only owned files', t => {
   fs.writeFileSync(notes, 'retain user notes');
   run(['codex'], cwd);
   run(['codex'], cwd);
-  assert.equal(expected.length, 38);
+  assert.ok(expected.includes('ultimate-notion-workflow.md'));
   for (const file of expected) {
     const dir = path.join(cwd, '.agents/skills', file.slice(0, -3));
     assert.deepEqual(fs.readFileSync(path.join(dir, 'SKILL.md')), fs.readFileSync(path.join(root, 'universal', file)));
@@ -48,7 +48,7 @@ test('all-target install retains resource links and uses discoverable Claude bun
   const cwd = fs.mkdtempSync(path.join(os.tmpdir(), 'ultimate all '));
   t.after(() => cleanup(cwd));
   run(['all'], cwd);
-  assert.equal(fs.readdirSync(path.join(cwd, '.claude/skills')).length, 38);
+  assert.equal(fs.readdirSync(path.join(cwd, '.claude/skills')).length, expected.length);
   for (const file of expected) {
     const name = file.slice(0, -3);
     assert.ok(fs.existsSync(path.join(cwd, '.claude/skills', name, 'SKILL.md')));
@@ -68,7 +68,7 @@ test('all-target install retains resource links and uses discoverable Claude bun
   }
   for (const file of ['.windsurfrules', '.clinerules', '.github/copilot-instructions.md']) {
     const combined = fs.readFileSync(path.join(cwd, file), 'utf8');
-    assert.equal((combined.match(/<!-- Workflow:/g) || []).length, 38);
+    assert.equal((combined.match(/<!-- Workflow:/g) || []).length, expected.length);
     assert.ok(combined.includes('](#ultimate-multi-agent-invoker)'));
     assert.ok(combined.includes('<a id="ultimate-multi-agent-invoker"></a>'));
     assert.ok(fs.existsSync(path.join(cwd, path.dirname(file), 'resources/ultimate-shared/execution-contract.md')));
