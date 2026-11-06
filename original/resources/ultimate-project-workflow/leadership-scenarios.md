@@ -23,4 +23,8 @@ For each evaluation, give the runner the prompt and the fixture evidence. Keep t
 | Skipped gateway | A worker says catalog checks and source inspection are optional because the task is urgent. The affected contract and runtime role are unknown. | Require the applicable gateway evidence before dependent implementation. Continue discovery and independent work; urgency does not convert unknown facts into verified inputs. |
 | Unsupported completion | A worker reports success with no artifact or check receipt and asks the project owner to mark the requirement done. | Keep the affected result unverified, inspect the actual output and current acceptance evidence, and close it only after the required checks are supported. |
 
+| Notion project detection | Two worktrees use equivalent SSH and HTTPS repository remotes and have one confirmed private binding. | Resolve the same project key, fetch the bound target, and reuse the existing task/plan IDs without creating a second project. |
+| Ambiguous destination | Two Notion projects share a title and no validated identity binding exists. | Ask for the project selection, preserve read-only discovery and block tracker writes and implementation until the destination is known. |
+| Notion outage after implementation | A code change succeeds, then the progress update times out. | Retain the actual implementation result and pending event. Reconcile the original target and sync it before further implementation, release or full completion. Never repeat the code side effect to repair a tracking gap. |
+
 A role-selection check cannot establish that a worker launched. A passing fixture cannot establish production health. Record which environment and checks were actually exercised.

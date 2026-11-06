@@ -429,3 +429,11 @@ All installer entry points use one guarded writer and record owned hashes in `.u
 The planning workflow includes [implementation and QA design](original/resources/ultimate-planning-workflow/implementation-qa.md). The review workflow includes a [QA playbook](original/resources/ultimate-review-workflow/qa-playbook.md) with coverage selection, exploratory charters, browser evidence and defect handoffs.
 
 These adaptations bundle selected source snapshots from Superpowers (MIT), Anthropic webapp-testing (Apache-2.0) and Microsoft Playwright CLI (Apache-2.0). Each bundle retains exact upstream revisions, upstream and normalized file hashes in its manifest, with full license texts beside the snapshots. Snapshots are audit material. The local guides preserve host capabilities, existing authorization, lazy loading and current review gates. The import installs no browser runtime or external framework.
+
+## Mandatory Notion project tracking
+
+The project orchestrator requires Notion tracking for project work. It resolves the affected repository from its canonical remote and a shared private binding, records the plan/task before implementation, and updates progress, blockers, review, verification and delivery. See the [tracking guide](original/resources/ultimate-project-workflow/notion-tracking.md).
+
+Use the bundled read-only resolver to inspect project identity and binding. Private project and collection IDs stay outside this repository. Existing projects and record IDs are reused. A new or ambiguous project needs a validated binding before implementation.
+
+If Notion is unavailable, new implementation, release and full completion remain blocked while read-only diagnosis and recovery checkpointing can continue. Pending writes must be reconciled before progress resumes. This behavior requires actual connector access on the current host; installing the skill does not install a background sync service or grant Notion credentials.

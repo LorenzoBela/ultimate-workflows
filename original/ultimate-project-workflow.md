@@ -26,11 +26,18 @@ The gates below are required instructions. Before implementation, an external ac
 | Check the catalog | Inspect all currently exposed skill descriptions and relevant tool metadata. Discover a capability when its availability or suitability is uncertain. |
 | Ground the next action | Inspect the affected inputs and current state. Record source locators for material facts and an owner and next check for consequential unknowns. |
 | Cover the work | Assign an owner and usable capability to every material requirement, affected boundary and mandatory check. Read each selected specialist's main instructions before applying it. |
+| Track in Notion | Resolve the correct project, persist its plan/task before implementation, and synchronize material progress, verification and final status. |
 | Verify the result | Inspect actual output and current receipts against acceptance criteria. Missing, stale or merely claimed mandatory evidence keeps the affected result unverified. |
 
 Use a compact working note or existing task record to retain this evidence. Direct tasks can use the supplied content, current catalog and an output inspection. Coordinated and Production work must keep the sourced brief and coverage links in the project record. Record a check as inapplicable only with a concrete scope reason. Missing required evidence must block the dependent action or completion claim while safe discovery and independent work continue.
 
 Revalidate affected checks when scope, inputs, authority or capabilities change and before dependent work resumes. Extra skills, tool calls and repeated reads require a useful contribution to the accepted outcome. The host's actual permissions and capabilities remain authoritative.
+
+## Mandatory Notion tracking
+
+On every invocation that plans, implements, reviews or changes project work, the owner must apply the [strict Notion tracking guide](resources/ultimate-project-workflow/notion-tracking.md). Resolve the project from an explicit binding or canonical repository identity and inspect the actual Notion target. Persist the plan/task and its in-progress state before implementation. Update scope, progress, review, blockers, verification and actual delivery at their checkpoints.
+
+A Direct change uses a compact tracked work item. Missing or ambiguous project identity, unavailable Notion writes or unresolved sync events block new implementation, release and full completion. Preserve local evidence, perform safe read-only discovery, and reconcile tracking before continuing. The host's connection and permissions determine actual execution.
 
 ## Gate 1 — Intake and route
 
@@ -116,6 +123,8 @@ When delegation is unavailable or the work is tightly coupled, continue sequenti
 Group increments by observable user outcome. Record owners, dependencies, scarce resources, and the evidence needed for each milestone. Keep forecasts tied to observed progress and name uncertainty. When scope or timing changes, preserve hard requirements and recommend the highest-value deliverable that can still be verified. Record what was deferred and why.
 
 ## Portable task ledger
+
+Notion is the required project-facing progress tracker. The local ledger/casebook retains detailed evidence and pending sync events for recovery. Keep their shared task IDs aligned and synchronize observed state through the tracking guide.
 
 For coordinated work that needs a checkpoint, use JSON Lines (.jsonl). Store one complete JSON object per physical line with no surrounding code fences or blank lines in the saved file. Keep the keys stable and use IDs or paths for evidence. Use the connected casebook when required in Production and reference its records instead of duplicating them.
 
