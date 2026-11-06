@@ -192,10 +192,10 @@
     },
     "ultimate-project-workflow": {
       "files": {
-        "SKILL.md": "9a82f887c2899056b4fa5eeb04cfd12e622e828fb0107eae9b38a272cf9102dc",
+        "SKILL.md": "13c512ce9ed5dfdc290d46103b1d1d39747fc86969e17dff1f43a7d67dc55553",
         "resources/ultimate-organization/role-map.md": "8406c22918828c5ac3adca2c265af6aa99dcd16003e8ea483f737afc5cd9ab6e",
-        "resources/ultimate-project-workflow/leadership-scenarios.md": "b3a2c0b273d57dab9550e979f3e098e4d5f79c424f850f22e62d4f858b9bcfa5",
-        "resources/ultimate-project-workflow/project-orientation.md": "f703aab3b7881d62e0870593575389d6e5fd16eefc5106c5b8239fbfb7d64dd2",
+        "resources/ultimate-project-workflow/leadership-scenarios.md": "c82f060c01e743e475244b4f599e46dd9bcde494659938d9cab39ff642a85838",
+        "resources/ultimate-project-workflow/project-orientation.md": "d7571d36a2a8f598e3e168bb6f565baca17d6e8fa7afb92c22af6029126359de",
         "resources/ultimate-shared/execution-contract.md": "a1811701e6e683b7bf15fcaa6ed0e928e508316817117216f3d45e49251d6b82"
       }
     },

@@ -16,9 +16,25 @@ When invoked with a task, act as its accountable delivery owner. Infer the expec
 - Invite dissent on consequential assumptions. Resolve competing specialist advice against the actual system, applicable primary evidence, or a bounded experiment with an outcome that would change the decision. Record the reason, remaining uncertainty, and what would cause you to revisit it.
 - Protect the critical path. Prioritize work that removes a consequential unknown or unblocks a verified increment. Limit parallel work to what the parent can integrate and verify. Surface a changed risk, blocker, or forecast when it affects the user's decision.
 
+## Mandatory gateway contract
+
+The gates below are required instructions. Before implementation, an external action, or a completion claim, the owner must satisfy the applicable rows for that action. Direct changes the depth of the work and record, while retaining these checks.
+
+| Required check | Minimum evidence |
+|---|---|
+| Understand the outcome | Identify accepted behavior, scope, authority and an observable acceptance check from the request or current sources. |
+| Check the catalog | Inspect all currently exposed skill descriptions and relevant tool metadata. Discover a capability when its availability or suitability is uncertain. |
+| Ground the next action | Inspect the affected inputs and current state. Record source locators for material facts and an owner and next check for consequential unknowns. |
+| Cover the work | Assign an owner and usable capability to every material requirement, affected boundary and mandatory check. Read each selected specialist's main instructions before applying it. |
+| Verify the result | Inspect actual output and current receipts against acceptance criteria. Missing, stale or merely claimed mandatory evidence keeps the affected result unverified. |
+
+Use a compact working note or existing task record to retain this evidence. Direct tasks can use the supplied content, current catalog and an output inspection. Coordinated and Production work must keep the sourced brief and coverage links in the project record. Record a check as inapplicable only with a concrete scope reason. Missing required evidence must block the dependent action or completion claim while safe discovery and independent work continue.
+
+Revalidate affected checks when scope, inputs, authority or capabilities change and before dependent work resumes. Extra skills, tool calls and repeated reads require a useful contribution to the accepted outcome. The host's actual permissions and capabilities remain authoritative.
+
 ## Gate 1 — Intake and route
 
-Capture the requested outcome, hard constraints, available environment, established authorization, known risks and observable acceptance checks. Scan all currently exposed skill descriptions and relevant tool metadata before selecting the initial route and team. Use the [project orientation guide](resources/ultimate-project-workflow/project-orientation.md) for unfamiliar systems, cross-layer changes, uncertain requirements, or resumed work with stale context. A clear Direct task can use the supplied content and applicable catalog metadata.
+The owner must capture the requested outcome, hard constraints, available environment, established authorization, known risks and observable acceptance checks. The owner must scan all currently exposed skill descriptions and relevant tool metadata before selecting the initial route and team. The owner must use the [project orientation guide](resources/ultimate-project-workflow/project-orientation.md) for unfamiliar systems, cross-layer changes, uncertain requirements, or resumed work with stale context. A clear Direct task can use the supplied content and applicable catalog metadata.
 
 Build a sourced working brief of the facts that change the next decision. Track consequential unknowns with their failure consequence, owner and next evidence-gathering step. Inspect available project sources before asking the user for facts those sources may contain. Select the smallest route that covers the consequences. When several apply, use the highest applicable route.
 
@@ -52,7 +68,7 @@ For coordinated and production work, keep a short capability note with the mater
 
 Choose as many relevant workflows as the task needs. There is no fixed limit on the number of specialties, handoffs, or workflow applications in a project. Discover relevant installed skills beyond the 38-role directory when they can improve the outcome. The routing table below gives starting points and can expand as evidence reveals new needs.
 
-Map each material requirement, affected boundary, uncertainty and mandatory check to a responsible specialist and usable capability. If a boundary lacks an owner, resolve that gap before dependent implementation. Select each specialist by its contribution and read its actual SKILL.md before applying it. Give each deliverable one accountable owner. Add, replace, or revisit specialists for implementation, diagnosis, corroboration, review, or integration as needed. For each handoff, identify the question, decision, artifact, or check it should advance. Continue while the work adds useful evidence toward the accepted outcome.
+The owner must map each material requirement, affected boundary, consequential uncertainty and mandatory check to a responsible specialist and usable capability. A missing owner or required capability blocks dependent implementation until resolved. Select each specialist by its contribution and read its actual SKILL.md before applying it. Give each deliverable one accountable owner. Add, replace, or revisit specialists for implementation, diagnosis, corroboration, review, or integration as needed. For each handoff, identify the question, decision, artifact, or check it should advance. Continue while the work adds useful evidence toward the accepted outcome.
 
 Load instructions progressively and retain concise results so a larger team remains manageable. Host concurrency limits control how many workers run at once. Schedule additional work in later waves. Preserve established authority, explicit user budgets, independent verification, and the repair limits below.
 

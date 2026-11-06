@@ -1,6 +1,6 @@
 # Project orientation and evidence-driven routing
 
-Use for an unfamiliar codebase, a feature spanning boundaries, a consequential unknown, or resumption after inputs change. Keep the resulting brief inside the existing project record or task context. Read the sections that resolve the next decision.
+The owner must apply this guide for an unfamiliar codebase, a feature spanning boundaries, a consequential unknown, or resumption after relevant inputs change. Keep the resulting brief inside the existing project record or task context. Read the sections that resolve the next decision.
 
 ## Inspect sources by the question they can answer
 
@@ -43,7 +43,7 @@ These prompts guide discovery. Select from the current catalog by the outcome an
 
 ## Decide when to act or investigate more
 
-Proceed with the next bounded action when the outcome, authority, current inputs, owner and check are clear and its consequential assumptions are supported or explicitly bounded with a safe recovery. If a missing fact could materially change data safety, authorization, compatibility or the chosen contract, obtain discriminating evidence before dependent implementation.
+Proceed with the next bounded action only when the outcome, authority, current inputs, owner and check are clear and its consequential assumptions are supported or explicitly bounded with a safe recovery. If a missing fact could materially change data safety, authorization, compatibility or the chosen contract, obtain discriminating evidence before dependent implementation.
 
 Continue safe independent work while a specific gap is unresolved. Ask the user only for a decision or fact that authorized sources and reasonable reversible assumptions cannot supply. Name the choice, recommendation and concrete consequence.
 

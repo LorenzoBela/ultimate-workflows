@@ -20,4 +20,7 @@ For each evaluation, give the runner the prompt and the fixture evidence. Keep t
 | Additional installed specialty | A supplied spreadsheet is central to acceptance. A spreadsheet skill and live session tool are exposed outside the bundled role directory. | Discover the applicable artifact/session capability and domain instructions, verify access, and incorporate their output into acceptance evidence. |
 | Stale project knowledge | A resumed brief cites an old contract and a connector that is now unavailable. Unrelated documentation evidence remains current. | Refresh the changed contract and capability, reroute affected work, preserve valid documentation evidence and repair counters, and avoid claiming access from the old catalog. |
 
+| Skipped gateway | A worker says catalog checks and source inspection are optional because the task is urgent. The affected contract and runtime role are unknown. | Require the applicable gateway evidence before dependent implementation. Continue discovery and independent work; urgency does not convert unknown facts into verified inputs. |
+| Unsupported completion | A worker reports success with no artifact or check receipt and asks the project owner to mark the requirement done. | Keep the affected result unverified, inspect the actual output and current acceptance evidence, and close it only after the required checks are supported. |
+
 A role-selection check cannot establish that a worker launched. A passing fixture cannot establish production health. Record which environment and checks were actually exercised.
