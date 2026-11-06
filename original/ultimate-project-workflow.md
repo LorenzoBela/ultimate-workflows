@@ -18,7 +18,9 @@ When invoked with a task, act as its accountable delivery owner. Infer the expec
 
 ## Gate 1 — Intake and route
 
-Capture the requested outcome, hard constraints, available environment, established authorization, known risks and observable acceptance checks. Select the smallest route that covers the consequences. When several apply, use the highest applicable route.
+Capture the requested outcome, hard constraints, available environment, established authorization, known risks and observable acceptance checks. Scan all currently exposed skill descriptions and relevant tool metadata before selecting the initial route and team. Use the [project orientation guide](resources/ultimate-project-workflow/project-orientation.md) for unfamiliar systems, cross-layer changes, uncertain requirements, or resumed work with stale context. A clear Direct task can use the supplied content and applicable catalog metadata.
+
+Build a sourced working brief of the facts that change the next decision. Track consequential unknowns with their failure consequence, owner and next evidence-gathering step. Inspect available project sources before asking the user for facts those sources may contain. Select the smallest route that covers the consequences. When several apply, use the highest applicable route.
 
 | Route | Use when | Required stages |
 |---|---|---|
@@ -50,7 +52,7 @@ For coordinated and production work, keep a short capability note with the mater
 
 Choose as many relevant workflows as the task needs. There is no fixed limit on the number of specialties, handoffs, or workflow applications in a project. Discover relevant installed skills beyond the 38-role directory when they can improve the outcome. The routing table below gives starting points and can expand as evidence reveals new needs.
 
-Select each specialist by its contribution and read its actual SKILL.md before applying it. Give each deliverable one accountable owner. Add, replace, or revisit specialists for implementation, diagnosis, corroboration, review, or integration as needed. For each handoff, identify the question, decision, artifact, or check it should advance. Continue while the work adds useful evidence toward the accepted outcome.
+Map each material requirement, affected boundary, uncertainty and mandatory check to a responsible specialist and usable capability. If a boundary lacks an owner, resolve that gap before dependent implementation. Select each specialist by its contribution and read its actual SKILL.md before applying it. Give each deliverable one accountable owner. Add, replace, or revisit specialists for implementation, diagnosis, corroboration, review, or integration as needed. For each handoff, identify the question, decision, artifact, or check it should advance. Continue while the work adds useful evidence toward the accepted outcome.
 
 Load instructions progressively and retain concise results so a larger team remains manageable. Host concurrency limits control how many workers run at once. Schedule additional work in later waves. Preserve established authority, explicit user budgets, independent verification, and the repair limits below.
 
@@ -85,7 +87,7 @@ When delegation is unavailable or the work is tightly coupled, continue sequenti
 ### Verify and repair
 
 - **Runner:** Identify the actual runner and target early. If a command is missing, look for supported workspace dependencies, a project runner, or a trusted installed executable. If no equivalent can run, mark the check unverified.
-- **Evidence:** Test the integrated output against accepted checks. Apply stricter domain verification. Send implementation failures to the owner or Debugging, and broken assumptions to Planning or Architecture. Rerun affected checks and required reviews on the new output.
+- **Evidence:** Before a consequential action, revisit the working brief for changed inputs, unsupported assumptions or contradictory evidence. Resolve high-consequence unknowns first and expand discovery or the team where needed. Test the integrated output against accepted checks. Apply stricter domain verification. Send implementation failures to the owner or Debugging, and broken assumptions to Planning or Architecture. Rerun affected checks and required reviews on the new output.
 - **Retry limit:** Default to at most two repair loops per failed check. A loop starts when a corrective attempt executes. Read-only diagnosis and unavailable infrastructure consume zero loops. Reconcile any uncertain external effect before another attempt. Keep the count across handoffs and resumes. Apply stricter task, production, or budget limits. If the check still fails at the limit, block affected work, retain the evidence, and name the owner and next action.
 
 ### Release and close
@@ -113,7 +115,7 @@ Record scope decisions separately with who/what authorized the change and affect
 
 - When requirements change, identify affected decisions, artifacts, tasks and gates. Stop only the affected work, retain its evidence, and continue independent work. Use an updated plan review for material production changes.
 - During an incident, separate containment, diagnosis and permanent repair. Within existing authority, favor a reversible containment step with an observable health signal. Before retrying an uncertain mutation, reconcile the destination and the original operation receipt. Preserve the timeline and evidence.
-- On interruption, keep the checkpoint, dirty/index state, useful artifacts and outstanding effects. On resume recheck current inputs, authority and receipts before continuing. Report the next owner and action for anything that remains blocked.
+- On interruption, keep the checkpoint, sourced working brief, dirty/index state, useful artifacts and outstanding effects. On resume recheck current inputs, authority, catalog availability and receipts before continuing. Invalidate only affected assumptions, ownership decisions and checks. Report the next owner and action for anything that remains blocked.
 
 ## Verification and delivery
 
