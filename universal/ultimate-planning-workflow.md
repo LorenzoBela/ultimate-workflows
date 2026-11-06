@@ -48,6 +48,12 @@ Identify boundaries, interfaces, state transitions, authorization checks, failur
 
 For external operations specify timeout, retry classes, idempotency, cancellation and uncertain-result reconciliation. For auth/data changes specify tenant/object access invariants and evidence. Include realistic capacity/latency budgets based on target workload, available measurements and tolerable failure behavior.
 
+## Implementation and QA design
+
+For substantial application work, use the [implementation and QA guide](resources/ultimate-planning-workflow/implementation-qa.md) to define implementable interfaces, full-stack failure boundaries, review-focus coverage and a concise task handoff. Read it when those decisions are needed. It incorporates pinned, attributed upstream planning guidance while preserving this workflow's authorization and technical review contract.
+
+Before plan review, map material requirements and implied input classes to checks. Specify the test's role, initial state, action, expected visible or persisted result and assertion. Confirm producer/consumer names and schemas agree across tasks. Give uncovered consequential risks an owner and a discriminating check or experiment. Provide the spec, plan hash and this mapping to Review.
+
 ## 3. Task graph
 
 Each task records:

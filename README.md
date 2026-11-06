@@ -423,3 +423,9 @@ changed local files are rejected for reconciliation. No user configuration,
 credentials, other skills, or UI metadata are overwritten.
 
 All installer entry points use one guarded writer and record owned hashes in `.ultimate-workflows-install.sha256`. Keep this receipt to enable safe updates. A v2 installation without a receipt must be backed up/reconciled if its existing files differ; no force-overwrite shortcut is provided. Existing directory/symlink destinations are rejected.
+
+## Planning and QA source imports
+
+The planning workflow includes [implementation and QA design](original/resources/ultimate-planning-workflow/implementation-qa.md). The review workflow includes a [QA playbook](original/resources/ultimate-review-workflow/qa-playbook.md) with coverage selection, exploratory charters, browser evidence and defect handoffs.
+
+These adaptations bundle selected source snapshots from Superpowers (MIT), Anthropic webapp-testing (Apache-2.0) and Microsoft Playwright CLI (Apache-2.0). Each bundle retains exact upstream revisions, upstream and normalized file hashes in its manifest, with full license texts beside the snapshots. Snapshots are audit material. The local guides preserve host capabilities, existing authorization, lazy loading and current review gates. The import installs no browser runtime or external framework.

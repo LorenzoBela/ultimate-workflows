@@ -8,3 +8,7 @@
 *.yaml text eol=lf
 *.txt text eol=lf
 .gitattributes text eol=lf
+
+# Preserve upstream snapshot whitespace for source-hash provenance.
+original/resources/**/upstream/**/*.txt whitespace=-blank-at-eol
+universal/resources/**/upstream/**/*.txt whitespace=-blank-at-eol

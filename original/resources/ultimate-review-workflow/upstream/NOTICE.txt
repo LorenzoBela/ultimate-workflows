@@ -1,0 +1,20 @@
+Third-party sources incorporated into the Ultimate Review workflow
+
+Superpowers
+Copyright (c) 2025 Jesse Vincent
+Licensed under the MIT License, reproduced in obra-superpowers/LICENSE.txt.
+
+Anthropic webapp-testing
+Copyright 2026 Anthropic, PBC.
+Licensed under the Apache License, Version 2.0, reproduced in anthropics-skills/LICENSE.txt.
+
+Microsoft Playwright CLI
+Copyright (c) Microsoft Corporation.
+Licensed under the Apache License, Version 2.0, reproduced in microsoft-playwright-cli/LICENSE.txt.
+
+Selected source documents are copied as audit snapshots with LF line endings.
+The local QA playbook adapts their ideas for host-discovered tooling, observable
+state assertions, existing authorization and the Ultimate review verdict.
+It replaces unconditional network-idle waits, fixed sleeps, automatic installation
+and external-posting or cleanup examples with scoped local requirements.
+Exact revisions, source paths and file hashes are in manifest.json.

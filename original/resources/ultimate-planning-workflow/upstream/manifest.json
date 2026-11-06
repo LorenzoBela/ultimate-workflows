@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "retrieved_at": "2026-11-06",
+  "packages": [
+    {
+      "repository": "obra/superpowers",
+      "revision": "22f0b463e7a5e579904dd6211a520321035526f7",
+      "license": "MIT",
+      "files": [
+        {
+          "path": "obra-superpowers/writing-plans.txt",
+          "upstream_path": "skills/writing-plans/SKILL.md",
+          "sha256": "a6c67c1900064347c2a329990dd3c555657c51c3ec53b259a08aa01a2c26139a",
+          "upstream_sha256": "a6c67c1900064347c2a329990dd3c555657c51c3ec53b259a08aa01a2c26139a",
+          "normalization": "LF line endings",
+          "source_url": "https://github.com/obra/superpowers/blob/22f0b463e7a5e579904dd6211a520321035526f7/skills/writing-plans/SKILL.md"
+        },
+        {
+          "path": "obra-superpowers/LICENSE.txt",
+          "upstream_path": "LICENSE",
+          "sha256": "a37e0e9697144819e1d965176ac4ae5bc3fa02d11e7812036bbcadf6dafe2400",
+          "upstream_sha256": "a37e0e9697144819e1d965176ac4ae5bc3fa02d11e7812036bbcadf6dafe2400",
+          "normalization": "LF line endings",
+          "source_url": "https://github.com/obra/superpowers/blob/22f0b463e7a5e579904dd6211a520321035526f7/LICENSE"
+        }
+      ]
+    }
+  ]
+}

@@ -179,7 +179,11 @@
     },
     "ultimate-planning-workflow": {
       "files": {
-        "SKILL.md": "e8ba59229b4dcff68bad9425dc5f67f31f2679367aa263febcd00b60b9c22708",
+        "SKILL.md": "ad9c3fd44d226a331d8abae9b4938bb7f8062bf532cb9587fcf342bfb1e529d4",
+        "resources/ultimate-planning-workflow/implementation-qa.md": "4cba42758e04755935e83aedb15472dce49aefc89fe0da36d1ed3631019c2f77",
+        "resources/ultimate-planning-workflow/upstream/manifest.json": "843add85714790c2661c382646e1db7874bc05a4e564cc2892d603d2303c15ed",
+        "resources/ultimate-planning-workflow/upstream/obra-superpowers/LICENSE.txt": "a37e0e9697144819e1d965176ac4ae5bc3fa02d11e7812036bbcadf6dafe2400",
+        "resources/ultimate-planning-workflow/upstream/obra-superpowers/writing-plans.txt": "a6c67c1900064347c2a329990dd3c555657c51c3ec53b259a08aa01a2c26139a",
         "resources/ultimate-quality/casebook.py": "8c591dcea0091d240885afddaf46c274dddbdadf218379c0eb00980d753dea29",
         "resources/ultimate-quality/guide.md": "4c063b561dfdc4c73d5ff2eaba93b4cf838fc36be63af3b963df7cdb0b3ac7e1",
         "resources/ultimate-research-workflow/research_state.py": "ddbff8d029719b0f3b73a0d9c026db0720f312f0679b11012f7012432daebe48",
@@ -211,10 +215,21 @@
     },
     "ultimate-review-workflow": {
       "files": {
-        "SKILL.md": "e9b01a9415a52913cd03bba6fea5f27e9abb12bf5b76075026515376f34f9ef6",
+        "SKILL.md": "7e00774e9a46e6b55cc6850234c24ed085c9723ae599150cdc7dd13555e381b3",
         "resources/ultimate-quality/casebook.py": "8c591dcea0091d240885afddaf46c274dddbdadf218379c0eb00980d753dea29",
         "resources/ultimate-quality/guide.md": "4c063b561dfdc4c73d5ff2eaba93b4cf838fc36be63af3b963df7cdb0b3ac7e1",
         "resources/ultimate-research-workflow/research_state.py": "ddbff8d029719b0f3b73a0d9c026db0720f312f0679b11012f7012432daebe48",
+        "resources/ultimate-review-workflow/qa-playbook.md": "301626835ee41c64f2f093cc666381772d7e945cc3b2457468f86649d69e4f3f",
+        "resources/ultimate-review-workflow/upstream/NOTICE.txt": "9492a9d41eda055faae6967a6567af7cae54096a3612a63349a985b5bd4a426b",
+        "resources/ultimate-review-workflow/upstream/anthropics-skills/LICENSE.txt": "bc6b3af2f331cbc7fb0da1344efb2cbe5877a31498b4d70dbc7000f3405a1362",
+        "resources/ultimate-review-workflow/upstream/anthropics-skills/webapp-testing.txt": "51b7349e77ec63b7744a6f63647e7566a0b4d2e301121cc10e8c2113af6556a2",
+        "resources/ultimate-review-workflow/upstream/manifest.json": "73f1fbbc626cc2b871ded35f8b511d9ef5dc6608a0ad0ff51bd810340e2312a1",
+        "resources/ultimate-review-workflow/upstream/microsoft-playwright-cli/LICENSE.txt": "c16f8dcf1a368b83be78d826ea23de4079fe1b4469a0ab9ee20563f37ff3d44b",
+        "resources/ultimate-review-workflow/upstream/microsoft-playwright-cli/playwright-tests.txt": "c5b0719fef2cfdff50bd744051b2f9afc119775db4b48e9b2882c1cf3886797c",
+        "resources/ultimate-review-workflow/upstream/microsoft-playwright-cli/tracing.txt": "4e397e16e6bd92d8696cb815c4ee6dc4ce0be1da9e760e261a9c30b44c7857c7",
+        "resources/ultimate-review-workflow/upstream/obra-superpowers/LICENSE.txt": "a37e0e9697144819e1d965176ac4ae5bc3fa02d11e7812036bbcadf6dafe2400",
+        "resources/ultimate-review-workflow/upstream/obra-superpowers/code-reviewer.txt": "82e370be6b3447523816286195571e4216ba56ba1ad6ad0e87862294c4c78dcb",
+        "resources/ultimate-review-workflow/upstream/obra-superpowers/verification-before-completion.txt": "2befe7fc55bcadaa3d97dd9e8efeb633d2561c0ebe74c5a8b17c4d9e7e4520b3",
         "resources/ultimate-shared/execution-contract.md": "a1811701e6e683b7bf15fcaa6ed0e928e508316817117216f3d45e49251d6b82"
       }
     },
