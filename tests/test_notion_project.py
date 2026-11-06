@@ -107,6 +107,20 @@ class NotionProjectTests(unittest.TestCase):
             tracking.resolve_binding({"project_key": "repo:github.com/example/other"}, self.registry)
         self.assertEqual(self.registry.read_bytes(), before)
 
+    def test_explicit_user_exclusion_resolves_without_a_live_page(self):
+        binding = {"tracking_mode": "disabled_by_user", "reason": "User removed this project home"}
+        self.write_registry(binding)
+        before = self.registry.read_bytes()
+        result = tracking.resolve_binding({"project_key": self.key}, self.registry)
+        self.assertEqual(result["status"], "tracking_disabled_by_user")
+        self.assertNotIn("binding", result)
+        self.assertEqual(self.registry.read_bytes(), before)
+
+    def test_tracking_exclusion_without_a_recorded_reason_is_rejected(self):
+        self.write_registry({"tracking_mode": "disabled_by_user"})
+        with self.assertRaisesRegex(ValueError, "recorded reason"):
+            tracking.resolve_binding({"project_key": self.key}, self.registry)
+
     def test_mismatched_or_invalid_ids_cannot_select_a_destination(self):
         for field, value in (
             ("project_page_id", "44444444-4444-4444-8444-444444444444"),

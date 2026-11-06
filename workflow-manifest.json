@@ -179,7 +179,7 @@
     },
     "ultimate-notion-workflow": {
       "files": {
-        "SKILL.md": "d97df422c6e6235ca45e9e78e89dd0fbebf1baa5774600ba873198dc6f25ca57",
+        "SKILL.md": "11d93d634c888aaefacaa75fd9f548ac4323017c2fd291e34aa9631d52e4995c",
         "resources/ultimate-shared/execution-contract.md": "a1811701e6e683b7bf15fcaa6ed0e928e508316817117216f3d45e49251d6b82"
       }
     },
@@ -198,11 +198,11 @@
     },
     "ultimate-project-workflow": {
       "files": {
-        "SKILL.md": "ea82986537fe283b7fe383b06e232376e7bae1f84dee90a1eae0d29b84f6b29d",
+        "SKILL.md": "6334e4c4d8ee1efe9a3a8737673afd067ec82d91595b35282b947a6e08b556de",
         "resources/ultimate-organization/role-map.md": "cf8a00f7cbee711772d4a10d6afc28c8c4da4b25c55df6c62158fcd85d6aa8f6",
         "resources/ultimate-project-workflow/leadership-scenarios.md": "7960df7ffdd8e2b3741957c36c38c3917d7a97bdc8626827104665e0eaa5d6fe",
-        "resources/ultimate-project-workflow/notion-tracking.md": "f4366bfb67e76947d6e558e10fd697b8d7210d4b7a14bcb52133d030e336f1f9",
-        "resources/ultimate-project-workflow/notion_project.py": "a75bceb8d09d786326cc343f6d7ed0e4dc382524931711e8eaa68b0d70f02e8b",
+        "resources/ultimate-project-workflow/notion-tracking.md": "98094c691d5888002ae7a1613cc07bc68f259344839cbd19cb5f99a13c422586",
+        "resources/ultimate-project-workflow/notion_project.py": "81f0a02ad513c46f3553c0065cd4d0387161566347280bc2592848b591c59ce2",
         "resources/ultimate-project-workflow/project-orientation.md": "d7571d36a2a8f598e3e168bb6f565baca17d6e8fa7afb92c22af6029126359de",
         "resources/ultimate-shared/execution-contract.md": "a1811701e6e683b7bf15fcaa6ed0e928e508316817117216f3d45e49251d6b82"
       }

@@ -90,6 +90,11 @@ def resolve_binding(identity, registry):
     binding = config["projects"].get(identity["project_key"])
     if not isinstance(binding, dict):
         raise ValueError("Project is unbound; resolve its Notion destination before implementation")
+    if binding.get("tracking_mode") == "disabled_by_user":
+        reason = binding.get("reason")
+        if not isinstance(reason, str) or not reason.strip():
+            raise ValueError("An explicit tracking exemption requires its recorded reason")
+        return {**identity, "status": "tracking_disabled_by_user", "reason": reason}
     if binding.get("tracking_mode") != "strict":
         raise ValueError("The stored binding must explicitly use strict tracking")
     try:

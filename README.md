@@ -441,3 +441,5 @@ If Notion is unavailable, new implementation, release and full completion remain
 ## Ultimate Notion Workflow
 
 [Ultimate Notion Workflow](original/ultimate-notion-workflow.md) is the project-tracking specialist. The project orchestrator must hand it project resolution, plan/task progress, blockers, verification and delivery updates. It uses the shared private project binding and the current host's connected tools. You can invoke it directly to bind a project, update progress, reconcile pending writes or close tracked work.
+
+Explicit project-specific user exclusions are retained in private state. A removed project home is not recreated automatically; other projects keep their tracking policy.

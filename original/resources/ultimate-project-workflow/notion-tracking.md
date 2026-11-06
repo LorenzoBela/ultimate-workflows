@@ -22,6 +22,12 @@ Store schema_version 1 with a projects object keyed by canonical repository iden
 
 The helper reads local identity and binding data only. A resolved binding is not proof that Notion is reachable or that a page still belongs to the project. Fetch the project, check tool access when availability is unknown, and inspect the actual data-source schemas before use. Apply current tool restrictions and the connector's Markdown specification.
 
+## Explicit user exclusions
+
+Honor a project-specific user instruction to disable tracking or remove its tracking home. Record tracking_mode disabled_by_user with the reason and authorization source in that project's private registry entry. The resolver returns tracking_disabled_by_user without requiring a live destination. Skip Notion tracking and keep local evidence for that project until the user re-enables it. Other project bindings retain their policy.
+
+An unavailable connector, failed check or worker suggestion cannot create an exemption. Do not silently restore or recreate a project page the user removed. Re-enabling requires the user's direction and a validated destination.
+
 ## Required progress checkpoints
 
 | When | Required Notion state before advancing |

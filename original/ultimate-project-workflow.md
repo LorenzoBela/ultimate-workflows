@@ -37,7 +37,7 @@ Revalidate affected checks when scope, inputs, authority or capabilities change 
 
 On every invocation that plans, implements, reviews or changes project work, the owner must use [Ultimate Notion Workflow](../ultimate-notion-workflow/SKILL.md) and its [strict tracking guide](resources/ultimate-project-workflow/notion-tracking.md). The Notion specialist owns identity resolution and tracking updates; the project owner remains accountable for the overall result. Resolve the project from an explicit binding or canonical repository identity and inspect the actual Notion target. Persist the plan/task and its in-progress state before implementation. Update scope, progress, review, blockers, verification and actual delivery at their checkpoints.
 
-A Direct change uses a compact tracked work item. Missing or ambiguous project identity, unavailable Notion writes or unresolved sync events block new implementation, release and full completion. Preserve local evidence, perform safe read-only discovery, and reconcile tracking before continuing. The host's connection and permissions determine actual execution.
+Honor an explicit project-specific user exclusion before requiring tracking. A recorded tracking_disabled_by_user result keeps that project local until the user re-enables Notion; it must not recreate a removed page. Otherwise, a Direct change uses a compact tracked work item. Missing or ambiguous project identity, unavailable Notion writes or unresolved sync events block new implementation, release and full completion. Preserve local evidence, perform safe read-only discovery, and reconcile tracking before continuing. The host's connection and permissions determine actual execution.
 
 ## Gate 1 — Intake and route
 
